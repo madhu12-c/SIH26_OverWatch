@@ -252,7 +252,7 @@
    "saving_realistic": 418094.56
   },
   {
-   "national_code": "NMC-40171500-000001",
+   "national_code": "NMC-40171600-000001",
    "description": "PIPE, SEAMLESS, CARBON STEEL, ASTM A106 GR B, 4 IN, SCH 40",
    "category": "pipe",
    "cpse_count": 5,
@@ -420,7 +420,7 @@
    "saving_realistic": 85904.74
   },
   {
-   "national_code": "NMC-31401500-000002",
+   "national_code": "NMC-31400000-000002",
    "description": "GASKET, SPIRAL WOUND, SS316, 4 IN, 150#, GRAPHITE",
    "category": "gasket",
    "cpse_count": 3,
@@ -464,7 +464,7 @@
    "saving_realistic": 79842.98
   },
   {
-   "national_code": "NMC-31401500-000001",
+   "national_code": "NMC-31400000-000001",
    "description": "GASKET, SPIRAL WOUND, SS304, 4 IN, 150#, GRAPHITE",
    "category": "gasket",
    "cpse_count": 4,
@@ -517,7 +517,7 @@
    "saving_realistic": 53901.4
   },
   {
-   "national_code": "NMC-31161500-000002",
+   "national_code": "NMC-31161600-000002",
    "description": "STUD BOLT, M20 X 120, A193 B7, ASTM A193",
    "category": "fastener",
    "cpse_count": 3,
@@ -561,7 +561,7 @@
    "saving_realistic": 13960.42
   },
   {
-   "national_code": "NMC-31161500-000001",
+   "national_code": "NMC-31161600-000001",
    "description": "BOLT, HEX, M12 X 50, SS316, IS 1364",
    "category": "fastener",
    "cpse_count": 3,
@@ -605,7 +605,7 @@
    "saving_realistic": 3621.56
   },
   {
-   "national_code": "NMC-40171600-000001",
+   "national_code": "NMC-40175000-000001",
    "description": "FLANGE, WELD NECK, RAISED FACE, 4 IN, 150#, ASTM A105",
    "category": "flange",
    "cpse_count": 2,
@@ -639,7 +639,7 @@
    "saving_realistic": 0.0
   },
   {
-   "national_code": "NMC-31401600-000001",
+   "national_code": "NMC-31411700-000001",
    "description": "MECHANICAL SEAL, CARTRIDGE SINGLE, 45 MM SHAFT, SIC VS CARBON, VITON",
    "category": "rotating",
    "cpse_count": 2,
@@ -673,7 +673,7 @@
    "saving_realistic": 0.0
   },
   {
-   "national_code": "NMC-40171500-000002",
+   "national_code": "NMC-40171600-000002",
    "description": "PIPE, SEAMLESS, SS316, ASTM A312 TP316, 2 IN, SCH 40",
    "category": "pipe",
    "cpse_count": 2,

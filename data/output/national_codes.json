@@ -1,8 +1,8 @@
 [
  {
-  "national_code": "NMC-31401500-000001",
+  "national_code": "NMC-31400000-000001",
   "category": "gasket",
-  "unspsc": "31401500",
+  "unspsc": "31400000",
   "unspsc_name": "Gaskets",
   "std_description": "GASKET, SPIRAL WOUND, SS304, 4 IN, 150#, GRAPHITE",
   "attributes": {
@@ -313,10 +313,10 @@
   ]
  },
  {
-  "national_code": "NMC-40171600-000001",
+  "national_code": "NMC-40175000-000001",
   "category": "flange",
-  "unspsc": "40171600",
-  "unspsc_name": "Pipe fittings",
+  "unspsc": "40175000",
+  "unspsc_name": "Pipe weldneck flanges",
   "std_description": "FLANGE, WELD NECK, RAISED FACE, 4 IN, 150#, ASTM A105",
   "attributes": {
    "flange_type": "WELD_NECK",
@@ -409,7 +409,7 @@
   "national_code": "NMC-26101100-000001",
   "category": "electrical",
   "unspsc": "26101100",
-  "unspsc_name": "Electric motors",
+  "unspsc_name": "Electric alternating current AC motors",
   "std_description": "MOTOR, 3 PHASE, 5 HP, 1440 RPM, FOOT, 415 V, IP55",
   "attributes": {
    "equipment_type": "MOTOR",
@@ -504,9 +504,9 @@
   ]
  },
  {
-  "national_code": "NMC-31161500-000001",
+  "national_code": "NMC-31161600-000001",
   "category": "fastener",
-  "unspsc": "31161500",
+  "unspsc": "31161600",
   "unspsc_name": "Bolts",
   "std_description": "BOLT, HEX, M12 X 50, SS316, IS 1364",
   "attributes": {
@@ -591,9 +591,9 @@
   ]
  },
  {
-  "national_code": "NMC-31161500-000002",
+  "national_code": "NMC-31161600-000002",
   "category": "fastener",
-  "unspsc": "31161500",
+  "unspsc": "31161600",
   "unspsc_name": "Bolts",
   "std_description": "STUD BOLT, M20 X 120, A193 B7, ASTM A193",
   "attributes": {
@@ -678,10 +678,10 @@
   ]
  },
  {
-  "national_code": "NMC-31401600-000001",
+  "national_code": "NMC-31411700-000001",
   "category": "rotating",
-  "unspsc": "31401600",
-  "unspsc_name": "Seals",
+  "unspsc": "31411700",
+  "unspsc_name": "Mechanical seals",
   "std_description": "MECHANICAL SEAL, CARTRIDGE SINGLE, 45 MM SHAFT, SIC VS CARBON, VITON",
   "attributes": {
    "component_type": "MECHANICAL_SEAL",
@@ -842,10 +842,10 @@
   ]
  },
  {
-  "national_code": "NMC-40171500-000001",
+  "national_code": "NMC-40171600-000001",
   "category": "pipe",
-  "unspsc": "40171500",
-  "unspsc_name": "Pipe",
+  "unspsc": "40171600",
+  "unspsc_name": "Industrial pipe and piping",
   "std_description": "PIPE, SEAMLESS, CARBON STEEL, ASTM A106 GR B, 4 IN, SCH 40",
   "attributes": {
    "construction": "SEAMLESS",
@@ -925,7 +925,7 @@
   "national_code": "NMC-41111900-000001",
   "category": "instrument",
   "unspsc": "41111900",
-  "unspsc_name": "Pressure measuring instruments",
+  "unspsc_name": "Indicating and recording instruments",
   "std_description": "INSTRUMENT, PRESSURE GAUGE, 100 MM DIAL, 0-10 BAR, SS316, 1/2 IN NPT BOTTOM",
   "attributes": {
    "instrument_type": "PRESSURE_GAUGE",
@@ -1005,9 +1005,9 @@
   ]
  },
  {
-  "national_code": "NMC-31401500-000002",
+  "national_code": "NMC-31400000-000002",
   "category": "gasket",
-  "unspsc": "31401500",
+  "unspsc": "31400000",
   "unspsc_name": "Gaskets",
   "std_description": "GASKET, SPIRAL WOUND, SS316, 4 IN, 150#, GRAPHITE",
   "attributes": {
@@ -1151,10 +1151,10 @@
   ]
  },
  {
-  "national_code": "NMC-40171500-000002",
+  "national_code": "NMC-40171600-000002",
   "category": "pipe",
-  "unspsc": "40171500",
-  "unspsc_name": "Pipe",
+  "unspsc": "40171600",
+  "unspsc_name": "Industrial pipe and piping",
   "std_description": "PIPE, SEAMLESS, SS316, ASTM A312 TP316, 2 IN, SCH 40",
   "attributes": {
    "construction": "SEAMLESS",

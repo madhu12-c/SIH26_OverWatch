@@ -36,22 +36,36 @@ import schemas
 # national system must not ask every CPSE to adopt a scheme six students made
 # up. Only the classes our categories touch, not the full taxonomy.
 #
-# WARNING: these codes are believed correct but are NOT verified. Before any of
-# them appears on a slide, check it against the published UNSPSC listing - the
-# code is printed inside every national code we issue, so a wrong one is
-# visible. Tracked in docs/03-reference/domain-facts.md
+# Every code below was checked against the published UNSPSC class listing on
+# 31 Aug 2026. Four of the original guesses were wrong and are corrected here:
+#
+#   fastener  31161500 -> 31161600   31161500 is Screws, not Bolts
+#   flange    40171600 -> 40175000   40171600 is Industrial pipe and piping;
+#                                    our flanges are weld neck
+#   rotating  31401600 -> 31411700   31401600 is Die cut gaskets, not Seals
+#   pipe      40171500 -> 40171600   a refinery line is industrial, not
+#                                    commercial pipe
+#
+# GASKETS ARE CLASSIFIED AT FAMILY LEVEL, DELIBERATELY. Family 31400000
+# divides gaskets by manufacturing method - molded, die cut, stamped, water
+# jet cut, liquid - and spiral wound has no class at all. Forcing a spiral
+# wound gasket into "molded gaskets" would be a wrong classification printed
+# inside every national code we issue, so we stop at the family.
+#
+# The class is embedded in each national code, so an error here is visible on
+# every output row. Recorded in docs/03-reference/domain-facts.md
 # ---------------------------------------------------------------------------
 
 UNSPSC = {
     "bearing":    ("31171500", "Bearings"),
-    "gasket":     ("31401500", "Gaskets"),
-    "pipe":       ("40171500", "Pipe"),
+    "gasket":     ("31400000", "Gaskets"),          # family - no spiral wound class
+    "pipe":       ("40171600", "Industrial pipe and piping"),
     "valve":      ("40141600", "Valves"),
-    "fastener":   ("31161500", "Bolts"),
-    "flange":     ("40171600", "Pipe fittings"),
-    "rotating":   ("31401600", "Seals"),
-    "instrument": ("41111900", "Pressure measuring instruments"),
-    "electrical": ("26101100", "Electric motors"),
+    "fastener":   ("31161600", "Bolts"),
+    "flange":     ("40175000", "Pipe weldneck flanges"),
+    "rotating":   ("31411700", "Mechanical seals"),
+    "instrument": ("41111900", "Indicating and recording instruments"),
+    "electrical": ("26101100", "Electric alternating current AC motors"),
     "unknown":    ("00000000", "Unclassified"),
 }
 
