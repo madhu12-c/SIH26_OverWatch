@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { spec, fieldLabel } from '../lib/format'
 
 /*
@@ -32,6 +32,10 @@ const MARK = {
 }
 
 export default function SpecCompare({ a, b, matched, ignored, blockedBy, hardFields = [], play }) {
+  // The parent screens already jump straight to the end under reduced motion.
+  // This component has to do the same or the rows stay stuck at opacity 0 -
+  // every row invisible, which is worse than no animation at all.
+  const reduce = useReducedMotion()
   const names = [...new Set([...Object.keys(a?.attributes || {}), ...Object.keys(b?.attributes || {})])]
 
   // Ordinary fields first, ignored fields last. The brand row landing at the
@@ -61,9 +65,9 @@ export default function SpecCompare({ a, b, matched, ignored, blockedBy, hardFie
           return (
             <motion.div
               key={name}
-              initial={{ opacity: 0, y: 6 }}
+              initial={reduce ? false : { opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.12, duration: 0.28, ease: 'easeOut' }}
+              transition={reduce ? { duration: 0 } : { delay: i * 0.12, duration: 0.28, ease: 'easeOut' }}
               className={`grid grid-cols-[1fr_auto_1fr] gap-x-3 items-center px-4 py-2
                           border-b border-line-soft last:border-0
                           ${v === 'block' ? 'bg-danger-bg' : ''}`}
@@ -79,9 +83,9 @@ export default function SpecCompare({ a, b, matched, ignored, blockedBy, hardFie
               </div>
 
               <motion.span
-                initial={{ scale: 0 }}
-                animate={{ scale: [0, 1.15, 1] }}
-                transition={{ delay: i * 0.12 + 0.18, duration: 0.3 }}
+                initial={reduce ? false : { scale: 0 }}
+                animate={reduce ? { scale: 1 } : { scale: [0, 1.15, 1] }}
+                transition={reduce ? { duration: 0 } : { delay: i * 0.12 + 0.18, duration: 0.3 }}
                 className={`w-6 text-center text-[15px] font-semibold ${mark.cls}`}
               >
                 {mark.sign}
@@ -113,10 +117,18 @@ export default function SpecCompare({ a, b, matched, ignored, blockedBy, hardFie
         })}
       </AnimatePresence>
 
-      <div className="px-4 py-2 border-t border-line-soft">
-        <span className="text-[10.5px] text-ink-faint">
+      <div className="px-4 py-2 border-t border-line-soft space-y-0.5">
+        <div className="text-[10.5px] text-ink-faint">
           <span className="text-danger">*</span> hard blocker — a mismatch here is an instant zero
-        </span>
+        </div>
+        {/* Once a veto fires the scorer stops. The remaining rows are shown
+            unscored rather than hidden - and the dot has to say so, or two
+            identical values sitting next to a grey dot reads as a bug. */}
+        {blockedBy && (
+          <div className="text-[10.5px] text-ink-faint">
+            <span className="font-mono">·</span> not scored — the veto decided this pair
+          </div>
+        )}
       </div>
     </div>
   )
