@@ -139,11 +139,23 @@ def main() -> None:
     ap.add_argument("--model", default=MODEL_NAME)
     ap.add_argument("--batch-size", type=int, default=64)
     ap.add_argument("--check", action="store_true", help="verify the GPU and exit")
+    ap.add_argument("--device", choices=("auto", "cuda", "cpu"), default="auto",
+                    help="auto uses the GPU when one is present; cpu forces "
+                         "system RAM even if a GPU is available")
     args = ap.parse_args()
 
     device = check_device()
     if args.check:
         return
+
+    if args.device == "cpu":
+        device = "cpu"
+        print("forced to CPU - using system RAM, not VRAM")
+    elif args.device == "cuda":
+        if device != "cuda":
+            print("CUDA requested but not available - falling back to CPU")
+        else:
+            device = "cuda"
 
     rows = list(args.materials.open(encoding="utf-8-sig"))
     records = list(csv.DictReader(rows))
