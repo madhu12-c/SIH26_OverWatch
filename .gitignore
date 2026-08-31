@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+
+# Secrets - the Gemini key lives in an environment variable, never in a file
+.env
+.env.*
+*.key
+
+# Build output. Regenerate with: cd ui && npm run build
+ui/dist/
+.vite/
+
+# Regenerable in seconds from specs.json, and 1.2 MB of JSON that rewrites
+# itself on every scorer run - noisy diffs for no benefit.
+# Everything else in data/output/ IS committed, so a fresh clone can show the
+# demo without running the pipeline or spending anything on extraction.
+data/output/pair_scores.json
+
+# OS
+Thumbs.db
+.DS_Store
