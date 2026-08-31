@@ -1,0 +1,769 @@
+{
+ "summary": {
+  "items": 16,
+  "multi_cpse_items": 15,
+  "benchmark_eligible": 11,
+  "benchmark_suppressed": 4,
+  "total_spend": 226057717.95,
+  "shared_spend": 204158765.95,
+  "saving_upper": 17877053.3,
+  "saving_realistic": 7150821.32,
+  "capture_rate": 0.4,
+  "k_anonymity": 3
+ },
+ "items": [
+  {
+   "national_code": "NMC-40141600-000001",
+   "description": "VALVE, GATE, 6 IN, 150#, CARBON STEEL, FLANGED, API 600",
+   "category": "valve",
+   "cpse_count": 5,
+   "cpses": [
+    {
+     "cpse": "ONGC",
+     "qty": 930,
+     "orders": 6,
+     "avg_price": 30805.48,
+     "median_price": 29545.2,
+     "value": 28649091.8,
+     "vendor_count": 3
+    },
+    {
+     "cpse": "CPCL",
+     "qty": 415,
+     "orders": 3,
+     "avg_price": 29078.55,
+     "median_price": 29075.56,
+     "value": 12067598.5,
+     "vendor_count": 2
+    },
+    {
+     "cpse": "IOCL",
+     "qty": 285,
+     "orders": 4,
+     "avg_price": 24083.86,
+     "median_price": 24004.85,
+     "value": 6863901.0,
+     "vendor_count": 2
+    },
+    {
+     "cpse": "BPCL",
+     "qty": 150,
+     "orders": 3,
+     "avg_price": 27373.79,
+     "median_price": 26728.58,
+     "value": 4106068.25,
+     "vendor_count": 2
+    },
+    {
+     "cpse": "GAIL",
+     "qty": 120,
+     "orders": 2,
+     "avg_price": 33322.1,
+     "median_price": 33280.21,
+     "value": 3998651.8,
+     "vendor_count": 1
+    }
+   ],
+   "total_qty": 1900,
+   "total_value": 55685311.35,
+   "orders": 18,
+   "benchmark_suppressed": false,
+   "best_price": 24083.86,
+   "worst_price": 33322.1,
+   "price_spread_pct": 38.4,
+   "saving_upper": 9925977.35,
+   "saving_realistic": 3970390.94
+  },
+  {
+   "national_code": "NMC-26101100-000001",
+   "description": "MOTOR, 3 PHASE, 5 HP, 1440 RPM, FOOT, 415 V, IP55",
+   "category": "electrical",
+   "cpse_count": 5,
+   "cpses": [
+    {
+     "cpse": "IOCL",
+     "qty": 945,
+     "orders": 7,
+     "avg_price": 16360.66,
+     "median_price": 16791.57,
+     "value": 15460822.4,
+     "vendor_count": 3
+    },
+    {
+     "cpse": "GAIL",
+     "qty": 525,
+     "orders": 5,
+     "avg_price": 22028.59,
+     "median_price": 22094.91,
+     "value": 11565009.7,
+     "vendor_count": 2
+    },
+    {
+     "cpse": "BPCL",
+     "qty": 220,
+     "orders": 2,
+     "avg_price": 18978.59,
+     "median_price": 18373.75,
+     "value": 4175289.8,
+     "vendor_count": 2
+    },
+    {
+     "cpse": "CPCL",
+     "qty": 100,
+     "orders": 1,
+     "avg_price": 17595.3,
+     "median_price": 17595.3,
+     "value": 1759530.0,
+     "vendor_count": 1
+    },
+    {
+     "cpse": "ONGC",
+     "qty": 65,
+     "orders": 3,
+     "avg_price": 20576.49,
+     "median_price": 20633.87,
+     "value": 1337471.55,
+     "vendor_count": 2
+    }
+   ],
+   "total_qty": 1855,
+   "total_value": 34298123.45,
+   "orders": 18,
+   "benchmark_suppressed": false,
+   "best_price": 16360.66,
+   "worst_price": 22028.59,
+   "price_spread_pct": 34.6,
+   "saving_upper": 3949099.15,
+   "saving_realistic": 1579639.66
+  },
+  {
+   "national_code": "NMC-40141600-000002",
+   "description": "VALVE, BALL, 2 IN, 800#, SS316, SCREWED",
+   "category": "valve",
+   "cpse_count": 5,
+   "cpses": [
+    {
+     "cpse": "BPCL",
+     "qty": 620,
+     "orders": 3,
+     "avg_price": 8726.84,
+     "median_price": 8931.75,
+     "value": 5410642.2,
+     "vendor_count": 2
+    },
+    {
+     "cpse": "IOCL",
+     "qty": 235,
+     "orders": 4,
+     "avg_price": 7595.07,
+     "median_price": 8001.24,
+     "value": 1784841.15,
+     "vendor_count": 3
+    },
+    {
+     "cpse": "GAIL",
+     "qty": 155,
+     "orders": 3,
+     "avg_price": 10241.14,
+     "median_price": 9942.52,
+     "value": 1587376.4,
+     "vendor_count": 1
+    },
+    {
+     "cpse": "ONGC",
+     "qty": 110,
+     "orders": 2,
+     "avg_price": 10258.88,
+     "median_price": 10094.9,
+     "value": 1128476.9,
+     "vendor_count": 2
+    },
+    {
+     "cpse": "CPCL",
+     "qty": 5,
+     "orders": 1,
+     "avg_price": 9222.3,
+     "median_price": 9222.3,
+     "value": 46111.5,
+     "vendor_count": 1
+    }
+   ],
+   "total_qty": 1125,
+   "total_value": 9957448.15,
+   "orders": 13,
+   "benchmark_suppressed": false,
+   "best_price": 7595.07,
+   "worst_price": 10258.88,
+   "price_spread_pct": 35.1,
+   "saving_upper": 1412994.4,
+   "saving_realistic": 565197.76
+  },
+  {
+   "national_code": "NMC-41111900-000001",
+   "description": "INSTRUMENT, PRESSURE GAUGE, 100 MM DIAL, 0-10 BAR, SS316, 1/2 IN NPT BOTTOM",
+   "category": "instrument",
+   "cpse_count": 4,
+   "cpses": [
+    {
+     "cpse": "CPCL",
+     "qty": 875,
+     "orders": 5,
+     "avg_price": 3369.0,
+     "median_price": 3432.71,
+     "value": 2947879.25,
+     "vendor_count": 3
+    },
+    {
+     "cpse": "GAIL",
+     "qty": 605,
+     "orders": 3,
+     "avg_price": 3760.23,
+     "median_price": 3873.9,
+     "value": 2274936.25,
+     "vendor_count": 3
+    },
+    {
+     "cpse": "IOCL",
+     "qty": 250,
+     "orders": 4,
+     "avg_price": 2900.45,
+     "median_price": 2913.19,
+     "value": 725113.5,
+     "vendor_count": 3
+    },
+    {
+     "cpse": "ONGC",
+     "qty": 150,
+     "orders": 5,
+     "avg_price": 3667.69,
+     "median_price": 3652.99,
+     "value": 550153.4,
+     "vendor_count": 3
+    }
+   ],
+   "total_qty": 1880,
+   "total_value": 6498082.4,
+   "orders": 17,
+   "benchmark_suppressed": false,
+   "best_price": 2900.45,
+   "worst_price": 3760.23,
+   "price_spread_pct": 29.6,
+   "saving_upper": 1045236.4,
+   "saving_realistic": 418094.56
+  },
+  {
+   "national_code": "NMC-40171500-000001",
+   "description": "PIPE, SEAMLESS, CARBON STEEL, ASTM A106 GR B, 4 IN, SCH 40",
+   "category": "pipe",
+   "cpse_count": 5,
+   "cpses": [
+    {
+     "cpse": "GAIL",
+     "qty": 545,
+     "orders": 6,
+     "avg_price": 2650.62,
+     "median_price": 2658.99,
+     "value": 1444587.25,
+     "vendor_count": 3
+    },
+    {
+     "cpse": "ONGC",
+     "qty": 400,
+     "orders": 1,
+     "avg_price": 2361.23,
+     "median_price": 2361.23,
+     "value": 944492.0,
+     "vendor_count": 1
+    },
+    {
+     "cpse": "CPCL",
+     "qty": 100,
+     "orders": 1,
+     "avg_price": 2154.57,
+     "median_price": 2154.57,
+     "value": 215457.0,
+     "vendor_count": 1
+    },
+    {
+     "cpse": "IOCL",
+     "qty": 35,
+     "orders": 2,
+     "avg_price": 1938.23,
+     "median_price": 1913.04,
+     "value": 67838.1,
+     "vendor_count": 1
+    },
+    {
+     "cpse": "BPCL",
+     "qty": 25,
+     "orders": 1,
+     "avg_price": 2095.12,
+     "median_price": 2095.12,
+     "value": 52378.0,
+     "vendor_count": 1
+    }
+   ],
+   "total_qty": 1105,
+   "total_value": 2724752.35,
+   "orders": 11,
+   "benchmark_suppressed": false,
+   "best_price": 1938.23,
+   "worst_price": 2650.62,
+   "price_spread_pct": 36.8,
+   "saving_upper": 583008.2,
+   "saving_realistic": 233203.28
+  },
+  {
+   "national_code": "NMC-31171500-000001",
+   "description": "BEARING, DEEP GROOVE BALL, 6205, 25X52X15 MM, 2RS SEALED",
+   "category": "bearing",
+   "cpse_count": 5,
+   "cpses": [
+    {
+     "cpse": "GAIL",
+     "qty": 830,
+     "orders": 4,
+     "avg_price": 1455.81,
+     "median_price": 1435.8,
+     "value": 1208321.6,
+     "vendor_count": 3
+    },
+    {
+     "cpse": "BPCL",
+     "qty": 910,
+     "orders": 5,
+     "avg_price": 1264.16,
+     "median_price": 1261.57,
+     "value": 1150385.5,
+     "vendor_count": 3
+    },
+    {
+     "cpse": "CPCL",
+     "qty": 535,
+     "orders": 6,
+     "avg_price": 1319.93,
+     "median_price": 1305.54,
+     "value": 706163.4,
+     "vendor_count": 3
+    },
+    {
+     "cpse": "IOCL",
+     "qty": 230,
+     "orders": 4,
+     "avg_price": 1205.33,
+     "median_price": 1194.16,
+     "value": 277225.3,
+     "vendor_count": 3
+    },
+    {
+     "cpse": "ONGC",
+     "qty": 155,
+     "orders": 4,
+     "avg_price": 1495.11,
+     "median_price": 1493.84,
+     "value": 231742.05,
+     "vendor_count": 3
+    }
+   ],
+   "total_qty": 2660,
+   "total_value": 3573837.85,
+   "orders": 23,
+   "benchmark_suppressed": false,
+   "best_price": 1205.33,
+   "worst_price": 1495.11,
+   "price_spread_pct": 24.0,
+   "saving_upper": 367660.05,
+   "saving_realistic": 147064.02
+  },
+  {
+   "national_code": "NMC-31171500-000002",
+   "description": "BEARING, DEEP GROOVE BALL, 6206, 30X62X16 MM, 2RS SEALED",
+   "category": "bearing",
+   "cpse_count": 3,
+   "cpses": [
+    {
+     "cpse": "ONGC",
+     "qty": 920,
+     "orders": 7,
+     "avg_price": 1727.74,
+     "median_price": 1760.92,
+     "value": 1589517.75,
+     "vendor_count": 2
+    },
+    {
+     "cpse": "BPCL",
+     "qty": 285,
+     "orders": 5,
+     "avg_price": 1519.78,
+     "median_price": 1539.59,
+     "value": 433137.95,
+     "vendor_count": 2
+    },
+    {
+     "cpse": "GAIL",
+     "qty": 75,
+     "orders": 5,
+     "avg_price": 1832.33,
+     "median_price": 1860.68,
+     "value": 137424.55,
+     "vendor_count": 2
+    }
+   ],
+   "total_qty": 1280,
+   "total_value": 2160080.25,
+   "orders": 17,
+   "benchmark_suppressed": false,
+   "best_price": 1519.78,
+   "worst_price": 1832.33,
+   "price_spread_pct": 20.6,
+   "saving_upper": 214761.85,
+   "saving_realistic": 85904.74
+  },
+  {
+   "national_code": "NMC-31401500-000002",
+   "description": "GASKET, SPIRAL WOUND, SS316, 4 IN, 150#, GRAPHITE",
+   "category": "gasket",
+   "cpse_count": 3,
+   "cpses": [
+    {
+     "cpse": "ONGC",
+     "qty": 1535,
+     "orders": 8,
+     "avg_price": 533.61,
+     "median_price": 531.66,
+     "value": 819091.6,
+     "vendor_count": 3
+    },
+    {
+     "cpse": "CPCL",
+     "qty": 210,
+     "orders": 2,
+     "avg_price": 512.07,
+     "median_price": 512.86,
+     "value": 107535.2,
+     "vendor_count": 1
+    },
+    {
+     "cpse": "IOCL",
+     "qty": 100,
+     "orders": 1,
+     "avg_price": 416.63,
+     "median_price": 416.63,
+     "value": 41663.0,
+     "vendor_count": 1
+    }
+   ],
+   "total_qty": 1845,
+   "total_value": 968289.8,
+   "orders": 11,
+   "benchmark_suppressed": false,
+   "best_price": 416.63,
+   "worst_price": 533.61,
+   "price_spread_pct": 28.1,
+   "saving_upper": 199607.45,
+   "saving_realistic": 79842.98
+  },
+  {
+   "national_code": "NMC-31401500-000001",
+   "description": "GASKET, SPIRAL WOUND, SS304, 4 IN, 150#, GRAPHITE",
+   "category": "gasket",
+   "cpse_count": 4,
+   "cpses": [
+    {
+     "cpse": "GAIL",
+     "qty": 930,
+     "orders": 8,
+     "avg_price": 457.94,
+     "median_price": 458.75,
+     "value": 425884.8,
+     "vendor_count": 2
+    },
+    {
+     "cpse": "IOCL",
+     "qty": 1200,
+     "orders": 9,
+     "avg_price": 343.12,
+     "median_price": 344.72,
+     "value": 411745.5,
+     "vendor_count": 2
+    },
+    {
+     "cpse": "BPCL",
+     "qty": 450,
+     "orders": 3,
+     "avg_price": 378.61,
+     "median_price": 380.85,
+     "value": 170374.5,
+     "vendor_count": 2
+    },
+    {
+     "cpse": "ONGC",
+     "qty": 170,
+     "orders": 6,
+     "avg_price": 413.7,
+     "median_price": 414.31,
+     "value": 70328.7,
+     "vendor_count": 2
+    }
+   ],
+   "total_qty": 2750,
+   "total_value": 1078333.5,
+   "orders": 26,
+   "benchmark_suppressed": false,
+   "best_price": 343.12,
+   "worst_price": 457.94,
+   "price_spread_pct": 33.5,
+   "saving_upper": 134753.5,
+   "saving_realistic": 53901.4
+  },
+  {
+   "national_code": "NMC-31161500-000002",
+   "description": "STUD BOLT, M20 X 120, A193 B7, ASTM A193",
+   "category": "fastener",
+   "cpse_count": 3,
+   "cpses": [
+    {
+     "cpse": "ONGC",
+     "qty": 1400,
+     "orders": 11,
+     "avg_price": 198.9,
+     "median_price": 198.73,
+     "value": 278466.45,
+     "vendor_count": 2
+    },
+    {
+     "cpse": "BPCL",
+     "qty": 1245,
+     "orders": 7,
+     "avg_price": 177.61,
+     "median_price": 180.54,
+     "value": 221127.5,
+     "vendor_count": 2
+    },
+    {
+     "cpse": "GAIL",
+     "qty": 135,
+     "orders": 3,
+     "avg_price": 215.28,
+     "median_price": 215.24,
+     "value": 29062.9,
+     "vendor_count": 1
+    }
+   ],
+   "total_qty": 2780,
+   "total_value": 528656.85,
+   "orders": 21,
+   "benchmark_suppressed": false,
+   "best_price": 177.61,
+   "worst_price": 215.28,
+   "price_spread_pct": 21.2,
+   "saving_upper": 34901.05,
+   "saving_realistic": 13960.42
+  },
+  {
+   "national_code": "NMC-31161500-000001",
+   "description": "BOLT, HEX, M12 X 50, SS316, IS 1364",
+   "category": "fastener",
+   "cpse_count": 3,
+   "cpses": [
+    {
+     "cpse": "GAIL",
+     "qty": 840,
+     "orders": 5,
+     "avg_price": 46.95,
+     "median_price": 46.23,
+     "value": 39440.85,
+     "vendor_count": 2
+    },
+    {
+     "cpse": "IOCL",
+     "qty": 170,
+     "orders": 4,
+     "avg_price": 36.54,
+     "median_price": 36.92,
+     "value": 6212.5,
+     "vendor_count": 2
+    },
+    {
+     "cpse": "BPCL",
+     "qty": 80,
+     "orders": 3,
+     "avg_price": 40.36,
+     "median_price": 41.23,
+     "value": 3229.15,
+     "vendor_count": 3
+    }
+   ],
+   "total_qty": 1090,
+   "total_value": 48882.5,
+   "orders": 12,
+   "benchmark_suppressed": false,
+   "best_price": 36.54,
+   "worst_price": 46.95,
+   "price_spread_pct": 28.5,
+   "saving_upper": 9053.9,
+   "saving_realistic": 3621.56
+  },
+  {
+   "national_code": "NMC-40171600-000001",
+   "description": "FLANGE, WELD NECK, RAISED FACE, 4 IN, 150#, ASTM A105",
+   "category": "flange",
+   "cpse_count": 2,
+   "cpses": [
+    {
+     "cpse": "ONGC",
+     "qty": 1195,
+     "orders": 9,
+     "avg_price": 2028.06,
+     "median_price": 1992.86,
+     "value": 2423537.2,
+     "vendor_count": 3
+    },
+    {
+     "cpse": "IOCL",
+     "qty": 1115,
+     "orders": 11,
+     "avg_price": 1590.99,
+     "median_price": 1609.46,
+     "value": 1773955.7,
+     "vendor_count": 3
+    }
+   ],
+   "total_qty": 2310,
+   "total_value": 4197492.9,
+   "orders": 20,
+   "benchmark_suppressed": true,
+   "suppression_reason": "only 2 CPSE(s) - a benchmark here would reveal an individual company's price",
+   "best_price": null,
+   "saving_upper": 0.0,
+   "saving_realistic": 0.0
+  },
+  {
+   "national_code": "NMC-31401600-000001",
+   "description": "MECHANICAL SEAL, CARTRIDGE SINGLE, 45 MM SHAFT, SIC VS CARBON, VITON",
+   "category": "rotating",
+   "cpse_count": 2,
+   "cpses": [
+    {
+     "cpse": "IOCL",
+     "qty": 1690,
+     "orders": 12,
+     "avg_price": 20969.67,
+     "median_price": 21337.76,
+     "value": 35438749.75,
+     "vendor_count": 3
+    },
+    {
+     "cpse": "ONGC",
+     "qty": 560,
+     "orders": 10,
+     "avg_price": 27734.49,
+     "median_price": 27981.11,
+     "value": 15531312.3,
+     "vendor_count": 3
+    }
+   ],
+   "total_qty": 2250,
+   "total_value": 50970062.05,
+   "orders": 22,
+   "benchmark_suppressed": true,
+   "suppression_reason": "only 2 CPSE(s) - a benchmark here would reveal an individual company's price",
+   "best_price": null,
+   "saving_upper": 0.0,
+   "saving_realistic": 0.0
+  },
+  {
+   "national_code": "NMC-40171500-000002",
+   "description": "PIPE, SEAMLESS, SS316, ASTM A312 TP316, 2 IN, SCH 40",
+   "category": "pipe",
+   "cpse_count": 2,
+   "cpses": [
+    {
+     "cpse": "ONGC",
+     "qty": 300,
+     "orders": 2,
+     "avg_price": 5044.07,
+     "median_price": 5039.73,
+     "value": 1513220.0,
+     "vendor_count": 2
+    },
+    {
+     "cpse": "GAIL",
+     "qty": 135,
+     "orders": 4,
+     "avg_price": 5658.88,
+     "median_price": 5542.27,
+     "value": 763948.15,
+     "vendor_count": 2
+    }
+   ],
+   "total_qty": 435,
+   "total_value": 2277168.15,
+   "orders": 6,
+   "benchmark_suppressed": true,
+   "suppression_reason": "only 2 CPSE(s) - a benchmark here would reveal an individual company's price",
+   "best_price": null,
+   "saving_upper": 0.0,
+   "saving_realistic": 0.0
+  },
+  {
+   "national_code": "NMC-40141600-000003",
+   "description": "VALVE, GATE, 6 IN, 300#, CARBON STEEL",
+   "category": "valve",
+   "cpse_count": 2,
+   "cpses": [
+    {
+     "cpse": "BPCL",
+     "qty": 550,
+     "orders": 3,
+     "avg_price": 38062.33,
+     "median_price": 37404.32,
+     "value": 20934284.0,
+     "vendor_count": 2
+    },
+    {
+     "cpse": "ONGC",
+     "qty": 180,
+     "orders": 4,
+     "avg_price": 45877.56,
+     "median_price": 46488.61,
+     "value": 8257960.4,
+     "vendor_count": 2
+    }
+   ],
+   "total_qty": 730,
+   "total_value": 29192244.4,
+   "orders": 7,
+   "benchmark_suppressed": true,
+   "suppression_reason": "only 2 CPSE(s) - a benchmark here would reveal an individual company's price",
+   "best_price": null,
+   "saving_upper": 0.0,
+   "saving_realistic": 0.0
+  },
+  {
+   "national_code": "NMC-40141600-000004",
+   "description": "VALVE, GATE, 6 IN, 300#, CAST STEEL",
+   "category": "valve",
+   "cpse_count": 1,
+   "cpses": [
+    {
+     "cpse": "GAIL",
+     "qty": 475,
+     "orders": 3,
+     "avg_price": 46103.06,
+     "median_price": 45951.36,
+     "value": 21898952.0,
+     "vendor_count": 2
+    }
+   ],
+   "total_qty": 475,
+   "total_value": 21898952.0,
+   "orders": 3,
+   "benchmark_suppressed": true,
+   "suppression_reason": "only 1 CPSE(s) - a benchmark here would reveal an individual company's price",
+   "best_price": null,
+   "saving_upper": 0.0,
+   "saving_realistic": 0.0
+  }
+ ]
+}

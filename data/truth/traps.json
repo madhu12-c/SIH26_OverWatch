@@ -1,0 +1,22 @@
+[
+  {
+    "a": "ITM-003",
+    "b": "ITM-004",
+    "reason": "material grade mismatch (SS316 vs SS304)"
+  },
+  {
+    "a": "ITM-007",
+    "b": "ITM-008",
+    "reason": "pressure rating mismatch (150# vs 300#)"
+  },
+  {
+    "a": "ITM-001",
+    "b": "ITM-002",
+    "reason": "bearing designation mismatch (6205 vs 6206)"
+  },
+  {
+    "a": "ITM-005",
+    "b": "ITM-006",
+    "reason": "material grade mismatch (CS vs SS316)"
+  }
+]

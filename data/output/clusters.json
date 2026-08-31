@@ -1,0 +1,229 @@
+[
+ {
+  "members": [
+   "R00001",
+   "R00002",
+   "R00005",
+   "R00006",
+   "R00007",
+   "R00008",
+   "R00009",
+   "R00010",
+   "R00011"
+  ],
+  "band": "auto",
+  "confidence": 0.947,
+  "cohesion": 0.947,
+  "weakest_pair": 0.92
+ },
+ {
+  "members": [
+   "R00003",
+   "R00018",
+   "R00019",
+   "R00020",
+   "R00021"
+  ],
+  "band": "review",
+  "confidence": 0.856,
+  "cohesion": 0.856,
+  "weakest_pair": 0.803
+ },
+ {
+  "members": [
+   "R00004",
+   "R00022",
+   "R00023",
+   "R00024",
+   "R00025",
+   "R00026",
+   "R00027",
+   "R00028",
+   "R00029",
+   "R00030"
+  ],
+  "band": "review",
+  "confidence": 0.851,
+  "cohesion": 0.851,
+  "weakest_pair": 0.739
+ },
+ {
+  "members": [
+   "R00012",
+   "R00013",
+   "R00014",
+   "R00015",
+   "R00016",
+   "R00017"
+  ],
+  "band": "auto",
+  "confidence": 0.944,
+  "cohesion": 0.944,
+  "weakest_pair": 0.916
+ },
+ {
+  "members": [
+   "R00031",
+   "R00032",
+   "R00033",
+   "R00034",
+   "R00035",
+   "R00036"
+  ],
+  "band": "review",
+  "confidence": 0.83,
+  "cohesion": 0.83,
+  "weakest_pair": 0.729
+ },
+ {
+  "members": [
+   "R00037",
+   "R00038",
+   "R00039",
+   "R00040"
+  ],
+  "band": "auto",
+  "confidence": 0.929,
+  "cohesion": 0.929,
+  "weakest_pair": 0.913
+ },
+ {
+  "members": [
+   "R00041",
+   "R00042",
+   "R00043",
+   "R00044",
+   "R00045",
+   "R00046",
+   "R00047",
+   "R00048",
+   "R00049"
+  ],
+  "band": "review",
+  "confidence": 0.596,
+  "cohesion": 0.596,
+  "weakest_pair": 0.0
+ },
+ {
+  "members": [
+   "R00050",
+   "R00052"
+  ],
+  "band": "auto",
+  "confidence": 0.901,
+  "cohesion": 0.901,
+  "weakest_pair": 0.901
+ },
+ {
+  "members": [
+   "R00051"
+  ],
+  "band": "single",
+  "confidence": 1.0,
+  "cohesion": 1.0
+ },
+ {
+  "members": [
+   "R00053",
+   "R00054",
+   "R00055",
+   "R00056",
+   "R00057"
+  ],
+  "band": "review",
+  "confidence": 0.85,
+  "cohesion": 0.85,
+  "weakest_pair": 0.766
+ },
+ {
+  "members": [
+   "R00058",
+   "R00059",
+   "R00060",
+   "R00061",
+   "R00062",
+   "R00063",
+   "R00064"
+  ],
+  "band": "auto",
+  "confidence": 0.901,
+  "cohesion": 0.901,
+  "weakest_pair": 0.839
+ },
+ {
+  "members": [
+   "R00065",
+   "R00066",
+   "R00067",
+   "R00068",
+   "R00069",
+   "R00070",
+   "R00071"
+  ],
+  "band": "review",
+  "confidence": 0.731,
+  "cohesion": 0.731,
+  "weakest_pair": 0.0
+ },
+ {
+  "members": [
+   "R00072",
+   "R00073",
+   "R00074",
+   "R00075",
+   "R00076",
+   "R00077",
+   "R00078",
+   "R00079"
+  ],
+  "band": "review",
+  "confidence": 0.895,
+  "cohesion": 0.895,
+  "weakest_pair": 0.855
+ },
+ {
+  "members": [
+   "R00080",
+   "R00081",
+   "R00082",
+   "R00083",
+   "R00084",
+   "R00085",
+   "R00086"
+  ],
+  "band": "review",
+  "confidence": 0.873,
+  "cohesion": 0.873,
+  "weakest_pair": 0.748
+ },
+ {
+  "members": [
+   "R00087",
+   "R00088",
+   "R00089",
+   "R00090",
+   "R00091",
+   "R00092"
+  ],
+  "band": "auto",
+  "confidence": 0.921,
+  "cohesion": 0.921,
+  "weakest_pair": 0.88
+ },
+ {
+  "members": [
+   "R00093",
+   "R00094",
+   "R00095",
+   "R00096",
+   "R00097",
+   "R00098",
+   "R00099",
+   "R00100"
+  ],
+  "band": "auto",
+  "confidence": 0.918,
+  "cohesion": 0.918,
+  "weakest_pair": 0.832
+ }
+]
