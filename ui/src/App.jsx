@@ -25,18 +25,36 @@ const SCREENS = [
   { id: 'codes', n: '06', label: 'Codes', el: Codes },
 ]
 
+// The screen is kept in the URL hash so a reload lands where it left off and
+// a screen can be opened directly - which is how the demo video gets recorded
+// one screen at a time without a presenter clicking on camera.
+function screenFromHash() {
+  const id = window.location.hash.replace('#', '')
+  return SCREENS.some((s) => s.id === id) ? id : 'overview'
+}
+
 export default function App() {
-  const [active, setActive] = useState('overview')
+  const [active, setActive] = useState(screenFromHash)
   const Screen = SCREENS.find((s) => s.id === active)?.el ?? Overview
+
+  const go = (id) => {
+    setActive(id)
+    window.location.hash = id
+  }
 
   useEffect(() => {
     const onKey = (e) => {
       if (e.target.tagName === 'INPUT') return
       const i = parseInt(e.key, 10)
-      if (i >= 1 && i <= SCREENS.length) setActive(SCREENS[i - 1].id)
+      if (i >= 1 && i <= SCREENS.length) go(SCREENS[i - 1].id)
     }
+    const onHash = () => setActive(screenFromHash())
     window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
+    window.addEventListener('hashchange', onHash)
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      window.removeEventListener('hashchange', onHash)
+    }
   }, [])
 
   return (
@@ -58,7 +76,7 @@ export default function App() {
               return (
                 <button
                   key={s.id}
-                  onClick={() => setActive(s.id)}
+                  onClick={() => go(s.id)}
                   className={`px-3 py-2 text-[13px] whitespace-nowrap border-b-2 transition-colors
                     ${on
                       ? 'border-accent text-ink'
