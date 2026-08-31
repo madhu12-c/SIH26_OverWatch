@@ -241,6 +241,27 @@ def main() -> None:
         else:
             print(f"\n  No threshold reaches 98% precision on this run.")
 
+    # Write the measured figures so results.py carries them into the UI.
+    # A number nobody measured must never reach a slide - and a number typed
+    # in by hand is a number nobody measured.
+    paths.METRICS.write_text(json.dumps({
+        "threshold": args.threshold,
+        "auto_merge_threshold": AUTO_MERGE,
+        "precision": round(m["precision"], 4),
+        "recall": round(m["recall"], 4),
+        "f1": round(m["f1"], 4),
+        "auto_precision": round(auto["precision"], 4),
+        "auto_merged_pairs": auto["tp"] + auto["fp"],
+        "false_merges": m["fp"],
+        "trap_violations_auto": len(auto_traps),
+        "trap_violations_review": len(review_traps),
+        "true_items": c["true_items"],
+        "predicted_clusters": c["predicted_clusters"],
+        "duplication_rate": round(c["duplication_rate"], 4),
+        "safety_blocks": len(safety_blocks),
+    }, indent=1), encoding="utf-8")
+    print(f"\nwrote {paths.METRICS.name}")
+
     print(f"\n{'-'*66}")
     print("These numbers come from a dataset whose corruption we designed, so")
     print("they measure how well we undo our own noise. Report them with that")

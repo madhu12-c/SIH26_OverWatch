@@ -82,6 +82,8 @@ def build() -> dict:
     pairs = json.loads(paths.PAIR_SCORES.read_text(encoding="utf-8"))
     national = json.loads(paths.NATIONAL_CODES.read_text(encoding="utf-8"))
     savings = json.loads(paths.SAVINGS.read_text(encoding="utf-8"))
+    metrics = (json.loads(paths.METRICS.read_text(encoding="utf-8"))
+               if paths.METRICS.exists() else {})
 
     pairs_index = {(p["a"], p["b"]): p for p in pairs}
 
@@ -139,10 +141,14 @@ def build() -> dict:
             "blocked": len(blocked),
             "savings_upper": summary.get("saving_upper", 0),
             "savings_realistic": summary.get("saving_realistic", 0),
-            # Populated by evaluate.py. Left null rather than guessed - a
-            # number nobody measured must not reach a slide.
-            "precision": None,
-            "recall": None,
+            # Straight from evaluate.py. Null when it has not been run -
+            # a number nobody measured must not reach a slide, and the UI
+            # says "run evaluate.py" rather than inventing one.
+            "precision": metrics.get("precision"),
+            "recall": metrics.get("recall"),
+            "auto_precision": metrics.get("auto_precision"),
+            "safety_blocks": metrics.get("safety_blocks"),
+            "trap_violations": metrics.get("trap_violations_auto"),
         },
         "cases": {
             "match": case_view(DEMO_MATCH, pairs_index, materials, specs),

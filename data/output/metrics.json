@@ -1,0 +1,16 @@
+{
+ "threshold": 0.7,
+ "auto_merge_threshold": 0.9,
+ "precision": 1.0,
+ "recall": 0.9419,
+ "f1": 0.9701,
+ "auto_precision": 1.0,
+ "auto_merged_pairs": 140,
+ "false_merges": 0,
+ "trap_violations_auto": 0,
+ "trap_violations_review": 0,
+ "true_items": 15,
+ "predicted_clusters": 16,
+ "duplication_rate": 0.84,
+ "safety_blocks": 282
+}

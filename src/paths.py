@@ -46,6 +46,7 @@ NATIONAL_CODES = OUTPUT / "national_codes.json"  # 08 canonicaliser
 MAPPINGS = OUTPUT / "mappings.csv"             # 08 canonicaliser
 SAVINGS = OUTPUT / "savings.json"              # 09 savings report
 RESULTS = OUTPUT / "results.json"              # 09 everything the UI reads
+METRICS = OUTPUT / "metrics.json"           # -- evaluate.py, read by results.py
 
 # Optional researched seed list. When present, generate_dataset.py can use it
 # instead of the built-in SEED_ITEMS.

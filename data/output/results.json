@@ -1,6 +1,6 @@
 {
  "meta": {
-  "generated": "2026-08-30",
+  "generated": "2026-08-31",
   "records": 100,
   "extracted": 100,
   "unique_items": 16,
@@ -17,8 +17,11 @@
   "blocked": 282,
   "savings_upper": 17877053.3,
   "savings_realistic": 7150821.32,
-  "precision": null,
-  "recall": null
+  "precision": 1.0,
+  "recall": 0.9419,
+  "auto_precision": 1.0,
+  "safety_blocks": 282,
+  "trap_violations": 0
  },
  "cases": {
   "match": {
