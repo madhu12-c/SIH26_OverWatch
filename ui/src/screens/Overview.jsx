@@ -39,10 +39,22 @@ export default function Overview() {
         />
       </div>
 
-      <div className="grid md:grid-cols-3 gap-3 mb-6">
-        <Stat value={meta.auto_merged} label="Auto-merged" sub="high confidence, reversible" />
-        <Stat value={meta.review_pending} label="In review queue" tone="warn" sub="a human decides" />
-        <Stat value={totalBlocked} label="Merges refused" tone="danger" sub="safety rules" />
+      {/* One panel rather than three cards. These three numbers are one fact -
+          what the pipeline did with every candidate - and splitting them into
+          separate cards of a different width to the row above made them read
+          as unrelated. */}
+      <div className="card overflow-hidden mb-6">
+        <div className="px-4 pt-3 pb-2 border-b border-line-soft">
+          <p className="label">Where every candidate ended up</p>
+        </div>
+        <div className="grid sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-line-soft">
+          <Cell value={meta.auto_merged} tone="good"
+                label="Auto-merged" sub="high confidence, reversible" />
+          <Cell value={meta.review_pending} tone="warn"
+                label="In review queue" sub="a human decides" />
+          <Cell value={totalBlocked} tone="danger"
+                label="Merges refused" sub="blocked by a veto field" />
+        </div>
       </div>
 
       {/* The refusals. Everyone shows merges; nobody shows what they refused,
@@ -115,6 +127,23 @@ export default function Overview() {
           note={`${savingsSummary.benchmark_suppressed || 0} item(s) suppressed under k-anonymity — with fewer than 3 CPSEs the best price IS the other party's price.`}
         />
       </div>
+    </div>
+  )
+}
+
+function Cell({ value, label, sub, tone }) {
+  const ink = { good: 'text-good', warn: 'text-warn', danger: 'text-danger' }
+  const dot = { good: 'bg-good', warn: 'bg-warn', danger: 'bg-danger' }
+  return (
+    <div className="px-4 py-4">
+      <div className="flex items-center gap-2 mb-1">
+        <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${dot[tone] || 'bg-line'}`} />
+        <span className="text-[12.5px] font-medium text-ink-dim">{label}</span>
+      </div>
+      <div className={`text-[30px] font-semibold leading-none tracking-tight ${ink[tone] || 'text-ink'}`}>
+        <CountUp to={value} />
+      </div>
+      {sub && <div className="mt-1.5 text-[11.5px] text-ink-faint">{sub}</div>}
     </div>
   )
 }

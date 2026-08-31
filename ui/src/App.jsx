@@ -60,12 +60,25 @@ export default function App() {
   return (
     <MotionConfig reducedMotion="user">
     <div className="min-h-full flex flex-col">
-      <header className="border-b border-line sticky top-0 z-10 bg-base/95 backdrop-blur">
-        <div className="max-w-5xl mx-auto px-5 pt-4 pb-0">
-          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-3">
-            <span className="font-semibold tracking-tight">One Nation, One Material Code</span>
-            <span className="text-[11.5px] text-ink-faint font-mono">SIH26099 · CPCL</span>
-            <span className="ml-auto text-[11px] text-ink-faint font-mono">
+      {/* The header sits on white rather than the page ground, so the sticky
+          bar reads as a surface above the content instead of a band of the
+          same paper with a line under it. */}
+      <header className="border-b border-line sticky top-0 z-10
+                         bg-base-card/90 backdrop-blur shadow-head">
+        <div className="max-w-5xl mx-auto px-5 pt-3.5 pb-0">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 mb-3">
+            <span className="inline-flex items-center justify-center w-[22px] h-[22px] shrink-0
+                             rounded-md bg-accent text-white font-mono text-[11px] font-semibold">
+              N
+            </span>
+            <span className="font-semibold tracking-tight text-[15px]">
+              One Nation, One Material Code
+            </span>
+            <span className="font-mono text-[10.5px] text-ink-faint px-1.5 py-[2px]
+                             rounded border border-line bg-base-raised">
+              SIH26099 · CPCL
+            </span>
+            <span className="ml-auto text-[11px] text-ink-faint font-mono tnum">
               {meta.records} records · {meta.unique_items} unique
             </span>
           </div>
@@ -77,12 +90,15 @@ export default function App() {
                 <button
                   key={s.id}
                   onClick={() => go(s.id)}
-                  className={`px-3 py-2 text-[13px] whitespace-nowrap border-b-2 transition-colors
+                  className={`px-3 py-2 text-[13px] whitespace-nowrap rounded-t-md
+                              border-b-2 transition-colors
                     ${on
-                      ? 'border-accent text-ink'
-                      : 'border-transparent text-ink-faint hover:text-ink-dim'}`}
+                      ? 'border-accent text-ink font-medium bg-accent-dim/60'
+                      : 'border-transparent text-ink-faint hover:text-ink-dim hover:bg-base-raised'}`}
                 >
-                  <span className="font-mono text-[10.5px] mr-1.5 opacity-60">{s.n}</span>
+                  <span className={`font-mono text-[10.5px] mr-1.5 ${on ? 'text-accent' : 'opacity-60'}`}>
+                    {s.n}
+                  </span>
                   {s.label}
                 </button>
               )
@@ -105,7 +121,7 @@ export default function App() {
         </AnimatePresence>
       </main>
 
-      <footer className="border-t border-line px-5 py-3">
+      <footer className="border-t border-line bg-base-card px-5 py-3">
         <div className="max-w-5xl mx-auto flex flex-wrap items-center gap-x-4 gap-y-1
                         text-[11.5px] text-ink-faint">
           <span>Team Overwatch</span>
