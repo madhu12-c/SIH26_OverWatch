@@ -12,8 +12,8 @@
    "IOCL",
    "ONGC"
   ],
-  "auto_merged": 7,
-  "review_pending": 152,
+  "auto_merged": 12,
+  "review_pending": 115,
   "blocked": 282,
   "savings_upper": 17877053.3,
   "savings_realistic": 7150821.32,
@@ -81,10 +81,10 @@
     },
     "method": "llm"
    },
-   "text_sim": 0.182,
+   "text_sim": 0.833,
    "spec_sim": 1.0,
    "proc_sim": 0.7,
-   "final": 0.936,
+   "final": 0.971,
    "weights": {
     "text": 0.054,
     "spec": 0.88,
@@ -152,7 +152,7 @@
     },
     "method": "llm"
    },
-   "text_sim": 0.714,
+   "text_sim": 0.989,
    "spec_sim": 0.0,
    "proc_sim": 0.7,
    "final": 0.0,
@@ -196,8 +196,8 @@
     "brand": 0.6,
     "part_number": 0.65
    },
-   "confidence": 0.851,
-   "band": "review",
+   "confidence": 0.913,
+   "band": "auto",
    "member_count": 10,
    "cpse_count": 4,
    "cpses": [
@@ -305,7 +305,7 @@
     "brand": 0.37,
     "part_number": 0.75
    },
-   "confidence": 0.947,
+   "confidence": 0.975,
    "band": "auto",
    "member_count": 9,
    "cpse_count": 5,
@@ -408,7 +408,7 @@
     "brand": 0.61,
     "part_number": 0.61
    },
-   "confidence": 0.596,
+   "confidence": 0.624,
    "band": "review",
    "member_count": 9,
    "cpse_count": 5,
@@ -511,8 +511,8 @@
     "brand": 0.4,
     "part_number": 0.39
    },
-   "confidence": 0.895,
-   "band": "review",
+   "confidence": 0.915,
+   "band": "auto",
    "member_count": 8,
    "cpse_count": 2,
    "cpses": [
@@ -606,7 +606,7 @@
     "brand": 0.5,
     "part_number": 1.0
    },
-   "confidence": 0.918,
+   "confidence": 0.934,
    "band": "auto",
    "member_count": 8,
    "cpse_count": 5,
@@ -702,7 +702,7 @@
     "part_number": 1.0,
     "standard": 1.0
    },
-   "confidence": 0.901,
+   "confidence": 0.932,
    "band": "auto",
    "member_count": 7,
    "cpse_count": 3,
@@ -789,7 +789,7 @@
     "standard": 1.0,
     "part_number": 1.0
    },
-   "confidence": 0.731,
+   "confidence": 0.745,
    "band": "review",
    "member_count": 7,
    "cpse_count": 3,
@@ -874,8 +874,8 @@
     "elastomer": 1.0,
     "part_number": 0.68
    },
-   "confidence": 0.873,
-   "band": "review",
+   "confidence": 0.923,
+   "band": "auto",
    "member_count": 7,
    "cpse_count": 2,
    "cpses": [
@@ -960,7 +960,7 @@
     "brand": 0.75,
     "part_number": 0.51
    },
-   "confidence": 0.944,
+   "confidence": 0.975,
    "band": "auto",
    "member_count": 6,
    "cpse_count": 3,
@@ -1038,7 +1038,7 @@
     "brand": 0.63,
     "part_number": 0.53
    },
-   "confidence": 0.83,
+   "confidence": 0.883,
    "band": "review",
    "member_count": 6,
    "cpse_count": 5,
@@ -1122,7 +1122,7 @@
     "brand": 0.68,
     "part_number": 1.0
    },
-   "confidence": 0.921,
+   "confidence": 0.932,
    "band": "auto",
    "member_count": 6,
    "cpse_count": 4,
@@ -1201,8 +1201,8 @@
     "part_number": 0.68,
     "filler": 1.0
    },
-   "confidence": 0.856,
-   "band": "review",
+   "confidence": 0.918,
+   "band": "auto",
    "member_count": 5,
    "cpse_count": 3,
    "cpses": [
@@ -1274,8 +1274,8 @@
     "bore_type": 1.0,
     "part_number": 0.66
    },
-   "confidence": 0.85,
-   "band": "review",
+   "confidence": 0.905,
+   "band": "auto",
    "member_count": 5,
    "cpse_count": 5,
    "cpses": [
@@ -1347,7 +1347,7 @@
     "part_number": 1.0,
     "brand": 1.0
    },
-   "confidence": 0.929,
+   "confidence": 0.955,
    "band": "auto",
    "member_count": 4,
    "cpse_count": 2,
@@ -1408,7 +1408,7 @@
     "brand": 0.51,
     "part_number": 0.5
    },
-   "confidence": 0.901,
+   "confidence": 0.952,
    "band": "auto",
    "member_count": 2,
    "cpse_count": 2,
@@ -1476,11 +1476,11 @@
  "review_queue": [
   {
    "a": {
-    "record_id": "R00032",
-    "cpse": "ONGC",
-    "source_code": "5001218",
-    "description": "PIPE,SMLS,CARBON STEEL,ASTM A106 GR B,4 INCH,CH-40,ISMT,A106B-4-40",
-    "uom": "MTR",
+    "record_id": "R00035",
+    "cpse": "IOCL",
+    "source_code": "MAT-01366",
+    "description": "Pipe, Sml, Carb Stl, Astm A106 Gr B, 4 In, Sch 40, Msl, Jsl/A106/4",
+    "uom": "M",
     "category": "pipe",
     "attributes": {
      "construction": "SEAMLESS",
@@ -1488,47 +1488,122 @@
      "standard": "ASTM A106 GR B",
      "nominal_size_in": 4.0,
      "schedule": "SCH 40",
-     "brand": "ISMT",
-     "part_number": "A106B-4-40"
+     "brand": "MSL",
+     "part_number": "JSL/A106/4"
+    },
+    "confidence": {
+     "construction": 0.9,
+     "material_grade": 0.95,
+     "standard": 1.0,
+     "nominal_size_in": 1.0,
+     "schedule": 1.0,
+     "brand": 0.8,
+     "part_number": 0.85
+    },
+    "method": "llm"
+   },
+   "b": {
+    "record_id": "R00036",
+    "cpse": "GAIL",
+    "source_code": "G/001437",
+    "description": "PIPE, SEAMLESS, CARBON STEEL, MSL, A106B4--40",
+    "uom": "M",
+    "category": "pipe",
+    "attributes": {
+     "construction": "SEAMLESS",
+     "material_grade": "CARBON_STEEL",
+     "standard": "A106B",
+     "nominal_size_in": 4.0,
+     "schedule": "SCH 40",
+     "brand": "MSL"
+    },
+    "confidence": {
+     "construction": 1.0,
+     "material_grade": 1.0,
+     "standard": 0.9,
+     "nominal_size_in": 0.75,
+     "schedule": 0.75,
+     "brand": 0.9
+    },
+    "method": "llm"
+   },
+   "final": 0.811,
+   "text_sim": 0.843,
+   "spec_sim": 0.85,
+   "proc_sim": 0.458,
+   "matched_fields": [
+    "construction",
+    "material_grade",
+    "nominal_size_in",
+    "schedule"
+   ],
+   "ignored_fields": [
+    "brand"
+   ],
+   "review_reason": null
+  },
+  {
+   "a": {
+    "record_id": "R00034",
+    "cpse": "BPCL",
+    "source_code": "BR-01581",
+    "description": "Pipe Seamless Carbon Steel Astm A106 Gr B 4 In Ismt",
+    "uom": "METER",
+    "category": "pipe",
+    "attributes": {
+     "construction": "SEAMLESS",
+     "material_grade": "CARBON_STEEL",
+     "standard": "ASTM A106 GR B",
+     "nominal_size_in": 4.0,
+     "brand": "ISMT"
     },
     "confidence": {
      "construction": 1.0,
      "material_grade": 1.0,
      "standard": 1.0,
      "nominal_size_in": 1.0,
-     "schedule": 0.9,
-     "brand": 0.95,
-     "part_number": 0.95
+     "brand": 0.95
     },
     "method": "llm"
    },
    "b": {
-    "record_id": "R00033",
-    "cpse": "CPCL",
-    "source_code": "100001498",
-    "description": "Pipe - Seamles - Carbon Steel",
-    "uom": "METER",
+    "record_id": "R00036",
+    "cpse": "GAIL",
+    "source_code": "G/001437",
+    "description": "PIPE, SEAMLESS, CARBON STEEL, MSL, A106B4--40",
+    "uom": "M",
     "category": "pipe",
     "attributes": {
      "construction": "SEAMLESS",
-     "material_grade": "CARBON_STEEL"
+     "material_grade": "CARBON_STEEL",
+     "standard": "A106B",
+     "nominal_size_in": 4.0,
+     "schedule": "SCH 40",
+     "brand": "MSL"
     },
     "confidence": {
-     "construction": 0.95,
-     "material_grade": 0.95
+     "construction": 1.0,
+     "material_grade": 1.0,
+     "standard": 0.9,
+     "nominal_size_in": 0.75,
+     "schedule": 0.75,
+     "brand": 0.9
     },
     "method": "llm"
    },
-   "final": 0.729,
-   "text_sim": 0.2,
-   "spec_sim": 1.0,
-   "proc_sim": 0.483,
+   "final": 0.822,
+   "text_sim": 0.872,
+   "spec_sim": 0.828,
+   "proc_sim": 0.75,
    "matched_fields": [
     "construction",
-    "material_grade"
+    "material_grade",
+    "nominal_size_in"
    ],
-   "ignored_fields": [],
-   "review_reason": "could not verify nominal_size_in, schedule - not extracted from both records"
+   "ignored_fields": [
+    "brand"
+   ],
+   "review_reason": "could not verify schedule - not extracted from both records"
   },
   {
    "a": {
@@ -1573,8 +1648,8 @@
     },
     "method": "llm"
    },
-   "final": 0.739,
-   "text_sim": 0.333,
+   "final": 0.835,
+   "text_sim": 0.839,
    "spec_sim": 1.0,
    "proc_sim": 0.417,
    "matched_fields": [
@@ -1583,6 +1658,130 @@
    ],
    "ignored_fields": [],
    "review_reason": "could not verify nominal_size_in, pressure_class - not extracted from both records"
+  },
+  {
+   "a": {
+    "record_id": "R00032",
+    "cpse": "ONGC",
+    "source_code": "5001218",
+    "description": "PIPE,SMLS,CARBON STEEL,ASTM A106 GR B,4 INCH,CH-40,ISMT,A106B-4-40",
+    "uom": "MTR",
+    "category": "pipe",
+    "attributes": {
+     "construction": "SEAMLESS",
+     "material_grade": "CARBON_STEEL",
+     "standard": "ASTM A106 GR B",
+     "nominal_size_in": 4.0,
+     "schedule": "SCH 40",
+     "brand": "ISMT",
+     "part_number": "A106B-4-40"
+    },
+    "confidence": {
+     "construction": 1.0,
+     "material_grade": 1.0,
+     "standard": 1.0,
+     "nominal_size_in": 1.0,
+     "schedule": 0.9,
+     "brand": 0.95,
+     "part_number": 0.95
+    },
+    "method": "llm"
+   },
+   "b": {
+    "record_id": "R00033",
+    "cpse": "CPCL",
+    "source_code": "100001498",
+    "description": "Pipe - Seamles - Carbon Steel",
+    "uom": "METER",
+    "category": "pipe",
+    "attributes": {
+     "construction": "SEAMLESS",
+     "material_grade": "CARBON_STEEL"
+    },
+    "confidence": {
+     "construction": 0.95,
+     "material_grade": 0.95
+    },
+    "method": "llm"
+   },
+   "final": 0.843,
+   "text_sim": 0.798,
+   "spec_sim": 1.0,
+   "proc_sim": 0.483,
+   "matched_fields": [
+    "construction",
+    "material_grade"
+   ],
+   "ignored_fields": [],
+   "review_reason": "could not verify nominal_size_in, schedule - not extracted from both records"
+  },
+  {
+   "a": {
+    "record_id": "R00032",
+    "cpse": "ONGC",
+    "source_code": "5001218",
+    "description": "PIPE,SMLS,CARBON STEEL,ASTM A106 GR B,4 INCH,CH-40,ISMT,A106B-4-40",
+    "uom": "MTR",
+    "category": "pipe",
+    "attributes": {
+     "construction": "SEAMLESS",
+     "material_grade": "CARBON_STEEL",
+     "standard": "ASTM A106 GR B",
+     "nominal_size_in": 4.0,
+     "schedule": "SCH 40",
+     "brand": "ISMT",
+     "part_number": "A106B-4-40"
+    },
+    "confidence": {
+     "construction": 1.0,
+     "material_grade": 1.0,
+     "standard": 1.0,
+     "nominal_size_in": 1.0,
+     "schedule": 0.9,
+     "brand": 0.95,
+     "part_number": 0.95
+    },
+    "method": "llm"
+   },
+   "b": {
+    "record_id": "R00036",
+    "cpse": "GAIL",
+    "source_code": "G/001437",
+    "description": "PIPE, SEAMLESS, CARBON STEEL, MSL, A106B4--40",
+    "uom": "M",
+    "category": "pipe",
+    "attributes": {
+     "construction": "SEAMLESS",
+     "material_grade": "CARBON_STEEL",
+     "standard": "A106B",
+     "nominal_size_in": 4.0,
+     "schedule": "SCH 40",
+     "brand": "MSL"
+    },
+    "confidence": {
+     "construction": 1.0,
+     "material_grade": 1.0,
+     "standard": 0.9,
+     "nominal_size_in": 0.75,
+     "schedule": 0.75,
+     "brand": 0.9
+    },
+    "method": "llm"
+   },
+   "final": 0.847,
+   "text_sim": 0.884,
+   "spec_sim": 0.856,
+   "proc_sim": 0.75,
+   "matched_fields": [
+    "construction",
+    "material_grade",
+    "nominal_size_in",
+    "schedule"
+   ],
+   "ignored_fields": [
+    "brand"
+   ],
+   "review_reason": null
   },
   {
    "a": {
@@ -1625,8 +1824,8 @@
     },
     "method": "llm"
    },
-   "final": 0.739,
-   "text_sim": 0.25,
+   "final": 0.849,
+   "text_sim": 0.831,
    "spec_sim": 1.0,
    "proc_sim": 0.483,
    "matched_fields": [
@@ -1681,8 +1880,8 @@
     },
     "method": "llm"
    },
-   "final": 0.748,
-   "text_sim": 0.125,
+   "final": 0.853,
+   "text_sim": 0.681,
    "spec_sim": 1.0,
    "proc_sim": 0.625,
    "matched_fields": [
@@ -1691,307 +1890,6 @@
    ],
    "ignored_fields": [],
    "review_reason": "could not verify shaft_dia_mm - not extracted from both records"
-  },
-  {
-   "a": {
-    "record_id": "R00034",
-    "cpse": "BPCL",
-    "source_code": "BR-01581",
-    "description": "Pipe Seamless Carbon Steel Astm A106 Gr B 4 In Ismt",
-    "uom": "METER",
-    "category": "pipe",
-    "attributes": {
-     "construction": "SEAMLESS",
-     "material_grade": "CARBON_STEEL",
-     "standard": "ASTM A106 GR B",
-     "nominal_size_in": 4.0,
-     "brand": "ISMT"
-    },
-    "confidence": {
-     "construction": 1.0,
-     "material_grade": 1.0,
-     "standard": 1.0,
-     "nominal_size_in": 1.0,
-     "brand": 0.95
-    },
-    "method": "llm"
-   },
-   "b": {
-    "record_id": "R00036",
-    "cpse": "GAIL",
-    "source_code": "G/001437",
-    "description": "PIPE, SEAMLESS, CARBON STEEL, MSL, A106B4--40",
-    "uom": "M",
-    "category": "pipe",
-    "attributes": {
-     "construction": "SEAMLESS",
-     "material_grade": "CARBON_STEEL",
-     "standard": "A106B",
-     "nominal_size_in": 4.0,
-     "schedule": "SCH 40",
-     "brand": "MSL"
-    },
-    "confidence": {
-     "construction": 1.0,
-     "material_grade": 1.0,
-     "standard": 0.9,
-     "nominal_size_in": 0.75,
-     "schedule": 0.75,
-     "brand": 0.9
-    },
-    "method": "llm"
-   },
-   "final": 0.753,
-   "text_sim": 0.286,
-   "spec_sim": 0.828,
-   "proc_sim": 0.75,
-   "matched_fields": [
-    "construction",
-    "material_grade",
-    "nominal_size_in"
-   ],
-   "ignored_fields": [
-    "brand"
-   ],
-   "review_reason": "could not verify schedule - not extracted from both records"
-  },
-  {
-   "a": {
-    "record_id": "R00035",
-    "cpse": "IOCL",
-    "source_code": "MAT-01366",
-    "description": "Pipe, Sml, Carb Stl, Astm A106 Gr B, 4 In, Sch 40, Msl, Jsl/A106/4",
-    "uom": "M",
-    "category": "pipe",
-    "attributes": {
-     "construction": "SEAMLESS",
-     "material_grade": "CARBON_STEEL",
-     "standard": "ASTM A106 GR B",
-     "nominal_size_in": 4.0,
-     "schedule": "SCH 40",
-     "brand": "MSL",
-     "part_number": "JSL/A106/4"
-    },
-    "confidence": {
-     "construction": 0.9,
-     "material_grade": 0.95,
-     "standard": 1.0,
-     "nominal_size_in": 1.0,
-     "schedule": 1.0,
-     "brand": 0.8,
-     "part_number": 0.85
-    },
-    "method": "llm"
-   },
-   "b": {
-    "record_id": "R00036",
-    "cpse": "GAIL",
-    "source_code": "G/001437",
-    "description": "PIPE, SEAMLESS, CARBON STEEL, MSL, A106B4--40",
-    "uom": "M",
-    "category": "pipe",
-    "attributes": {
-     "construction": "SEAMLESS",
-     "material_grade": "CARBON_STEEL",
-     "standard": "A106B",
-     "nominal_size_in": 4.0,
-     "schedule": "SCH 40",
-     "brand": "MSL"
-    },
-    "confidence": {
-     "construction": 1.0,
-     "material_grade": 1.0,
-     "standard": 0.9,
-     "nominal_size_in": 0.75,
-     "schedule": 0.75,
-     "brand": 0.9
-    },
-    "method": "llm"
-   },
-   "final": 0.756,
-   "text_sim": 0.167,
-   "spec_sim": 0.85,
-   "proc_sim": 0.458,
-   "matched_fields": [
-    "construction",
-    "material_grade",
-    "nominal_size_in",
-    "schedule"
-   ],
-   "ignored_fields": [
-    "brand"
-   ],
-   "review_reason": null
-  },
-  {
-   "a": {
-    "record_id": "R00033",
-    "cpse": "CPCL",
-    "source_code": "100001498",
-    "description": "Pipe - Seamles - Carbon Steel",
-    "uom": "METER",
-    "category": "pipe",
-    "attributes": {
-     "construction": "SEAMLESS",
-     "material_grade": "CARBON_STEEL"
-    },
-    "confidence": {
-     "construction": 0.95,
-     "material_grade": 0.95
-    },
-    "method": "llm"
-   },
-   "b": {
-    "record_id": "R00035",
-    "cpse": "IOCL",
-    "source_code": "MAT-01366",
-    "description": "Pipe, Sml, Carb Stl, Astm A106 Gr B, 4 In, Sch 40, Msl, Jsl/A106/4",
-    "uom": "M",
-    "category": "pipe",
-    "attributes": {
-     "construction": "SEAMLESS",
-     "material_grade": "CARBON_STEEL",
-     "standard": "ASTM A106 GR B",
-     "nominal_size_in": 4.0,
-     "schedule": "SCH 40",
-     "brand": "MSL",
-     "part_number": "JSL/A106/4"
-    },
-    "confidence": {
-     "construction": 0.9,
-     "material_grade": 0.95,
-     "standard": 1.0,
-     "nominal_size_in": 1.0,
-     "schedule": 1.0,
-     "brand": 0.8,
-     "part_number": 0.85
-    },
-    "method": "llm"
-   },
-   "final": 0.759,
-   "text_sim": 0.059,
-   "spec_sim": 1.0,
-   "proc_sim": 0.725,
-   "matched_fields": [
-    "construction",
-    "material_grade"
-   ],
-   "ignored_fields": [],
-   "review_reason": "could not verify nominal_size_in, schedule - not extracted from both records"
-  },
-  {
-   "a": {
-    "record_id": "R00080",
-    "cpse": "IOCL",
-    "source_code": "MAT-01557",
-    "description": "mechanical seal - cartridge - single - flowserve",
-    "uom": "NOS",
-    "category": "rotating",
-    "attributes": {
-     "component_type": "MECHANICAL_SEAL",
-     "arrangement": "CARTRIDGE_SINGLE",
-     "brand": "FLOWSERVE"
-    },
-    "confidence": {
-     "component_type": 1.0,
-     "arrangement": 0.95,
-     "brand": 1.0
-    },
-    "method": "llm"
-   },
-   "b": {
-    "record_id": "R00084",
-    "cpse": "IOCL",
-    "source_code": "MAT-01595",
-    "description": "mech. seal cart single 45 mm shaft sic vs carbon viton jc/t21/45",
-    "uom": "NO",
-    "category": "rotating",
-    "attributes": {
-     "component_type": "MECHANICAL_SEAL",
-     "arrangement": "CARTRIDGE_SINGLE",
-     "shaft_dia_mm": 45.0,
-     "face_materials": "SIC VS CARBON",
-     "elastomer": "VITON",
-     "part_number": "JC/T21/45"
-    },
-    "confidence": {
-     "component_type": 1.0,
-     "arrangement": 0.95,
-     "shaft_dia_mm": 1.0,
-     "face_materials": 1.0,
-     "elastomer": 1.0,
-     "part_number": 0.9
-    },
-    "method": "llm"
-   },
-   "final": 0.76,
-   "text_sim": 0.125,
-   "spec_sim": 1.0,
-   "proc_sim": 0.675,
-   "matched_fields": [
-    "component_type",
-    "arrangement"
-   ],
-   "ignored_fields": [],
-   "review_reason": "could not verify shaft_dia_mm - not extracted from both records"
-  },
-  {
-   "a": {
-    "record_id": "R00022",
-    "cpse": "ONGC",
-    "source_code": "5001164",
-    "description": "GASKET 4 IN SS304 SPIRAL WOUND 150# GRAPHITE FILLER IGP",
-    "uom": "PCS",
-    "category": "gasket",
-    "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS304",
-     "nominal_size_in": 4.0,
-     "pressure_class": "150#",
-     "filler": "GRAPHITE",
-     "brand": "IGP"
-    },
-    "confidence": {
-     "gasket_type": 1.0,
-     "material_grade": 1.0,
-     "nominal_size_in": 1.0,
-     "pressure_class": 1.0,
-     "filler": 1.0,
-     "brand": 0.9
-    },
-    "method": "llm"
-   },
-   "b": {
-    "record_id": "R00028",
-    "cpse": "ONGC",
-    "source_code": "5001189",
-    "description": "Gasket, Spiralwound, Ss304, Flexitallic",
-    "uom": "NOS",
-    "category": "gasket",
-    "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS304",
-     "brand": "FLEXITALLIC"
-    },
-    "confidence": {
-     "gasket_type": 1.0,
-     "material_grade": 1.0,
-     "brand": 1.0
-    },
-    "method": "llm"
-   },
-   "final": 0.765,
-   "text_sim": 0.167,
-   "spec_sim": 1.0,
-   "proc_sim": 0.662,
-   "matched_fields": [
-    "gasket_type",
-    "material_grade"
-   ],
-   "ignored_fields": [
-    "brand"
-   ],
-   "review_reason": "could not verify nominal_size_in, pressure_class - not extracted from both records"
   },
   {
    "a": {
@@ -2042,8 +1940,8 @@
     },
     "method": "llm"
    },
-   "final": 0.766,
-   "text_sim": 0.267,
+   "final": 0.865,
+   "text_sim": 0.794,
    "spec_sim": 1.0,
    "proc_sim": 0.586,
    "matched_fields": [
@@ -2057,113 +1955,59 @@
   },
   {
    "a": {
-    "record_id": "R00023",
-    "cpse": "GAIL",
-    "source_code": "G/001372",
-    "description": "GASKET,SS304,SPIRAL WOUND,4 IN,FLX/SW/304/4",
-    "uom": "EACH",
-    "category": "gasket",
-    "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS304",
-     "nominal_size_in": 4.0,
-     "part_number": "FLX/SW/304/4"
-    },
-    "confidence": {
-     "gasket_type": 1.0,
-     "material_grade": 1.0,
-     "nominal_size_in": 1.0,
-     "part_number": 0.9
-    },
-    "method": "llm"
-   },
-   "b": {
-    "record_id": "R00028",
-    "cpse": "ONGC",
-    "source_code": "5001189",
-    "description": "Gasket, Spiralwound, Ss304, Flexitallic",
+    "record_id": "R00080",
+    "cpse": "IOCL",
+    "source_code": "MAT-01557",
+    "description": "mechanical seal - cartridge - single - flowserve",
     "uom": "NOS",
-    "category": "gasket",
+    "category": "rotating",
     "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS304",
-     "brand": "FLEXITALLIC"
+     "component_type": "MECHANICAL_SEAL",
+     "arrangement": "CARTRIDGE_SINGLE",
+     "brand": "FLOWSERVE"
     },
     "confidence": {
-     "gasket_type": 1.0,
-     "material_grade": 1.0,
+     "component_type": 1.0,
+     "arrangement": 0.95,
      "brand": 1.0
     },
     "method": "llm"
    },
-   "final": 0.77,
-   "text_sim": 0.182,
+   "b": {
+    "record_id": "R00084",
+    "cpse": "IOCL",
+    "source_code": "MAT-01595",
+    "description": "mech. seal cart single 45 mm shaft sic vs carbon viton jc/t21/45",
+    "uom": "NO",
+    "category": "rotating",
+    "attributes": {
+     "component_type": "MECHANICAL_SEAL",
+     "arrangement": "CARTRIDGE_SINGLE",
+     "shaft_dia_mm": 45.0,
+     "face_materials": "SIC VS CARBON",
+     "elastomer": "VITON",
+     "part_number": "JC/T21/45"
+    },
+    "confidence": {
+     "component_type": 1.0,
+     "arrangement": 0.95,
+     "shaft_dia_mm": 1.0,
+     "face_materials": 1.0,
+     "elastomer": 1.0,
+     "part_number": 0.9
+    },
+    "method": "llm"
+   },
+   "final": 0.866,
+   "text_sim": 0.689,
    "spec_sim": 1.0,
    "proc_sim": 0.675,
    "matched_fields": [
-    "gasket_type",
-    "material_grade"
+    "component_type",
+    "arrangement"
    ],
    "ignored_fields": [],
-   "review_reason": "could not verify nominal_size_in, pressure_class - not extracted from both records"
-  },
-  {
-   "a": {
-    "record_id": "R00025",
-    "cpse": "ONGC",
-    "source_code": "5001169",
-    "description": "GASKET SPIRAL WUOND SS304 IGP",
-    "uom": "EA",
-    "category": "gasket",
-    "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS304",
-     "brand": "IGP"
-    },
-    "confidence": {
-     "gasket_type": 0.95,
-     "material_grade": 1.0,
-     "brand": 0.9
-    },
-    "method": "llm"
-   },
-   "b": {
-    "record_id": "R00027",
-    "cpse": "IOCL",
-    "source_code": "MAT-01307",
-    "description": "GASKET SS304 SW 4 IN 150# GR FILLR FLEXITALLIC",
-    "uom": "EA",
-    "category": "gasket",
-    "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS304",
-     "nominal_size_in": 4.0,
-     "pressure_class": "150#",
-     "filler": "GR",
-     "brand": "FLEXITALLIC"
-    },
-    "confidence": {
-     "gasket_type": 0.95,
-     "material_grade": 0.98,
-     "nominal_size_in": 0.98,
-     "pressure_class": 0.98,
-     "filler": 0.9,
-     "brand": 0.98
-    },
-    "method": "llm"
-   },
-   "final": 0.772,
-   "text_sim": 0.167,
-   "spec_sim": 1.0,
-   "proc_sim": 0.693,
-   "matched_fields": [
-    "gasket_type",
-    "material_grade"
-   ],
-   "ignored_fields": [
-    "brand"
-   ],
-   "review_reason": "could not verify nominal_size_in, pressure_class - not extracted from both records"
+   "review_reason": "could not verify shaft_dia_mm - not extracted from both records"
   },
   {
    "a": {
@@ -2214,8 +2058,8 @@
     },
     "method": "llm"
    },
-   "final": 0.777,
-   "text_sim": 0.25,
+   "final": 0.87,
+   "text_sim": 0.745,
    "spec_sim": 1.0,
    "proc_sim": 0.646,
    "matched_fields": [
@@ -2229,72 +2073,92 @@
   },
   {
    "a": {
-    "record_id": "R00004",
-    "cpse": "BPCL",
-    "source_code": "BR-01454",
-    "description": "GASKET SPIRAL WOUND SS304 4IN 150#",
-    "uom": "EA",
+    "record_id": "R00031",
+    "cpse": "GAIL",
+    "source_code": "G/001424",
+    "description": "Pipe Seamless Carbon Steel Astm A106 Gr B 4 In Sch 40 Ismt",
+    "uom": "M",
+    "category": "pipe",
+    "attributes": {
+     "construction": "SEAMLESS",
+     "material_grade": "CARBON_STEEL",
+     "standard": "ASTM A106 GR B",
+     "nominal_size_in": 4.0,
+     "schedule": "SCH 40",
+     "brand": "ISMT"
+    },
+    "confidence": {
+     "construction": 1.0,
+     "material_grade": 1.0,
+     "standard": 1.0,
+     "nominal_size_in": 1.0,
+     "schedule": 1.0,
+     "brand": 0.95
+    },
+    "method": "llm"
+   },
+   "b": {
+    "record_id": "R00036",
+    "cpse": "GAIL",
+    "source_code": "G/001437",
+    "description": "PIPE, SEAMLESS, CARBON STEEL, MSL, A106B4--40",
+    "uom": "M",
+    "category": "pipe",
+    "attributes": {
+     "construction": "SEAMLESS",
+     "material_grade": "CARBON_STEEL",
+     "standard": "A106B",
+     "nominal_size_in": 4.0,
+     "schedule": "SCH 40",
+     "brand": "MSL"
+    },
+    "confidence": {
+     "construction": 1.0,
+     "material_grade": 1.0,
+     "standard": 0.9,
+     "nominal_size_in": 0.75,
+     "schedule": 0.75,
+     "brand": 0.9
+    },
+    "method": "llm"
+   },
+   "final": 0.872,
+   "text_sim": 0.885,
+   "spec_sim": 0.856,
+   "proc_sim": 1.0,
+   "matched_fields": [
+    "construction",
+    "material_grade",
+    "nominal_size_in",
+    "schedule"
+   ],
+   "ignored_fields": [
+    "brand"
+   ],
+   "review_reason": null
+  },
+  {
+   "a": {
+    "record_id": "R00022",
+    "cpse": "ONGC",
+    "source_code": "5001164",
+    "description": "GASKET 4 IN SS304 SPIRAL WOUND 150# GRAPHITE FILLER IGP",
+    "uom": "PCS",
     "category": "gasket",
     "attributes": {
      "gasket_type": "SPIRAL_WOUND",
      "material_grade": "SS304",
      "nominal_size_in": 4.0,
-     "pressure_class": "150#"
+     "pressure_class": "150#",
+     "filler": "GRAPHITE",
+     "brand": "IGP"
     },
     "confidence": {
      "gasket_type": 1.0,
      "material_grade": 1.0,
      "nominal_size_in": 1.0,
-     "pressure_class": 1.0
-    },
-    "method": "llm"
-   },
-   "b": {
-    "record_id": "R00028",
-    "cpse": "ONGC",
-    "source_code": "5001189",
-    "description": "Gasket, Spiralwound, Ss304, Flexitallic",
-    "uom": "NOS",
-    "category": "gasket",
-    "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS304",
-     "brand": "FLEXITALLIC"
-    },
-    "confidence": {
-     "gasket_type": 1.0,
-     "material_grade": 1.0,
-     "brand": 1.0
-    },
-    "method": "llm"
-   },
-   "final": 0.783,
-   "text_sim": 0.25,
-   "spec_sim": 1.0,
-   "proc_sim": 0.675,
-   "matched_fields": [
-    "gasket_type",
-    "material_grade"
-   ],
-   "ignored_fields": [],
-   "review_reason": "could not verify nominal_size_in, pressure_class - not extracted from both records"
-  },
-  {
-   "a": {
-    "record_id": "R00025",
-    "cpse": "ONGC",
-    "source_code": "5001169",
-    "description": "GASKET SPIRAL WUOND SS304 IGP",
-    "uom": "EA",
-    "category": "gasket",
-    "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS304",
-     "brand": "IGP"
-    },
-    "confidence": {
-     "gasket_type": 0.95,
-     "material_grade": 1.0,
+     "pressure_class": 1.0,
+     "filler": 1.0,
      "brand": 0.9
     },
     "method": "llm"
@@ -2322,75 +2186,104 @@
     },
     "method": "llm"
    },
-   "final": 0.784,
-   "text_sim": 0.182,
-   "spec_sim": 1.0,
-   "proc_sim": 0.733,
+   "final": 0.875,
+   "text_sim": 0.894,
+   "spec_sim": 0.922,
+   "proc_sim": 0.467,
    "matched_fields": [
     "gasket_type",
-    "material_grade"
+    "material_grade",
+    "nominal_size_in",
+    "pressure_class"
    ],
    "ignored_fields": [],
-   "review_reason": "could not verify nominal_size_in, pressure_class - not extracted from both records"
+   "review_reason": null
   },
   {
    "a": {
-    "record_id": "R00025",
+    "record_id": "R00056",
     "cpse": "ONGC",
-    "source_code": "5001169",
-    "description": "GASKET SPIRAL WUOND SS304 IGP",
+    "source_code": "5001362",
+    "description": "Valve Ball 2 In Audco",
     "uom": "EA",
-    "category": "gasket",
+    "category": "valve",
     "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS304",
-     "brand": "IGP"
+     "valve_type": "BALL",
+     "nominal_size_in": 2.0,
+     "brand": "AUDCO"
     },
     "confidence": {
-     "gasket_type": 0.95,
-     "material_grade": 1.0,
-     "brand": 0.9
-    },
-    "method": "llm"
-   },
-   "b": {
-    "record_id": "R00028",
-    "cpse": "ONGC",
-    "source_code": "5001189",
-    "description": "Gasket, Spiralwound, Ss304, Flexitallic",
-    "uom": "NOS",
-    "category": "gasket",
-    "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS304",
-     "brand": "FLEXITALLIC"
-    },
-    "confidence": {
-     "gasket_type": 1.0,
-     "material_grade": 1.0,
+     "valve_type": 1.0,
+     "nominal_size_in": 1.0,
      "brand": 1.0
     },
     "method": "llm"
    },
-   "final": 0.787,
-   "text_sim": 0.286,
+   "b": {
+    "record_id": "R00057",
+    "cpse": "BPCL",
+    "source_code": "BR-01672",
+    "description": "VAVLE BALL 2 IN VRG/BL/2/800",
+    "uom": "EA",
+    "category": "valve",
+    "attributes": {
+     "valve_type": "BALL",
+     "nominal_size_in": 2.0,
+     "pressure_class": "800#",
+     "part_number": "VRG/BL/2/800"
+    },
+    "confidence": {
+     "valve_type": 1.0,
+     "nominal_size_in": 1.0,
+     "pressure_class": 0.8,
+     "part_number": 0.95
+    },
+    "method": "llm"
+   },
+   "final": 0.876,
+   "text_sim": 0.774,
    "spec_sim": 1.0,
-   "proc_sim": 0.662,
+   "proc_sim": 0.647,
    "matched_fields": [
-    "gasket_type",
-    "material_grade"
+    "valve_type",
+    "nominal_size_in"
    ],
-   "ignored_fields": [
-    "brand"
-   ],
-   "review_reason": "could not verify nominal_size_in, pressure_class - not extracted from both records"
+   "ignored_fields": [],
+   "review_reason": "could not verify pressure_class, body_material - not extracted from both records"
   },
   {
    "a": {
-    "record_id": "R00027",
+    "record_id": "R00029",
+    "cpse": "GAIL",
+    "source_code": "G/001414",
+    "description": "GASKET SPIRALWOUND 150# 4\" SS304 GRAPHITE FILL IGP FLX/SW/304/4",
+    "uom": "PCS",
+    "category": "gasket",
+    "attributes": {
+     "gasket_type": "SPIRAL_WOUND",
+     "material_grade": "SS304",
+     "nominal_size_in": 4.0,
+     "pressure_class": "150#",
+     "filler": "GRAPHITE",
+     "brand": "IGP",
+     "part_number": "FLX/SW/304/4"
+    },
+    "confidence": {
+     "gasket_type": 1.0,
+     "material_grade": 1.0,
+     "nominal_size_in": 1.0,
+     "pressure_class": 1.0,
+     "filler": 1.0,
+     "brand": 0.9,
+     "part_number": 0.95
+    },
+    "method": "llm"
+   },
+   "b": {
+    "record_id": "R00030",
     "cpse": "IOCL",
-    "source_code": "MAT-01307",
-    "description": "GASKET SS304 SW 4 IN 150# GR FILLR FLEXITALLIC",
+    "source_code": "MAT-01337",
+    "description": "GASKET GR FILLER SS304 4 INCH 150# SPIRALWOUND",
     "uom": "EA",
     "category": "gasket",
     "attributes": {
@@ -2398,50 +2291,29 @@
      "material_grade": "SS304",
      "nominal_size_in": 4.0,
      "pressure_class": "150#",
-     "filler": "GR",
-     "brand": "FLEXITALLIC"
-    },
-    "confidence": {
-     "gasket_type": 0.95,
-     "material_grade": 0.98,
-     "nominal_size_in": 0.98,
-     "pressure_class": 0.98,
-     "filler": 0.9,
-     "brand": 0.98
-    },
-    "method": "llm"
-   },
-   "b": {
-    "record_id": "R00028",
-    "cpse": "ONGC",
-    "source_code": "5001189",
-    "description": "Gasket, Spiralwound, Ss304, Flexitallic",
-    "uom": "NOS",
-    "category": "gasket",
-    "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS304",
-     "brand": "FLEXITALLIC"
+     "filler": "GR"
     },
     "confidence": {
      "gasket_type": 1.0,
      "material_grade": 1.0,
-     "brand": 1.0
+     "nominal_size_in": 1.0,
+     "pressure_class": 1.0,
+     "filler": 0.9
     },
     "method": "llm"
    },
-   "final": 0.792,
-   "text_sim": 0.3,
-   "spec_sim": 1.0,
-   "proc_sim": 0.673,
+   "final": 0.878,
+   "text_sim": 0.923,
+   "spec_sim": 0.922,
+   "proc_sim": 0.475,
    "matched_fields": [
     "gasket_type",
-    "material_grade"
+    "material_grade",
+    "nominal_size_in",
+    "pressure_class"
    ],
-   "ignored_fields": [
-    "brand"
-   ],
-   "review_reason": "could not verify nominal_size_in, pressure_class - not extracted from both records"
+   "ignored_fields": [],
+   "review_reason": null
   },
   {
    "a": {
@@ -2492,8 +2364,8 @@
     },
     "method": "llm"
    },
-   "final": 0.792,
-   "text_sim": 0.267,
+   "final": 0.884,
+   "text_sim": 0.866,
    "spec_sim": 1.0,
    "proc_sim": 0.489,
    "matched_fields": [
@@ -2506,115 +2378,89 @@
   },
   {
    "a": {
-    "record_id": "R00023",
+    "record_id": "R00045",
     "cpse": "GAIL",
-    "source_code": "G/001372",
-    "description": "GASKET,SS304,SPIRAL WOUND,4 IN,FLX/SW/304/4",
+    "source_code": "G/001520",
+    "description": "VALVE, 150#, 6 IN, GATE, AUDCO",
     "uom": "EACH",
-    "category": "gasket",
-    "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS304",
-     "nominal_size_in": 4.0,
-     "part_number": "FLX/SW/304/4"
-    },
-    "confidence": {
-     "gasket_type": 1.0,
-     "material_grade": 1.0,
-     "nominal_size_in": 1.0,
-     "part_number": 0.9
-    },
-    "method": "llm"
-   },
-   "b": {
-    "record_id": "R00025",
-    "cpse": "ONGC",
-    "source_code": "5001169",
-    "description": "GASKET SPIRAL WUOND SS304 IGP",
-    "uom": "EA",
-    "category": "gasket",
-    "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS304",
-     "brand": "IGP"
-    },
-    "confidence": {
-     "gasket_type": 0.95,
-     "material_grade": 1.0,
-     "brand": 0.9
-    },
-    "method": "llm"
-   },
-   "final": 0.793,
-   "text_sim": 0.273,
-   "spec_sim": 1.0,
-   "proc_sim": 0.698,
-   "matched_fields": [
-    "gasket_type",
-    "material_grade"
-   ],
-   "ignored_fields": [],
-   "review_reason": "could not verify nominal_size_in, pressure_class - not extracted from both records"
-  },
-  {
-   "a": {
-    "record_id": "R00056",
-    "cpse": "ONGC",
-    "source_code": "5001362",
-    "description": "Valve Ball 2 In Audco",
-    "uom": "EA",
     "category": "valve",
     "attributes": {
-     "valve_type": "BALL",
-     "nominal_size_in": 2.0,
+     "valve_type": "GATE",
+     "nominal_size_in": 6.0,
+     "pressure_class": "150#",
      "brand": "AUDCO"
     },
     "confidence": {
      "valve_type": 1.0,
      "nominal_size_in": 1.0,
+     "pressure_class": 1.0,
      "brand": 1.0
     },
     "method": "llm"
    },
    "b": {
-    "record_id": "R00057",
-    "cpse": "BPCL",
-    "source_code": "BR-01672",
-    "description": "VAVLE BALL 2 IN VRG/BL/2/800",
-    "uom": "EA",
+    "record_id": "R00048",
+    "cpse": "IOCL",
+    "source_code": "MAT-01429",
+    "description": "Valve, 150#, 6 In, Gate, Cs Body, Kirloskar, Gv-6-150-Cs",
+    "uom": "EACH",
     "category": "valve",
     "attributes": {
-     "valve_type": "BALL",
-     "nominal_size_in": 2.0,
-     "pressure_class": "800#",
-     "part_number": "VRG/BL/2/800"
+     "valve_type": "GATE",
+     "nominal_size_in": 6.0,
+     "pressure_class": "150#",
+     "body_material": "CARBON_STEEL",
+     "brand": "KIRLOSKAR",
+     "part_number": "GV-6-150-CS"
     },
     "confidence": {
      "valve_type": 1.0,
      "nominal_size_in": 1.0,
-     "pressure_class": 0.8,
-     "part_number": 0.95
+     "pressure_class": 1.0,
+     "body_material": 0.95,
+     "brand": 1.0,
+     "part_number": 1.0
     },
     "method": "llm"
    },
-   "final": 0.793,
-   "text_sim": 0.333,
+   "final": 0.885,
+   "text_sim": 0.883,
    "spec_sim": 1.0,
-   "proc_sim": 0.647,
+   "proc_sim": 0.479,
    "matched_fields": [
     "valve_type",
-    "nominal_size_in"
+    "nominal_size_in",
+    "pressure_class"
    ],
-   "ignored_fields": [],
-   "review_reason": "could not verify pressure_class, body_material - not extracted from both records"
+   "ignored_fields": [
+    "brand"
+   ],
+   "review_reason": "could not verify body_material - not extracted from both records"
   },
   {
    "a": {
-    "record_id": "R00032",
-    "cpse": "ONGC",
-    "source_code": "5001218",
-    "description": "PIPE,SMLS,CARBON STEEL,ASTM A106 GR B,4 INCH,CH-40,ISMT,A106B-4-40",
-    "uom": "MTR",
+    "record_id": "R00033",
+    "cpse": "CPCL",
+    "source_code": "100001498",
+    "description": "Pipe - Seamles - Carbon Steel",
+    "uom": "METER",
+    "category": "pipe",
+    "attributes": {
+     "construction": "SEAMLESS",
+     "material_grade": "CARBON_STEEL"
+    },
+    "confidence": {
+     "construction": 0.95,
+     "material_grade": 0.95
+    },
+    "method": "llm"
+   },
+   "b": {
+    "record_id": "R00035",
+    "cpse": "IOCL",
+    "source_code": "MAT-01366",
+    "description": "Pipe, Sml, Carb Stl, Astm A106 Gr B, 4 In, Sch 40, Msl, Jsl/A106/4",
+    "uom": "M",
     "category": "pipe",
     "attributes": {
      "construction": "SEAMLESS",
@@ -2622,143 +2468,37 @@
      "standard": "ASTM A106 GR B",
      "nominal_size_in": 4.0,
      "schedule": "SCH 40",
-     "brand": "ISMT",
-     "part_number": "A106B-4-40"
+     "brand": "MSL",
+     "part_number": "JSL/A106/4"
     },
     "confidence": {
-     "construction": 1.0,
-     "material_grade": 1.0,
+     "construction": 0.9,
+     "material_grade": 0.95,
      "standard": 1.0,
      "nominal_size_in": 1.0,
-     "schedule": 0.9,
-     "brand": 0.95,
-     "part_number": 0.95
+     "schedule": 1.0,
+     "brand": 0.8,
+     "part_number": 0.85
     },
     "method": "llm"
    },
-   "b": {
-    "record_id": "R00036",
-    "cpse": "GAIL",
-    "source_code": "G/001437",
-    "description": "PIPE, SEAMLESS, CARBON STEEL, MSL, A106B4--40",
-    "uom": "M",
-    "category": "pipe",
-    "attributes": {
-     "construction": "SEAMLESS",
-     "material_grade": "CARBON_STEEL",
-     "standard": "A106B",
-     "nominal_size_in": 4.0,
-     "schedule": "SCH 40",
-     "brand": "MSL"
-    },
-    "confidence": {
-     "construction": 1.0,
-     "material_grade": 1.0,
-     "standard": 0.9,
-     "nominal_size_in": 0.75,
-     "schedule": 0.75,
-     "brand": 0.9
-    },
-    "method": "llm"
-   },
-   "final": 0.795,
-   "text_sim": 0.235,
-   "spec_sim": 0.856,
-   "proc_sim": 0.75,
+   "final": 0.886,
+   "text_sim": 0.733,
+   "spec_sim": 1.0,
+   "proc_sim": 0.725,
    "matched_fields": [
     "construction",
-    "material_grade",
-    "nominal_size_in",
-    "schedule"
-   ],
-   "ignored_fields": [
-    "brand"
-   ],
-   "review_reason": null
-  },
-  {
-   "a": {
-    "record_id": "R00024",
-    "cpse": "IOCL",
-    "source_code": "MAT-01276",
-    "description": "GASKET, SPIRAL WOUND, SS304, FLEXITALLIC, SW-034-4-150",
-    "uom": "NO",
-    "category": "gasket",
-    "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS304",
-     "nominal_size_in": 4.0,
-     "pressure_class": "150#",
-     "brand": "FLEXITALLIC",
-     "part_number": "SW-034-4-150"
-    },
-    "confidence": {
-     "gasket_type": 1.0,
-     "material_grade": 1.0,
-     "nominal_size_in": 0.8,
-     "pressure_class": 0.8,
-     "brand": 1.0,
-     "part_number": 1.0
-    },
-    "method": "llm"
-   },
-   "b": {
-    "record_id": "R00028",
-    "cpse": "ONGC",
-    "source_code": "5001189",
-    "description": "Gasket, Spiralwound, Ss304, Flexitallic",
-    "uom": "NOS",
-    "category": "gasket",
-    "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS304",
-     "brand": "FLEXITALLIC"
-    },
-    "confidence": {
-     "gasket_type": 1.0,
-     "material_grade": 1.0,
-     "brand": 1.0
-    },
-    "method": "llm"
-   },
-   "final": 0.796,
-   "text_sim": 0.3,
-   "spec_sim": 1.0,
-   "proc_sim": 0.689,
-   "matched_fields": [
-    "gasket_type",
     "material_grade"
    ],
-   "ignored_fields": [
-    "brand"
-   ],
-   "review_reason": "could not verify nominal_size_in, pressure_class - not extracted from both records"
+   "ignored_fields": [],
+   "review_reason": "could not verify nominal_size_in, schedule - not extracted from both records"
   },
   {
    "a": {
-    "record_id": "R00028",
+    "record_id": "R00022",
     "cpse": "ONGC",
-    "source_code": "5001189",
-    "description": "Gasket, Spiralwound, Ss304, Flexitallic",
-    "uom": "NOS",
-    "category": "gasket",
-    "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS304",
-     "brand": "FLEXITALLIC"
-    },
-    "confidence": {
-     "gasket_type": 1.0,
-     "material_grade": 1.0,
-     "brand": 1.0
-    },
-    "method": "llm"
-   },
-   "b": {
-    "record_id": "R00029",
-    "cpse": "GAIL",
-    "source_code": "G/001414",
-    "description": "GASKET SPIRALWOUND 150# 4\" SS304 GRAPHITE FILL IGP FLX/SW/304/4",
+    "source_code": "5001164",
+    "description": "GASKET 4 IN SS304 SPIRAL WOUND 150# GRAPHITE FILLER IGP",
     "uom": "PCS",
     "category": "gasket",
     "attributes": {
@@ -2767,8 +2507,7 @@
      "nominal_size_in": 4.0,
      "pressure_class": "150#",
      "filler": "GRAPHITE",
-     "brand": "IGP",
-     "part_number": "FLX/SW/304/4"
+     "brand": "IGP"
     },
     "confidence": {
      "gasket_type": 1.0,
@@ -2776,47 +2515,7 @@
      "nominal_size_in": 1.0,
      "pressure_class": 1.0,
      "filler": 1.0,
-     "brand": 0.9,
-     "part_number": 0.95
-    },
-    "method": "llm"
-   },
-   "final": 0.798,
-   "text_sim": 0.25,
-   "spec_sim": 1.0,
-   "proc_sim": 0.741,
-   "matched_fields": [
-    "gasket_type",
-    "material_grade"
-   ],
-   "ignored_fields": [
-    "brand"
-   ],
-   "review_reason": "could not verify nominal_size_in, pressure_class - not extracted from both records"
-  },
-  {
-   "a": {
-    "record_id": "R00026",
-    "cpse": "GAIL",
-    "source_code": "G/001398",
-    "description": "GASKET SPL WOUND SS304 150# 4 IN GRAPHITE FILL FLEXITALLIC",
-    "uom": "EACH",
-    "category": "gasket",
-    "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS304",
-     "nominal_size_in": 4.0,
-     "pressure_class": "150#",
-     "filler": "GRAPHITE",
-     "brand": "FLEXITALLIC"
-    },
-    "confidence": {
-     "gasket_type": 1.0,
-     "material_grade": 1.0,
-     "nominal_size_in": 1.0,
-     "pressure_class": 1.0,
-     "filler": 1.0,
-     "brand": 1.0
+     "brand": 0.9
     },
     "method": "llm"
    },
@@ -2839,10 +2538,10 @@
     },
     "method": "llm"
    },
-   "final": 0.8,
-   "text_sim": 0.273,
+   "final": 0.889,
+   "text_sim": 0.824,
    "spec_sim": 1.0,
-   "proc_sim": 0.727,
+   "proc_sim": 0.662,
    "matched_fields": [
     "gasket_type",
     "material_grade"
@@ -2891,10 +2590,117 @@
     },
     "method": "llm"
    },
-   "final": 0.803,
-   "text_sim": 0.286,
+   "final": 0.89,
+   "text_sim": 0.836,
    "spec_sim": 1.0,
    "proc_sim": 0.733,
+   "matched_fields": [
+    "gasket_type",
+    "material_grade"
+   ],
+   "ignored_fields": [],
+   "review_reason": "could not verify nominal_size_in, pressure_class - not extracted from both records"
+  },
+  {
+   "a": {
+    "record_id": "R00004",
+    "cpse": "BPCL",
+    "source_code": "BR-01454",
+    "description": "GASKET SPIRAL WOUND SS304 4IN 150#",
+    "uom": "EA",
+    "category": "gasket",
+    "attributes": {
+     "gasket_type": "SPIRAL_WOUND",
+     "material_grade": "SS304",
+     "nominal_size_in": 4.0,
+     "pressure_class": "150#"
+    },
+    "confidence": {
+     "gasket_type": 1.0,
+     "material_grade": 1.0,
+     "nominal_size_in": 1.0,
+     "pressure_class": 1.0
+    },
+    "method": "llm"
+   },
+   "b": {
+    "record_id": "R00023",
+    "cpse": "GAIL",
+    "source_code": "G/001372",
+    "description": "GASKET,SS304,SPIRAL WOUND,4 IN,FLX/SW/304/4",
+    "uom": "EACH",
+    "category": "gasket",
+    "attributes": {
+     "gasket_type": "SPIRAL_WOUND",
+     "material_grade": "SS304",
+     "nominal_size_in": 4.0,
+     "part_number": "FLX/SW/304/4"
+    },
+    "confidence": {
+     "gasket_type": 1.0,
+     "material_grade": 1.0,
+     "nominal_size_in": 1.0,
+     "part_number": 0.9
+    },
+    "method": "llm"
+   },
+   "final": 0.89,
+   "text_sim": 0.921,
+   "spec_sim": 1.0,
+   "proc_sim": 0.98,
+   "matched_fields": [
+    "gasket_type",
+    "material_grade",
+    "nominal_size_in"
+   ],
+   "ignored_fields": [],
+   "review_reason": "could not verify pressure_class - not extracted from both records"
+  },
+  {
+   "a": {
+    "record_id": "R00004",
+    "cpse": "BPCL",
+    "source_code": "BR-01454",
+    "description": "GASKET SPIRAL WOUND SS304 4IN 150#",
+    "uom": "EA",
+    "category": "gasket",
+    "attributes": {
+     "gasket_type": "SPIRAL_WOUND",
+     "material_grade": "SS304",
+     "nominal_size_in": 4.0,
+     "pressure_class": "150#"
+    },
+    "confidence": {
+     "gasket_type": 1.0,
+     "material_grade": 1.0,
+     "nominal_size_in": 1.0,
+     "pressure_class": 1.0
+    },
+    "method": "llm"
+   },
+   "b": {
+    "record_id": "R00025",
+    "cpse": "ONGC",
+    "source_code": "5001169",
+    "description": "GASKET SPIRAL WUOND SS304 IGP",
+    "uom": "EA",
+    "category": "gasket",
+    "attributes": {
+     "gasket_type": "SPIRAL_WOUND",
+     "material_grade": "SS304",
+     "brand": "IGP"
+    },
+    "confidence": {
+     "gasket_type": 0.95,
+     "material_grade": 1.0,
+     "brand": 0.9
+    },
+    "method": "llm"
+   },
+   "final": 0.89,
+   "text_sim": 0.874,
+   "spec_sim": 1.0,
+   "proc_sim": 0.7,
    "matched_fields": [
     "gasket_type",
     "material_grade"
@@ -2945,124 +2751,10 @@
     },
     "method": "llm"
    },
-   "final": 0.805,
-   "text_sim": 0.273,
+   "final": 0.89,
+   "text_sim": 0.834,
    "spec_sim": 1.0,
    "proc_sim": 0.75,
-   "matched_fields": [
-    "gasket_type",
-    "material_grade"
-   ],
-   "ignored_fields": [],
-   "review_reason": "could not verify nominal_size_in, pressure_class - not extracted from both records"
-  },
-  {
-   "a": {
-    "record_id": "R00024",
-    "cpse": "IOCL",
-    "source_code": "MAT-01276",
-    "description": "GASKET, SPIRAL WOUND, SS304, FLEXITALLIC, SW-034-4-150",
-    "uom": "NO",
-    "category": "gasket",
-    "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS304",
-     "nominal_size_in": 4.0,
-     "pressure_class": "150#",
-     "brand": "FLEXITALLIC",
-     "part_number": "SW-034-4-150"
-    },
-    "confidence": {
-     "gasket_type": 1.0,
-     "material_grade": 1.0,
-     "nominal_size_in": 0.8,
-     "pressure_class": 0.8,
-     "brand": 1.0,
-     "part_number": 1.0
-    },
-    "method": "llm"
-   },
-   "b": {
-    "record_id": "R00025",
-    "cpse": "ONGC",
-    "source_code": "5001169",
-    "description": "GASKET SPIRAL WUOND SS304 IGP",
-    "uom": "EA",
-    "category": "gasket",
-    "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS304",
-     "brand": "IGP"
-    },
-    "confidence": {
-     "gasket_type": 0.95,
-     "material_grade": 1.0,
-     "brand": 0.9
-    },
-    "method": "llm"
-   },
-   "final": 0.806,
-   "text_sim": 0.273,
-   "spec_sim": 1.0,
-   "proc_sim": 0.756,
-   "matched_fields": [
-    "gasket_type",
-    "material_grade"
-   ],
-   "ignored_fields": [
-    "brand"
-   ],
-   "review_reason": "could not verify nominal_size_in, pressure_class - not extracted from both records"
-  },
-  {
-   "a": {
-    "record_id": "R00020",
-    "cpse": "IOCL",
-    "source_code": "MAT-01258",
-    "description": "GASKET SW SS316",
-    "uom": "PC",
-    "category": "gasket",
-    "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS316"
-    },
-    "confidence": {
-     "gasket_type": 0.95,
-     "material_grade": 0.98
-    },
-    "method": "llm"
-   },
-   "b": {
-    "record_id": "R00021",
-    "cpse": "ONGC",
-    "source_code": "5001156",
-    "description": "Gasket, Spiral Wound, Ss316, 4 In, 150#, Graphite Filler, Champion, Flx/Sw/316/4",
-    "uom": "NO",
-    "category": "gasket",
-    "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS316",
-     "nominal_size_in": 4.0,
-     "pressure_class": "150#",
-     "filler": "GRAPHITE",
-     "brand": "CHAMPION",
-     "part_number": "FLX/SW/316/4"
-    },
-    "confidence": {
-     "gasket_type": 0.98,
-     "material_grade": 0.98,
-     "nominal_size_in": 0.98,
-     "pressure_class": 0.98,
-     "filler": 0.98,
-     "brand": 0.98,
-     "part_number": 0.98
-    },
-    "method": "llm"
-   },
-   "final": 0.808,
-   "text_sim": 0.231,
-   "spec_sim": 1.0,
-   "proc_sim": 0.8,
    "matched_fields": [
     "gasket_type",
     "material_grade"
@@ -3113,8 +2805,8 @@
     },
     "method": "llm"
    },
-   "final": 0.809,
-   "text_sim": 0.333,
+   "final": 0.89,
+   "text_sim": 0.854,
    "spec_sim": 1.0,
    "proc_sim": 0.717,
    "matched_fields": [
@@ -3126,23 +2818,142 @@
   },
   {
    "a": {
-    "record_id": "R00004",
-    "cpse": "BPCL",
-    "source_code": "BR-01454",
-    "description": "GASKET SPIRAL WOUND SS304 4IN 150#",
-    "uom": "EA",
+    "record_id": "R00020",
+    "cpse": "IOCL",
+    "source_code": "MAT-01258",
+    "description": "GASKET SW SS316",
+    "uom": "PC",
+    "category": "gasket",
+    "attributes": {
+     "gasket_type": "SPIRAL_WOUND",
+     "material_grade": "SS316"
+    },
+    "confidence": {
+     "gasket_type": 0.95,
+     "material_grade": 0.98
+    },
+    "method": "llm"
+   },
+   "b": {
+    "record_id": "R00021",
+    "cpse": "ONGC",
+    "source_code": "5001156",
+    "description": "Gasket, Spiral Wound, Ss316, 4 In, 150#, Graphite Filler, Champion, Flx/Sw/316/4",
+    "uom": "NO",
+    "category": "gasket",
+    "attributes": {
+     "gasket_type": "SPIRAL_WOUND",
+     "material_grade": "SS316",
+     "nominal_size_in": 4.0,
+     "pressure_class": "150#",
+     "filler": "GRAPHITE",
+     "brand": "CHAMPION",
+     "part_number": "FLX/SW/316/4"
+    },
+    "confidence": {
+     "gasket_type": 0.98,
+     "material_grade": 0.98,
+     "nominal_size_in": 0.98,
+     "pressure_class": 0.98,
+     "filler": 0.98,
+     "brand": 0.98,
+     "part_number": 0.98
+    },
+    "method": "llm"
+   },
+   "final": 0.89,
+   "text_sim": 0.772,
+   "spec_sim": 1.0,
+   "proc_sim": 0.8,
+   "matched_fields": [
+    "gasket_type",
+    "material_grade"
+   ],
+   "ignored_fields": [],
+   "review_reason": "could not verify nominal_size_in, pressure_class - not extracted from both records"
+  },
+  {
+   "a": {
+    "record_id": "R00022",
+    "cpse": "ONGC",
+    "source_code": "5001164",
+    "description": "GASKET 4 IN SS304 SPIRAL WOUND 150# GRAPHITE FILLER IGP",
+    "uom": "PCS",
     "category": "gasket",
     "attributes": {
      "gasket_type": "SPIRAL_WOUND",
      "material_grade": "SS304",
      "nominal_size_in": 4.0,
-     "pressure_class": "150#"
+     "pressure_class": "150#",
+     "filler": "GRAPHITE",
+     "brand": "IGP"
     },
     "confidence": {
      "gasket_type": 1.0,
      "material_grade": 1.0,
      "nominal_size_in": 1.0,
-     "pressure_class": 1.0
+     "pressure_class": 1.0,
+     "filler": 1.0,
+     "brand": 0.9
+    },
+    "method": "llm"
+   },
+   "b": {
+    "record_id": "R00023",
+    "cpse": "GAIL",
+    "source_code": "G/001372",
+    "description": "GASKET,SS304,SPIRAL WOUND,4 IN,FLX/SW/304/4",
+    "uom": "EACH",
+    "category": "gasket",
+    "attributes": {
+     "gasket_type": "SPIRAL_WOUND",
+     "material_grade": "SS304",
+     "nominal_size_in": 4.0,
+     "part_number": "FLX/SW/304/4"
+    },
+    "confidence": {
+     "gasket_type": 1.0,
+     "material_grade": 1.0,
+     "nominal_size_in": 1.0,
+     "part_number": 0.9
+    },
+    "method": "llm"
+   },
+   "final": 0.89,
+   "text_sim": 0.885,
+   "spec_sim": 1.0,
+   "proc_sim": 0.698,
+   "matched_fields": [
+    "gasket_type",
+    "material_grade",
+    "nominal_size_in"
+   ],
+   "ignored_fields": [],
+   "review_reason": "could not verify pressure_class - not extracted from both records"
+  },
+  {
+   "a": {
+    "record_id": "R00022",
+    "cpse": "ONGC",
+    "source_code": "5001164",
+    "description": "GASKET 4 IN SS304 SPIRAL WOUND 150# GRAPHITE FILLER IGP",
+    "uom": "PCS",
+    "category": "gasket",
+    "attributes": {
+     "gasket_type": "SPIRAL_WOUND",
+     "material_grade": "SS304",
+     "nominal_size_in": 4.0,
+     "pressure_class": "150#",
+     "filler": "GRAPHITE",
+     "brand": "IGP"
+    },
+    "confidence": {
+     "gasket_type": 1.0,
+     "material_grade": 1.0,
+     "nominal_size_in": 1.0,
+     "pressure_class": 1.0,
+     "filler": 1.0,
+     "brand": 0.9
     },
     "method": "llm"
    },
@@ -3165,10 +2976,125 @@
     },
     "method": "llm"
    },
-   "final": 0.813,
-   "text_sim": 0.375,
+   "final": 0.89,
+   "text_sim": 0.874,
    "spec_sim": 1.0,
-   "proc_sim": 0.7,
+   "proc_sim": 0.85,
+   "matched_fields": [
+    "gasket_type",
+    "material_grade"
+   ],
+   "ignored_fields": [
+    "brand"
+   ],
+   "review_reason": "could not verify nominal_size_in, pressure_class - not extracted from both records"
+  },
+  {
+   "a": {
+    "record_id": "R00023",
+    "cpse": "GAIL",
+    "source_code": "G/001372",
+    "description": "GASKET,SS304,SPIRAL WOUND,4 IN,FLX/SW/304/4",
+    "uom": "EACH",
+    "category": "gasket",
+    "attributes": {
+     "gasket_type": "SPIRAL_WOUND",
+     "material_grade": "SS304",
+     "nominal_size_in": 4.0,
+     "part_number": "FLX/SW/304/4"
+    },
+    "confidence": {
+     "gasket_type": 1.0,
+     "material_grade": 1.0,
+     "nominal_size_in": 1.0,
+     "part_number": 0.9
+    },
+    "method": "llm"
+   },
+   "b": {
+    "record_id": "R00024",
+    "cpse": "IOCL",
+    "source_code": "MAT-01276",
+    "description": "GASKET, SPIRAL WOUND, SS304, FLEXITALLIC, SW-034-4-150",
+    "uom": "NO",
+    "category": "gasket",
+    "attributes": {
+     "gasket_type": "SPIRAL_WOUND",
+     "material_grade": "SS304",
+     "nominal_size_in": 4.0,
+     "pressure_class": "150#",
+     "brand": "FLEXITALLIC",
+     "part_number": "SW-034-4-150"
+    },
+    "confidence": {
+     "gasket_type": 1.0,
+     "material_grade": 1.0,
+     "nominal_size_in": 0.8,
+     "pressure_class": 0.8,
+     "brand": 1.0,
+     "part_number": 1.0
+    },
+    "method": "llm"
+   },
+   "final": 0.89,
+   "text_sim": 0.957,
+   "spec_sim": 1.0,
+   "proc_sim": 0.784,
+   "matched_fields": [
+    "gasket_type",
+    "material_grade",
+    "nominal_size_in"
+   ],
+   "ignored_fields": [
+    "part_number"
+   ],
+   "review_reason": "could not verify pressure_class - not extracted from both records"
+  },
+  {
+   "a": {
+    "record_id": "R00023",
+    "cpse": "GAIL",
+    "source_code": "G/001372",
+    "description": "GASKET,SS304,SPIRAL WOUND,4 IN,FLX/SW/304/4",
+    "uom": "EACH",
+    "category": "gasket",
+    "attributes": {
+     "gasket_type": "SPIRAL_WOUND",
+     "material_grade": "SS304",
+     "nominal_size_in": 4.0,
+     "part_number": "FLX/SW/304/4"
+    },
+    "confidence": {
+     "gasket_type": 1.0,
+     "material_grade": 1.0,
+     "nominal_size_in": 1.0,
+     "part_number": 0.9
+    },
+    "method": "llm"
+   },
+   "b": {
+    "record_id": "R00025",
+    "cpse": "ONGC",
+    "source_code": "5001169",
+    "description": "GASKET SPIRAL WUOND SS304 IGP",
+    "uom": "EA",
+    "category": "gasket",
+    "attributes": {
+     "gasket_type": "SPIRAL_WOUND",
+     "material_grade": "SS304",
+     "brand": "IGP"
+    },
+    "confidence": {
+     "gasket_type": 0.95,
+     "material_grade": 1.0,
+     "brand": 0.9
+    },
+    "method": "llm"
+   },
+   "final": 0.89,
+   "text_sim": 0.859,
+   "spec_sim": 1.0,
+   "proc_sim": 0.698,
    "matched_fields": [
     "gasket_type",
     "material_grade"
@@ -3178,57 +3104,409 @@
   },
   {
    "a": {
-    "record_id": "R00080",
-    "cpse": "IOCL",
-    "source_code": "MAT-01557",
-    "description": "mechanical seal - cartridge - single - flowserve",
-    "uom": "NOS",
-    "category": "rotating",
+    "record_id": "R00023",
+    "cpse": "GAIL",
+    "source_code": "G/001372",
+    "description": "GASKET,SS304,SPIRAL WOUND,4 IN,FLX/SW/304/4",
+    "uom": "EACH",
+    "category": "gasket",
     "attributes": {
-     "component_type": "MECHANICAL_SEAL",
-     "arrangement": "CARTRIDGE_SINGLE",
-     "brand": "FLOWSERVE"
+     "gasket_type": "SPIRAL_WOUND",
+     "material_grade": "SS304",
+     "nominal_size_in": 4.0,
+     "part_number": "FLX/SW/304/4"
     },
     "confidence": {
-     "component_type": 1.0,
-     "arrangement": 0.95,
-     "brand": 1.0
+     "gasket_type": 1.0,
+     "material_grade": 1.0,
+     "nominal_size_in": 1.0,
+     "part_number": 0.9
     },
     "method": "llm"
    },
    "b": {
-    "record_id": "R00081",
-    "cpse": "ONGC",
-    "source_code": "5001572",
-    "description": "M/Seal - Ctg - 45 Mm Shaft - Single - Flowserve",
-    "uom": "PC",
-    "category": "rotating",
+    "record_id": "R00026",
+    "cpse": "GAIL",
+    "source_code": "G/001398",
+    "description": "GASKET SPL WOUND SS304 150# 4 IN GRAPHITE FILL FLEXITALLIC",
+    "uom": "EACH",
+    "category": "gasket",
     "attributes": {
-     "component_type": "MECHANICAL_SEAL",
-     "arrangement": "CARTRIDGE_SINGLE",
-     "shaft_dia_mm": 45.0,
-     "brand": "FLOWSERVE"
+     "gasket_type": "SPIRAL_WOUND",
+     "material_grade": "SS304",
+     "nominal_size_in": 4.0,
+     "pressure_class": "150#",
+     "filler": "GRAPHITE",
+     "brand": "FLEXITALLIC"
     },
     "confidence": {
-     "component_type": 1.0,
-     "arrangement": 0.9,
-     "shaft_dia_mm": 1.0,
+     "gasket_type": 1.0,
+     "material_grade": 1.0,
+     "nominal_size_in": 1.0,
+     "pressure_class": 1.0,
+     "filler": 1.0,
      "brand": 1.0
     },
     "method": "llm"
    },
-   "final": 0.814,
-   "text_sim": 0.3,
+   "final": 0.89,
+   "text_sim": 0.852,
    "spec_sim": 1.0,
-   "proc_sim": 0.767,
+   "proc_sim": 0.632,
    "matched_fields": [
-    "component_type",
-    "arrangement"
+    "gasket_type",
+    "material_grade",
+    "nominal_size_in"
+   ],
+   "ignored_fields": [],
+   "review_reason": "could not verify pressure_class - not extracted from both records"
+  },
+  {
+   "a": {
+    "record_id": "R00023",
+    "cpse": "GAIL",
+    "source_code": "G/001372",
+    "description": "GASKET,SS304,SPIRAL WOUND,4 IN,FLX/SW/304/4",
+    "uom": "EACH",
+    "category": "gasket",
+    "attributes": {
+     "gasket_type": "SPIRAL_WOUND",
+     "material_grade": "SS304",
+     "nominal_size_in": 4.0,
+     "part_number": "FLX/SW/304/4"
+    },
+    "confidence": {
+     "gasket_type": 1.0,
+     "material_grade": 1.0,
+     "nominal_size_in": 1.0,
+     "part_number": 0.9
+    },
+    "method": "llm"
+   },
+   "b": {
+    "record_id": "R00027",
+    "cpse": "IOCL",
+    "source_code": "MAT-01307",
+    "description": "GASKET SS304 SW 4 IN 150# GR FILLR FLEXITALLIC",
+    "uom": "EA",
+    "category": "gasket",
+    "attributes": {
+     "gasket_type": "SPIRAL_WOUND",
+     "material_grade": "SS304",
+     "nominal_size_in": 4.0,
+     "pressure_class": "150#",
+     "filler": "GR",
+     "brand": "FLEXITALLIC"
+    },
+    "confidence": {
+     "gasket_type": 0.95,
+     "material_grade": 0.98,
+     "nominal_size_in": 0.98,
+     "pressure_class": 0.98,
+     "filler": 0.9,
+     "brand": 0.98
+    },
+    "method": "llm"
+   },
+   "final": 0.89,
+   "text_sim": 0.847,
+   "spec_sim": 1.0,
+   "proc_sim": 0.95,
+   "matched_fields": [
+    "gasket_type",
+    "material_grade",
+    "nominal_size_in"
+   ],
+   "ignored_fields": [],
+   "review_reason": "could not verify pressure_class - not extracted from both records"
+  },
+  {
+   "a": {
+    "record_id": "R00023",
+    "cpse": "GAIL",
+    "source_code": "G/001372",
+    "description": "GASKET,SS304,SPIRAL WOUND,4 IN,FLX/SW/304/4",
+    "uom": "EACH",
+    "category": "gasket",
+    "attributes": {
+     "gasket_type": "SPIRAL_WOUND",
+     "material_grade": "SS304",
+     "nominal_size_in": 4.0,
+     "part_number": "FLX/SW/304/4"
+    },
+    "confidence": {
+     "gasket_type": 1.0,
+     "material_grade": 1.0,
+     "nominal_size_in": 1.0,
+     "part_number": 0.9
+    },
+    "method": "llm"
+   },
+   "b": {
+    "record_id": "R00028",
+    "cpse": "ONGC",
+    "source_code": "5001189",
+    "description": "Gasket, Spiralwound, Ss304, Flexitallic",
+    "uom": "NOS",
+    "category": "gasket",
+    "attributes": {
+     "gasket_type": "SPIRAL_WOUND",
+     "material_grade": "SS304",
+     "brand": "FLEXITALLIC"
+    },
+    "confidence": {
+     "gasket_type": 1.0,
+     "material_grade": 1.0,
+     "brand": 1.0
+    },
+    "method": "llm"
+   },
+   "final": 0.89,
+   "text_sim": 0.904,
+   "spec_sim": 1.0,
+   "proc_sim": 0.675,
+   "matched_fields": [
+    "gasket_type",
+    "material_grade"
+   ],
+   "ignored_fields": [],
+   "review_reason": "could not verify nominal_size_in, pressure_class - not extracted from both records"
+  },
+  {
+   "a": {
+    "record_id": "R00023",
+    "cpse": "GAIL",
+    "source_code": "G/001372",
+    "description": "GASKET,SS304,SPIRAL WOUND,4 IN,FLX/SW/304/4",
+    "uom": "EACH",
+    "category": "gasket",
+    "attributes": {
+     "gasket_type": "SPIRAL_WOUND",
+     "material_grade": "SS304",
+     "nominal_size_in": 4.0,
+     "part_number": "FLX/SW/304/4"
+    },
+    "confidence": {
+     "gasket_type": 1.0,
+     "material_grade": 1.0,
+     "nominal_size_in": 1.0,
+     "part_number": 0.9
+    },
+    "method": "llm"
+   },
+   "b": {
+    "record_id": "R00029",
+    "cpse": "GAIL",
+    "source_code": "G/001414",
+    "description": "GASKET SPIRALWOUND 150# 4\" SS304 GRAPHITE FILL IGP FLX/SW/304/4",
+    "uom": "PCS",
+    "category": "gasket",
+    "attributes": {
+     "gasket_type": "SPIRAL_WOUND",
+     "material_grade": "SS304",
+     "nominal_size_in": 4.0,
+     "pressure_class": "150#",
+     "filler": "GRAPHITE",
+     "brand": "IGP",
+     "part_number": "FLX/SW/304/4"
+    },
+    "confidence": {
+     "gasket_type": 1.0,
+     "material_grade": 1.0,
+     "nominal_size_in": 1.0,
+     "pressure_class": 1.0,
+     "filler": 1.0,
+     "brand": 0.9,
+     "part_number": 0.95
+    },
+    "method": "llm"
+   },
+   "final": 0.89,
+   "text_sim": 0.875,
+   "spec_sim": 1.0,
+   "proc_sim": 0.626,
+   "matched_fields": [
+    "gasket_type",
+    "material_grade",
+    "nominal_size_in"
+   ],
+   "ignored_fields": [
+    "part_number"
+   ],
+   "review_reason": "could not verify pressure_class - not extracted from both records"
+  },
+  {
+   "a": {
+    "record_id": "R00023",
+    "cpse": "GAIL",
+    "source_code": "G/001372",
+    "description": "GASKET,SS304,SPIRAL WOUND,4 IN,FLX/SW/304/4",
+    "uom": "EACH",
+    "category": "gasket",
+    "attributes": {
+     "gasket_type": "SPIRAL_WOUND",
+     "material_grade": "SS304",
+     "nominal_size_in": 4.0,
+     "part_number": "FLX/SW/304/4"
+    },
+    "confidence": {
+     "gasket_type": 1.0,
+     "material_grade": 1.0,
+     "nominal_size_in": 1.0,
+     "part_number": 0.9
+    },
+    "method": "llm"
+   },
+   "b": {
+    "record_id": "R00030",
+    "cpse": "IOCL",
+    "source_code": "MAT-01337",
+    "description": "GASKET GR FILLER SS304 4 INCH 150# SPIRALWOUND",
+    "uom": "EA",
+    "category": "gasket",
+    "attributes": {
+     "gasket_type": "SPIRAL_WOUND",
+     "material_grade": "SS304",
+     "nominal_size_in": 4.0,
+     "pressure_class": "150#",
+     "filler": "GR"
+    },
+    "confidence": {
+     "gasket_type": 1.0,
+     "material_grade": 1.0,
+     "nominal_size_in": 1.0,
+     "pressure_class": 1.0,
+     "filler": 0.9
+    },
+    "method": "llm"
+   },
+   "final": 0.89,
+   "text_sim": 0.846,
+   "spec_sim": 1.0,
+   "proc_sim": 0.824,
+   "matched_fields": [
+    "gasket_type",
+    "material_grade",
+    "nominal_size_in"
+   ],
+   "ignored_fields": [],
+   "review_reason": "could not verify pressure_class - not extracted from both records"
+  },
+  {
+   "a": {
+    "record_id": "R00024",
+    "cpse": "IOCL",
+    "source_code": "MAT-01276",
+    "description": "GASKET, SPIRAL WOUND, SS304, FLEXITALLIC, SW-034-4-150",
+    "uom": "NO",
+    "category": "gasket",
+    "attributes": {
+     "gasket_type": "SPIRAL_WOUND",
+     "material_grade": "SS304",
+     "nominal_size_in": 4.0,
+     "pressure_class": "150#",
+     "brand": "FLEXITALLIC",
+     "part_number": "SW-034-4-150"
+    },
+    "confidence": {
+     "gasket_type": 1.0,
+     "material_grade": 1.0,
+     "nominal_size_in": 0.8,
+     "pressure_class": 0.8,
+     "brand": 1.0,
+     "part_number": 1.0
+    },
+    "method": "llm"
+   },
+   "b": {
+    "record_id": "R00025",
+    "cpse": "ONGC",
+    "source_code": "5001169",
+    "description": "GASKET SPIRAL WUOND SS304 IGP",
+    "uom": "EA",
+    "category": "gasket",
+    "attributes": {
+     "gasket_type": "SPIRAL_WOUND",
+     "material_grade": "SS304",
+     "brand": "IGP"
+    },
+    "confidence": {
+     "gasket_type": 0.95,
+     "material_grade": 1.0,
+     "brand": 0.9
+    },
+    "method": "llm"
+   },
+   "final": 0.89,
+   "text_sim": 0.86,
+   "spec_sim": 1.0,
+   "proc_sim": 0.756,
+   "matched_fields": [
+    "gasket_type",
+    "material_grade"
    ],
    "ignored_fields": [
     "brand"
    ],
-   "review_reason": "could not verify shaft_dia_mm - not extracted from both records"
+   "review_reason": "could not verify nominal_size_in, pressure_class - not extracted from both records"
+  },
+  {
+   "a": {
+    "record_id": "R00024",
+    "cpse": "IOCL",
+    "source_code": "MAT-01276",
+    "description": "GASKET, SPIRAL WOUND, SS304, FLEXITALLIC, SW-034-4-150",
+    "uom": "NO",
+    "category": "gasket",
+    "attributes": {
+     "gasket_type": "SPIRAL_WOUND",
+     "material_grade": "SS304",
+     "nominal_size_in": 4.0,
+     "pressure_class": "150#",
+     "brand": "FLEXITALLIC",
+     "part_number": "SW-034-4-150"
+    },
+    "confidence": {
+     "gasket_type": 1.0,
+     "material_grade": 1.0,
+     "nominal_size_in": 0.8,
+     "pressure_class": 0.8,
+     "brand": 1.0,
+     "part_number": 1.0
+    },
+    "method": "llm"
+   },
+   "b": {
+    "record_id": "R00028",
+    "cpse": "ONGC",
+    "source_code": "5001189",
+    "description": "Gasket, Spiralwound, Ss304, Flexitallic",
+    "uom": "NOS",
+    "category": "gasket",
+    "attributes": {
+     "gasket_type": "SPIRAL_WOUND",
+     "material_grade": "SS304",
+     "brand": "FLEXITALLIC"
+    },
+    "confidence": {
+     "gasket_type": 1.0,
+     "material_grade": 1.0,
+     "brand": 1.0
+    },
+    "method": "llm"
+   },
+   "final": 0.89,
+   "text_sim": 0.923,
+   "spec_sim": 1.0,
+   "proc_sim": 0.689,
+   "matched_fields": [
+    "gasket_type",
+    "material_grade"
+   ],
+   "ignored_fields": [
+    "brand"
+   ],
+   "review_reason": "could not verify nominal_size_in, pressure_class - not extracted from both records"
   },
   {
    "a": {
@@ -3275,8 +3553,8 @@
     },
     "method": "llm"
    },
-   "final": 0.819,
-   "text_sim": 0.154,
+   "final": 0.89,
+   "text_sim": 0.761,
    "spec_sim": 1.0,
    "proc_sim": 0.909,
    "matched_fields": [
@@ -3287,6 +3565,364 @@
     "brand"
    ],
    "review_reason": "could not verify nominal_size_in, pressure_class - not extracted from both records"
+  },
+  {
+   "a": {
+    "record_id": "R00025",
+    "cpse": "ONGC",
+    "source_code": "5001169",
+    "description": "GASKET SPIRAL WUOND SS304 IGP",
+    "uom": "EA",
+    "category": "gasket",
+    "attributes": {
+     "gasket_type": "SPIRAL_WOUND",
+     "material_grade": "SS304",
+     "brand": "IGP"
+    },
+    "confidence": {
+     "gasket_type": 0.95,
+     "material_grade": 1.0,
+     "brand": 0.9
+    },
+    "method": "llm"
+   },
+   "b": {
+    "record_id": "R00029",
+    "cpse": "GAIL",
+    "source_code": "G/001414",
+    "description": "GASKET SPIRALWOUND 150# 4\" SS304 GRAPHITE FILL IGP FLX/SW/304/4",
+    "uom": "PCS",
+    "category": "gasket",
+    "attributes": {
+     "gasket_type": "SPIRAL_WOUND",
+     "material_grade": "SS304",
+     "nominal_size_in": 4.0,
+     "pressure_class": "150#",
+     "filler": "GRAPHITE",
+     "brand": "IGP",
+     "part_number": "FLX/SW/304/4"
+    },
+    "confidence": {
+     "gasket_type": 1.0,
+     "material_grade": 1.0,
+     "nominal_size_in": 1.0,
+     "pressure_class": 1.0,
+     "filler": 1.0,
+     "brand": 0.9,
+     "part_number": 0.95
+    },
+    "method": "llm"
+   },
+   "final": 0.89,
+   "text_sim": 0.876,
+   "spec_sim": 1.0,
+   "proc_sim": 0.963,
+   "matched_fields": [
+    "gasket_type",
+    "material_grade"
+   ],
+   "ignored_fields": [
+    "brand"
+   ],
+   "review_reason": "could not verify nominal_size_in, pressure_class - not extracted from both records"
+  },
+  {
+   "a": {
+    "record_id": "R00025",
+    "cpse": "ONGC",
+    "source_code": "5001169",
+    "description": "GASKET SPIRAL WUOND SS304 IGP",
+    "uom": "EA",
+    "category": "gasket",
+    "attributes": {
+     "gasket_type": "SPIRAL_WOUND",
+     "material_grade": "SS304",
+     "brand": "IGP"
+    },
+    "confidence": {
+     "gasket_type": 0.95,
+     "material_grade": 1.0,
+     "brand": 0.9
+    },
+    "method": "llm"
+   },
+   "b": {
+    "record_id": "R00030",
+    "cpse": "IOCL",
+    "source_code": "MAT-01337",
+    "description": "GASKET GR FILLER SS304 4 INCH 150# SPIRALWOUND",
+    "uom": "EA",
+    "category": "gasket",
+    "attributes": {
+     "gasket_type": "SPIRAL_WOUND",
+     "material_grade": "SS304",
+     "nominal_size_in": 4.0,
+     "pressure_class": "150#",
+     "filler": "GR"
+    },
+    "confidence": {
+     "gasket_type": 1.0,
+     "material_grade": 1.0,
+     "nominal_size_in": 1.0,
+     "pressure_class": 1.0,
+     "filler": 0.9
+    },
+    "method": "llm"
+   },
+   "final": 0.89,
+   "text_sim": 0.856,
+   "spec_sim": 1.0,
+   "proc_sim": 0.733,
+   "matched_fields": [
+    "gasket_type",
+    "material_grade"
+   ],
+   "ignored_fields": [],
+   "review_reason": "could not verify nominal_size_in, pressure_class - not extracted from both records"
+  },
+  {
+   "a": {
+    "record_id": "R00028",
+    "cpse": "ONGC",
+    "source_code": "5001189",
+    "description": "Gasket, Spiralwound, Ss304, Flexitallic",
+    "uom": "NOS",
+    "category": "gasket",
+    "attributes": {
+     "gasket_type": "SPIRAL_WOUND",
+     "material_grade": "SS304",
+     "brand": "FLEXITALLIC"
+    },
+    "confidence": {
+     "gasket_type": 1.0,
+     "material_grade": 1.0,
+     "brand": 1.0
+    },
+    "method": "llm"
+   },
+   "b": {
+    "record_id": "R00029",
+    "cpse": "GAIL",
+    "source_code": "G/001414",
+    "description": "GASKET SPIRALWOUND 150# 4\" SS304 GRAPHITE FILL IGP FLX/SW/304/4",
+    "uom": "PCS",
+    "category": "gasket",
+    "attributes": {
+     "gasket_type": "SPIRAL_WOUND",
+     "material_grade": "SS304",
+     "nominal_size_in": 4.0,
+     "pressure_class": "150#",
+     "filler": "GRAPHITE",
+     "brand": "IGP",
+     "part_number": "FLX/SW/304/4"
+    },
+    "confidence": {
+     "gasket_type": 1.0,
+     "material_grade": 1.0,
+     "nominal_size_in": 1.0,
+     "pressure_class": 1.0,
+     "filler": 1.0,
+     "brand": 0.9,
+     "part_number": 0.95
+    },
+    "method": "llm"
+   },
+   "final": 0.89,
+   "text_sim": 0.856,
+   "spec_sim": 1.0,
+   "proc_sim": 0.741,
+   "matched_fields": [
+    "gasket_type",
+    "material_grade"
+   ],
+   "ignored_fields": [
+    "brand"
+   ],
+   "review_reason": "could not verify nominal_size_in, pressure_class - not extracted from both records"
+  },
+  {
+   "a": {
+    "record_id": "R00031",
+    "cpse": "GAIL",
+    "source_code": "G/001424",
+    "description": "Pipe Seamless Carbon Steel Astm A106 Gr B 4 In Sch 40 Ismt",
+    "uom": "M",
+    "category": "pipe",
+    "attributes": {
+     "construction": "SEAMLESS",
+     "material_grade": "CARBON_STEEL",
+     "standard": "ASTM A106 GR B",
+     "nominal_size_in": 4.0,
+     "schedule": "SCH 40",
+     "brand": "ISMT"
+    },
+    "confidence": {
+     "construction": 1.0,
+     "material_grade": 1.0,
+     "standard": 1.0,
+     "nominal_size_in": 1.0,
+     "schedule": 1.0,
+     "brand": 0.95
+    },
+    "method": "llm"
+   },
+   "b": {
+    "record_id": "R00033",
+    "cpse": "CPCL",
+    "source_code": "100001498",
+    "description": "Pipe - Seamles - Carbon Steel",
+    "uom": "METER",
+    "category": "pipe",
+    "attributes": {
+     "construction": "SEAMLESS",
+     "material_grade": "CARBON_STEEL"
+    },
+    "confidence": {
+     "construction": 0.95,
+     "material_grade": 0.95
+    },
+    "method": "llm"
+   },
+   "final": 0.89,
+   "text_sim": 0.825,
+   "spec_sim": 1.0,
+   "proc_sim": 1.0,
+   "matched_fields": [
+    "construction",
+    "material_grade"
+   ],
+   "ignored_fields": [],
+   "review_reason": "could not verify nominal_size_in, schedule - not extracted from both records"
+  },
+  {
+   "a": {
+    "record_id": "R00031",
+    "cpse": "GAIL",
+    "source_code": "G/001424",
+    "description": "Pipe Seamless Carbon Steel Astm A106 Gr B 4 In Sch 40 Ismt",
+    "uom": "M",
+    "category": "pipe",
+    "attributes": {
+     "construction": "SEAMLESS",
+     "material_grade": "CARBON_STEEL",
+     "standard": "ASTM A106 GR B",
+     "nominal_size_in": 4.0,
+     "schedule": "SCH 40",
+     "brand": "ISMT"
+    },
+    "confidence": {
+     "construction": 1.0,
+     "material_grade": 1.0,
+     "standard": 1.0,
+     "nominal_size_in": 1.0,
+     "schedule": 1.0,
+     "brand": 0.95
+    },
+    "method": "llm"
+   },
+   "b": {
+    "record_id": "R00034",
+    "cpse": "BPCL",
+    "source_code": "BR-01581",
+    "description": "Pipe Seamless Carbon Steel Astm A106 Gr B 4 In Ismt",
+    "uom": "METER",
+    "category": "pipe",
+    "attributes": {
+     "construction": "SEAMLESS",
+     "material_grade": "CARBON_STEEL",
+     "standard": "ASTM A106 GR B",
+     "nominal_size_in": 4.0,
+     "brand": "ISMT"
+    },
+    "confidence": {
+     "construction": 1.0,
+     "material_grade": 1.0,
+     "standard": 1.0,
+     "nominal_size_in": 1.0,
+     "brand": 0.95
+    },
+    "method": "llm"
+   },
+   "final": 0.89,
+   "text_sim": 0.975,
+   "spec_sim": 1.0,
+   "proc_sim": 0.75,
+   "matched_fields": [
+    "construction",
+    "material_grade",
+    "standard",
+    "nominal_size_in"
+   ],
+   "ignored_fields": [
+    "brand"
+   ],
+   "review_reason": "could not verify schedule - not extracted from both records"
+  },
+  {
+   "a": {
+    "record_id": "R00032",
+    "cpse": "ONGC",
+    "source_code": "5001218",
+    "description": "PIPE,SMLS,CARBON STEEL,ASTM A106 GR B,4 INCH,CH-40,ISMT,A106B-4-40",
+    "uom": "MTR",
+    "category": "pipe",
+    "attributes": {
+     "construction": "SEAMLESS",
+     "material_grade": "CARBON_STEEL",
+     "standard": "ASTM A106 GR B",
+     "nominal_size_in": 4.0,
+     "schedule": "SCH 40",
+     "brand": "ISMT",
+     "part_number": "A106B-4-40"
+    },
+    "confidence": {
+     "construction": 1.0,
+     "material_grade": 1.0,
+     "standard": 1.0,
+     "nominal_size_in": 1.0,
+     "schedule": 0.9,
+     "brand": 0.95,
+     "part_number": 0.95
+    },
+    "method": "llm"
+   },
+   "b": {
+    "record_id": "R00034",
+    "cpse": "BPCL",
+    "source_code": "BR-01581",
+    "description": "Pipe Seamless Carbon Steel Astm A106 Gr B 4 In Ismt",
+    "uom": "METER",
+    "category": "pipe",
+    "attributes": {
+     "construction": "SEAMLESS",
+     "material_grade": "CARBON_STEEL",
+     "standard": "ASTM A106 GR B",
+     "nominal_size_in": 4.0,
+     "brand": "ISMT"
+    },
+    "confidence": {
+     "construction": 1.0,
+     "material_grade": 1.0,
+     "standard": 1.0,
+     "nominal_size_in": 1.0,
+     "brand": 0.95
+    },
+    "method": "llm"
+   },
+   "final": 0.89,
+   "text_sim": 0.877,
+   "spec_sim": 1.0,
+   "proc_sim": 0.688,
+   "matched_fields": [
+    "construction",
+    "material_grade",
+    "standard",
+    "nominal_size_in"
+   ],
+   "ignored_fields": [
+    "brand"
+   ],
+   "review_reason": "could not verify schedule - not extracted from both records"
   },
   {
    "a": {
@@ -3331,8 +3967,8 @@
     },
     "method": "llm"
    },
-   "final": 0.82,
-   "text_sim": 0.375,
+   "final": 0.89,
+   "text_sim": 0.884,
    "spec_sim": 1.0,
    "proc_sim": 0.733,
    "matched_fields": [
@@ -3341,6 +3977,490 @@
    ],
    "ignored_fields": [],
    "review_reason": "could not verify nominal_size_in, schedule - not extracted from both records"
+  },
+  {
+   "a": {
+    "record_id": "R00034",
+    "cpse": "BPCL",
+    "source_code": "BR-01581",
+    "description": "Pipe Seamless Carbon Steel Astm A106 Gr B 4 In Ismt",
+    "uom": "METER",
+    "category": "pipe",
+    "attributes": {
+     "construction": "SEAMLESS",
+     "material_grade": "CARBON_STEEL",
+     "standard": "ASTM A106 GR B",
+     "nominal_size_in": 4.0,
+     "brand": "ISMT"
+    },
+    "confidence": {
+     "construction": 1.0,
+     "material_grade": 1.0,
+     "standard": 1.0,
+     "nominal_size_in": 1.0,
+     "brand": 0.95
+    },
+    "method": "llm"
+   },
+   "b": {
+    "record_id": "R00035",
+    "cpse": "IOCL",
+    "source_code": "MAT-01366",
+    "description": "Pipe, Sml, Carb Stl, Astm A106 Gr B, 4 In, Sch 40, Msl, Jsl/A106/4",
+    "uom": "M",
+    "category": "pipe",
+    "attributes": {
+     "construction": "SEAMLESS",
+     "material_grade": "CARBON_STEEL",
+     "standard": "ASTM A106 GR B",
+     "nominal_size_in": 4.0,
+     "schedule": "SCH 40",
+     "brand": "MSL",
+     "part_number": "JSL/A106/4"
+    },
+    "confidence": {
+     "construction": 0.9,
+     "material_grade": 0.95,
+     "standard": 1.0,
+     "nominal_size_in": 1.0,
+     "schedule": 1.0,
+     "brand": 0.8,
+     "part_number": 0.85
+    },
+    "method": "llm"
+   },
+   "final": 0.89,
+   "text_sim": 0.788,
+   "spec_sim": 1.0,
+   "proc_sim": 0.633,
+   "matched_fields": [
+    "construction",
+    "material_grade",
+    "standard",
+    "nominal_size_in"
+   ],
+   "ignored_fields": [
+    "brand"
+   ],
+   "review_reason": "could not verify schedule - not extracted from both records"
+  },
+  {
+   "a": {
+    "record_id": "R00042",
+    "cpse": "CPCL",
+    "source_code": "100001507",
+    "description": "VALVE - GATE - 6 INCH - FLANGED - CAST STEEL BODY - 150# - API 600 - AUDCO",
+    "uom": "PCS",
+    "category": "valve",
+    "attributes": {
+     "valve_type": "GATE",
+     "nominal_size_in": 6.0,
+     "end_connection": "FLANGED",
+     "body_material": "CAST_STEEL",
+     "pressure_class": "150#",
+     "standard": "API 600",
+     "brand": "AUDCO"
+    },
+    "confidence": {
+     "valve_type": 1.0,
+     "nominal_size_in": 1.0,
+     "end_connection": 1.0,
+     "body_material": 1.0,
+     "pressure_class": 1.0,
+     "standard": 1.0,
+     "brand": 1.0
+    },
+    "method": "llm"
+   },
+   "b": {
+    "record_id": "R00045",
+    "cpse": "GAIL",
+    "source_code": "G/001520",
+    "description": "VALVE, 150#, 6 IN, GATE, AUDCO",
+    "uom": "EACH",
+    "category": "valve",
+    "attributes": {
+     "valve_type": "GATE",
+     "nominal_size_in": 6.0,
+     "pressure_class": "150#",
+     "brand": "AUDCO"
+    },
+    "confidence": {
+     "valve_type": 1.0,
+     "nominal_size_in": 1.0,
+     "pressure_class": 1.0,
+     "brand": 1.0
+    },
+    "method": "llm"
+   },
+   "final": 0.89,
+   "text_sim": 0.87,
+   "spec_sim": 1.0,
+   "proc_sim": 0.606,
+   "matched_fields": [
+    "valve_type",
+    "nominal_size_in",
+    "pressure_class"
+   ],
+   "ignored_fields": [
+    "brand"
+   ],
+   "review_reason": "could not verify body_material - not extracted from both records"
+  },
+  {
+   "a": {
+    "record_id": "R00043",
+    "cpse": "IOCL",
+    "source_code": "MAT-01397",
+    "description": "VALVE GATE 6IN 150# C.S. BODY FLANGED BDK AUD/GT/6/150",
+    "uom": "PCS",
+    "category": "valve",
+    "attributes": {
+     "valve_type": "GATE",
+     "nominal_size_in": 6.0,
+     "pressure_class": "150#",
+     "body_material": "CARBON_STEEL",
+     "end_connection": "FLANGED",
+     "brand": "BDK",
+     "part_number": "AUD/GT/6/150"
+    },
+    "confidence": {
+     "valve_type": 1.0,
+     "nominal_size_in": 1.0,
+     "pressure_class": 1.0,
+     "body_material": 0.95,
+     "end_connection": 1.0,
+     "brand": 0.95,
+     "part_number": 0.95
+    },
+    "method": "llm"
+   },
+   "b": {
+    "record_id": "R00045",
+    "cpse": "GAIL",
+    "source_code": "G/001520",
+    "description": "VALVE, 150#, 6 IN, GATE, AUDCO",
+    "uom": "EACH",
+    "category": "valve",
+    "attributes": {
+     "valve_type": "GATE",
+     "nominal_size_in": 6.0,
+     "pressure_class": "150#",
+     "brand": "AUDCO"
+    },
+    "confidence": {
+     "valve_type": 1.0,
+     "nominal_size_in": 1.0,
+     "pressure_class": 1.0,
+     "brand": 1.0
+    },
+    "method": "llm"
+   },
+   "final": 0.89,
+   "text_sim": 0.868,
+   "spec_sim": 1.0,
+   "proc_sim": 0.764,
+   "matched_fields": [
+    "valve_type",
+    "nominal_size_in",
+    "pressure_class"
+   ],
+   "ignored_fields": [
+    "brand"
+   ],
+   "review_reason": "could not verify body_material - not extracted from both records"
+  },
+  {
+   "a": {
+    "record_id": "R00045",
+    "cpse": "GAIL",
+    "source_code": "G/001520",
+    "description": "VALVE, 150#, 6 IN, GATE, AUDCO",
+    "uom": "EACH",
+    "category": "valve",
+    "attributes": {
+     "valve_type": "GATE",
+     "nominal_size_in": 6.0,
+     "pressure_class": "150#",
+     "brand": "AUDCO"
+    },
+    "confidence": {
+     "valve_type": 1.0,
+     "nominal_size_in": 1.0,
+     "pressure_class": 1.0,
+     "brand": 1.0
+    },
+    "method": "llm"
+   },
+   "b": {
+    "record_id": "R00046",
+    "cpse": "ONGC",
+    "source_code": "5001307",
+    "description": "VALVE 150# 6 IN GATE GV-6-150-CS",
+    "uom": "PCS",
+    "category": "valve",
+    "attributes": {
+     "valve_type": "GATE",
+     "nominal_size_in": 6.0,
+     "pressure_class": "150#",
+     "body_material": "CARBON_STEEL",
+     "part_number": "GV-6-150-CS"
+    },
+    "confidence": {
+     "valve_type": 1.0,
+     "nominal_size_in": 1.0,
+     "pressure_class": 1.0,
+     "body_material": 0.8,
+     "part_number": 0.9
+    },
+    "method": "llm"
+   },
+   "final": 0.89,
+   "text_sim": 0.894,
+   "spec_sim": 1.0,
+   "proc_sim": 0.833,
+   "matched_fields": [
+    "valve_type",
+    "nominal_size_in",
+    "pressure_class"
+   ],
+   "ignored_fields": [],
+   "review_reason": "could not verify body_material - not extracted from both records"
+  },
+  {
+   "a": {
+    "record_id": "R00045",
+    "cpse": "GAIL",
+    "source_code": "G/001520",
+    "description": "VALVE, 150#, 6 IN, GATE, AUDCO",
+    "uom": "EACH",
+    "category": "valve",
+    "attributes": {
+     "valve_type": "GATE",
+     "nominal_size_in": 6.0,
+     "pressure_class": "150#",
+     "brand": "AUDCO"
+    },
+    "confidence": {
+     "valve_type": 1.0,
+     "nominal_size_in": 1.0,
+     "pressure_class": 1.0,
+     "brand": 1.0
+    },
+    "method": "llm"
+   },
+   "b": {
+    "record_id": "R00047",
+    "cpse": "CPCL",
+    "source_code": "100001541",
+    "description": "VALVE GATE 6 IN 150# CS BODY",
+    "uom": "PCS",
+    "category": "valve",
+    "attributes": {
+     "valve_type": "GATE",
+     "nominal_size_in": 6.0,
+     "pressure_class": "150#",
+     "body_material": "CARBON_STEEL"
+    },
+    "confidence": {
+     "valve_type": 1.0,
+     "nominal_size_in": 1.0,
+     "pressure_class": 1.0,
+     "body_material": 0.95
+    },
+    "method": "llm"
+   },
+   "final": 0.89,
+   "text_sim": 0.87,
+   "spec_sim": 1.0,
+   "proc_sim": 0.597,
+   "matched_fields": [
+    "valve_type",
+    "nominal_size_in",
+    "pressure_class"
+   ],
+   "ignored_fields": [],
+   "review_reason": "could not verify body_material - not extracted from both records"
+  },
+  {
+   "a": {
+    "record_id": "R00045",
+    "cpse": "GAIL",
+    "source_code": "G/001520",
+    "description": "VALVE, 150#, 6 IN, GATE, AUDCO",
+    "uom": "EACH",
+    "category": "valve",
+    "attributes": {
+     "valve_type": "GATE",
+     "nominal_size_in": 6.0,
+     "pressure_class": "150#",
+     "brand": "AUDCO"
+    },
+    "confidence": {
+     "valve_type": 1.0,
+     "nominal_size_in": 1.0,
+     "pressure_class": 1.0,
+     "brand": 1.0
+    },
+    "method": "llm"
+   },
+   "b": {
+    "record_id": "R00049",
+    "cpse": "BPCL",
+    "source_code": "BR-01645",
+    "description": "VALVE - 150# - 6 IN - GATE - C.S. BODY - FLANGED - AUDCO - GV-6-150-CS",
+    "uom": "EACH",
+    "category": "valve",
+    "attributes": {
+     "valve_type": "GATE",
+     "nominal_size_in": 6.0,
+     "pressure_class": "150#",
+     "body_material": "CARBON_STEEL",
+     "end_connection": "FLANGED",
+     "brand": "AUDCO",
+     "part_number": "GV-6-150-CS"
+    },
+    "confidence": {
+     "valve_type": 1.0,
+     "nominal_size_in": 1.0,
+     "pressure_class": 1.0,
+     "body_material": 0.95,
+     "end_connection": 1.0,
+     "brand": 1.0,
+     "part_number": 1.0
+    },
+    "method": "llm"
+   },
+   "final": 0.89,
+   "text_sim": 0.903,
+   "spec_sim": 1.0,
+   "proc_sim": 0.694,
+   "matched_fields": [
+    "valve_type",
+    "nominal_size_in",
+    "pressure_class"
+   ],
+   "ignored_fields": [
+    "brand"
+   ],
+   "review_reason": "could not verify body_material - not extracted from both records"
+  },
+  {
+   "a": {
+    "record_id": "R00053",
+    "cpse": "GAIL",
+    "source_code": "G/001560",
+    "description": "VALVE BALL 2 IN 800# SS316 BODY SCREWED END AUDCO",
+    "uom": "PC",
+    "category": "valve",
+    "attributes": {
+     "valve_type": "BALL",
+     "nominal_size_in": 2.0,
+     "pressure_class": "800#",
+     "body_material": "SS316",
+     "end_connection": "SCREWED",
+     "brand": "AUDCO"
+    },
+    "confidence": {
+     "valve_type": 1.0,
+     "nominal_size_in": 1.0,
+     "pressure_class": 1.0,
+     "body_material": 1.0,
+     "end_connection": 1.0,
+     "brand": 1.0
+    },
+    "method": "llm"
+   },
+   "b": {
+    "record_id": "R00056",
+    "cpse": "ONGC",
+    "source_code": "5001362",
+    "description": "Valve Ball 2 In Audco",
+    "uom": "EA",
+    "category": "valve",
+    "attributes": {
+     "valve_type": "BALL",
+     "nominal_size_in": 2.0,
+     "brand": "AUDCO"
+    },
+    "confidence": {
+     "valve_type": 1.0,
+     "nominal_size_in": 1.0,
+     "brand": 1.0
+    },
+    "method": "llm"
+   },
+   "final": 0.89,
+   "text_sim": 0.888,
+   "spec_sim": 1.0,
+   "proc_sim": 0.859,
+   "matched_fields": [
+    "valve_type",
+    "nominal_size_in"
+   ],
+   "ignored_fields": [
+    "brand"
+   ],
+   "review_reason": "could not verify pressure_class, body_material - not extracted from both records"
+  },
+  {
+   "a": {
+    "record_id": "R00053",
+    "cpse": "GAIL",
+    "source_code": "G/001560",
+    "description": "VALVE BALL 2 IN 800# SS316 BODY SCREWED END AUDCO",
+    "uom": "PC",
+    "category": "valve",
+    "attributes": {
+     "valve_type": "BALL",
+     "nominal_size_in": 2.0,
+     "pressure_class": "800#",
+     "body_material": "SS316",
+     "end_connection": "SCREWED",
+     "brand": "AUDCO"
+    },
+    "confidence": {
+     "valve_type": 1.0,
+     "nominal_size_in": 1.0,
+     "pressure_class": 1.0,
+     "body_material": 1.0,
+     "end_connection": 1.0,
+     "brand": 1.0
+    },
+    "method": "llm"
+   },
+   "b": {
+    "record_id": "R00057",
+    "cpse": "BPCL",
+    "source_code": "BR-01672",
+    "description": "VAVLE BALL 2 IN VRG/BL/2/800",
+    "uom": "EA",
+    "category": "valve",
+    "attributes": {
+     "valve_type": "BALL",
+     "nominal_size_in": 2.0,
+     "pressure_class": "800#",
+     "part_number": "VRG/BL/2/800"
+    },
+    "confidence": {
+     "valve_type": 1.0,
+     "nominal_size_in": 1.0,
+     "pressure_class": 0.8,
+     "part_number": 0.95
+    },
+    "method": "llm"
+   },
+   "final": 0.89,
+   "text_sim": 0.745,
+   "spec_sim": 1.0,
+   "proc_sim": 0.75,
+   "matched_fields": [
+    "valve_type",
+    "nominal_size_in",
+    "pressure_class"
+   ],
+   "ignored_fields": [],
+   "review_reason": "could not verify body_material - not extracted from both records"
   },
   {
    "a": {
@@ -3393,8 +4513,8 @@
     },
     "method": "llm"
    },
-   "final": 0.823,
-   "text_sim": 0.222,
+   "final": 0.89,
+   "text_sim": 0.743,
    "spec_sim": 1.0,
    "proc_sim": 0.692,
    "matched_fields": [
@@ -3406,625 +4526,6 @@
     "part_number"
    ],
    "review_reason": "could not verify body_material - not extracted from both records"
-  },
-  {
-   "a": {
-    "record_id": "R00045",
-    "cpse": "GAIL",
-    "source_code": "G/001520",
-    "description": "VALVE, 150#, 6 IN, GATE, AUDCO",
-    "uom": "EACH",
-    "category": "valve",
-    "attributes": {
-     "valve_type": "GATE",
-     "nominal_size_in": 6.0,
-     "pressure_class": "150#",
-     "brand": "AUDCO"
-    },
-    "confidence": {
-     "valve_type": 1.0,
-     "nominal_size_in": 1.0,
-     "pressure_class": 1.0,
-     "brand": 1.0
-    },
-    "method": "llm"
-   },
-   "b": {
-    "record_id": "R00048",
-    "cpse": "IOCL",
-    "source_code": "MAT-01429",
-    "description": "Valve, 150#, 6 In, Gate, Cs Body, Kirloskar, Gv-6-150-Cs",
-    "uom": "EACH",
-    "category": "valve",
-    "attributes": {
-     "valve_type": "GATE",
-     "nominal_size_in": 6.0,
-     "pressure_class": "150#",
-     "body_material": "CARBON_STEEL",
-     "brand": "KIRLOSKAR",
-     "part_number": "GV-6-150-CS"
-    },
-    "confidence": {
-     "valve_type": 1.0,
-     "nominal_size_in": 1.0,
-     "pressure_class": 1.0,
-     "body_material": 0.95,
-     "brand": 1.0,
-     "part_number": 1.0
-    },
-    "method": "llm"
-   },
-   "final": 0.826,
-   "text_sim": 0.5,
-   "spec_sim": 1.0,
-   "proc_sim": 0.479,
-   "matched_fields": [
-    "valve_type",
-    "nominal_size_in",
-    "pressure_class"
-   ],
-   "ignored_fields": [
-    "brand"
-   ],
-   "review_reason": "could not verify body_material - not extracted from both records"
-  },
-  {
-   "a": {
-    "record_id": "R00031",
-    "cpse": "GAIL",
-    "source_code": "G/001424",
-    "description": "Pipe Seamless Carbon Steel Astm A106 Gr B 4 In Sch 40 Ismt",
-    "uom": "M",
-    "category": "pipe",
-    "attributes": {
-     "construction": "SEAMLESS",
-     "material_grade": "CARBON_STEEL",
-     "standard": "ASTM A106 GR B",
-     "nominal_size_in": 4.0,
-     "schedule": "SCH 40",
-     "brand": "ISMT"
-    },
-    "confidence": {
-     "construction": 1.0,
-     "material_grade": 1.0,
-     "standard": 1.0,
-     "nominal_size_in": 1.0,
-     "schedule": 1.0,
-     "brand": 0.95
-    },
-    "method": "llm"
-   },
-   "b": {
-    "record_id": "R00036",
-    "cpse": "GAIL",
-    "source_code": "G/001437",
-    "description": "PIPE, SEAMLESS, CARBON STEEL, MSL, A106B4--40",
-    "uom": "M",
-    "category": "pipe",
-    "attributes": {
-     "construction": "SEAMLESS",
-     "material_grade": "CARBON_STEEL",
-     "standard": "A106B",
-     "nominal_size_in": 4.0,
-     "schedule": "SCH 40",
-     "brand": "MSL"
-    },
-    "confidence": {
-     "construction": 1.0,
-     "material_grade": 1.0,
-     "standard": 0.9,
-     "nominal_size_in": 0.75,
-     "schedule": 0.75,
-     "brand": 0.9
-    },
-    "method": "llm"
-   },
-   "final": 0.828,
-   "text_sim": 0.333,
-   "spec_sim": 0.856,
-   "proc_sim": 1.0,
-   "matched_fields": [
-    "construction",
-    "material_grade",
-    "nominal_size_in",
-    "schedule"
-   ],
-   "ignored_fields": [
-    "brand"
-   ],
-   "review_reason": null
-  },
-  {
-   "a": {
-    "record_id": "R00066",
-    "cpse": "GAIL",
-    "source_code": "G/001608",
-    "description": "STUD BOLT - FULL THREAD - M20X120 - ASTM A193 B7 - WITH 2 NUTS A194 2H",
-    "uom": "NO",
-    "category": "fastener",
-    "attributes": {
-     "fastener_type": "STUD_BOLT",
-     "head_type": "NONE",
-     "thread": "M20",
-     "length_mm": 120.0,
-     "material_grade": "A193_B7",
-     "standard": "ASTM A193"
-    },
-    "confidence": {
-     "fastener_type": 1.0,
-     "head_type": 0.9,
-     "thread": 1.0,
-     "length_mm": 1.0,
-     "material_grade": 1.0,
-     "standard": 1.0
-    },
-    "method": "llm"
-   },
-   "b": {
-    "record_id": "R00068",
-    "cpse": "ONGC",
-    "source_code": "5001415",
-    "description": "STUD BOLT,FULL THREAD,M20 X 120,UNBRAKO",
-    "uom": "PCS",
-    "category": "fastener",
-    "attributes": {
-     "fastener_type": "STUD_BOLT",
-     "head_type": "NONE",
-     "thread": "M20",
-     "length_mm": 120.0,
-     "brand": "UNBRAKO"
-    },
-    "confidence": {
-     "fastener_type": 1.0,
-     "head_type": 0.9,
-     "thread": 1.0,
-     "length_mm": 1.0,
-     "brand": 1.0
-    },
-    "method": "llm"
-   },
-   "final": 0.829,
-   "text_sim": 0.235,
-   "spec_sim": 1.0,
-   "proc_sim": 0.433,
-   "matched_fields": [
-    "fastener_type",
-    "head_type",
-    "thread",
-    "length_mm"
-   ],
-   "ignored_fields": [],
-   "review_reason": "could not verify material_grade - not extracted from both records"
-  },
-  {
-   "a": {
-    "record_id": "R00041",
-    "cpse": "ONGC",
-    "source_code": "5001275",
-    "description": "VALVE GATE 6 IN 150# C.S. BODY FLANGED API 600",
-    "uom": "EACH",
-    "category": "valve",
-    "attributes": {
-     "valve_type": "GATE",
-     "nominal_size_in": 6.0,
-     "pressure_class": "150#",
-     "body_material": "CARBON_STEEL",
-     "end_connection": "FLANGED",
-     "standard": "API 600"
-    },
-    "confidence": {
-     "valve_type": 1.0,
-     "nominal_size_in": 1.0,
-     "pressure_class": 1.0,
-     "body_material": 0.95,
-     "end_connection": 1.0,
-     "standard": 1.0
-    },
-    "method": "llm"
-   },
-   "b": {
-    "record_id": "R00045",
-    "cpse": "GAIL",
-    "source_code": "G/001520",
-    "description": "VALVE, 150#, 6 IN, GATE, AUDCO",
-    "uom": "EACH",
-    "category": "valve",
-    "attributes": {
-     "valve_type": "GATE",
-     "nominal_size_in": 6.0,
-     "pressure_class": "150#",
-     "brand": "AUDCO"
-    },
-    "confidence": {
-     "valve_type": 1.0,
-     "nominal_size_in": 1.0,
-     "pressure_class": 1.0,
-     "brand": 1.0
-    },
-    "method": "llm"
-   },
-   "final": 0.83,
-   "text_sim": 0.417,
-   "spec_sim": 1.0,
-   "proc_sim": 0.567,
-   "matched_fields": [
-    "valve_type",
-    "nominal_size_in",
-    "pressure_class"
-   ],
-   "ignored_fields": [],
-   "review_reason": "could not verify body_material - not extracted from both records"
-  },
-  {
-   "a": {
-    "record_id": "R00029",
-    "cpse": "GAIL",
-    "source_code": "G/001414",
-    "description": "GASKET SPIRALWOUND 150# 4\" SS304 GRAPHITE FILL IGP FLX/SW/304/4",
-    "uom": "PCS",
-    "category": "gasket",
-    "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS304",
-     "nominal_size_in": 4.0,
-     "pressure_class": "150#",
-     "filler": "GRAPHITE",
-     "brand": "IGP",
-     "part_number": "FLX/SW/304/4"
-    },
-    "confidence": {
-     "gasket_type": 1.0,
-     "material_grade": 1.0,
-     "nominal_size_in": 1.0,
-     "pressure_class": 1.0,
-     "filler": 1.0,
-     "brand": 0.9,
-     "part_number": 0.95
-    },
-    "method": "llm"
-   },
-   "b": {
-    "record_id": "R00030",
-    "cpse": "IOCL",
-    "source_code": "MAT-01337",
-    "description": "GASKET GR FILLER SS304 4 INCH 150# SPIRALWOUND",
-    "uom": "EA",
-    "category": "gasket",
-    "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS304",
-     "nominal_size_in": 4.0,
-     "pressure_class": "150#",
-     "filler": "GR"
-    },
-    "confidence": {
-     "gasket_type": 1.0,
-     "material_grade": 1.0,
-     "nominal_size_in": 1.0,
-     "pressure_class": 1.0,
-     "filler": 0.9
-    },
-    "method": "llm"
-   },
-   "final": 0.832,
-   "text_sim": 0.357,
-   "spec_sim": 0.922,
-   "proc_sim": 0.475,
-   "matched_fields": [
-    "gasket_type",
-    "material_grade",
-    "nominal_size_in",
-    "pressure_class"
-   ],
-   "ignored_fields": [],
-   "review_reason": null
-  },
-  {
-   "a": {
-    "record_id": "R00042",
-    "cpse": "CPCL",
-    "source_code": "100001507",
-    "description": "VALVE - GATE - 6 INCH - FLANGED - CAST STEEL BODY - 150# - API 600 - AUDCO",
-    "uom": "PCS",
-    "category": "valve",
-    "attributes": {
-     "valve_type": "GATE",
-     "nominal_size_in": 6.0,
-     "end_connection": "FLANGED",
-     "body_material": "CAST_STEEL",
-     "pressure_class": "150#",
-     "standard": "API 600",
-     "brand": "AUDCO"
-    },
-    "confidence": {
-     "valve_type": 1.0,
-     "nominal_size_in": 1.0,
-     "end_connection": 1.0,
-     "body_material": 1.0,
-     "pressure_class": 1.0,
-     "standard": 1.0,
-     "brand": 1.0
-    },
-    "method": "llm"
-   },
-   "b": {
-    "record_id": "R00045",
-    "cpse": "GAIL",
-    "source_code": "G/001520",
-    "description": "VALVE, 150#, 6 IN, GATE, AUDCO",
-    "uom": "EACH",
-    "category": "valve",
-    "attributes": {
-     "valve_type": "GATE",
-     "nominal_size_in": 6.0,
-     "pressure_class": "150#",
-     "brand": "AUDCO"
-    },
-    "confidence": {
-     "valve_type": 1.0,
-     "nominal_size_in": 1.0,
-     "pressure_class": 1.0,
-     "brand": 1.0
-    },
-    "method": "llm"
-   },
-   "final": 0.832,
-   "text_sim": 0.385,
-   "spec_sim": 1.0,
-   "proc_sim": 0.606,
-   "matched_fields": [
-    "valve_type",
-    "nominal_size_in",
-    "pressure_class"
-   ],
-   "ignored_fields": [
-    "brand"
-   ],
-   "review_reason": "could not verify body_material - not extracted from both records"
-  },
-  {
-   "a": {
-    "record_id": "R00080",
-    "cpse": "IOCL",
-    "source_code": "MAT-01557",
-    "description": "mechanical seal - cartridge - single - flowserve",
-    "uom": "NOS",
-    "category": "rotating",
-    "attributes": {
-     "component_type": "MECHANICAL_SEAL",
-     "arrangement": "CARTRIDGE_SINGLE",
-     "brand": "FLOWSERVE"
-    },
-    "confidence": {
-     "component_type": 1.0,
-     "arrangement": 0.95,
-     "brand": 1.0
-    },
-    "method": "llm"
-   },
-   "b": {
-    "record_id": "R00086",
-    "cpse": "IOCL",
-    "source_code": "MAT-01597",
-    "description": "MECHANICAL SEAL CARTRIDGE SINGLE 45 MM SHAFT SIC VS CARBON FLOWSERVE MS-45-SIC-VIT",
-    "uom": "EACH",
-    "category": "rotating",
-    "attributes": {
-     "component_type": "MECHANICAL_SEAL",
-     "arrangement": "CARTRIDGE_SINGLE",
-     "shaft_dia_mm": 45.0,
-     "face_materials": "SIC VS CARBON",
-     "brand": "FLOWSERVE",
-     "part_number": "MS-45-SIC-VIT"
-    },
-    "confidence": {
-     "component_type": 1.0,
-     "arrangement": 1.0,
-     "shaft_dia_mm": 1.0,
-     "face_materials": 1.0,
-     "brand": 1.0,
-     "part_number": 1.0
-    },
-    "method": "llm"
-   },
-   "final": 0.832,
-   "text_sim": 0.385,
-   "spec_sim": 1.0,
-   "proc_sim": 0.777,
-   "matched_fields": [
-    "component_type",
-    "arrangement"
-   ],
-   "ignored_fields": [
-    "brand"
-   ],
-   "review_reason": "could not verify shaft_dia_mm - not extracted from both records"
-  },
-  {
-   "a": {
-    "record_id": "R00096",
-    "cpse": "BPCL",
-    "source_code": "BR-01766",
-    "description": "MOTOR,INDUCTION,3 PHASE,5 HP,ABB",
-    "uom": "NO",
-    "category": "electrical",
-    "attributes": {
-     "equipment_type": "MOTOR",
-     "phases": 3.0,
-     "power_hp": 5.0,
-     "brand": "ABB"
-    },
-    "confidence": {
-     "equipment_type": 1.0,
-     "phases": 1.0,
-     "power_hp": 1.0,
-     "brand": 1.0
-    },
-    "method": "llm"
-   },
-   "b": {
-    "record_id": "R00097",
-    "cpse": "CPCL",
-    "source_code": "100001648",
-    "description": "MOTOR INDUCTION 415 V 5 HP 1440 RPM B3 IP55 3PH KIRLOSKAR",
-    "uom": "NO",
-    "category": "electrical",
-    "attributes": {
-     "equipment_type": "MOTOR",
-     "voltage_v": 415.0,
-     "power_hp": 5.0,
-     "speed_rpm": 1440.0,
-     "mounting": "FOOT",
-     "protection_class": "IP55",
-     "phases": 3.0,
-     "brand": "KIRLOSKAR"
-    },
-    "confidence": {
-     "equipment_type": 1.0,
-     "voltage_v": 1.0,
-     "power_hp": 1.0,
-     "speed_rpm": 1.0,
-     "mounting": 0.95,
-     "protection_class": 1.0,
-     "phases": 1.0,
-     "brand": 1.0
-    },
-    "method": "llm"
-   },
-   "final": 0.832,
-   "text_sim": 0.267,
-   "spec_sim": 1.0,
-   "proc_sim": 0.703,
-   "matched_fields": [
-    "equipment_type",
-    "phases",
-    "power_hp"
-   ],
-   "ignored_fields": [
-    "brand"
-   ],
-   "review_reason": "could not verify speed_rpm, voltage_v - not extracted from both records"
-  },
-  {
-   "a": {
-    "record_id": "R00022",
-    "cpse": "ONGC",
-    "source_code": "5001164",
-    "description": "GASKET 4 IN SS304 SPIRAL WOUND 150# GRAPHITE FILLER IGP",
-    "uom": "PCS",
-    "category": "gasket",
-    "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS304",
-     "nominal_size_in": 4.0,
-     "pressure_class": "150#",
-     "filler": "GRAPHITE",
-     "brand": "IGP"
-    },
-    "confidence": {
-     "gasket_type": 1.0,
-     "material_grade": 1.0,
-     "nominal_size_in": 1.0,
-     "pressure_class": 1.0,
-     "filler": 1.0,
-     "brand": 0.9
-    },
-    "method": "llm"
-   },
-   "b": {
-    "record_id": "R00030",
-    "cpse": "IOCL",
-    "source_code": "MAT-01337",
-    "description": "GASKET GR FILLER SS304 4 INCH 150# SPIRALWOUND",
-    "uom": "EA",
-    "category": "gasket",
-    "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS304",
-     "nominal_size_in": 4.0,
-     "pressure_class": "150#",
-     "filler": "GR"
-    },
-    "confidence": {
-     "gasket_type": 1.0,
-     "material_grade": 1.0,
-     "nominal_size_in": 1.0,
-     "pressure_class": 1.0,
-     "filler": 0.9
-    },
-    "method": "llm"
-   },
-   "final": 0.833,
-   "text_sim": 0.385,
-   "spec_sim": 0.922,
-   "proc_sim": 0.467,
-   "matched_fields": [
-    "gasket_type",
-    "material_grade",
-    "nominal_size_in",
-    "pressure_class"
-   ],
-   "ignored_fields": [],
-   "review_reason": null
-  },
-  {
-   "a": {
-    "record_id": "R00023",
-    "cpse": "GAIL",
-    "source_code": "G/001372",
-    "description": "GASKET,SS304,SPIRAL WOUND,4 IN,FLX/SW/304/4",
-    "uom": "EACH",
-    "category": "gasket",
-    "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS304",
-     "nominal_size_in": 4.0,
-     "part_number": "FLX/SW/304/4"
-    },
-    "confidence": {
-     "gasket_type": 1.0,
-     "material_grade": 1.0,
-     "nominal_size_in": 1.0,
-     "part_number": 0.9
-    },
-    "method": "llm"
-   },
-   "b": {
-    "record_id": "R00026",
-    "cpse": "GAIL",
-    "source_code": "G/001398",
-    "description": "GASKET SPL WOUND SS304 150# 4 IN GRAPHITE FILL FLEXITALLIC",
-    "uom": "EACH",
-    "category": "gasket",
-    "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS304",
-     "nominal_size_in": 4.0,
-     "pressure_class": "150#",
-     "filler": "GRAPHITE",
-     "brand": "FLEXITALLIC"
-    },
-    "confidence": {
-     "gasket_type": 1.0,
-     "material_grade": 1.0,
-     "nominal_size_in": 1.0,
-     "pressure_class": 1.0,
-     "filler": 1.0,
-     "brand": 1.0
-    },
-    "method": "llm"
-   },
-   "final": 0.833,
-   "text_sim": 0.357,
-   "spec_sim": 1.0,
-   "proc_sim": 0.632,
-   "matched_fields": [
-    "gasket_type",
-    "material_grade",
-    "nominal_size_in"
-   ],
-   "ignored_fields": [],
-   "review_reason": "could not verify pressure_class - not extracted from both records"
   },
   {
    "a": {
@@ -4077,8 +4578,8 @@
     },
     "method": "llm"
    },
-   "final": 0.834,
-   "text_sim": 0.312,
+   "final": 0.89,
+   "text_sim": 0.787,
    "spec_sim": 1.0,
    "proc_sim": 0.675,
    "matched_fields": [
@@ -4093,6 +4594,31 @@
   },
   {
    "a": {
+    "record_id": "R00058",
+    "cpse": "GAIL",
+    "source_code": "G/001581",
+    "description": "BOT, HEX HD, M12 X 50, SS316, UNBRAKO",
+    "uom": "NOS",
+    "category": "fastener",
+    "attributes": {
+     "fastener_type": "BOLT",
+     "head_type": "HEX",
+     "thread": "M12",
+     "length_mm": 50.0,
+     "material_grade": "SS316",
+     "brand": "UNBRAKO"
+    },
+    "confidence": {
+     "fastener_type": 0.9,
+     "head_type": 1.0,
+     "thread": 1.0,
+     "length_mm": 1.0,
+     "material_grade": 1.0,
+     "brand": 1.0
+    },
+    "method": "llm"
+   },
+   "b": {
     "record_id": "R00061",
     "cpse": "GAIL",
     "source_code": "G/001587",
@@ -4115,35 +4641,10 @@
     },
     "method": "llm"
    },
-   "b": {
-    "record_id": "R00064",
-    "cpse": "GAIL",
-    "source_code": "G/001588",
-    "description": "BOLT, HEX HEAD, M12 X 50, SS316, UBNRAKO",
-    "uom": "PCS",
-    "category": "fastener",
-    "attributes": {
-     "fastener_type": "BOLT",
-     "head_type": "HEX",
-     "thread": "M12",
-     "length_mm": 50.0,
-     "material_grade": "SS316",
-     "brand": "UBNRAKO"
-    },
-    "confidence": {
-     "fastener_type": 1.0,
-     "head_type": 1.0,
-     "thread": 1.0,
-     "length_mm": 1.0,
-     "material_grade": 1.0,
-     "brand": 0.9
-    },
-    "method": "llm"
-   },
-   "final": 0.839,
-   "text_sim": 0.091,
+   "final": 0.89,
+   "text_sim": 0.682,
    "spec_sim": 1.0,
-   "proc_sim": 0.616,
+   "proc_sim": 0.85,
    "matched_fields": [
     "fastener_type",
     "head_type",
@@ -4157,793 +4658,135 @@
   },
   {
    "a": {
-    "record_id": "R00081",
-    "cpse": "ONGC",
-    "source_code": "5001572",
-    "description": "M/Seal - Ctg - 45 Mm Shaft - Single - Flowserve",
-    "uom": "PC",
-    "category": "rotating",
-    "attributes": {
-     "component_type": "MECHANICAL_SEAL",
-     "arrangement": "CARTRIDGE_SINGLE",
-     "shaft_dia_mm": 45.0,
-     "brand": "FLOWSERVE"
-    },
-    "confidence": {
-     "component_type": 1.0,
-     "arrangement": 0.9,
-     "shaft_dia_mm": 1.0,
-     "brand": 1.0
-    },
-    "method": "llm"
-   },
-   "b": {
-    "record_id": "R00085",
-    "cpse": "ONGC",
-    "source_code": "5001615",
-    "description": "Mechanical Seal - Cartridge - Single - 45 Mm Shaft - Sic Vs Carbon",
-    "uom": "PC",
-    "category": "rotating",
-    "attributes": {
-     "component_type": "MECHANICAL_SEAL",
-     "arrangement": "CARTRIDGE_SINGLE",
-     "shaft_dia_mm": 45.0,
-     "face_materials": "SIC VS CARBON"
-    },
-    "confidence": {
-     "component_type": 1.0,
-     "arrangement": 1.0,
-     "shaft_dia_mm": 1.0,
-     "face_materials": 1.0
-    },
-    "method": "llm"
-   },
-   "final": 0.84,
-   "text_sim": 0.385,
-   "spec_sim": 1.0,
-   "proc_sim": 0.65,
-   "matched_fields": [
-    "component_type",
-    "arrangement",
-    "shaft_dia_mm"
-   ],
-   "ignored_fields": [],
-   "review_reason": null
-  },
-  {
-   "a": {
-    "record_id": "R00096",
+    "record_id": "R00059",
     "cpse": "BPCL",
-    "source_code": "BR-01766",
-    "description": "MOTOR,INDUCTION,3 PHASE,5 HP,ABB",
-    "uom": "NO",
-    "category": "electrical",
-    "attributes": {
-     "equipment_type": "MOTOR",
-     "phases": 3.0,
-     "power_hp": 5.0,
-     "brand": "ABB"
-    },
-    "confidence": {
-     "equipment_type": 1.0,
-     "phases": 1.0,
-     "power_hp": 1.0,
-     "brand": 1.0
-    },
-    "method": "llm"
-   },
-   "b": {
-    "record_id": "R00099",
-    "cpse": "GAIL",
-    "source_code": "G/001721",
-    "description": "Motor, Induction, 3-Ph, 5 Hp, 1440 Rpm, Foot Mtd, Ip55, 415 V",
-    "uom": "EA",
-    "category": "electrical",
-    "attributes": {
-     "equipment_type": "MOTOR",
-     "phases": 3.0,
-     "power_hp": 5.0,
-     "speed_rpm": 1440.0,
-     "mounting": "FOOT",
-     "protection_class": "IP55",
-     "voltage_v": 415.0
-    },
-    "confidence": {
-     "equipment_type": 1.0,
-     "phases": 1.0,
-     "power_hp": 1.0,
-     "speed_rpm": 1.0,
-     "mounting": 1.0,
-     "protection_class": 1.0,
-     "voltage_v": 1.0
-    },
-    "method": "llm"
-   },
-   "final": 0.841,
-   "text_sim": 0.333,
-   "spec_sim": 1.0,
-   "proc_sim": 0.697,
-   "matched_fields": [
-    "equipment_type",
-    "phases",
-    "power_hp"
-   ],
-   "ignored_fields": [],
-   "review_reason": "could not verify speed_rpm, voltage_v - not extracted from both records"
-  },
-  {
-   "a": {
-    "record_id": "R00023",
-    "cpse": "GAIL",
-    "source_code": "G/001372",
-    "description": "GASKET,SS304,SPIRAL WOUND,4 IN,FLX/SW/304/4",
-    "uom": "EACH",
-    "category": "gasket",
-    "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS304",
-     "nominal_size_in": 4.0,
-     "part_number": "FLX/SW/304/4"
-    },
-    "confidence": {
-     "gasket_type": 1.0,
-     "material_grade": 1.0,
-     "nominal_size_in": 1.0,
-     "part_number": 0.9
-    },
-    "method": "llm"
-   },
-   "b": {
-    "record_id": "R00029",
-    "cpse": "GAIL",
-    "source_code": "G/001414",
-    "description": "GASKET SPIRALWOUND 150# 4\" SS304 GRAPHITE FILL IGP FLX/SW/304/4",
+    "source_code": "BR-01681",
+    "description": "Bolt,M12X50,Hex Hd,Ss316,Sundram,Tvs/Hx/M12/50",
     "uom": "PCS",
-    "category": "gasket",
+    "category": "fastener",
     "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS304",
-     "nominal_size_in": 4.0,
-     "pressure_class": "150#",
-     "filler": "GRAPHITE",
-     "brand": "IGP",
-     "part_number": "FLX/SW/304/4"
+     "fastener_type": "BOLT",
+     "head_type": "HEX",
+     "thread": "M12",
+     "length_mm": 50.0,
+     "material_grade": "SS316",
+     "brand": "SUNDRAM",
+     "part_number": "TVS/HX/M12/50"
     },
     "confidence": {
-     "gasket_type": 1.0,
+     "fastener_type": 1.0,
+     "head_type": 1.0,
+     "thread": 1.0,
+     "length_mm": 1.0,
      "material_grade": 1.0,
-     "nominal_size_in": 1.0,
-     "pressure_class": 1.0,
-     "filler": 1.0,
-     "brand": 0.9,
-     "part_number": 0.95
-    },
-    "method": "llm"
-   },
-   "final": 0.843,
-   "text_sim": 0.429,
-   "spec_sim": 1.0,
-   "proc_sim": 0.626,
-   "matched_fields": [
-    "gasket_type",
-    "material_grade",
-    "nominal_size_in"
-   ],
-   "ignored_fields": [
-    "part_number"
-   ],
-   "review_reason": "could not verify pressure_class - not extracted from both records"
-  },
-  {
-   "a": {
-    "record_id": "R00022",
-    "cpse": "ONGC",
-    "source_code": "5001164",
-    "description": "GASKET 4 IN SS304 SPIRAL WOUND 150# GRAPHITE FILLER IGP",
-    "uom": "PCS",
-    "category": "gasket",
-    "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS304",
-     "nominal_size_in": 4.0,
-     "pressure_class": "150#",
-     "filler": "GRAPHITE",
-     "brand": "IGP"
-    },
-    "confidence": {
-     "gasket_type": 1.0,
-     "material_grade": 1.0,
-     "nominal_size_in": 1.0,
-     "pressure_class": 1.0,
-     "filler": 1.0,
-     "brand": 0.9
-    },
-    "method": "llm"
-   },
-   "b": {
-    "record_id": "R00025",
-    "cpse": "ONGC",
-    "source_code": "5001169",
-    "description": "GASKET SPIRAL WUOND SS304 IGP",
-    "uom": "EA",
-    "category": "gasket",
-    "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS304",
-     "brand": "IGP"
-    },
-    "confidence": {
-     "gasket_type": 0.95,
-     "material_grade": 1.0,
-     "brand": 0.9
-    },
-    "method": "llm"
-   },
-   "final": 0.845,
-   "text_sim": 0.364,
-   "spec_sim": 1.0,
-   "proc_sim": 0.85,
-   "matched_fields": [
-    "gasket_type",
-    "material_grade"
-   ],
-   "ignored_fields": [
-    "brand"
-   ],
-   "review_reason": "could not verify nominal_size_in, pressure_class - not extracted from both records"
-  },
-  {
-   "a": {
-    "record_id": "R00081",
-    "cpse": "ONGC",
-    "source_code": "5001572",
-    "description": "M/Seal - Ctg - 45 Mm Shaft - Single - Flowserve",
-    "uom": "PC",
-    "category": "rotating",
-    "attributes": {
-     "component_type": "MECHANICAL_SEAL",
-     "arrangement": "CARTRIDGE_SINGLE",
-     "shaft_dia_mm": 45.0,
-     "brand": "FLOWSERVE"
-    },
-    "confidence": {
-     "component_type": 1.0,
-     "arrangement": 0.9,
-     "shaft_dia_mm": 1.0,
-     "brand": 1.0
-    },
-    "method": "llm"
-   },
-   "b": {
-    "record_id": "R00084",
-    "cpse": "IOCL",
-    "source_code": "MAT-01595",
-    "description": "mech. seal cart single 45 mm shaft sic vs carbon viton jc/t21/45",
-    "uom": "NO",
-    "category": "rotating",
-    "attributes": {
-     "component_type": "MECHANICAL_SEAL",
-     "arrangement": "CARTRIDGE_SINGLE",
-     "shaft_dia_mm": 45.0,
-     "face_materials": "SIC VS CARBON",
-     "elastomer": "VITON",
-     "part_number": "JC/T21/45"
-    },
-    "confidence": {
-     "component_type": 1.0,
-     "arrangement": 0.95,
-     "shaft_dia_mm": 1.0,
-     "face_materials": 1.0,
-     "elastomer": 1.0,
-     "part_number": 0.9
-    },
-    "method": "llm"
-   },
-   "final": 0.845,
-   "text_sim": 0.312,
-   "spec_sim": 1.0,
-   "proc_sim": 0.733,
-   "matched_fields": [
-    "component_type",
-    "arrangement",
-    "shaft_dia_mm"
-   ],
-   "ignored_fields": [],
-   "review_reason": null
-  },
-  {
-   "a": {
-    "record_id": "R00025",
-    "cpse": "ONGC",
-    "source_code": "5001169",
-    "description": "GASKET SPIRAL WUOND SS304 IGP",
-    "uom": "EA",
-    "category": "gasket",
-    "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS304",
-     "brand": "IGP"
-    },
-    "confidence": {
-     "gasket_type": 0.95,
-     "material_grade": 1.0,
-     "brand": 0.9
-    },
-    "method": "llm"
-   },
-   "b": {
-    "record_id": "R00029",
-    "cpse": "GAIL",
-    "source_code": "G/001414",
-    "description": "GASKET SPIRALWOUND 150# 4\" SS304 GRAPHITE FILL IGP FLX/SW/304/4",
-    "uom": "PCS",
-    "category": "gasket",
-    "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS304",
-     "nominal_size_in": 4.0,
-     "pressure_class": "150#",
-     "filler": "GRAPHITE",
-     "brand": "IGP",
-     "part_number": "FLX/SW/304/4"
-    },
-    "confidence": {
-     "gasket_type": 1.0,
-     "material_grade": 1.0,
-     "nominal_size_in": 1.0,
-     "pressure_class": 1.0,
-     "filler": 1.0,
-     "brand": 0.9,
-     "part_number": 0.95
-    },
-    "method": "llm"
-   },
-   "final": 0.846,
-   "text_sim": 0.231,
-   "spec_sim": 1.0,
-   "proc_sim": 0.963,
-   "matched_fields": [
-    "gasket_type",
-    "material_grade"
-   ],
-   "ignored_fields": [
-    "brand"
-   ],
-   "review_reason": "could not verify nominal_size_in, pressure_class - not extracted from both records"
-  },
-  {
-   "a": {
-    "record_id": "R00023",
-    "cpse": "GAIL",
-    "source_code": "G/001372",
-    "description": "GASKET,SS304,SPIRAL WOUND,4 IN,FLX/SW/304/4",
-    "uom": "EACH",
-    "category": "gasket",
-    "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS304",
-     "nominal_size_in": 4.0,
-     "part_number": "FLX/SW/304/4"
-    },
-    "confidence": {
-     "gasket_type": 1.0,
-     "material_grade": 1.0,
-     "nominal_size_in": 1.0,
-     "part_number": 0.9
-    },
-    "method": "llm"
-   },
-   "b": {
-    "record_id": "R00030",
-    "cpse": "IOCL",
-    "source_code": "MAT-01337",
-    "description": "GASKET GR FILLER SS304 4 INCH 150# SPIRALWOUND",
-    "uom": "EA",
-    "category": "gasket",
-    "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS304",
-     "nominal_size_in": 4.0,
-     "pressure_class": "150#",
-     "filler": "GR"
-    },
-    "confidence": {
-     "gasket_type": 1.0,
-     "material_grade": 1.0,
-     "nominal_size_in": 1.0,
-     "pressure_class": 1.0,
-     "filler": 0.9
-    },
-    "method": "llm"
-   },
-   "final": 0.847,
-   "text_sim": 0.214,
-   "spec_sim": 1.0,
-   "proc_sim": 0.824,
-   "matched_fields": [
-    "gasket_type",
-    "material_grade",
-    "nominal_size_in"
-   ],
-   "ignored_fields": [],
-   "review_reason": "could not verify pressure_class - not extracted from both records"
-  },
-  {
-   "a": {
-    "record_id": "R00043",
-    "cpse": "IOCL",
-    "source_code": "MAT-01397",
-    "description": "VALVE GATE 6IN 150# C.S. BODY FLANGED BDK AUD/GT/6/150",
-    "uom": "PCS",
-    "category": "valve",
-    "attributes": {
-     "valve_type": "GATE",
-     "nominal_size_in": 6.0,
-     "pressure_class": "150#",
-     "body_material": "CARBON_STEEL",
-     "end_connection": "FLANGED",
-     "brand": "BDK",
-     "part_number": "AUD/GT/6/150"
-    },
-    "confidence": {
-     "valve_type": 1.0,
-     "nominal_size_in": 1.0,
-     "pressure_class": 1.0,
-     "body_material": 0.95,
-     "end_connection": 1.0,
-     "brand": 0.95,
-     "part_number": 0.95
-    },
-    "method": "llm"
-   },
-   "b": {
-    "record_id": "R00045",
-    "cpse": "GAIL",
-    "source_code": "G/001520",
-    "description": "VALVE, 150#, 6 IN, GATE, AUDCO",
-    "uom": "EACH",
-    "category": "valve",
-    "attributes": {
-     "valve_type": "GATE",
-     "nominal_size_in": 6.0,
-     "pressure_class": "150#",
-     "brand": "AUDCO"
-    },
-    "confidence": {
-     "valve_type": 1.0,
-     "nominal_size_in": 1.0,
-     "pressure_class": 1.0,
-     "brand": 1.0
-    },
-    "method": "llm"
-   },
-   "final": 0.847,
-   "text_sim": 0.286,
-   "spec_sim": 1.0,
-   "proc_sim": 0.764,
-   "matched_fields": [
-    "valve_type",
-    "nominal_size_in",
-    "pressure_class"
-   ],
-   "ignored_fields": [
-    "brand"
-   ],
-   "review_reason": "could not verify body_material - not extracted from both records"
-  },
-  {
-   "a": {
-    "record_id": "R00053",
-    "cpse": "GAIL",
-    "source_code": "G/001560",
-    "description": "VALVE BALL 2 IN 800# SS316 BODY SCREWED END AUDCO",
-    "uom": "PC",
-    "category": "valve",
-    "attributes": {
-     "valve_type": "BALL",
-     "nominal_size_in": 2.0,
-     "pressure_class": "800#",
-     "body_material": "SS316",
-     "end_connection": "SCREWED",
-     "brand": "AUDCO"
-    },
-    "confidence": {
-     "valve_type": 1.0,
-     "nominal_size_in": 1.0,
-     "pressure_class": 1.0,
-     "body_material": 1.0,
-     "end_connection": 1.0,
-     "brand": 1.0
-    },
-    "method": "llm"
-   },
-   "b": {
-    "record_id": "R00057",
-    "cpse": "BPCL",
-    "source_code": "BR-01672",
-    "description": "VAVLE BALL 2 IN VRG/BL/2/800",
-    "uom": "EA",
-    "category": "valve",
-    "attributes": {
-     "valve_type": "BALL",
-     "nominal_size_in": 2.0,
-     "pressure_class": "800#",
-     "part_number": "VRG/BL/2/800"
-    },
-    "confidence": {
-     "valve_type": 1.0,
-     "nominal_size_in": 1.0,
-     "pressure_class": 0.8,
-     "part_number": 0.95
-    },
-    "method": "llm"
-   },
-   "final": 0.847,
-   "text_sim": 0.308,
-   "spec_sim": 1.0,
-   "proc_sim": 0.75,
-   "matched_fields": [
-    "valve_type",
-    "nominal_size_in",
-    "pressure_class"
-   ],
-   "ignored_fields": [],
-   "review_reason": "could not verify body_material - not extracted from both records"
-  },
-  {
-   "a": {
-    "record_id": "R00095",
-    "cpse": "ONGC",
-    "source_code": "5001646",
-    "description": "Motor - Induction - 3 Phase - 5 Hp - 1440 Rpm - Foot Mounted - Ip55 - 415 V - Kirloskar - Mtr-5Hp-1440-B3",
-    "uom": "PC",
-    "category": "electrical",
-    "attributes": {
-     "equipment_type": "MOTOR",
-     "phases": 3.0,
-     "power_hp": 5.0,
-     "speed_rpm": 1440.0,
-     "voltage_v": 415.0,
-     "mounting": "FOOT",
-     "protection_class": "IP55",
-     "brand": "KIRLOSKAR",
-     "part_number": "MTR-5HP-1440-B3"
-    },
-    "confidence": {
-     "equipment_type": 1.0,
-     "phases": 1.0,
-     "power_hp": 1.0,
-     "speed_rpm": 1.0,
-     "voltage_v": 1.0,
-     "mounting": 1.0,
-     "protection_class": 1.0,
      "brand": 1.0,
      "part_number": 1.0
     },
     "method": "llm"
    },
    "b": {
-    "record_id": "R00096",
-    "cpse": "BPCL",
-    "source_code": "BR-01766",
-    "description": "MOTOR,INDUCTION,3 PHASE,5 HP,ABB",
-    "uom": "NO",
-    "category": "electrical",
-    "attributes": {
-     "equipment_type": "MOTOR",
-     "phases": 3.0,
-     "power_hp": 5.0,
-     "brand": "ABB"
-    },
-    "confidence": {
-     "equipment_type": 1.0,
-     "phases": 1.0,
-     "power_hp": 1.0,
-     "brand": 1.0
-    },
-    "method": "llm"
-   },
-   "final": 0.847,
-   "text_sim": 0.333,
-   "spec_sim": 1.0,
-   "proc_sim": 0.727,
-   "matched_fields": [
-    "equipment_type",
-    "phases",
-    "power_hp"
-   ],
-   "ignored_fields": [
-    "brand"
-   ],
-   "review_reason": "could not verify speed_rpm, voltage_v - not extracted from both records"
-  },
-  {
-   "a": {
-    "record_id": "R00027",
-    "cpse": "IOCL",
-    "source_code": "MAT-01307",
-    "description": "GASKET SS304 SW 4 IN 150# GR FILLR FLEXITALLIC",
-    "uom": "EA",
-    "category": "gasket",
-    "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS304",
-     "nominal_size_in": 4.0,
-     "pressure_class": "150#",
-     "filler": "GR",
-     "brand": "FLEXITALLIC"
-    },
-    "confidence": {
-     "gasket_type": 0.95,
-     "material_grade": 0.98,
-     "nominal_size_in": 0.98,
-     "pressure_class": 0.98,
-     "filler": 0.9,
-     "brand": 0.98
-    },
-    "method": "llm"
-   },
-   "b": {
-    "record_id": "R00029",
+    "record_id": "R00061",
     "cpse": "GAIL",
-    "source_code": "G/001414",
-    "description": "GASKET SPIRALWOUND 150# 4\" SS304 GRAPHITE FILL IGP FLX/SW/304/4",
+    "source_code": "G/001587",
+    "description": "BOLT HH M12X50 UNBRAO",
     "uom": "PCS",
-    "category": "gasket",
+    "category": "fastener",
     "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS304",
-     "nominal_size_in": 4.0,
-     "pressure_class": "150#",
-     "filler": "GRAPHITE",
-     "brand": "IGP",
-     "part_number": "FLX/SW/304/4"
+     "fastener_type": "BOLT",
+     "head_type": "HEX",
+     "thread": "M12",
+     "length_mm": 50.0,
+     "brand": "UNBRAO"
     },
     "confidence": {
-     "gasket_type": 1.0,
-     "material_grade": 1.0,
-     "nominal_size_in": 1.0,
-     "pressure_class": 1.0,
-     "filler": 1.0,
-     "brand": 0.9,
-     "part_number": 0.95
-    },
-    "method": "llm"
-   },
-   "final": 0.85,
-   "text_sim": 0.333,
-   "spec_sim": 0.92,
-   "proc_sim": 0.697,
-   "matched_fields": [
-    "gasket_type",
-    "material_grade",
-    "nominal_size_in",
-    "pressure_class"
-   ],
-   "ignored_fields": [
-    "brand"
-   ],
-   "review_reason": null
-  },
-  {
-   "a": {
-    "record_id": "R00031",
-    "cpse": "GAIL",
-    "source_code": "G/001424",
-    "description": "Pipe Seamless Carbon Steel Astm A106 Gr B 4 In Sch 40 Ismt",
-    "uom": "M",
-    "category": "pipe",
-    "attributes": {
-     "construction": "SEAMLESS",
-     "material_grade": "CARBON_STEEL",
-     "standard": "ASTM A106 GR B",
-     "nominal_size_in": 4.0,
-     "schedule": "SCH 40",
-     "brand": "ISMT"
-    },
-    "confidence": {
-     "construction": 1.0,
-     "material_grade": 1.0,
-     "standard": 1.0,
-     "nominal_size_in": 1.0,
-     "schedule": 1.0,
-     "brand": 0.95
-    },
-    "method": "llm"
-   },
-   "b": {
-    "record_id": "R00033",
-    "cpse": "CPCL",
-    "source_code": "100001498",
-    "description": "Pipe - Seamles - Carbon Steel",
-    "uom": "METER",
-    "category": "pipe",
-    "attributes": {
-     "construction": "SEAMLESS",
-     "material_grade": "CARBON_STEEL"
-    },
-    "confidence": {
-     "construction": 0.95,
-     "material_grade": 0.95
-    },
-    "method": "llm"
-   },
-   "final": 0.851,
-   "text_sim": 0.214,
-   "spec_sim": 1.0,
-   "proc_sim": 1.0,
-   "matched_fields": [
-    "construction",
-    "material_grade"
-   ],
-   "ignored_fields": [],
-   "review_reason": "could not verify nominal_size_in, schedule - not extracted from both records"
-  },
-  {
-   "a": {
-    "record_id": "R00022",
-    "cpse": "ONGC",
-    "source_code": "5001164",
-    "description": "GASKET 4 IN SS304 SPIRAL WOUND 150# GRAPHITE FILLER IGP",
-    "uom": "PCS",
-    "category": "gasket",
-    "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS304",
-     "nominal_size_in": 4.0,
-     "pressure_class": "150#",
-     "filler": "GRAPHITE",
-     "brand": "IGP"
-    },
-    "confidence": {
-     "gasket_type": 1.0,
-     "material_grade": 1.0,
-     "nominal_size_in": 1.0,
-     "pressure_class": 1.0,
-     "filler": 1.0,
+     "fastener_type": 1.0,
+     "head_type": 1.0,
+     "thread": 1.0,
+     "length_mm": 1.0,
      "brand": 0.9
     },
     "method": "llm"
    },
-   "b": {
-    "record_id": "R00027",
-    "cpse": "IOCL",
-    "source_code": "MAT-01307",
-    "description": "GASKET SS304 SW 4 IN 150# GR FILLR FLEXITALLIC",
-    "uom": "EA",
-    "category": "gasket",
-    "attributes": {
-     "gasket_type": "SPIRAL_WOUND",
-     "material_grade": "SS304",
-     "nominal_size_in": 4.0,
-     "pressure_class": "150#",
-     "filler": "GR",
-     "brand": "FLEXITALLIC"
-    },
-    "confidence": {
-     "gasket_type": 0.95,
-     "material_grade": 0.98,
-     "nominal_size_in": 0.98,
-     "pressure_class": 0.98,
-     "filler": 0.9,
-     "brand": 0.98
-    },
-    "method": "llm"
-   },
-   "final": 0.852,
-   "text_sim": 0.357,
-   "spec_sim": 0.92,
-   "proc_sim": 0.693,
+   "final": 0.89,
+   "text_sim": 0.771,
+   "spec_sim": 1.0,
+   "proc_sim": 0.889,
    "matched_fields": [
-    "gasket_type",
-    "material_grade",
-    "nominal_size_in",
-    "pressure_class"
+    "fastener_type",
+    "head_type",
+    "thread",
+    "length_mm"
    ],
    "ignored_fields": [
     "brand"
    ],
-   "review_reason": null
+   "review_reason": "could not verify material_grade - not extracted from both records"
+  },
+  {
+   "a": {
+    "record_id": "R00060",
+    "cpse": "IOCL",
+    "source_code": "MAT-01457",
+    "description": "Bolt Ft M12 X 50 Ss316 Hexagonal Head Tvs Tvs/Hx/M12/50",
+    "uom": "EA",
+    "category": "fastener",
+    "attributes": {
+     "fastener_type": "BOLT",
+     "head_type": "HEX",
+     "thread": "M12",
+     "length_mm": 50.0,
+     "material_grade": "SS316",
+     "brand": "TVS",
+     "part_number": "TVS/HX/M12/50"
+    },
+    "confidence": {
+     "fastener_type": 1.0,
+     "head_type": 1.0,
+     "thread": 1.0,
+     "length_mm": 1.0,
+     "material_grade": 1.0,
+     "brand": 1.0,
+     "part_number": 1.0
+    },
+    "method": "llm"
+   },
+   "b": {
+    "record_id": "R00061",
+    "cpse": "GAIL",
+    "source_code": "G/001587",
+    "description": "BOLT HH M12X50 UNBRAO",
+    "uom": "PCS",
+    "category": "fastener",
+    "attributes": {
+     "fastener_type": "BOLT",
+     "head_type": "HEX",
+     "thread": "M12",
+     "length_mm": 50.0,
+     "brand": "UNBRAO"
+    },
+    "confidence": {
+     "fastener_type": 1.0,
+     "head_type": 1.0,
+     "thread": 1.0,
+     "length_mm": 1.0,
+     "brand": 0.9
+    },
+    "method": "llm"
+   },
+   "final": 0.89,
+   "text_sim": 0.77,
+   "spec_sim": 1.0,
+   "proc_sim": 0.833,
+   "matched_fields": [
+    "fastener_type",
+    "head_type",
+    "thread",
+    "length_mm"
+   ],
+   "ignored_fields": [
+    "brand"
+   ],
+   "review_reason": "could not verify material_grade - not extracted from both records"
   },
   {
    "a": {
@@ -4996,8 +4839,8 @@
     },
     "method": "llm"
    },
-   "final": 0.853,
-   "text_sim": 0.071,
+   "final": 0.89,
+   "text_sim": 0.791,
    "spec_sim": 1.0,
    "proc_sim": 0.733,
    "matched_fields": [
@@ -5009,6 +4852,198 @@
    "ignored_fields": [
     "brand"
    ],
+   "review_reason": "could not verify material_grade - not extracted from both records"
+  },
+  {
+   "a": {
+    "record_id": "R00061",
+    "cpse": "GAIL",
+    "source_code": "G/001587",
+    "description": "BOLT HH M12X50 UNBRAO",
+    "uom": "PCS",
+    "category": "fastener",
+    "attributes": {
+     "fastener_type": "BOLT",
+     "head_type": "HEX",
+     "thread": "M12",
+     "length_mm": 50.0,
+     "brand": "UNBRAO"
+    },
+    "confidence": {
+     "fastener_type": 1.0,
+     "head_type": 1.0,
+     "thread": 1.0,
+     "length_mm": 1.0,
+     "brand": 0.9
+    },
+    "method": "llm"
+   },
+   "b": {
+    "record_id": "R00063",
+    "cpse": "IOCL",
+    "source_code": "MAT-01465",
+    "description": "BOLT FULL THREAD M12*50 SS316 HEX HEAD IS 1364 UNBRAKO",
+    "uom": "EACH",
+    "category": "fastener",
+    "attributes": {
+     "fastener_type": "BOLT",
+     "head_type": "HEX",
+     "thread": "M12",
+     "length_mm": 50.0,
+     "material_grade": "SS316",
+     "standard": "IS 1364",
+     "brand": "UNBRAKO"
+    },
+    "confidence": {
+     "fastener_type": 1.0,
+     "head_type": 1.0,
+     "thread": 1.0,
+     "length_mm": 1.0,
+     "material_grade": 1.0,
+     "standard": 1.0,
+     "brand": 1.0
+    },
+    "method": "llm"
+   },
+   "final": 0.89,
+   "text_sim": 0.869,
+   "spec_sim": 1.0,
+   "proc_sim": 0.8,
+   "matched_fields": [
+    "fastener_type",
+    "head_type",
+    "thread",
+    "length_mm"
+   ],
+   "ignored_fields": [
+    "brand"
+   ],
+   "review_reason": "could not verify material_grade - not extracted from both records"
+  },
+  {
+   "a": {
+    "record_id": "R00061",
+    "cpse": "GAIL",
+    "source_code": "G/001587",
+    "description": "BOLT HH M12X50 UNBRAO",
+    "uom": "PCS",
+    "category": "fastener",
+    "attributes": {
+     "fastener_type": "BOLT",
+     "head_type": "HEX",
+     "thread": "M12",
+     "length_mm": 50.0,
+     "brand": "UNBRAO"
+    },
+    "confidence": {
+     "fastener_type": 1.0,
+     "head_type": 1.0,
+     "thread": 1.0,
+     "length_mm": 1.0,
+     "brand": 0.9
+    },
+    "method": "llm"
+   },
+   "b": {
+    "record_id": "R00064",
+    "cpse": "GAIL",
+    "source_code": "G/001588",
+    "description": "BOLT, HEX HEAD, M12 X 50, SS316, UBNRAKO",
+    "uom": "PCS",
+    "category": "fastener",
+    "attributes": {
+     "fastener_type": "BOLT",
+     "head_type": "HEX",
+     "thread": "M12",
+     "length_mm": 50.0,
+     "material_grade": "SS316",
+     "brand": "UBNRAKO"
+    },
+    "confidence": {
+     "fastener_type": 1.0,
+     "head_type": 1.0,
+     "thread": 1.0,
+     "length_mm": 1.0,
+     "material_grade": 1.0,
+     "brand": 0.9
+    },
+    "method": "llm"
+   },
+   "final": 0.89,
+   "text_sim": 0.838,
+   "spec_sim": 1.0,
+   "proc_sim": 0.616,
+   "matched_fields": [
+    "fastener_type",
+    "head_type",
+    "thread",
+    "length_mm"
+   ],
+   "ignored_fields": [
+    "brand"
+   ],
+   "review_reason": "could not verify material_grade - not extracted from both records"
+  },
+  {
+   "a": {
+    "record_id": "R00065",
+    "cpse": "ONGC",
+    "source_code": "5001388",
+    "description": "STUD BOLT FULL THREAD M20X120 SUNDRAM",
+    "uom": "NO",
+    "category": "fastener",
+    "attributes": {
+     "fastener_type": "STUD_BOLT",
+     "head_type": "NONE",
+     "thread": "M20",
+     "length_mm": 120.0,
+     "brand": "SUNDRAM"
+    },
+    "confidence": {
+     "fastener_type": 1.0,
+     "head_type": 0.9,
+     "thread": 1.0,
+     "length_mm": 1.0,
+     "brand": 0.95
+    },
+    "method": "llm"
+   },
+   "b": {
+    "record_id": "R00066",
+    "cpse": "GAIL",
+    "source_code": "G/001608",
+    "description": "STUD BOLT - FULL THREAD - M20X120 - ASTM A193 B7 - WITH 2 NUTS A194 2H",
+    "uom": "NO",
+    "category": "fastener",
+    "attributes": {
+     "fastener_type": "STUD_BOLT",
+     "head_type": "NONE",
+     "thread": "M20",
+     "length_mm": 120.0,
+     "material_grade": "A193_B7",
+     "standard": "ASTM A193"
+    },
+    "confidence": {
+     "fastener_type": 1.0,
+     "head_type": 0.9,
+     "thread": 1.0,
+     "length_mm": 1.0,
+     "material_grade": 1.0,
+     "standard": 1.0
+    },
+    "method": "llm"
+   },
+   "final": 0.89,
+   "text_sim": 0.863,
+   "spec_sim": 1.0,
+   "proc_sim": 0.683,
+   "matched_fields": [
+    "fastener_type",
+    "head_type",
+    "thread",
+    "length_mm"
+   ],
+   "ignored_fields": [],
    "review_reason": "could not verify material_grade - not extracted from both records"
   }
  ],
@@ -5066,7 +5101,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.2
+   "text_sim": 0.797
   },
   {
    "a": {
@@ -5125,7 +5160,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.25
+   "text_sim": 0.73
   },
   {
    "a": {
@@ -5184,7 +5219,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.417
+   "text_sim": 0.928
   },
   {
    "a": {
@@ -5243,7 +5278,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.176
+   "text_sim": 0.69
   },
   {
    "a": {
@@ -5304,7 +5339,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.167
+   "text_sim": 0.685
   },
   {
    "a": {
@@ -5363,7 +5398,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.267
+   "text_sim": 0.733
   },
   {
    "a": {
@@ -5420,7 +5455,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.0
+   "text_sim": 0.672
   },
   {
    "a": {
@@ -5481,7 +5516,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.056
+   "text_sim": 0.707
   },
   {
    "a": {
@@ -5542,7 +5577,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.231
+   "text_sim": 0.872
   },
   {
    "a": {
@@ -5603,7 +5638,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.056
+   "text_sim": 0.709
   },
   {
    "a": {
@@ -5666,7 +5701,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.083
+   "text_sim": 0.683
   },
   {
    "a": {
@@ -5727,7 +5762,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.059
+   "text_sim": 0.727
   },
   {
    "a": {
@@ -5774,7 +5809,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.714
+   "text_sim": 0.989
   },
   {
    "a": {
@@ -5825,7 +5860,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.333
+   "text_sim": 0.877
   },
   {
    "a": {
@@ -5872,7 +5907,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.25
+   "text_sim": 0.899
   },
   {
    "a": {
@@ -5923,7 +5958,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.364
+   "text_sim": 0.919
   },
   {
    "a": {
@@ -5968,7 +6003,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.222
+   "text_sim": 0.859
   },
   {
    "a": {
@@ -6019,7 +6054,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.231
+   "text_sim": 0.854
   },
   {
    "a": {
@@ -6070,7 +6105,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.154
+   "text_sim": 0.802
   },
   {
    "a": {
@@ -6115,7 +6150,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.111
+   "text_sim": 0.807
   },
   {
    "a": {
@@ -6168,7 +6203,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.133
+   "text_sim": 0.859
   },
   {
    "a": {
@@ -6217,7 +6252,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.167
+   "text_sim": 0.847
   },
   {
    "a": {
@@ -6268,7 +6303,7 @@
    },
    "rule": "material_grade",
    "reason": "SS304 vs SS316",
-   "text_sim": 0.308
+   "text_sim": 0.911
   },
   {
    "a": {
@@ -6319,7 +6354,7 @@
    },
    "rule": "material_grade",
    "reason": "SS304 vs SS316",
-   "text_sim": 0.154
+   "text_sim": 0.887
   },
   {
    "a": {
@@ -6362,7 +6397,7 @@
    },
    "rule": "material_grade",
    "reason": "SS304 vs SS316",
-   "text_sim": 0.125
+   "text_sim": 0.81
   },
   {
    "a": {
@@ -6415,7 +6450,7 @@
    },
    "rule": "material_grade",
    "reason": "SS304 vs SS316",
-   "text_sim": 0.267
+   "text_sim": 0.845
   },
   {
    "a": {
@@ -6468,7 +6503,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.167
+   "text_sim": 0.785
   },
   {
    "a": {
@@ -6525,7 +6560,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.294
+   "text_sim": 0.877
   },
   {
    "a": {
@@ -6582,7 +6617,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.357
+   "text_sim": 0.806
   },
   {
    "a": {
@@ -6639,7 +6674,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.294
+   "text_sim": 0.923
   },
   {
    "a": {
@@ -6698,7 +6733,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.231
+   "text_sim": 0.785
   },
   {
    "a": {
@@ -6755,7 +6790,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.312
+   "text_sim": 0.893
   },
   {
    "a": {
@@ -6810,7 +6845,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.062
+   "text_sim": 0.764
   },
   {
    "a": {
@@ -6869,7 +6904,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.316
+   "text_sim": 0.855
   },
   {
    "a": {
@@ -6928,7 +6963,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.158
+   "text_sim": 0.787
   },
   {
    "a": {
@@ -6987,7 +7022,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.389
+   "text_sim": 0.877
   },
   {
    "a": {
@@ -7048,7 +7083,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.267
+   "text_sim": 0.789
   },
   {
    "a": {
@@ -7107,7 +7142,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.412
+   "text_sim": 0.922
   },
   {
    "a": {
@@ -7162,7 +7197,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.154
+   "text_sim": 0.814
   },
   {
    "a": {
@@ -7221,7 +7256,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.211
+   "text_sim": 0.795
   },
   {
    "a": {
@@ -7280,7 +7315,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.538
+   "text_sim": 0.941
   },
   {
    "a": {
@@ -7339,7 +7374,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.15
+   "text_sim": 0.787
   },
   {
    "a": {
@@ -7400,7 +7435,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.133
+   "text_sim": 0.728
   },
   {
    "a": {
@@ -7459,7 +7494,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.222
+   "text_sim": 0.786
   },
   {
    "a": {
@@ -7516,7 +7551,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.056
+   "text_sim": 0.786
   },
   {
    "a": {
@@ -7577,7 +7612,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.286
+   "text_sim": 0.866
   },
   {
    "a": {
@@ -7638,7 +7673,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.333
+   "text_sim": 0.834
   },
   {
    "a": {
@@ -7699,7 +7734,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.227
+   "text_sim": 0.837
   },
   {
    "a": {
@@ -7762,7 +7797,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.235
+   "text_sim": 0.788
   },
   {
    "a": {
@@ -7823,7 +7858,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.3
+   "text_sim": 0.903
   },
   {
    "a": {
@@ -7878,7 +7913,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.133
+   "text_sim": 0.807
   },
   {
    "a": {
@@ -7937,7 +7972,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.19
+   "text_sim": 0.745
   },
   {
    "a": {
@@ -7996,7 +8031,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.294
+   "text_sim": 0.904
   },
   {
    "a": {
@@ -8055,7 +8090,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.136
+   "text_sim": 0.704
   },
   {
    "a": {
@@ -8116,7 +8151,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.188
+   "text_sim": 0.708
   },
   {
    "a": {
@@ -8175,7 +8210,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.2
+   "text_sim": 0.775
   },
   {
    "a": {
@@ -8232,7 +8267,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.308
+   "text_sim": 0.897
   },
   {
    "a": {
@@ -8293,7 +8328,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.087
+   "text_sim": 0.828
   },
   {
    "a": {
@@ -8354,7 +8389,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.294
+   "text_sim": 0.854
   },
   {
    "a": {
@@ -8415,7 +8450,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.136
+   "text_sim": 0.865
   },
   {
    "a": {
@@ -8478,7 +8513,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.118
+   "text_sim": 0.8
   },
   {
    "a": {
@@ -8539,7 +8574,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.091
+   "text_sim": 0.831
   },
   {
    "a": {
@@ -8596,7 +8631,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.154
+   "text_sim": 0.814
   },
   {
    "a": {
@@ -8657,7 +8692,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.211
+   "text_sim": 0.805
   },
   {
    "a": {
@@ -8718,7 +8753,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.538
+   "text_sim": 0.934
   },
   {
    "a": {
@@ -8779,7 +8814,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.15
+   "text_sim": 0.802
   },
   {
    "a": {
@@ -8842,7 +8877,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.133
+   "text_sim": 0.742
   },
   {
    "a": {
@@ -8903,7 +8938,7 @@
    },
    "rule": "iso_designation",
    "reason": "6205 vs 6206",
-   "text_sim": 0.222
+   "text_sim": 0.804
   },
   {
    "a": {
@@ -8958,7 +8993,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.4
+   "text_sim": 0.864
   },
   {
    "a": {
@@ -9009,7 +9044,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.538
+   "text_sim": 0.9
   },
   {
    "a": {
@@ -9064,7 +9099,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.429
+   "text_sim": 0.902
   },
   {
    "a": {
@@ -9113,7 +9148,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.143
+   "text_sim": 0.834
   },
   {
    "a": {
@@ -9168,7 +9203,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.312
+   "text_sim": 0.851
   },
   {
    "a": {
@@ -9223,7 +9258,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.333
+   "text_sim": 0.848
   },
   {
    "a": {
@@ -9272,7 +9307,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.071
+   "text_sim": 0.815
   },
   {
    "a": {
@@ -9329,7 +9364,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.294
+   "text_sim": 0.87
   },
   {
    "a": {
@@ -9382,7 +9417,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.188
+   "text_sim": 0.853
   },
   {
    "a": {
@@ -9437,7 +9472,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.357
+   "text_sim": 0.86
   },
   {
    "a": {
@@ -9488,7 +9523,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.286
+   "text_sim": 0.865
   },
   {
    "a": {
@@ -9543,7 +9578,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.286
+   "text_sim": 0.887
   },
   {
    "a": {
@@ -9592,7 +9627,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.167
+   "text_sim": 0.902
   },
   {
    "a": {
@@ -9647,7 +9682,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.267
+   "text_sim": 0.781
   },
   {
    "a": {
@@ -9702,7 +9737,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.385
+   "text_sim": 0.851
   },
   {
    "a": {
@@ -9751,7 +9786,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.182
+   "text_sim": 0.877
   },
   {
    "a": {
@@ -9808,7 +9843,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.429
+   "text_sim": 0.906
   },
   {
    "a": {
@@ -9861,7 +9896,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.308
+   "text_sim": 0.898
   },
   {
    "a": {
@@ -9908,7 +9943,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.083
+   "text_sim": 0.777
   },
   {
    "a": {
@@ -9951,7 +9986,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.2
+   "text_sim": 0.824
   },
   {
    "a": {
@@ -9998,7 +10033,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.2
+   "text_sim": 0.839
   },
   {
    "a": {
@@ -10039,7 +10074,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.143
+   "text_sim": 0.833
   },
   {
    "a": {
@@ -10086,7 +10121,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.083
+   "text_sim": 0.801
   },
   {
    "a": {
@@ -10133,7 +10168,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.2
+   "text_sim": 0.838
   },
   {
    "a": {
@@ -10174,7 +10209,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.167
+   "text_sim": 0.809
   },
   {
    "a": {
@@ -10223,7 +10258,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.167
+   "text_sim": 0.783
   },
   {
    "a": {
@@ -10268,7 +10303,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.1
+   "text_sim": 0.785
   },
   {
    "a": {
@@ -10325,7 +10360,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.533
+   "text_sim": 0.873
   },
   {
    "a": {
@@ -10378,7 +10413,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.467
+   "text_sim": 0.902
   },
   {
    "a": {
@@ -10435,7 +10470,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.375
+   "text_sim": 0.889
   },
   {
    "a": {
@@ -10486,7 +10521,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.125
+   "text_sim": 0.777
   },
   {
    "a": {
@@ -10543,7 +10578,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.353
+   "text_sim": 0.852
   },
   {
    "a": {
@@ -10600,7 +10635,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.294
+   "text_sim": 0.797
   },
   {
    "a": {
@@ -10651,7 +10686,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.062
+   "text_sim": 0.834
   },
   {
    "a": {
@@ -10710,7 +10745,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.333
+   "text_sim": 0.884
   },
   {
    "a": {
@@ -10765,7 +10800,7 @@
    },
    "rule": "material_grade",
    "reason": "SS316 vs SS304",
-   "text_sim": 0.235
+   "text_sim": 0.826
   },
   {
    "a": {
@@ -10820,7 +10855,7 @@
    },
    "rule": "material_grade",
    "reason": "CARBON_STEEL vs SS316",
-   "text_sim": 0.19
+   "text_sim": 0.813
   },
   {
    "a": {
@@ -10875,7 +10910,7 @@
    },
    "rule": "material_grade",
    "reason": "CARBON_STEEL vs SS316",
-   "text_sim": 0.263
+   "text_sim": 0.817
   },
   {
    "a": {
@@ -10928,7 +10963,7 @@
    },
    "rule": "material_grade",
    "reason": "CARBON_STEEL vs SS316",
-   "text_sim": 0.263
+   "text_sim": 0.781
   },
   {
    "a": {
@@ -10983,7 +11018,7 @@
    },
    "rule": "material_grade",
    "reason": "CARBON_STEEL vs SS316",
-   "text_sim": 0.389
+   "text_sim": 0.827
   },
   {
    "a": {
@@ -11040,7 +11075,7 @@
    },
    "rule": "material_grade",
    "reason": "CARBON_STEEL vs SS316",
-   "text_sim": 0.13
+   "text_sim": 0.841
   },
   {
    "a": {
@@ -11097,7 +11132,7 @@
    },
    "rule": "material_grade",
    "reason": "CARBON_STEEL vs SS316",
-   "text_sim": 0.136
+   "text_sim": 0.831
   },
   {
    "a": {
@@ -11152,7 +11187,7 @@
    },
    "rule": "material_grade",
    "reason": "CARBON_STEEL vs SS316",
-   "text_sim": 0.19
+   "text_sim": 0.783
   },
   {
    "a": {
@@ -11209,7 +11244,7 @@
    },
    "rule": "material_grade",
    "reason": "CARBON_STEEL vs SS316",
-   "text_sim": 0.182
+   "text_sim": 0.85
   },
   {
    "a": {
@@ -11256,7 +11291,7 @@
    },
    "rule": "material_grade",
    "reason": "CARBON_STEEL vs SS316",
-   "text_sim": 0.143
+   "text_sim": 0.793
   },
   {
    "a": {
@@ -11303,7 +11338,7 @@
    },
    "rule": "material_grade",
    "reason": "CARBON_STEEL vs SS316",
-   "text_sim": 0.154
+   "text_sim": 0.784
   },
   {
    "a": {
@@ -11348,7 +11383,7 @@
    },
    "rule": "material_grade",
    "reason": "CARBON_STEEL vs SS316",
-   "text_sim": 0.071
+   "text_sim": 0.645
   },
   {
    "a": {
@@ -11395,7 +11430,7 @@
    },
    "rule": "material_grade",
    "reason": "CARBON_STEEL vs SS316",
-   "text_sim": 0.143
+   "text_sim": 0.778
   },
   {
    "a": {
@@ -11448,7 +11483,7 @@
    },
    "rule": "material_grade",
    "reason": "CARBON_STEEL vs SS316",
-   "text_sim": 0.095
+   "text_sim": 0.789
   },
   {
    "a": {
@@ -11501,7 +11536,7 @@
    },
    "rule": "material_grade",
    "reason": "CARBON_STEEL vs SS316",
-   "text_sim": 0.158
+   "text_sim": 0.79
   },
   {
    "a": {
@@ -11552,7 +11587,7 @@
    },
    "rule": "material_grade",
    "reason": "CARBON_STEEL vs SS316",
-   "text_sim": 0.158
+   "text_sim": 0.736
   },
   {
    "a": {
@@ -11605,7 +11640,7 @@
    },
    "rule": "material_grade",
    "reason": "CARBON_STEEL vs SS316",
-   "text_sim": 0.278
+   "text_sim": 0.797
   }
  ],
  "blocked_by_rule": {

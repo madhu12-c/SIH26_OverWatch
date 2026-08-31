@@ -12,9 +12,9 @@
    "R00011"
   ],
   "band": "auto",
-  "confidence": 0.947,
-  "cohesion": 0.947,
-  "weakest_pair": 0.92
+  "confidence": 0.975,
+  "cohesion": 0.975,
+  "weakest_pair": 0.956
  },
  {
   "members": [
@@ -24,10 +24,10 @@
    "R00020",
    "R00021"
   ],
-  "band": "review",
-  "confidence": 0.856,
-  "cohesion": 0.856,
-  "weakest_pair": 0.803
+  "band": "auto",
+  "confidence": 0.918,
+  "cohesion": 0.918,
+  "weakest_pair": 0.89
  },
  {
   "members": [
@@ -42,10 +42,10 @@
    "R00029",
    "R00030"
   ],
-  "band": "review",
-  "confidence": 0.851,
-  "cohesion": 0.851,
-  "weakest_pair": 0.739
+  "band": "auto",
+  "confidence": 0.913,
+  "cohesion": 0.913,
+  "weakest_pair": 0.835
  },
  {
   "members": [
@@ -57,9 +57,9 @@
    "R00017"
   ],
   "band": "auto",
-  "confidence": 0.944,
-  "cohesion": 0.944,
-  "weakest_pair": 0.916
+  "confidence": 0.975,
+  "cohesion": 0.975,
+  "weakest_pair": 0.963
  },
  {
   "members": [
@@ -71,9 +71,9 @@
    "R00036"
   ],
   "band": "review",
-  "confidence": 0.83,
-  "cohesion": 0.83,
-  "weakest_pair": 0.729
+  "confidence": 0.883,
+  "cohesion": 0.883,
+  "weakest_pair": 0.811
  },
  {
   "members": [
@@ -83,9 +83,9 @@
    "R00040"
   ],
   "band": "auto",
-  "confidence": 0.929,
-  "cohesion": 0.929,
-  "weakest_pair": 0.913
+  "confidence": 0.955,
+  "cohesion": 0.955,
+  "weakest_pair": 0.94
  },
  {
   "members": [
@@ -100,8 +100,8 @@
    "R00049"
   ],
   "band": "review",
-  "confidence": 0.596,
-  "cohesion": 0.596,
+  "confidence": 0.624,
+  "cohesion": 0.624,
   "weakest_pair": 0.0
  },
  {
@@ -110,9 +110,9 @@
    "R00052"
   ],
   "band": "auto",
-  "confidence": 0.901,
-  "cohesion": 0.901,
-  "weakest_pair": 0.901
+  "confidence": 0.952,
+  "cohesion": 0.952,
+  "weakest_pair": 0.952
  },
  {
   "members": [
@@ -130,10 +130,10 @@
    "R00056",
    "R00057"
   ],
-  "band": "review",
-  "confidence": 0.85,
-  "cohesion": 0.85,
-  "weakest_pair": 0.766
+  "band": "auto",
+  "confidence": 0.905,
+  "cohesion": 0.905,
+  "weakest_pair": 0.865
  },
  {
   "members": [
@@ -146,9 +146,9 @@
    "R00064"
   ],
   "band": "auto",
-  "confidence": 0.901,
-  "cohesion": 0.901,
-  "weakest_pair": 0.839
+  "confidence": 0.932,
+  "cohesion": 0.932,
+  "weakest_pair": 0.89
  },
  {
   "members": [
@@ -161,8 +161,8 @@
    "R00071"
   ],
   "band": "review",
-  "confidence": 0.731,
-  "cohesion": 0.731,
+  "confidence": 0.745,
+  "cohesion": 0.745,
   "weakest_pair": 0.0
  },
  {
@@ -176,10 +176,10 @@
    "R00078",
    "R00079"
   ],
-  "band": "review",
-  "confidence": 0.895,
-  "cohesion": 0.895,
-  "weakest_pair": 0.855
+  "band": "auto",
+  "confidence": 0.915,
+  "cohesion": 0.915,
+  "weakest_pair": 0.89
  },
  {
   "members": [
@@ -191,10 +191,10 @@
    "R00085",
    "R00086"
   ],
-  "band": "review",
-  "confidence": 0.873,
-  "cohesion": 0.873,
-  "weakest_pair": 0.748
+  "band": "auto",
+  "confidence": 0.923,
+  "cohesion": 0.923,
+  "weakest_pair": 0.853
  },
  {
   "members": [
@@ -206,9 +206,9 @@
    "R00092"
   ],
   "band": "auto",
-  "confidence": 0.921,
-  "cohesion": 0.921,
-  "weakest_pair": 0.88
+  "confidence": 0.932,
+  "cohesion": 0.932,
+  "weakest_pair": 0.89
  },
  {
   "members": [
@@ -222,8 +222,8 @@
    "R00100"
   ],
   "band": "auto",
-  "confidence": 0.918,
-  "cohesion": 0.918,
-  "weakest_pair": 0.832
+  "confidence": 0.934,
+  "cohesion": 0.934,
+  "weakest_pair": 0.89
  }
 ]

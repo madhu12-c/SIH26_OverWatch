@@ -23,8 +23,8 @@
    "brand": 0.6,
    "part_number": 0.65
   },
-  "confidence": 0.851,
-  "band": "review",
+  "confidence": 0.913,
+  "band": "auto",
   "member_count": 10,
   "cpse_count": 4,
   "cpses": [
@@ -132,7 +132,7 @@
    "brand": 0.37,
    "part_number": 0.75
   },
-  "confidence": 0.947,
+  "confidence": 0.975,
   "band": "auto",
   "member_count": 9,
   "cpse_count": 5,
@@ -235,7 +235,7 @@
    "brand": 0.61,
    "part_number": 0.61
   },
-  "confidence": 0.596,
+  "confidence": 0.624,
   "band": "review",
   "member_count": 9,
   "cpse_count": 5,
@@ -338,8 +338,8 @@
    "brand": 0.4,
    "part_number": 0.39
   },
-  "confidence": 0.895,
-  "band": "review",
+  "confidence": 0.915,
+  "band": "auto",
   "member_count": 8,
   "cpse_count": 2,
   "cpses": [
@@ -433,7 +433,7 @@
    "brand": 0.5,
    "part_number": 1.0
   },
-  "confidence": 0.918,
+  "confidence": 0.934,
   "band": "auto",
   "member_count": 8,
   "cpse_count": 5,
@@ -529,7 +529,7 @@
    "part_number": 1.0,
    "standard": 1.0
   },
-  "confidence": 0.901,
+  "confidence": 0.932,
   "band": "auto",
   "member_count": 7,
   "cpse_count": 3,
@@ -616,7 +616,7 @@
    "standard": 1.0,
    "part_number": 1.0
   },
-  "confidence": 0.731,
+  "confidence": 0.745,
   "band": "review",
   "member_count": 7,
   "cpse_count": 3,
@@ -701,8 +701,8 @@
    "elastomer": 1.0,
    "part_number": 0.68
   },
-  "confidence": 0.873,
-  "band": "review",
+  "confidence": 0.923,
+  "band": "auto",
   "member_count": 7,
   "cpse_count": 2,
   "cpses": [
@@ -787,7 +787,7 @@
    "brand": 0.75,
    "part_number": 0.51
   },
-  "confidence": 0.944,
+  "confidence": 0.975,
   "band": "auto",
   "member_count": 6,
   "cpse_count": 3,
@@ -865,7 +865,7 @@
    "brand": 0.63,
    "part_number": 0.53
   },
-  "confidence": 0.83,
+  "confidence": 0.883,
   "band": "review",
   "member_count": 6,
   "cpse_count": 5,
@@ -949,7 +949,7 @@
    "brand": 0.68,
    "part_number": 1.0
   },
-  "confidence": 0.921,
+  "confidence": 0.932,
   "band": "auto",
   "member_count": 6,
   "cpse_count": 4,
@@ -1028,8 +1028,8 @@
    "part_number": 0.68,
    "filler": 1.0
   },
-  "confidence": 0.856,
-  "band": "review",
+  "confidence": 0.918,
+  "band": "auto",
   "member_count": 5,
   "cpse_count": 3,
   "cpses": [
@@ -1101,8 +1101,8 @@
    "bore_type": 1.0,
    "part_number": 0.66
   },
-  "confidence": 0.85,
-  "band": "review",
+  "confidence": 0.905,
+  "band": "auto",
   "member_count": 5,
   "cpse_count": 5,
   "cpses": [
@@ -1174,7 +1174,7 @@
    "part_number": 1.0,
    "brand": 1.0
   },
-  "confidence": 0.929,
+  "confidence": 0.955,
   "band": "auto",
   "member_count": 4,
   "cpse_count": 2,
@@ -1235,7 +1235,7 @@
    "brand": 0.51,
    "part_number": 0.5
   },
-  "confidence": 0.901,
+  "confidence": 0.952,
   "band": "auto",
   "member_count": 2,
   "cpse_count": 2,
