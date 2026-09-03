@@ -6,14 +6,23 @@ import MatchCase from './screens/MatchCase'
 import BlockCase from './screens/BlockCase'
 import ReviewQueue from './screens/ReviewQueue'
 import Savings from './screens/Savings'
+import Units from './screens/Units'
+import Gate from './screens/Gate'
 import Codes from './screens/Codes'
 
 /*
- * Six screens, in demo order. Screens 01-03 and 05 make the video; 04 is the
- * actual product and 06 is the deliverable, and both get asked about in Q&A.
+ * Eight screens, in demo order.
  *
- * Number keys 1-6 switch screens - a presenter should never hunt for a tab
- * mid-sentence.
+ * The tab order IS the demo order, left to right, so a presenter never has to
+ * jump. 01-03 carry the thesis and make the video. 04 is the actual product.
+ * 05-06 are the findings a procurement audience cares about. 07 is the
+ * deliverable. 08 ends on the only forward-looking screen - the answer to
+ * "what stops the mess coming back" - because that is the beat worth leaving
+ * a judge with, and a mapping table is not.
+ *
+ * Number keys 1-8 switch screens - a presenter should never hunt for a tab
+ * mid-sentence. The id, not the number, is what the URL hash carries, so
+ * reordering this list never breaks a saved link.
  */
 
 const SCREENS = [
@@ -22,7 +31,9 @@ const SCREENS = [
   { id: 'block', n: '03', label: 'The Block', el: BlockCase },
   { id: 'review', n: '04', label: 'Review Queue', el: ReviewQueue },
   { id: 'savings', n: '05', label: 'Savings', el: Savings },
-  { id: 'codes', n: '06', label: 'Codes', el: Codes },
+  { id: 'units', n: '06', label: 'Units', el: Units },
+  { id: 'codes', n: '07', label: 'Codes', el: Codes },
+  { id: 'gate', n: '08', label: 'Creation Gate', el: Gate },
 ]
 
 // The screen is kept in the URL hash so a reload lands where it left off and
@@ -126,7 +137,7 @@ export default function App() {
                         text-[11.5px] text-ink-faint">
           <span>Team Overwatch</span>
           <span className="font-mono">generated {meta.generated}</span>
-          <span className="ml-auto">press 1–6 to switch screens</span>
+          <span className="ml-auto">press 1–8 to switch screens</span>
         </div>
       </footer>
     </div>

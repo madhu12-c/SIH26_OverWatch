@@ -1,0 +1,739 @@
+{
+ "summary": {
+  "records": 100,
+  "variants_seen": 10,
+  "canonical_units": 2,
+  "units": [
+   "EA",
+   "M"
+  ],
+  "codes_total": 16,
+  "codes_with_conflict": 15,
+  "cross_family_conflicts": 0,
+  "intra_cpse_conflicts": 12,
+  "pack_size_flags": 0,
+  "ambiguous_spellings": [
+   "MTS"
+  ],
+  "unrecognised": []
+ },
+ "families": [
+  {
+   "canonical": "EA",
+   "label": "Each",
+   "records": 90,
+   "variants": [
+    {
+     "raw": "EACH",
+     "count": 21
+    },
+    {
+     "raw": "NO",
+     "count": 16
+    },
+    {
+     "raw": "EA",
+     "count": 14
+    },
+    {
+     "raw": "PC",
+     "count": 14
+    },
+    {
+     "raw": "PCS",
+     "count": 13
+    },
+    {
+     "raw": "NOS",
+     "count": 12
+    }
+   ]
+  },
+  {
+   "canonical": "M",
+   "label": "Metre",
+   "records": 8,
+   "variants": [
+    {
+     "raw": "METER",
+     "count": 4
+    },
+    {
+     "raw": "M",
+     "count": 3
+    },
+    {
+     "raw": "MTR",
+     "count": 1
+    }
+   ]
+  }
+ ],
+ "ambiguous": [
+  {
+   "raw": "MTS",
+   "count": 2,
+   "readings": [
+    "M",
+    "MT"
+   ],
+   "note": "metres or metric tonnes"
+  }
+ ],
+ "unrecognised": [],
+ "conflicts": [
+  {
+   "national_code": "NMC-31171500-000001",
+   "description": "BEARING, DEEP GROOVE BALL, 6205, 25X52X15 MM, 2RS SEALED",
+   "category": "bearing",
+   "resolved_to": "EA",
+   "resolved_label": "Each",
+   "cross_family": false,
+   "variant_count": 5,
+   "variants": [
+    {
+     "raw": "NO",
+     "count": 3,
+     "cpses": [
+      "CPCL",
+      "GAIL",
+      "ONGC"
+     ]
+    },
+    {
+     "raw": "EACH",
+     "count": 2,
+     "cpses": [
+      "BPCL",
+      "GAIL"
+     ]
+    },
+    {
+     "raw": "NOS",
+     "count": 2,
+     "cpses": [
+      "BPCL",
+      "IOCL"
+     ]
+    },
+    {
+     "raw": "EA",
+     "count": 1,
+     "cpses": [
+      "CPCL"
+     ]
+    },
+    {
+     "raw": "PC",
+     "count": 1,
+     "cpses": [
+      "ONGC"
+     ]
+    }
+   ],
+   "intra_cpse": [
+    "BPCL",
+    "CPCL",
+    "GAIL",
+    "ONGC"
+   ],
+   "pack_size_flag": null
+  },
+  {
+   "national_code": "NMC-31400000-000001",
+   "description": "GASKET, SPIRAL WOUND, SS304, 4 IN, 150#, GRAPHITE",
+   "category": "gasket",
+   "resolved_to": "EA",
+   "resolved_label": "Each",
+   "cross_family": false,
+   "variant_count": 5,
+   "variants": [
+    {
+     "raw": "EA",
+     "count": 4,
+     "cpses": [
+      "BPCL",
+      "IOCL",
+      "ONGC"
+     ]
+    },
+    {
+     "raw": "EACH",
+     "count": 2,
+     "cpses": [
+      "GAIL"
+     ]
+    },
+    {
+     "raw": "PCS",
+     "count": 2,
+     "cpses": [
+      "GAIL",
+      "ONGC"
+     ]
+    },
+    {
+     "raw": "NO",
+     "count": 1,
+     "cpses": [
+      "IOCL"
+     ]
+    },
+    {
+     "raw": "NOS",
+     "count": 1,
+     "cpses": [
+      "ONGC"
+     ]
+    }
+   ],
+   "intra_cpse": [
+    "GAIL",
+    "IOCL",
+    "ONGC"
+   ],
+   "pack_size_flag": null
+  },
+  {
+   "national_code": "NMC-31400000-000002",
+   "description": "GASKET, SPIRAL WOUND, SS316, 4 IN, 150#, GRAPHITE",
+   "category": "gasket",
+   "resolved_to": "EA",
+   "resolved_label": "Each",
+   "cross_family": false,
+   "variant_count": 5,
+   "variants": [
+    {
+     "raw": "EA",
+     "count": 1,
+     "cpses": [
+      "ONGC"
+     ]
+    },
+    {
+     "raw": "EACH",
+     "count": 1,
+     "cpses": [
+      "ONGC"
+     ]
+    },
+    {
+     "raw": "NO",
+     "count": 1,
+     "cpses": [
+      "ONGC"
+     ]
+    },
+    {
+     "raw": "PC",
+     "count": 1,
+     "cpses": [
+      "IOCL"
+     ]
+    },
+    {
+     "raw": "PCS",
+     "count": 1,
+     "cpses": [
+      "CPCL"
+     ]
+    }
+   ],
+   "intra_cpse": [
+    "ONGC"
+   ],
+   "pack_size_flag": null
+  },
+  {
+   "national_code": "NMC-31161600-000001",
+   "description": "BOLT, HEX, M12 X 50, SS316, IS 1364",
+   "category": "fastener",
+   "resolved_to": "EA",
+   "resolved_label": "Each",
+   "cross_family": false,
+   "variant_count": 4,
+   "variants": [
+    {
+     "raw": "PCS",
+     "count": 3,
+     "cpses": [
+      "BPCL",
+      "GAIL"
+     ]
+    },
+    {
+     "raw": "EA",
+     "count": 2,
+     "cpses": [
+      "BPCL",
+      "IOCL"
+     ]
+    },
+    {
+     "raw": "EACH",
+     "count": 1,
+     "cpses": [
+      "IOCL"
+     ]
+    },
+    {
+     "raw": "NOS",
+     "count": 1,
+     "cpses": [
+      "GAIL"
+     ]
+    }
+   ],
+   "intra_cpse": [
+    "BPCL",
+    "GAIL",
+    "IOCL"
+   ],
+   "pack_size_flag": null
+  },
+  {
+   "national_code": "NMC-31161600-000002",
+   "description": "STUD BOLT, M20 X 120, A193 B7, ASTM A193",
+   "category": "fastener",
+   "resolved_to": "EA",
+   "resolved_label": "Each",
+   "cross_family": false,
+   "variant_count": 4,
+   "variants": [
+    {
+     "raw": "EACH",
+     "count": 3,
+     "cpses": [
+      "BPCL",
+      "GAIL"
+     ]
+    },
+    {
+     "raw": "NO",
+     "count": 2,
+     "cpses": [
+      "GAIL",
+      "ONGC"
+     ]
+    },
+    {
+     "raw": "PC",
+     "count": 1,
+     "cpses": [
+      "ONGC"
+     ]
+    },
+    {
+     "raw": "PCS",
+     "count": 1,
+     "cpses": [
+      "ONGC"
+     ]
+    }
+   ],
+   "intra_cpse": [
+    "GAIL",
+    "ONGC"
+   ],
+   "pack_size_flag": null
+  },
+  {
+   "national_code": "NMC-31171500-000002",
+   "description": "BEARING, DEEP GROOVE BALL, 6206, 30X62X16 MM, 2RS SEALED",
+   "category": "bearing",
+   "resolved_to": "EA",
+   "resolved_label": "Each",
+   "cross_family": false,
+   "variant_count": 4,
+   "variants": [
+    {
+     "raw": "NOS",
+     "count": 2,
+     "cpses": [
+      "BPCL",
+      "ONGC"
+     ]
+    },
+    {
+     "raw": "PCS",
+     "count": 2,
+     "cpses": [
+      "BPCL",
+      "GAIL"
+     ]
+    },
+    {
+     "raw": "EA",
+     "count": 1,
+     "cpses": [
+      "ONGC"
+     ]
+    },
+    {
+     "raw": "EACH",
+     "count": 1,
+     "cpses": [
+      "GAIL"
+     ]
+    }
+   ],
+   "intra_cpse": [
+    "BPCL",
+    "GAIL",
+    "ONGC"
+   ],
+   "pack_size_flag": null
+  },
+  {
+   "national_code": "NMC-31411700-000001",
+   "description": "MECHANICAL SEAL, CARTRIDGE SINGLE, 45 MM SHAFT, SIC VS CARBON, VITON",
+   "category": "rotating",
+   "resolved_to": "EA",
+   "resolved_label": "Each",
+   "cross_family": false,
+   "variant_count": 4,
+   "variants": [
+    {
+     "raw": "PC",
+     "count": 3,
+     "cpses": [
+      "ONGC"
+     ]
+    },
+    {
+     "raw": "NOS",
+     "count": 2,
+     "cpses": [
+      "IOCL"
+     ]
+    },
+    {
+     "raw": "EACH",
+     "count": 1,
+     "cpses": [
+      "IOCL"
+     ]
+    },
+    {
+     "raw": "NO",
+     "count": 1,
+     "cpses": [
+      "IOCL"
+     ]
+    }
+   ],
+   "intra_cpse": [
+    "IOCL"
+   ],
+   "pack_size_flag": null
+  },
+  {
+   "national_code": "NMC-40175000-000001",
+   "description": "FLANGE, WELD NECK, RAISED FACE, 4 IN, 150#, ASTM A105",
+   "category": "flange",
+   "resolved_to": "EA",
+   "resolved_label": "Each",
+   "cross_family": false,
+   "variant_count": 4,
+   "variants": [
+    {
+     "raw": "EACH",
+     "count": 3,
+     "cpses": [
+      "IOCL",
+      "ONGC"
+     ]
+    },
+    {
+     "raw": "NO",
+     "count": 2,
+     "cpses": [
+      "IOCL",
+      "ONGC"
+     ]
+    },
+    {
+     "raw": "PC",
+     "count": 2,
+     "cpses": [
+      "IOCL",
+      "ONGC"
+     ]
+    },
+    {
+     "raw": "EA",
+     "count": 1,
+     "cpses": [
+      "ONGC"
+     ]
+    }
+   ],
+   "intra_cpse": [
+    "IOCL",
+    "ONGC"
+   ],
+   "pack_size_flag": null
+  },
+  {
+   "national_code": "NMC-41111900-000001",
+   "description": "INSTRUMENT, PRESSURE GAUGE, 100 MM DIAL, 0-10 BAR, SS316, 1/2 IN NPT BOTTOM",
+   "category": "instrument",
+   "resolved_to": "EA",
+   "resolved_label": "Each",
+   "cross_family": false,
+   "variant_count": 4,
+   "variants": [
+    {
+     "raw": "NOS",
+     "count": 3,
+     "cpses": [
+      "CPCL",
+      "IOCL",
+      "ONGC"
+     ]
+    },
+    {
+     "raw": "EA",
+     "count": 1,
+     "cpses": [
+      "GAIL"
+     ]
+    },
+    {
+     "raw": "EACH",
+     "count": 1,
+     "cpses": [
+      "ONGC"
+     ]
+    },
+    {
+     "raw": "NO",
+     "count": 1,
+     "cpses": [
+      "CPCL"
+     ]
+    }
+   ],
+   "intra_cpse": [
+    "CPCL",
+    "ONGC"
+   ],
+   "pack_size_flag": null
+  },
+  {
+   "national_code": "NMC-26101100-000001",
+   "description": "MOTOR, 3 PHASE, 5 HP, 1440 RPM, FOOT, 415 V, IP55",
+   "category": "electrical",
+   "resolved_to": "EA",
+   "resolved_label": "Each",
+   "cross_family": false,
+   "variant_count": 3,
+   "variants": [
+    {
+     "raw": "NO",
+     "count": 4,
+     "cpses": [
+      "BPCL",
+      "CPCL",
+      "GAIL",
+      "IOCL"
+     ]
+    },
+    {
+     "raw": "PC",
+     "count": 3,
+     "cpses": [
+      "IOCL",
+      "ONGC"
+     ]
+    },
+    {
+     "raw": "EA",
+     "count": 1,
+     "cpses": [
+      "GAIL"
+     ]
+    }
+   ],
+   "intra_cpse": [
+    "GAIL",
+    "IOCL"
+   ],
+   "pack_size_flag": null
+  },
+  {
+   "national_code": "NMC-40141600-000001",
+   "description": "VALVE, GATE, 6 IN, 150#, CARBON STEEL, FLANGED, API 600",
+   "category": "valve",
+   "resolved_to": "EA",
+   "resolved_label": "Each",
+   "cross_family": false,
+   "variant_count": 3,
+   "variants": [
+    {
+     "raw": "EACH",
+     "count": 4,
+     "cpses": [
+      "BPCL",
+      "GAIL",
+      "IOCL",
+      "ONGC"
+     ]
+    },
+    {
+     "raw": "PCS",
+     "count": 4,
+     "cpses": [
+      "CPCL",
+      "IOCL",
+      "ONGC"
+     ]
+    },
+    {
+     "raw": "NOS",
+     "count": 1,
+     "cpses": [
+      "BPCL"
+     ]
+    }
+   ],
+   "intra_cpse": [
+    "BPCL",
+    "IOCL",
+    "ONGC"
+   ],
+   "pack_size_flag": null
+  },
+  {
+   "national_code": "NMC-40141600-000002",
+   "description": "VALVE, BALL, 2 IN, 800#, SS316, SCREWED",
+   "category": "valve",
+   "resolved_to": "EA",
+   "resolved_label": "Each",
+   "cross_family": false,
+   "variant_count": 3,
+   "variants": [
+    {
+     "raw": "EA",
+     "count": 2,
+     "cpses": [
+      "BPCL",
+      "ONGC"
+     ]
+    },
+    {
+     "raw": "PC",
+     "count": 2,
+     "cpses": [
+      "CPCL",
+      "GAIL"
+     ]
+    },
+    {
+     "raw": "EACH",
+     "count": 1,
+     "cpses": [
+      "IOCL"
+     ]
+    }
+   ],
+   "intra_cpse": [],
+   "pack_size_flag": null
+  },
+  {
+   "national_code": "NMC-40171600-000001",
+   "description": "PIPE, SEAMLESS, CARBON STEEL, ASTM A106 GR B, 4 IN, SCH 40",
+   "category": "pipe",
+   "resolved_to": "M",
+   "resolved_label": "Metre",
+   "cross_family": false,
+   "variant_count": 3,
+   "variants": [
+    {
+     "raw": "M",
+     "count": 3,
+     "cpses": [
+      "GAIL",
+      "IOCL"
+     ]
+    },
+    {
+     "raw": "METER",
+     "count": 2,
+     "cpses": [
+      "BPCL",
+      "CPCL"
+     ]
+    },
+    {
+     "raw": "MTR",
+     "count": 1,
+     "cpses": [
+      "ONGC"
+     ]
+    }
+   ],
+   "intra_cpse": [],
+   "pack_size_flag": null
+  },
+  {
+   "national_code": "NMC-40141600-000003",
+   "description": "VALVE, GATE, 6 IN, 300#, CARBON STEEL",
+   "category": "valve",
+   "resolved_to": "EA",
+   "resolved_label": "Each",
+   "cross_family": false,
+   "variant_count": 2,
+   "variants": [
+    {
+     "raw": "NO",
+     "count": 1,
+     "cpses": [
+      "BPCL"
+     ]
+    },
+    {
+     "raw": "PC",
+     "count": 1,
+     "cpses": [
+      "ONGC"
+     ]
+    }
+   ],
+   "intra_cpse": [],
+   "pack_size_flag": null
+  },
+  {
+   "national_code": "NMC-40171600-000002",
+   "description": "PIPE, SEAMLESS, SS316, ASTM A312 TP316, 2 IN, SCH 40",
+   "category": "pipe",
+   "resolved_to": "M",
+   "resolved_label": "Metre",
+   "cross_family": false,
+   "variant_count": 2,
+   "variants": [
+    {
+     "raw": "METER",
+     "count": 2,
+     "cpses": [
+      "GAIL",
+      "ONGC"
+     ]
+    },
+    {
+     "raw": "MTS",
+     "count": 2,
+     "cpses": [
+      "GAIL",
+      "ONGC"
+     ]
+    }
+   ],
+   "intra_cpse": [
+    "GAIL",
+    "ONGC"
+   ],
+   "pack_size_flag": null
+  }
+ ]
+}

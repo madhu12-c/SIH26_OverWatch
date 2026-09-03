@@ -1,0 +1,412 @@
+{
+ "index": {
+  "codes": 16,
+  "note": "one incoming record is compared against golden records, not against every raw record"
+ },
+ "thresholds": {
+  "exists": 0.9,
+  "review": 0.7
+ },
+ "scenarios": [
+  {
+   "input": "FAG 6205-2RSR BEARING, 25X52X15MM, SEALED",
+   "extracted": {
+    "category": "bearing",
+    "attributes": {
+     "sub_type": "DEEP_GROOVE_BALL",
+     "iso_designation": "6205",
+     "bore_mm": 25.0,
+     "od_mm": 52.0,
+     "width_mm": 15.0,
+     "seal_type": "2RS",
+     "brand": "FAG",
+     "part_number": "6205-2RSR"
+    },
+    "confidence": {
+     "sub_type": 0.85,
+     "iso_designation": 1.0,
+     "bore_mm": 1.0,
+     "od_mm": 1.0,
+     "width_mm": 1.0,
+     "seal_type": 1.0,
+     "brand": 1.0,
+     "part_number": 1.0
+    },
+    "method": "llm"
+   },
+   "verdict": "EXISTS",
+   "message": "Already catalogued as NMC-31171500-000001. 5 CPSEs already hold it. Do not create a new code.",
+   "best": {
+    "national_code": "NMC-31171500-000001",
+    "std_description": "BEARING, DEEP GROOVE BALL, 6205, 25X52X15 MM, 2RS SEALED",
+    "category": "bearing",
+    "unspsc": "31171500",
+    "cpse_count": 5,
+    "cpses": [
+     "BPCL",
+     "CPCL",
+     "GAIL",
+     "IOCL",
+     "ONGC"
+    ],
+    "member_count": 9,
+    "final": 0.957,
+    "text_sim": 0.25,
+    "spec_sim": 1.0,
+    "matched_fields": [
+     "sub_type",
+     "iso_designation",
+     "bore_mm",
+     "od_mm",
+     "width_mm",
+     "seal_type"
+    ],
+    "ignored_fields": [
+     "brand",
+     "part_number"
+    ],
+    "blocked_by": null,
+    "reason": null
+   },
+   "candidates": [
+    {
+     "national_code": "NMC-31171500-000001",
+     "std_description": "BEARING, DEEP GROOVE BALL, 6205, 25X52X15 MM, 2RS SEALED",
+     "category": "bearing",
+     "unspsc": "31171500",
+     "cpse_count": 5,
+     "cpses": [
+      "BPCL",
+      "CPCL",
+      "GAIL",
+      "IOCL",
+      "ONGC"
+     ],
+     "member_count": 9,
+     "final": 0.957,
+     "text_sim": 0.25,
+     "spec_sim": 1.0,
+     "matched_fields": [
+      "sub_type",
+      "iso_designation",
+      "bore_mm",
+      "od_mm",
+      "width_mm",
+      "seal_type"
+     ],
+     "ignored_fields": [
+      "brand",
+      "part_number"
+     ],
+     "blocked_by": null,
+     "reason": null
+    }
+   ],
+   "distinguished_from": [
+    {
+     "national_code": "NMC-31171500-000002",
+     "std_description": "BEARING, DEEP GROOVE BALL, 6206, 30X62X16 MM, 2RS SEALED",
+     "category": "bearing",
+     "unspsc": "31171500",
+     "cpse_count": 3,
+     "cpses": [
+      "BPCL",
+      "GAIL",
+      "ONGC"
+     ],
+     "member_count": 6,
+     "final": 0.0,
+     "text_sim": 0.154,
+     "spec_sim": 0.0,
+     "matched_fields": [
+      "sub_type"
+     ],
+     "ignored_fields": [],
+     "blocked_by": "iso_designation",
+     "reason": "6205 vs 6206"
+    }
+   ],
+   "missing_hard": [],
+   "compared_against": 16,
+   "thresholds": {
+    "exists": 0.9,
+    "review": 0.7
+   },
+   "id": "duplicate",
+   "label": "A duplicate arrives",
+   "note": "IOCL types the description on a supplier quote. It shares almost no words with the catalogue entry."
+  },
+  {
+   "input": "GASKET SPIRAL WOUND SS304 4IN 150#",
+   "extracted": {
+    "category": "gasket",
+    "attributes": {
+     "gasket_type": "SPIRAL_WOUND",
+     "material_grade": "SS304",
+     "nominal_size_in": 4.0,
+     "pressure_class": "150#"
+    },
+    "confidence": {
+     "gasket_type": 1.0,
+     "material_grade": 1.0,
+     "nominal_size_in": 1.0,
+     "pressure_class": 1.0
+    },
+    "method": "llm"
+   },
+   "verdict": "EXISTS",
+   "message": "Already catalogued as NMC-31400000-000001. 4 CPSEs already hold it. Do not create a new code.",
+   "best": {
+    "national_code": "NMC-31400000-000001",
+    "std_description": "GASKET, SPIRAL WOUND, SS304, 4 IN, 150#, GRAPHITE",
+    "category": "gasket",
+    "unspsc": "31400000",
+    "cpse_count": 4,
+    "cpses": [
+     "BPCL",
+     "GAIL",
+     "IOCL",
+     "ONGC"
+    ],
+    "member_count": 10,
+    "final": 0.939,
+    "text_sim": 0.556,
+    "spec_sim": 1.0,
+    "matched_fields": [
+     "gasket_type",
+     "material_grade",
+     "nominal_size_in",
+     "pressure_class"
+    ],
+    "ignored_fields": [],
+    "blocked_by": null,
+    "reason": null
+   },
+   "candidates": [
+    {
+     "national_code": "NMC-31400000-000001",
+     "std_description": "GASKET, SPIRAL WOUND, SS304, 4 IN, 150#, GRAPHITE",
+     "category": "gasket",
+     "unspsc": "31400000",
+     "cpse_count": 4,
+     "cpses": [
+      "BPCL",
+      "GAIL",
+      "IOCL",
+      "ONGC"
+     ],
+     "member_count": 10,
+     "final": 0.939,
+     "text_sim": 0.556,
+     "spec_sim": 1.0,
+     "matched_fields": [
+      "gasket_type",
+      "material_grade",
+      "nominal_size_in",
+      "pressure_class"
+     ],
+     "ignored_fields": [],
+     "blocked_by": null,
+     "reason": null
+    }
+   ],
+   "distinguished_from": [
+    {
+     "national_code": "NMC-31400000-000002",
+     "std_description": "GASKET, SPIRAL WOUND, SS316, 4 IN, 150#, GRAPHITE",
+     "category": "gasket",
+     "unspsc": "31400000",
+     "cpse_count": 3,
+     "cpses": [
+      "CPCL",
+      "IOCL",
+      "ONGC"
+     ],
+     "member_count": 5,
+     "final": 0.0,
+     "text_sim": 0.4,
+     "spec_sim": 0.0,
+     "matched_fields": [
+      "gasket_type"
+     ],
+     "ignored_fields": [],
+     "blocked_by": "material_grade",
+     "reason": "SS304 vs SS316"
+    }
+   ],
+   "missing_hard": [],
+   "compared_against": 16,
+   "thresholds": {
+    "exists": 0.9,
+    "review": 0.7
+   },
+   "id": "known-grade",
+   "label": "Two codes differ only by grade",
+   "note": "The catalogue holds an SS304 and an SS316 spiral wound gasket, identical in every other field. The gate has to return the right one, not the nearest string."
+  },
+  {
+   "input": "GASKET SPIRAL WOUND SS321 4IN 150#",
+   "extracted": {
+    "category": "gasket",
+    "attributes": {
+     "nominal_size_in": 4.0,
+     "pressure_class": "150#",
+     "material_grade": "SS321"
+    },
+    "confidence": {
+     "nominal_size_in": 0.62,
+     "pressure_class": 0.62,
+     "material_grade": 0.62
+    },
+    "method": "regex"
+   },
+   "verdict": "NEW",
+   "message": "No existing national code matches. This is a new item. It is NOT NMC-31400000-000001, NMC-31400000-000002 - material grade differs.",
+   "best": null,
+   "candidates": [],
+   "distinguished_from": [
+    {
+     "national_code": "NMC-31400000-000001",
+     "std_description": "GASKET, SPIRAL WOUND, SS304, 4 IN, 150#, GRAPHITE",
+     "category": "gasket",
+     "unspsc": "31400000",
+     "cpse_count": 4,
+     "cpses": [
+      "BPCL",
+      "GAIL",
+      "IOCL",
+      "ONGC"
+     ],
+     "member_count": 10,
+     "final": 0.0,
+     "text_sim": 0.4,
+     "spec_sim": 0.0,
+     "matched_fields": [],
+     "ignored_fields": [],
+     "blocked_by": "material_grade",
+     "reason": "SS321 vs SS304"
+    },
+    {
+     "national_code": "NMC-31400000-000002",
+     "std_description": "GASKET, SPIRAL WOUND, SS316, 4 IN, 150#, GRAPHITE",
+     "category": "gasket",
+     "unspsc": "31400000",
+     "cpse_count": 3,
+     "cpses": [
+      "CPCL",
+      "IOCL",
+      "ONGC"
+     ],
+     "member_count": 5,
+     "final": 0.0,
+     "text_sim": 0.4,
+     "spec_sim": 0.0,
+     "matched_fields": [],
+     "ignored_fields": [],
+     "blocked_by": "material_grade",
+     "reason": "SS321 vs SS316"
+    }
+   ],
+   "missing_hard": [],
+   "compared_against": 16,
+   "thresholds": {
+    "exists": 0.9,
+    "review": 0.7
+   },
+   "id": "new-grade",
+   "label": "A grade the catalogue has never held",
+   "note": "SS321 exists in no cluster. The gate must issue a new code AND say what this is not."
+  },
+  {
+   "input": "PRESSURE GAUGE 100MM DIAL 0-16 BAR SS316 1/2IN NPT BOTTOM",
+   "extracted": {
+    "category": "instrument",
+    "attributes": {
+     "dial_size_mm": 100.0,
+     "instrument_type": "PRESSURE_GAUGE",
+     "wetted_material": "SS316",
+     "connection": "1/2IN NPT BOTTOM",
+     "range_min": 0.0,
+     "range_max": 16.0,
+     "range_unit": "BAR"
+    },
+    "confidence": {
+     "dial_size_mm": 0.62,
+     "instrument_type": 0.62,
+     "wetted_material": 0.62,
+     "connection": 0.62,
+     "range_min": 0.62,
+     "range_max": 0.62,
+     "range_unit": 0.62
+    },
+    "method": "regex"
+   },
+   "verdict": "NEW",
+   "message": "No existing national code matches. This is a new item. It is NOT NMC-41111900-000001 - range max differs.",
+   "best": null,
+   "candidates": [],
+   "distinguished_from": [
+    {
+     "national_code": "NMC-41111900-000001",
+     "std_description": "INSTRUMENT, PRESSURE GAUGE, 100 MM DIAL, 0-10 BAR, SS316, 1/2 IN NPT BOTTOM",
+     "category": "instrument",
+     "unspsc": "41111900",
+     "cpse_count": 4,
+     "cpses": [
+      "CPCL",
+      "GAIL",
+      "IOCL",
+      "ONGC"
+     ],
+     "member_count": 6,
+     "final": 0.0,
+     "text_sim": 0.5,
+     "spec_sim": 0.0,
+     "matched_fields": [
+      "instrument_type",
+      "dial_size_mm",
+      "range_min"
+     ],
+     "ignored_fields": [],
+     "blocked_by": "range_max",
+     "reason": "16.0 vs 10.0"
+    }
+   ],
+   "missing_hard": [],
+   "compared_against": 16,
+   "thresholds": {
+    "exists": 0.9,
+    "review": 0.7
+   },
+   "id": "new-range",
+   "label": "Same gauge, wrong range",
+   "note": "Identical type, dial, wetted material and connection. Only the range differs - and a 0-16 bar gauge fitted where a 0-10 bar one belongs reads wrong for the rest of its life."
+  },
+  {
+   "input": "BEARING",
+   "extracted": {
+    "category": "bearing",
+    "attributes": {},
+    "confidence": {},
+    "method": "regex"
+   },
+   "verdict": "INCOMPLETE",
+   "message": "Read as a bearing, but only 0 fields could be extracted. No code should be issued yet. Add: iso_designation, bore_mm.",
+   "best": null,
+   "candidates": [],
+   "distinguished_from": [],
+   "missing_hard": [
+    "iso_designation",
+    "bore_mm"
+   ],
+   "compared_against": 16,
+   "thresholds": {
+    "exists": 0.9,
+    "review": 0.7
+   },
+   "id": "incomplete",
+   "label": "Not enough typed to decide",
+   "note": "A storekeeper in a hurry types one word. The gate refuses to issue a code and says which fields it still needs."
+  }
+ ]
+}

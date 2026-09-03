@@ -29,6 +29,11 @@ DOCS = ROOT / "docs"
 UI = ROOT / "ui"
 DELIVERABLES = ROOT / "deliverables"
 
+# The frontend imports its data at BUILD time, so it needs its own copy inside
+# ui/src. results.py writes both in one go - a hand-copied second file is how
+# a demo ends up showing last week's numbers.
+UI_RESULTS = UI / "src" / "results.json"
+
 # --- input: what a CPSE gives us (in reality, a SAP export) -----------------
 MATERIALS = INPUT / "materials.csv"
 PURCHASES = INPUT / "purchases.csv"
@@ -45,6 +50,8 @@ CLUSTERS = OUTPUT / "clusters.json"            # 06 clustering
 NATIONAL_CODES = OUTPUT / "national_codes.json"  # 08 canonicaliser
 MAPPINGS = OUTPUT / "mappings.csv"             # 08 canonicaliser
 SAVINGS = OUTPUT / "savings.json"              # 09 savings report
+UOM = OUTPUT / "uom.json"                      # 09 unit harmonisation report
+GATE = OUTPUT / "gate.json"                    # 10 creation-gate scenarios
 RESULTS = OUTPUT / "results.json"              # 09 everything the UI reads
 METRICS = OUTPUT / "metrics.json"           # -- evaluate.py, read by results.py
 

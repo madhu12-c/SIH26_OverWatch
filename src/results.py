@@ -85,6 +85,13 @@ def build() -> dict:
     metrics = (json.loads(paths.METRICS.read_text(encoding="utf-8"))
                if paths.METRICS.exists() else {})
 
+    # Optional stages. The UI hides a screen whose section is absent rather
+    # than rendering an empty one, so the bundle stays valid before they run.
+    uom = (json.loads(paths.UOM.read_text(encoding="utf-8"))
+           if paths.UOM.exists() else {})
+    gate = (json.loads(paths.GATE.read_text(encoding="utf-8"))
+            if paths.GATE.exists() else {})
+
     pairs_index = {(p["a"], p["b"]): p for p in pairs}
 
     # Blocked pairs, minus plain category mismatches. A bearing not merging
@@ -141,6 +148,8 @@ def build() -> dict:
             "blocked": len(blocked),
             "savings_upper": summary.get("saving_upper", 0),
             "savings_realistic": summary.get("saving_realistic", 0),
+            "uom_variants": uom.get("summary", {}).get("variants_seen"),
+            "uom_units": uom.get("summary", {}).get("canonical_units"),
             # Straight from evaluate.py. Null when it has not been run -
             # a number nobody measured must not reach a slide, and the UI
             # says "run evaluate.py" rather than inventing one.
@@ -160,6 +169,8 @@ def build() -> dict:
         "blocked_by_rule": dict(sorted(by_rule.items(), key=lambda x: -x[1])),
         "savings": savings.get("items", [])[:25],
         "savings_summary": summary,
+        "uom": uom,
+        "gate": gate,
     }
 
 
@@ -245,6 +256,55 @@ def stub() -> dict:
                             "saving_upper": 330000000,
                             "saving_realistic": 132000000,
                             "capture_rate": 0.40, "k_anonymity": 3},
+        "uom": {
+            "summary": {"records": 100, "variants_seen": 10, "canonical_units": 2,
+                        "units": ["EA", "M"], "codes_total": 15,
+                        "codes_with_conflict": 14, "cross_family_conflicts": 0,
+                        "intra_cpse_conflicts": 11, "pack_size_flags": 0,
+                        "ambiguous_spellings": ["MTS"], "unrecognised": []},
+            "families": [
+                {"canonical": "EA", "label": "Each", "records": 90,
+                 "variants": [{"raw": "EACH", "count": 21}, {"raw": "NO", "count": 16}]},
+                {"canonical": "M", "label": "Metre", "records": 8,
+                 "variants": [{"raw": "METER", "count": 4}, {"raw": "M", "count": 3}]},
+            ],
+            "ambiguous": [{"raw": "MTS", "count": 2, "readings": ["M", "MT"],
+                           "note": "metres or metric tonnes"}],
+            "unrecognised": [],
+            "conflicts": [{
+                "national_code": "NMC-31171500-000001",
+                "description": "BEARING, BALL, DEEP GROOVE, 6205, 25X52X15 MM, 2RS SEALED",
+                "category": "bearing", "resolved_to": "EA", "resolved_label": "Each",
+                "cross_family": False, "variant_count": 5,
+                "variants": [{"raw": "NO", "count": 3, "cpses": ["CPCL", "GAIL"]},
+                             {"raw": "EACH", "count": 2, "cpses": ["BPCL"]}],
+                "intra_cpse": ["BPCL", "CPCL"], "pack_size_flag": None,
+            }],
+        },
+        "gate": {
+            "index": {"codes": 15, "note": "compared against golden records"},
+            "thresholds": {"exists": 0.90, "review": 0.70},
+            "scenarios": [{
+                "id": "duplicate", "label": "A duplicate arrives",
+                "note": "Shares almost no words with the catalogue entry.",
+                "input": "FAG 6205-2RSR BEARING, 25X52X15MM, SEALED",
+                "extracted": {"category": "bearing",
+                              "attributes": b["attributes"],
+                              "confidence": {}, "method": "regex"},
+                "verdict": "EXISTS",
+                "message": "Already catalogued as NMC-31171500-000001.",
+                "best": {"national_code": "NMC-31171500-000001",
+                         "std_description": "BEARING, BALL, DEEP GROOVE, 6205, 25X52X15 MM, 2RS SEALED",
+                         "category": "bearing", "unspsc": "31171500",
+                         "cpse_count": 5, "cpses": ["BPCL", "CPCL", "GAIL", "IOCL", "ONGC"],
+                         "member_count": 10, "final": 0.95, "text_sim": 0.25,
+                         "spec_sim": 1.0,
+                         "matched_fields": ["iso_designation", "bore_mm"],
+                         "ignored_fields": ["brand"], "blocked_by": None, "reason": None},
+                "candidates": [], "distinguished_from": [], "compared_against": 15,
+                "thresholds": {"exists": 0.90, "review": 0.70},
+            }],
+        },
     }
 
 
@@ -257,12 +317,18 @@ def main() -> None:
 
     data = stub() if args.stub else build()
     paths.ensure_dirs()
-    paths.RESULTS.write_text(json.dumps(data, indent=1), encoding="utf-8")
+    blob = json.dumps(data, indent=1)
+    paths.RESULTS.write_text(blob, encoding="utf-8")
+    # Written in the same breath as the canonical copy. The frontend imports
+    # its own file at build time, and letting the two drift is how a demo ends
+    # up presenting numbers nobody generated.
+    if paths.UI_RESULTS.parent.exists():
+        paths.UI_RESULTS.write_text(blob, encoding="utf-8")
 
     m = data["meta"]
     kind = "STUB" if args.stub else "real"
     print(f"wrote {paths.RESULTS.name}  ({kind}, "
-          f"{paths.RESULTS.stat().st_size/1024:.0f} KB)")
+          f"{paths.RESULTS.stat().st_size/1024:.0f} KB)  + ui/src/results.json")
     print(f"  records         {m['records']}   extracted {m['extracted']}")
     print(f"  unique items    {m['unique_items']}   "
           f"({m['duplication']:.1%} duplication)")

@@ -156,20 +156,34 @@ docs/                     full documentation, indexed at docs/README.md
   04-risks/               honest limits, technical + demo risks, judge Q&A
   05-runbook/             setup, running, demo day
   06-team/                one self-serve file per person
-src/                      paths.py, schemas.py, generate_dataset.py, extractor.py, embed.py
+src/                      paths.py, schemas.py, generate_dataset.py, extractor.py, embed.py,
+                          scorer.py, evaluate.py, canonicalise.py, savings.py, uom.py,
+                          gate.py, results.py
 data/input/               materials.csv, purchases.csv        (what a CPSE gives us)
 data/truth/               ground_truth.csv, traps.json        (evaluation ONLY, never the pipeline)
-data/output/              specs.json, embeddings.npz, ...     (regenerable)
-ui/                       React demo frontend
+data/output/              specs.json, embeddings.npz, uom.json, gate.json, ... (regenerable)
+ui/                       React demo frontend — eight screens
 deliverables/             architecture doc, PDF, decks
 ```
 
-**Built and working:** dataset generator (100 records, 15 items, 85% duplication, 245 POs),
-category schemas with hard blockers, spec extractor (Gemini + regex fallback, cached, resumable),
-local embeddings. Both demo cases pass on the regex fallback alone — no API, no internet.
+**Built and working — the pipeline runs end to end.** Dataset generator (100 records, 15 items,
+84% duplication, 245 POs), category schemas with hard blockers, spec extractor (Gemini + regex
+fallback, cached, resumable), local embeddings, hybrid scorer, clustering, evaluation harness,
+canonicaliser, savings report, UoM harmonisation, creation gate, and an eight-screen React UI.
+Both demo cases pass on the regex fallback alone — no API, no internet.
 
-**Not yet built:** `scorer.py`, `evaluate.py`, `canonicalise.py`, `savings.py`, `results.py`,
-`run_all.py`, and the UI.
+Current measured numbers (`data/output/metrics.json`): precision 1.0, recall 0.942, 177 auto-merged
+pairs, 0 false merges, 0 trap violations, 282 safety blocks, 100 raw → 16 unique (84% duplication).
+Savings: ₹22.6 cr total spend, ₹1.79 cr upper / ₹0.72 cr realistic, k-anonymity 3.
+
+**Not yet built:** `run_all.py`; the audit trail and cross-CPSE dual approval (PS Capability 7 —
+the only genuine zero); the migration pack and ERP export (Capabilities 5 and 8); learned
+abbreviation vocabulary (differentiator D).
+
+⚠️ **Keep this section current.** It was stale for several days — it listed `scorer.py`,
+`canonicalise.py`, `savings.py`, `results.py` and the whole UI as unbuilt while all of them
+existed and ran. Advice given against a stale decision record is worse than no advice, because
+it recommends rebuilding what is finished and misses what is actually missing.
 
 **Paths are defined once in `src/paths.py`.** Never build a path from string pieces elsewhere.
 

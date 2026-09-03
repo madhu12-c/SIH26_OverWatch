@@ -18,4 +18,13 @@ export const blockedByRule = results.blocked_by_rule ?? {}
 export const savings = results.savings ?? []
 export const savingsSummary = results.savings_summary ?? {}
 
+// Optional stages. Absent until src/uom.py and src/gate.py have run, so every
+// consumer checks before rendering rather than assuming the key is there.
+export const uom = results.uom ?? {}
+export const uomSummary = results.uom?.summary ?? {}
+export const uomFamilies = results.uom?.families ?? []
+export const uomConflicts = results.uom?.conflicts ?? []
+export const gate = results.gate ?? {}
+export const gateScenarios = results.gate?.scenarios ?? []
+
 export const isStub = meta.precision == null && clusters.length <= 1

@@ -252,6 +252,17 @@ def canonical_value(field_name: str, value):
             if re.fullmatch(pattern, low) or re.fullmatch(pattern, compact):
                 return canon
 
+        # Any stainless grade, listed or not. The alias table above exists to
+        # collapse SPELLINGS ("stainless steel 316", "S.S.316", "316 SS");
+        # this rule exists so a grade nobody enumerated still resolves to a
+        # comparable value instead of being dropped. Dropping it would be the
+        # dangerous outcome: a field that is silent cannot veto a merge.
+        if table is _GRADE_ALIASES:
+            stainless = (re.fullmatch(r"(?:ss|sst|s s|stainless(?: steel)?)\s*(\d{3})\s*(l?)", low)
+                         or re.fullmatch(r"(?:ss|sst|stainless(?:steel)?)(\d{3})(l?)", compact))
+            if stainless:
+                return f"SS{stainless.group(1)}{stainless.group(2).upper()}"
+
     if field_name == "pressure_class":
         m = re.search(r"(\d{3,4})", low)
         if m:
@@ -290,7 +301,12 @@ _PATTERNS = {
     "nominal_size_in":  r'(\d+(?:\.\d+)?)\s*(?:in\b|inch|")',
     "schedule":         r"sch(?:edule)?[\s-]*(\d{1,3}s?)",
     "pressure_class":   r"\b(\d{3,4})\s*#",
-    "material_grade":   r"\b(ss\s*316l?|ss\s*304l?|s\.s\.\s*3\d{2}|carbon\s*steel|c\.?s\.?|"
+    # Austenitic stainless is a NUMBERED FAMILY - 304, 316, 321, 347, 310 -
+    # not a list of two. Hardcoding 316 and 304 meant SS321 extracted as
+    # nothing at all, so the grade veto could not fire on a grade we had
+    # simply never listed, and a 321 gasket scored as a possible match
+    # against a 304 one. An unlisted grade must still block.
+    "material_grade":   r"\b(s\.?\s?s\.?\s*\d{3}\s*l?|carbon\s*steel|c\.?s\.?|"
                         r"mild\s*steel|m\.?s\.?|cast\s*steel|a\s*105|a193\s*b7)\b",
     "seal_type":        r"\b(2rsr?1?|2z|zz|llu|rs)\b",
     "thread":           r"\b(m\d{1,2})\s*[x×]",
@@ -300,9 +316,25 @@ _PATTERNS = {
     "voltage_v":        r"(\d{3,4})\s*v\b",
     "dial_size_mm":     r"(\d{2,3})\s*mm\s*dial",
     "phases":           r"\b(3)\s*[- ]?\s*(?:ph|phase)\b",
+    # An instrument was reachable by dial size alone - one field, below the
+    # creation gate's floor, so a fully specified gauge read as "not enough
+    # information". Type, wetted material and range are what actually separate
+    # two instruments, and range_max is a veto field: a 0-16 bar gauge fitted
+    # where a 0-10 bar one belongs reads wrong for the whole of its life.
+    "instrument_type":  r"\b(pressure\s*gauge|temperature\s*gauge|temp\s*gauge|"
+                        r"pressure\s*transmitter|level\s*transmitter|flow\s*meter|"
+                        r"thermometer|thermocouple|rtd)\b",
+    "wetted_material":  r"\b(s\.?\s?s\.?\s*\d{3}\s*l?|monel|hastelloy|inconel|"
+                        r"carbon\s*steel|c\.?s\.?)\b",
+    "connection":       r"(\d/\d\s*(?:in\b|inch|\")?\s*npt(?:\s*(?:bottom|back|side))?)",
 }
 
 _DIMS = re.compile(r"(\d{1,4})\s*[x*×]\s*(\d{1,4})\s*[x*×]\s*(\d{1,4})")
+
+# "0-16 BAR", "0 TO 160 KG/CM2". Two numbers and a unit in one shape, which is
+# why it cannot live in _PATTERNS - that captures a single group per field.
+_RANGE = re.compile(r"(\d+(?:\.\d+)?)\s*(?:-|to)\s*(\d+(?:\.\d+)?)\s*"
+                    r"(bar|psi|kpa|mpa|kg/cm2|deg\s*c|degc)\b")
 
 
 def regex_extract(description: str) -> dict:
@@ -326,13 +358,32 @@ def regex_extract(description: str) -> dict:
             continue
         raw = m.group(1)
         spec = next(f for f in fields_for(category) if f.name == name)
-        attrs[name] = float(raw) if spec.kind == "num" else canonical_value(name, raw)
+        if spec.kind == "num":
+            attrs[name] = float(raw)
+        else:
+            value = canonical_value(name, raw)
+            # Enum values are written with underscores everywhere else
+            # (SPIRAL_WOUND, DEEP_GROOVE_BALL), so "pressure gauge" read out of
+            # free text has to arrive in that shape or it compares unequal to
+            # the identical value the model extracted.
+            if spec.kind == "enum" and isinstance(value, str):
+                value = re.sub(r"\s+", "_", value.strip())
+            attrs[name] = value
         conf[name] = 0.62
 
     dims = _DIMS.search(text)
     if dims and category == "bearing":
         for name, value in zip(("bore_mm", "od_mm", "width_mm"), dims.groups()):
             attrs.setdefault(name, float(value))
+            conf.setdefault(name, 0.62)
+
+    span = _RANGE.search(text)
+    if span and "range_min" in valid:
+        lo, hi, unit = span.groups()
+        attrs.setdefault("range_min", float(lo))
+        attrs.setdefault("range_max", float(hi))
+        attrs.setdefault("range_unit", re.sub(r"\s+", "", unit).upper())
+        for name in ("range_min", "range_max", "range_unit"):
             conf.setdefault(name, 0.62)
 
     return {"category": category, "attributes": attrs,
