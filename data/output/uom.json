@@ -7,7 +7,7 @@
    "EA",
    "M"
   ],
-  "codes_total": 16,
+  "codes_total": 15,
   "codes_with_conflict": 15,
   "cross_family_conflicts": 0,
   "intra_cpse_conflicts": 12,
@@ -641,6 +641,40 @@
    "pack_size_flag": null
   },
   {
+   "national_code": "NMC-40141600-000003",
+   "description": "VALVE, GATE, 6 IN, 300#, CARBON STEEL",
+   "category": "valve",
+   "resolved_to": "EA",
+   "resolved_label": "Each",
+   "cross_family": false,
+   "variant_count": 3,
+   "variants": [
+    {
+     "raw": "EACH",
+     "count": 1,
+     "cpses": [
+      "GAIL"
+     ]
+    },
+    {
+     "raw": "NO",
+     "count": 1,
+     "cpses": [
+      "BPCL"
+     ]
+    },
+    {
+     "raw": "PC",
+     "count": 1,
+     "cpses": [
+      "ONGC"
+     ]
+    }
+   ],
+   "intra_cpse": [],
+   "pack_size_flag": null
+  },
+  {
    "national_code": "NMC-40171600-000001",
    "description": "PIPE, SEAMLESS, CARBON STEEL, ASTM A106 GR B, 4 IN, SCH 40",
    "category": "pipe",
@@ -667,33 +701,6 @@
     },
     {
      "raw": "MTR",
-     "count": 1,
-     "cpses": [
-      "ONGC"
-     ]
-    }
-   ],
-   "intra_cpse": [],
-   "pack_size_flag": null
-  },
-  {
-   "national_code": "NMC-40141600-000003",
-   "description": "VALVE, GATE, 6 IN, 300#, CARBON STEEL",
-   "category": "valve",
-   "resolved_to": "EA",
-   "resolved_label": "Each",
-   "cross_family": false,
-   "variant_count": 2,
-   "variants": [
-    {
-     "raw": "NO",
-     "count": 1,
-     "cpses": [
-      "BPCL"
-     ]
-    },
-    {
-     "raw": "PC",
      "count": 1,
      "cpses": [
       "ONGC"

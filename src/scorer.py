@@ -39,6 +39,8 @@ import statistics
 from collections import defaultdict
 from itertools import combinations
 
+import blocking
+import normalise as nz
 import paths
 import schemas
 
@@ -129,16 +131,123 @@ def text_similarity(a_id, b_id, descriptions, vecs) -> float:
 # Signal 2 - specifications. The heaviest signal and the core of the project.
 # ===========================================================================
 
+GRADE_FIELDS = ("material_grade", "body_material", "wetted_material")
+
+# Numbers that name or count something rather than measure it.
+EXACT_NUMBERS = {"cores", "phases", "poles", "angle", "pressure_rating_psi",
+                 "cross_section_mm2", "rating_kva", "range_min", "range_max"}
+
+# Blocks that say "these are obviously different things", not "a safety rule
+# stopped a near-miss". Kept out of the safety interlock report.
+NOT_SAFETY = {"category", "noun", "quantities"}
+
+# Categories with no real schema. Their pairs can reach a human, never auto.
+NO_AUTO_CATEGORIES = {"other", "unknown"}
+
+
+def compare(field: schemas.Field, x, y) -> str:
+    """'agree' | 'mismatch' | 'unknown'.
+
+    Grades use the family ladder (normalise.compare_grades): a bare "CS"
+    against "A106 GR B" is unknown, not a match and not a veto.
+    """
+    if field.name in GRADE_FIELDS:
+        return nz.compare_grades(x, y)
+    if field.name == "connection":
+        return _compare_connection(x, y)
+    if field.kind != "num":
+        # Specs cached by an earlier run keep older spellings ("SCH-40",
+        # "GR" for graphite). A spelling must never read as a difference.
+        x, y = schemas.canonical_value(field.name, x), schemas.canonical_value(field.name, y)
+    return "agree" if values_agree(field, x, y) else "mismatch"
+
+
+_CONN = re.compile(r"(\d/\d|\d)\s*(?:IN\b|INCH|\")?\s*(NPT|BSP)?\s*(BOTTOM|LOWER|BACK|REAR|SIDE)?")
+
+
+def _compare_connection(x, y) -> str:
+    """'1/2 IN NPT BOTTOM': the thread size must agree; so must the position
+    where both give one. A position cut off one side is a doubt."""
+    mx, my = _CONN.search(str(x).upper()), _CONN.search(str(y).upper())
+    if not mx or not my:
+        return "agree" if str(x).upper() == str(y).upper() else "mismatch"
+    if mx.group(1) != my.group(1) or (mx.group(2) and my.group(2) and mx.group(2) != my.group(2)):
+        return "mismatch"
+    pos = {"LOWER": "BOTTOM", "REAR": "BACK"}
+    px, py = pos.get(mx.group(3), mx.group(3)), pos.get(my.group(3), my.group(3))
+    if px and py:
+        return "agree" if px == py else "mismatch"
+    return "unknown" if (px or py) else "agree"
+
+
 def values_agree(field: schemas.Field, x, y) -> bool:
     if field.kind == "num":
         try:
             fx, fy = float(x), float(y)
         except (TypeError, ValueError):
             return False
-        # A little tolerance, because 25 and 25.0 and 25.4 all appear for what
-        # is the same nominal dimension written from different sources.
-        return abs(fx - fy) <= max(0.02 * max(abs(fx), abs(fy)), 0.5)
+        big = max(abs(fx), abs(fy))
+        # Size names and counts are exact. 1-1/4" and 1-1/2" are different
+        # pipes, 3 cores and 3.5 cores different cables - an absolute 0.5
+        # tolerance here once let a 1-1/4" pipe match a 1-1/2" one.
+        if field.unit == "inch" or field.name in EXACT_NUMBERS:
+            return abs(fx - fy) <= 0.002 * big + 1e-6
+        # Measurements get a little room: 457 and 457.2 mm are one OD, and a
+        # kW rating converted to hp lands within a percent or two.
+        return abs(fx - fy) <= max(0.02 * big, 0.05)
     return str(x).strip().upper() == str(y).strip().upper()
+
+
+# ---------------------------------------------------------------------------
+# Variant awareness.
+#
+# Two records can be silent on the very field that separates two products:
+# "GASKET SW SS316 4IN 150#" twice, where the registry holds both a graphite-
+# and a PTFE-filled 4" gasket. Silence on both sides is not evidence of
+# difference - but when the registry's own records show that this item comes
+# in more than one variant, it is not evidence of sameness either. Such a
+# pair can reach a person, never auto-merge.
+#
+# The index is learned from the records themselves (never from truth): for
+# each item anchor (blocking.ANCHORS - bearing|6205, gasket|4 ...), which
+# values of each variant field (veto-only fields) anyone has written.
+# ---------------------------------------------------------------------------
+
+VARIANTS: dict = {}
+_VARIANTS_BUILT = [False]
+
+
+def load_variants(specs: dict) -> None:
+    """Learn the variant index from every record. Until this runs the scorer
+    stays strict: any one-sided veto field holds a pair back."""
+    VARIANTS.clear()
+    VARIANTS.update(build_variant_index(specs))
+    _VARIANTS_BUILT[0] = True
+
+
+def build_variant_index(specs: dict) -> dict:
+    import blocking
+    index = defaultdict(lambda: defaultdict(set))
+    for s in specs.values():
+        cat = s.get("category")
+        key = _anchor(cat, s.get("attributes", {}), blocking)
+        if key is None:
+            continue
+        for f in schemas.fields_for(cat):
+            if f.hard and (not f.required or f.name in GRADE_FIELDS) and f.name in s["attributes"]:
+                value = s["attributes"][f.name]
+                value = nz.canonical_grade(value) if f.name in GRADE_FIELDS else schemas.canonical_value(f.name, value)
+                index[key][f.name].add(str(value))
+    return {k: {f: v for f, v in d.items() if len(v) > 1} for k, d in index.items()}
+
+
+def _anchor(cat, attrs, blocking=None):
+    if blocking is None:
+        import blocking
+    fields = blocking.ANCHORS.get(cat)
+    if not fields or not all(f in attrs for f in fields):
+        return None
+    return cat + "|" + "|".join(blocking._v(attrs[f]) for f in fields)
 
 
 def spec_agreement(a: dict, b: dict) -> dict:
@@ -154,10 +263,14 @@ def spec_agreement(a: dict, b: dict) -> dict:
                 "matched": [], "ignored": [], "compared": 0}
 
     category = a["category"]
-    attrs_a, attrs_b = a["attributes"], b["attributes"]
-    conf_a, conf_b = a.get("confidence", {}), b.get("confidence", {})
+    # Fill what each record implies but does not state (kW -> hp, OD -> size),
+    # on copies - specs cached before derive() existed get the same treatment.
+    attrs_a, attrs_b = dict(a["attributes"]), dict(b["attributes"])
+    conf_a, conf_b = dict(a.get("confidence", {})), dict(b.get("confidence", {}))
+    schemas.derive(category, attrs_a, conf_a)
+    schemas.derive(category, attrs_b, conf_b)
 
-    matched, mismatched, ignored, unverified_hard = [], [], [], []
+    matched, mismatched, ignored, unverified_hard, unsure = [], [], [], [], []
     weight_hit = weight_total = 0.0
 
     for field in schemas.fields_for(category):
@@ -176,12 +289,45 @@ def spec_agreement(a: dict, b: dict) -> dict:
         # evaluation harness caught this: 150# and 300# gate valves were
         # merging because one side never had pressure_class extracted, so the
         # veto could not fire. Absence of a safety check is not a pass.
+        #
+        # A veto field that is not required (a pipe's measured OD, black versus
+        # galvanised) blocks on a mismatch but is not demanded: real text only
+        # sometimes states it, and the synthetic set never does.
+        #
+        # ONE-SIDED. When one record states a veto field and the other is
+        # silent, the silent one may be the other product: "GASKET SW SS316
+        # 4IN 150#" against the same gasket "PTFE FILLED" - or its graphite
+        # twin. Silence is not a mismatch, so no veto; but it is not a check
+        # either, so the pair can reach a person, never auto-merge. On the
+        # 15,000-record run this one rule was most of the difference between
+        # 31% and a safe auto band.
+        #
+        # Tried and rejected (24 Sept): applying this only where the registry
+        # has SEEN more than one value. The default variant is the one nobody
+        # writes - "plain" plate, "unarmoured" cable - so the registry looks
+        # single-valued exactly where it is not; 8 wrong auto-merges and 8
+        # traps at 15,000 records. Silence on one side always holds a pair.
         if x is None or y is None:
-            if field.hard:
+            if field.hard and (field.required or (x is None) != (y is None)):
                 unverified_hard.append(field.name)
             continue
 
-        agree = values_agree(field, x, y)
+        result = compare(field, x, y)
+        # "SS" and "SS" agree as words, not as grades. When the registry holds
+        # this item in more than one grade, two family-only records could be
+        # SS304 and SS316 - a doubt, not a match.
+        if result == "agree" and field.name in GRADE_FIELDS and nz.grade_family(nz.canonical_grade(x))[1]:
+            key = _anchor(category, attrs_a)
+            if key and len(VARIANTS.get(key, {}).get(field.name, ())) > 1:
+                result = "unknown"
+        if result == "unknown":
+            # The two values neither agree nor contradict - "CS" against
+            # "A106 GR B". Treated as a check we could not make.
+            if field.hard:
+                unverified_hard.append(field.name)
+            unsure.append(field.name)
+            continue
+        agree = result == "agree"
 
         if field.hard and not agree:
             return {"score": 0.0, "blocked_by": field.name,
@@ -199,16 +345,32 @@ def spec_agreement(a: dict, b: dict) -> dict:
         else:
             mismatched.append(field.name)
 
+    # Both silent on a variant field that the registry shows in more than
+    # one value for this item: not a check - see VARIANTS above.
+    if VARIANTS:
+        key = _anchor(category, attrs_a)
+        for fname in VARIANTS.get(key, {}) if key and key == _anchor(category, attrs_b) else ():
+            if fname not in attrs_a and fname not in attrs_b:
+                unverified_hard.append(fname)
+                unsure.append(fname)
+
+    # A required field checked through its alternative is checked: no
+    # schedule on either side, but both walls agree, is a verified wall.
+    by_name = {f.name: f for f in schemas.fields_for(category)}
+    unverified_hard = [n for n in dict.fromkeys(unverified_hard)
+                       if n in unsure or not any(alt in matched for alt in by_name[n].alt)]
+
     if weight_total == 0:
         # Same category, but nothing comparable was extracted from either side.
         # That is weak evidence of sameness, not none - and it must not look
         # like a confident match.
         return {"score": 0.25, "blocked_by": None, "reason": "no comparable fields",
-                "matched": [], "ignored": ignored, "compared": 0}
+                "matched": [], "ignored": ignored, "compared": 0,
+                "unverified_hard": unverified_hard, "unsure": unsure}
 
     return {"score": weight_hit / weight_total, "blocked_by": None, "reason": None,
             "matched": matched, "mismatched": mismatched, "ignored": ignored,
-            "unverified_hard": unverified_hard,
+            "unverified_hard": unverified_hard, "unsure": unsure,
             "compared": len(matched) + len(mismatched)}
 
 
@@ -328,7 +490,30 @@ def score_pair(a, b, descriptions, vecs, profiles) -> dict:
     if unverified:
         out["review_reason"] = ("could not verify " + ", ".join(unverified)
                                 + " - not extracted from both records")
+    unsure = spec.get("unsure") or []
+    if unsure:
+        out["review_reason"] = ("could not tell " + ", ".join(unsure) + " - the family only on one side, "
+                                "or neither record says which variant and the registry holds several")
+
+    # Outside every schema: the noun and the numbers can say "possibly the
+    # same", never "certainly". A person always confirms.
+    if a.get("category") in NO_AUTO_CATEGORIES and out["final"] >= AUTO_MERGE:
+        out["final"] = round(AUTO_MERGE - 0.01, 3)
+        out["review_reason"] = "outside every schema - matched on noun and numbers only"
     return out
+
+
+def review_rank(p: dict) -> tuple:
+    """How to order a record's candidates in the review queue.
+
+    Not by the final score: every pair with a field it could not check is
+    capped at the same 0.89, so the final score ties exactly where a
+    reviewer needs an order. What separates the right candidate is how much
+    was actually confirmed. On the 15,000-record dev families this put the
+    true match first for 53% of records (21.8% by final score) and in the
+    top three for 81% (57%).
+    """
+    return (len(p.get("matched_fields") or []), p.get("spec_sim") or 0.0, p.get("text_sim") or 0.0)
 
 
 # ===========================================================================
@@ -351,13 +536,47 @@ class UnionFind:
             self.parent[rb] = ra
 
 
-def build_clusters(record_ids, pairs, threshold):
+def _split(members, lookup):
+    """Re-group members by auto-band links only; each part checked again."""
+    uf = UnionFind(members)
+    for x, y in combinations(members, 2):
+        if lookup.get((x, y), 0.0) >= AUTO_MERGE:
+            uf.union(x, y)
+    parts = defaultdict(list)
+    for m in members:
+        parts[uf.find(m)].append(m)
+    out = []
+    for part in parts.values():
+        part.sort()
+        if len(part) == 1:
+            out.append({"members": part, "band": "single", "confidence": 1.0, "cohesion": 1.0})
+            continue
+        internal = [lookup.get((x, y), 0.0) for x, y in combinations(part, 2)]
+        cohesion, weakest = sum(internal) / len(internal), min(internal)
+        if weakest < AUTO_MERGE and len(part) > 2:
+            # Still chained by auto links alone: keep only the strongest pair
+            # structure honest - every member stands alone and the links go
+            # to review.
+            out.extend({"members": [m], "band": "single", "confidence": 1.0, "cohesion": 1.0} for m in part)
+            continue
+        out.append({"members": part, "band": "auto" if weakest >= AUTO_MERGE else "review",
+                    "confidence": round(cohesion, 3), "cohesion": round(cohesion, 3),
+                    "weakest_pair": round(weakest, 3)})
+    return out
+
+
+def build_clusters(record_ids, pairs, threshold, score_missing=None):
     """Union-find, then guard against transitive closure explosion.
 
     A~B and B~C group A and C together even when A and C are unrelated, and one
     bridging record can drag hundreds of items into a single blob. So after
     forming a group we check that EVERY pair inside it scores well - not just
     the connected ones - and split the group if it does not hold together.
+
+    With blocking, many pairs inside a cluster were never generated. Reading
+    those as 0.0 would send every cluster to review, so score_missing(a, b)
+    scores them on demand. Clusters are capped at 25, so that is at most 300
+    extra pairs each.
     """
     uf = UnionFind(record_ids)
     lookup = {}
@@ -379,15 +598,25 @@ def build_clusters(record_ids, pairs, threshold):
                              "confidence": 1.0, "cohesion": 1.0})
             continue
 
-        internal = [lookup.get((x, y), 0.0) for x, y in combinations(members, 2)]
+        internal = []
+        for x, y in combinations(members, 2):
+            if (x, y) not in lookup and score_missing and len(members) <= MAX_CLUSTER:
+                lookup[(x, y)] = lookup[(y, x)] = score_missing(x, y)
+            internal.append(lookup.get((x, y), 0.0))
         cohesion = sum(internal) / len(internal)
         weakest = min(internal)
 
-        if len(members) > MAX_CLUSTER:
-            band = "review"                       # too big to trust, whatever it scores
-        elif weakest < MIN_INTRA:
-            band = "review"                       # a member is only weakly attached
+        if len(members) > MAX_CLUSTER or weakest < MIN_INTRA:
+            # A group that does not hold together is not one item. Union-find
+            # over review-band links chains items: A~B, B~C, and C is a
+            # different gasket. At 15,000 records that folded 11,815 items
+            # into 1,086 groups. So the group is split back into what its
+            # AUTO-band links alone support, and every remaining link waits
+            # in the review queue as a pair - one code is never issued for
+            # a group that contains a vetoed or weak pair.
             split_count += 1
+            clusters.extend(_split(members, lookup))
+            continue
         elif cohesion >= AUTO_MERGE:
             band = "auto"
         elif cohesion >= REVIEW_LOW:
@@ -404,6 +633,21 @@ def build_clusters(record_ids, pairs, threshold):
 
 
 # ===========================================================================
+
+def load_plants() -> dict:
+    """record_id -> plant, from materials.csv. Older spec caches lack it."""
+    with paths.MATERIALS.open(encoding="utf-8-sig") as fh:
+        return {r["record_id"]: r.get("plant", "") for r in csv.DictReader(fh)}
+
+
+def scope_of(a: dict, b: dict, plants: dict) -> str:
+    """Who has to act on this pair: one plant, one company, or the registrar."""
+    if a.get("cpse") != b.get("cpse"):
+        return "CROSS_CPSE"
+    pa = a.get("plant") or plants.get(a.get("record_id"), "")
+    pb = b.get("plant") or plants.get(b.get("record_id"), "")
+    return "SAME_PLANT" if pa and pa == pb else "SAME_CPSE"
+
 
 def load_inputs():
     specs = json.loads(paths.SPECS.read_text(encoding="utf-8"))
@@ -454,6 +698,8 @@ def main() -> None:
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--threshold", type=float, default=REVIEW_LOW)
     ap.add_argument("--explain", nargs=2, metavar=("A", "B"))
+    ap.add_argument("--all-pairs", action="store_true",
+                    help="score every pair (no blocking) - for checking blocking loses nothing")
     args = ap.parse_args()
 
     if args.explain:
@@ -463,25 +709,42 @@ def main() -> None:
     specs, descriptions = load_inputs()
     vecs = load_vectors()
     profiles = build_purchase_profiles()
+    plants = load_plants()
+    load_variants(specs)
     ids = sorted(specs)
 
-    print(f"{len(ids)} records, {len(ids)*(len(ids)-1)//2:,} pairs")
-    print(f"text signal: {'embeddings' if vecs else 'lexical fallback (run embed.py)'}\n")
+    print(f"{len(ids)} records, {len(ids)*(len(ids)-1)//2:,} possible pairs")
+    print(f"text signal: {'embeddings' if vecs else 'lexical fallback (run embed.py)'}")
 
-    # At this scale all-pairs is the right call - 4,950 comparisons is instant.
-    # Blocking is designed and documented but deliberately not built yet.
-    # See docs/02-decisions/007-no-infrastructure-yet.md
-    pairs = []
-    for a_id, b_id in combinations(ids, 2):
+    if args.all_pairs:
+        candidates = list(combinations(ids, 2))
+        stats = {"records": len(ids), "all_pairs": len(candidates),
+                 "candidate_pairs": len(candidates), "reduction_ratio": 0.0, "mode": "all-pairs"}
+    else:
+        candidates, stats = blocking.candidate_pairs(specs, vecs)
+        stats["mode"] = "blocking"
+    print(f"{stats['mode']}: {stats['candidate_pairs']:,} candidate pairs "
+          f"(reduction {stats['reduction_ratio']:.2%})\n")
+
+    def scored_pair(a_id, b_id):
         p = score_pair(specs[a_id], specs[b_id], descriptions, vecs, profiles)
+        p["scope"] = scope_of(specs[a_id], specs[b_id], plants)
+        return p
+
+    pairs = []
+    for a_id, b_id in candidates:
+        p = scored_pair(a_id, b_id)
         if p["final"] > 0 or p["blocked_by"]:
             pairs.append(p)
 
     scored = [p for p in pairs if not p["blocked_by"]]
     blocked = [p for p in pairs if p["blocked_by"]]
-    clusters, splits = build_clusters(ids, scored, args.threshold)
+    clusters, splits = build_clusters(ids, scored, args.threshold,
+                                      score_missing=lambda a, b: scored_pair(a, b)["final"])
 
     paths.ensure_dirs()
+    stats["candidates"] = [list(p) for p in candidates]
+    paths.BLOCKING.write_text(json.dumps(stats), encoding="utf-8")
     paths.PAIR_SCORES.write_text(json.dumps(pairs, indent=1), encoding="utf-8")
     paths.CLUSTERS.write_text(json.dumps(clusters, indent=1), encoding="utf-8")
 
@@ -496,7 +759,7 @@ def main() -> None:
     # Separate "obviously unrelated" from "nearly merged, stopped by a safety
     # rule". Only the second group belongs in the safety interlock report - a
     # bearing not merging with a gasket is not an interesting refusal.
-    safety = {r: n for r, n in by_rule.items() if r != "category"}
+    safety = {r: n for r, n in by_rule.items() if r not in NOT_SAFETY}
 
     print(f"scored pairs      {len(scored):>6,}")
     print(f"different category{by_rule.get('category', 0):>6,}   (not interesting)")

@@ -1,6 +1,6 @@
 {
  "index": {
-  "codes": 16,
+  "codes": 15,
   "note": "one incoming record is compared against golden records, not against every raw record"
  },
  "thresholds": {
@@ -66,7 +66,18 @@
      "part_number"
     ],
     "blocked_by": null,
-    "reason": null
+    "reason": null,
+    "unverified": [],
+    "attributes": {
+     "sub_type": "DEEP_GROOVE_BALL",
+     "iso_designation": "6205",
+     "bore_mm": 25.0,
+     "od_mm": 52.0,
+     "width_mm": 15.0,
+     "seal_type": "2RS",
+     "brand": "FAG",
+     "part_number": "6205-2RSR"
+    }
    },
    "candidates": [
     {
@@ -99,7 +110,18 @@
       "part_number"
      ],
      "blocked_by": null,
-     "reason": null
+     "reason": null,
+     "unverified": [],
+     "attributes": {
+      "sub_type": "DEEP_GROOVE_BALL",
+      "iso_designation": "6205",
+      "bore_mm": 25.0,
+      "od_mm": 52.0,
+      "width_mm": 15.0,
+      "seal_type": "2RS",
+      "brand": "FAG",
+      "part_number": "6205-2RSR"
+     }
     }
    ],
    "distinguished_from": [
@@ -123,11 +145,22 @@
      ],
      "ignored_fields": [],
      "blocked_by": "iso_designation",
-     "reason": "6205 vs 6206"
+     "reason": "6205 vs 6206",
+     "unverified": [],
+     "attributes": {
+      "sub_type": "DEEP_GROOVE_BALL",
+      "iso_designation": "6206",
+      "bore_mm": 30.0,
+      "od_mm": 62.0,
+      "width_mm": 16.0,
+      "seal_type": "2RS",
+      "brand": "SKF",
+      "part_number": "6206-2RS"
+     }
     }
    ],
    "missing_hard": [],
-   "compared_against": 16,
+   "compared_against": 15,
    "thresholds": {
     "exists": 0.9,
     "review": 0.7
@@ -154,8 +187,8 @@
     },
     "method": "llm"
    },
-   "verdict": "EXISTS",
-   "message": "Already catalogued as NMC-31400000-000001. 4 CPSEs already hold it. Do not create a new code.",
+   "verdict": "REVIEW",
+   "message": "Possible match with NMC-31400000-000001 at 0.89. Not stated in this line: filler (the catalogue code says GRAPHITE). A cataloguer decides before a code is issued.",
    "best": {
     "national_code": "NMC-31400000-000001",
     "std_description": "GASKET, SPIRAL WOUND, SS304, 4 IN, 150#, GRAPHITE",
@@ -169,7 +202,7 @@
      "ONGC"
     ],
     "member_count": 10,
-    "final": 0.939,
+    "final": 0.89,
     "text_sim": 0.556,
     "spec_sim": 1.0,
     "matched_fields": [
@@ -180,7 +213,19 @@
     ],
     "ignored_fields": [],
     "blocked_by": null,
-    "reason": null
+    "reason": null,
+    "unverified": [
+     "filler"
+    ],
+    "attributes": {
+     "gasket_type": "SPIRAL_WOUND",
+     "material_grade": "SS304",
+     "nominal_size_in": 4.0,
+     "pressure_class": "150#",
+     "filler": "GRAPHITE",
+     "brand": "FLEXITALLIC",
+     "part_number": "FLX/SW/304/4"
+    }
    },
    "candidates": [
     {
@@ -196,7 +241,7 @@
       "ONGC"
      ],
      "member_count": 10,
-     "final": 0.939,
+     "final": 0.89,
      "text_sim": 0.556,
      "spec_sim": 1.0,
      "matched_fields": [
@@ -207,7 +252,19 @@
      ],
      "ignored_fields": [],
      "blocked_by": null,
-     "reason": null
+     "reason": null,
+     "unverified": [
+      "filler"
+     ],
+     "attributes": {
+      "gasket_type": "SPIRAL_WOUND",
+      "material_grade": "SS304",
+      "nominal_size_in": 4.0,
+      "pressure_class": "150#",
+      "filler": "GRAPHITE",
+      "brand": "FLEXITALLIC",
+      "part_number": "FLX/SW/304/4"
+     }
     }
    ],
    "distinguished_from": [
@@ -231,11 +288,24 @@
      ],
      "ignored_fields": [],
      "blocked_by": "material_grade",
-     "reason": "SS304 vs SS316"
+     "reason": "SS304 vs SS316",
+     "unverified": [],
+     "attributes": {
+      "gasket_type": "SPIRAL_WOUND",
+      "material_grade": "SS316",
+      "nominal_size_in": 4.0,
+      "pressure_class": "150#",
+      "brand": "CHAMPION",
+      "part_number": "FLX/SW/316/4",
+      "filler": "GRAPHITE"
+     }
     }
    ],
-   "missing_hard": [],
-   "compared_against": 16,
+   "missing_hard": [
+    "filler",
+    "thickness_mm"
+   ],
+   "compared_against": 15,
    "thresholds": {
     "exists": 0.9,
     "review": 0.7
@@ -251,12 +321,14 @@
     "attributes": {
      "nominal_size_in": 4.0,
      "pressure_class": "150#",
-     "material_grade": "SS321"
+     "material_grade": "SS321",
+     "gasket_type": "spiral_wound"
     },
     "confidence": {
      "nominal_size_in": 0.62,
      "pressure_class": 0.62,
-     "material_grade": 0.62
+     "material_grade": 0.62,
+     "gasket_type": 0.62
     },
     "method": "regex"
    },
@@ -281,10 +353,22 @@
      "final": 0.0,
      "text_sim": 0.4,
      "spec_sim": 0.0,
-     "matched_fields": [],
+     "matched_fields": [
+      "gasket_type"
+     ],
      "ignored_fields": [],
      "blocked_by": "material_grade",
-     "reason": "SS321 vs SS304"
+     "reason": "SS321 vs SS304",
+     "unverified": [],
+     "attributes": {
+      "gasket_type": "SPIRAL_WOUND",
+      "material_grade": "SS304",
+      "nominal_size_in": 4.0,
+      "pressure_class": "150#",
+      "filler": "GRAPHITE",
+      "brand": "FLEXITALLIC",
+      "part_number": "FLX/SW/304/4"
+     }
     },
     {
      "national_code": "NMC-31400000-000002",
@@ -301,14 +385,29 @@
      "final": 0.0,
      "text_sim": 0.4,
      "spec_sim": 0.0,
-     "matched_fields": [],
+     "matched_fields": [
+      "gasket_type"
+     ],
      "ignored_fields": [],
      "blocked_by": "material_grade",
-     "reason": "SS321 vs SS316"
+     "reason": "SS321 vs SS316",
+     "unverified": [],
+     "attributes": {
+      "gasket_type": "SPIRAL_WOUND",
+      "material_grade": "SS316",
+      "nominal_size_in": 4.0,
+      "pressure_class": "150#",
+      "brand": "CHAMPION",
+      "part_number": "FLX/SW/316/4",
+      "filler": "GRAPHITE"
+     }
     }
    ],
-   "missing_hard": [],
-   "compared_against": 16,
+   "missing_hard": [
+    "filler",
+    "thickness_mm"
+   ],
+   "compared_against": 15,
    "thresholds": {
     "exists": 0.9,
     "review": 0.7
@@ -369,11 +468,23 @@
      ],
      "ignored_fields": [],
      "blocked_by": "range_max",
-     "reason": "16.0 vs 10.0"
+     "reason": "16.0 vs 10.0",
+     "unverified": [],
+     "attributes": {
+      "instrument_type": "PRESSURE_GAUGE",
+      "dial_size_mm": 100.0,
+      "range_min": 0.0,
+      "range_max": 10.0,
+      "range_unit": "BAR",
+      "wetted_material": "SS316",
+      "connection": "1/2 IN NPT BOTTOM",
+      "brand": "FORBES MARSHALL",
+      "part_number": "PG-100-10-316"
+     }
     }
    ],
    "missing_hard": [],
-   "compared_against": 16,
+   "compared_against": 15,
    "thresholds": {
     "exists": 0.9,
     "review": 0.7
@@ -391,15 +502,17 @@
     "method": "regex"
    },
    "verdict": "INCOMPLETE",
-   "message": "Read as a bearing, but only 0 fields could be extracted. No code should be issued yet. Add: iso_designation, bore_mm.",
+   "message": "Read as a bearing, but only 0 fields could be extracted. No code should be issued yet. Add: iso_designation, bore_mm, sub_type, seal_type.",
    "best": null,
    "candidates": [],
    "distinguished_from": [],
    "missing_hard": [
     "iso_designation",
-    "bore_mm"
+    "bore_mm",
+    "sub_type",
+    "seal_type"
    ],
-   "compared_against": 16,
+   "compared_against": 15,
    "thresholds": {
     "exists": 0.9,
     "review": 0.7

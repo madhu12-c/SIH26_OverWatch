@@ -2,15 +2,59 @@
  "threshold": 0.7,
  "auto_merge_threshold": 0.9,
  "precision": 1.0,
- "recall": 0.9419,
- "f1": 0.9701,
+ "recall": 1.0,
+ "f1": 1.0,
  "auto_precision": 1.0,
- "auto_merged_pairs": 177,
+ "auto_merged_pairs": 141,
  "false_merges": 0,
  "trap_violations_auto": 0,
  "trap_violations_review": 0,
  "true_items": 15,
- "predicted_clusters": 16,
- "duplication_rate": 0.84,
- "safety_blocks": 282
+ "predicted_clusters": 15,
+ "duplication_rate": 0.85,
+ "safety_blocks": 97,
+ "blocking": {
+  "mode": "blocking",
+  "candidate_pairs": 407,
+  "all_pairs": 4950,
+  "reduction_ratio": 0.9178,
+  "pair_completeness": 1.0,
+  "true_pairs_missed": 0
+ },
+ "veto_accuracy": {
+  "material_grade": {
+   "pairs": 74,
+   "blocked_right": 64,
+   "blocked_other": 0,
+   "review": 0,
+   "auto": 0,
+   "never_met": 10
+  },
+  "pressure_class": {
+   "pairs": 27,
+   "blocked_right": 27,
+   "blocked_other": 0,
+   "review": 0,
+   "auto": 0,
+   "never_met": 0
+  },
+  "iso_designation": {
+   "pairs": 54,
+   "blocked_right": 0,
+   "blocked_other": 0,
+   "review": 0,
+   "auto": 0,
+   "never_met": 54
+  }
+ },
+ "review_queue": {
+  "records_in_queue": 87,
+  "with_a_true_match": 87,
+  "true_match_first": 1.0,
+  "true_match_in_top3": 1.0,
+  "median_candidates": 3
+ },
+ "by_split": {},
+ "records": 100,
+ "run": "demo"
 }

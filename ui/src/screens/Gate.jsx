@@ -55,7 +55,7 @@ export default function Gate() {
 
   if (!gateScenarios.length) {
     return (
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         <SectionTitle
           eyebrow="Creation gate"
           title="Not generated yet"
@@ -72,7 +72,7 @@ export default function Gate() {
   const attrs = Object.entries(s.extracted?.attributes ?? {})
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-5xl mx-auto">
       <SectionTitle
         eyebrow="Creation gate"
         title="The check that runs before a new code is issued"

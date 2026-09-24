@@ -1,13 +1,13 @@
 {
  "summary": {
-  "items": 16,
+  "items": 15,
   "multi_cpse_items": 15,
-  "benchmark_eligible": 11,
-  "benchmark_suppressed": 4,
+  "benchmark_eligible": 12,
+  "benchmark_suppressed": 3,
   "total_spend": 226057717.95,
-  "shared_spend": 204158765.95,
-  "saving_upper": 17877053.3,
-  "saving_realistic": 7150821.32,
+  "shared_spend": 226057717.95,
+  "saving_upper": 23103142.05,
+  "saving_realistic": 9241256.82,
   "capture_rate": 0.4,
   "k_anonymity": 3
  },
@@ -73,6 +73,50 @@
    "price_spread_pct": 38.4,
    "saving_upper": 9925977.35,
    "saving_realistic": 3970390.94
+  },
+  {
+   "national_code": "NMC-40141600-000003",
+   "description": "VALVE, GATE, 6 IN, 300#, CARBON STEEL",
+   "category": "valve",
+   "cpse_count": 3,
+   "cpses": [
+    {
+     "cpse": "GAIL",
+     "qty": 475,
+     "orders": 3,
+     "avg_price": 46103.06,
+     "median_price": 45951.36,
+     "value": 21898952.0,
+     "vendor_count": 2
+    },
+    {
+     "cpse": "BPCL",
+     "qty": 550,
+     "orders": 3,
+     "avg_price": 38062.33,
+     "median_price": 37404.32,
+     "value": 20934284.0,
+     "vendor_count": 2
+    },
+    {
+     "cpse": "ONGC",
+     "qty": 180,
+     "orders": 4,
+     "avg_price": 45877.56,
+     "median_price": 46488.61,
+     "value": 8257960.4,
+     "vendor_count": 2
+    }
+   ],
+   "total_qty": 1205,
+   "total_value": 51091196.4,
+   "orders": 10,
+   "benchmark_suppressed": false,
+   "best_price": 38062.33,
+   "worst_price": 46103.06,
+   "price_spread_pct": 21.1,
+   "saving_upper": 5226088.75,
+   "saving_realistic": 2090435.5
   },
   {
    "national_code": "NMC-26101100-000001",
@@ -702,65 +746,6 @@
    "orders": 6,
    "benchmark_suppressed": true,
    "suppression_reason": "only 2 CPSE(s) - a benchmark here would reveal an individual company's price",
-   "best_price": null,
-   "saving_upper": 0.0,
-   "saving_realistic": 0.0
-  },
-  {
-   "national_code": "NMC-40141600-000003",
-   "description": "VALVE, GATE, 6 IN, 300#, CARBON STEEL",
-   "category": "valve",
-   "cpse_count": 2,
-   "cpses": [
-    {
-     "cpse": "BPCL",
-     "qty": 550,
-     "orders": 3,
-     "avg_price": 38062.33,
-     "median_price": 37404.32,
-     "value": 20934284.0,
-     "vendor_count": 2
-    },
-    {
-     "cpse": "ONGC",
-     "qty": 180,
-     "orders": 4,
-     "avg_price": 45877.56,
-     "median_price": 46488.61,
-     "value": 8257960.4,
-     "vendor_count": 2
-    }
-   ],
-   "total_qty": 730,
-   "total_value": 29192244.4,
-   "orders": 7,
-   "benchmark_suppressed": true,
-   "suppression_reason": "only 2 CPSE(s) - a benchmark here would reveal an individual company's price",
-   "best_price": null,
-   "saving_upper": 0.0,
-   "saving_realistic": 0.0
-  },
-  {
-   "national_code": "NMC-40141600-000004",
-   "description": "VALVE, GATE, 6 IN, 300#, CAST STEEL",
-   "category": "valve",
-   "cpse_count": 1,
-   "cpses": [
-    {
-     "cpse": "GAIL",
-     "qty": 475,
-     "orders": 3,
-     "avg_price": 46103.06,
-     "median_price": 45951.36,
-     "value": 21898952.0,
-     "vendor_count": 2
-    }
-   ],
-   "total_qty": 475,
-   "total_value": 21898952.0,
-   "orders": 3,
-   "benchmark_suppressed": true,
-   "suppression_reason": "only 1 CPSE(s) - a benchmark here would reveal an individual company's price",
    "best_price": null,
    "saving_upper": 0.0,
    "saving_realistic": 0.0

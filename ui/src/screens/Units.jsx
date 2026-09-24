@@ -73,7 +73,7 @@ export default function Units() {
 
   if (!uomFamilies.length) {
     return (
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         <SectionTitle
           eyebrow="Units of measurement"
           title="Not generated yet"
@@ -87,7 +87,7 @@ export default function Units() {
   const autoResolvable = (s.codes_with_conflict ?? 0) - (s.cross_family_conflicts ?? 0)
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-5xl mx-auto">
       <SectionTitle
         eyebrow="Units of measurement"
         title={`${s.variants_seen} spellings for ${s.canonical_units} actual units`}

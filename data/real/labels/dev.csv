@@ -1,0 +1,486 @@
+﻿id,keep,category,group,description,organization,notes
+1,y,pipe,G1,"STEEL LINE PIPE, ERW , THREADED & COUPLED, NOMINAL BORE: 100 MM, O.D. 114.3 MM, WALL THICKNESS: 6.0 MM, API 5L, GRADE A. QTY: 6.3 KMS",Oil India Limited,same line pipe; 1 adds a quantity
+2,y,pipe,G2,"PIPE, BLK, CS, FE410, 9.5MM, 457MM, 450MM",NTPC Limited,457 OD / 450 NB; near-miss of G3
+3,y,pipe,G3,"PIPE, BLK, CS, FE410, 9.5MM, 508MM, 500MM",NTPC Limited,508 OD / 500 NB; near-miss of G2
+4,y,other,,"SPOOL, 11"" X 10000 PSI TOP FLANGE, 13.5/8"" X 5000 PSI BOTTOM FLANGE",Oil India Limited,wellhead spool with two flanges - one item
+5,m,,,"CONTROL VALVE, PRESSURE, 250 MM (10"" ) NB, 300 CLASS (Q3) , CONTROL VALVE, PRESSURE, 300 MM (12"" ) NB, 300 CLASS (Q3)",Oil India Limited,
+6,m,,,"FLANGE SLIP ON SIZE: 10"" (Q3) , FLANGE SLIP ON SIZE: 8"" (Q3) , FLANGE SLIP ON SIZE: 6"" (Q3) , FLANGE SLIP ON SIZE: 4"" (Q3)",Oil India Limited,
+7,m,,,"CABLE, PWR, 150MM2, 1C, STRANDED, AL, 11KV , CABLE, PWR, 240MM2, 1C, STRANDED, AL, 11KV",NTPC Limited,
+8,y,pipe,G4,"PIPE,TP304L,SMLS,SCH80,5000-7000MM,20MM , PIPE ASTM",NTPC Limited,8 and 9 carry a stray fragment of the next row
+9,y,pipe,G4,"PIPE,TP304L,SMLS,SCH80,5000-7000MM,20MM , PIPE",NTPC Limited,8 and 9 carry a stray fragment of the next row
+10,y,electrical,,"SCIM,415V,315SM,B35,F,2980RPM,132KW , MOTOR,SQ",NTPC Limited,SCIM = squirrel cage induction motor; stray fragment
+11,m,,,"WING UNION, 2 INCH x 15,000 PSI , UNION, WING, MIC, 4 INCH x 1000 PSI",Oil India Limited,
+12,m,,,"M1774350070: FTG-MS+ C: BASALT LN: BEND: 500NB: 90 DEG , M1634752993: BSLT-L PIPE: FE-410: 500NB: 26.35MM: 6 M",NTPC Limited,
+13,m,,,"M1634752993: BSLT-L PIPE: FE-410: 500NB: 26.35MM: 6 M , M1774350070: FTG-MS+ C: BASALT LN: BEND: 500NB: 90 DEG",NTPC Limited,
+14,y,valve,G5,"SUPPLY OF GATE VALVE, HAND WHEEL OPERATED, 50 MM (2"") NB, W.P 210 KG/SQ.CM, ANSI 900 CLASS",Oil India Limited,14 adds working pressure
+15,y,pipe,G2,"PIPE, BLK, CS, FE410, 9.5MM, 457MM",NTPC Limited,457 OD / 450 NB; near-miss of G3
+16,y,pipe,G3,"PIPE, BLK, CS, FE410, 9.5MM, 508MM",NTPC Limited,508 OD / 500 NB; near-miss of G2
+17,y,pipe,G4,"PIPE,TP304L,SMLS,SCH80,5000-7000MM,20MM",NTPC Limited,8 and 9 carry a stray fragment of the next row
+18,y,fitting,,"ELBOW, 90 DEG., FORGED CARBON STEEL, 3000 PSI, THREAD : APILP DIM.: ANSI B16.11, MATERIAL : ASTM A-105",Oil India Limited,
+19,y,cable,G6,"CABLE, PWR, 150MM2, 1C, STRANDED, AL, 11KV",NTPC Limited,53 adds a quantity
+20,y,cable,G6,"CABLE, PWR, 150MM2, 1C, STRANDED, AL, 11KV , CABLE,",NTPC Limited,53 adds a quantity
+21,y,cable,,"CABLE,PWR,240MM2,1C,STRANDED,AL,11KV",NTPC Limited,240 mm2 - near-miss of G6 (150 mm2)
+22,y,pipe,,"PIPE:BLK, CORTEN,A423GR1,ERW,2MM,40MM",NTPC Limited,A423 is strictly a tube standard
+23,y,electrical,G7,"MOTOR,415V,S4,80L,4,B5,F,0.75KW",NTPC Limited,
+24,y,electrical,G7,"MOTOR,415V,S4,80L,4,B5,F,0.75KW , MOTOR,SQ",NTPC Limited,
+25,y,electrical,G8,"MOTOR,IND,415VAC,3PH,DW225S,960RPM,30KW",NTPC Limited,
+26,y,electrical,G8,"MOTOR,IND,415VAC,3PH,DW225S,960RPM,30KW , MTR",NTPC Limited,
+27,y,electrical,,"SCIM,18.5KW,415V,4P,180M,B3,S1,F , MOTOR,EE",NTPC Limited,
+28,y,pipe,,", PIPE ASTM A312,9.53MM,141.3MM,125NB ,",NTPC Limited,"wall 9.53, OD 141.3, 125NB"
+29,y,plate,,"PLATE,CHQ,MS,IS2062-A,6MM",NTPC Limited,CHQ = chequered
+30,m,,,"HAND TUBE BENDER SIZE 1/4"", HAND TUBE BENDER SIZE 1/2"", TUBE CUTTER SIZE 1/4"" TO 1/2""",Oil India Limited,
+31,m,,,"10_ M1616248370_ PIPE: IS1239-1 MEDIUM, GLV, ERW, PL, 100MM , 20_ M1616254395_ PIPE: IS1239-1 MEDIUM, GLV, ERW, PL, 125MM",NTPC Limited,
+32,m,,,"Supply of Flange, Companion, 1.13/16"" x 10000 PSI , Companion Flange, 2.1/16"" , 10000 psi",Oil India Limited,
+33,m,,,"Supply of NEEDLE VALVE, 1/4 "" SS , MALE CONNECTOR, 1/4 "" X 1/4 "" , SS TUBE 1/4 "" OD , UNION, 1/4 """,Oil India Limited,
+34,y,pipe,,"Bids for the supply of 2000 M OF ERW LINE PIPE, Nom. size: 150 mm (6""), O.D. 168.3 mm (6.5/8""), API 5L, Grade A",Oil India Limited,"states designation and OD together: Nom. 150 mm (6 in), O.D. 168.3 mm"
+35,m,,,"Casing, 9.5/8"" x 47 PPF x P-110 BTC (Q3) , Casing Nipple, 9.5/8"" , P-110 BTC, 2 Mtrs. (Q3)",Oil India Limited,
+36,m,,,"Valve Gate 2.1/16"" x 5000 PSI, API 6A , Valve Gate 2.1/16"" x 10000 PSI, API 6A , Valve Gate 2.9/16"" x 5000 PSI, API 6A",Oil India Limited,
+37,y,electrical,,"MOTOR,SQL CAGE,IP55,2810RPM,0.37KW,71-2",NTPC Limited,
+38,y,tube,,"TUBE,STRT,AS,A213-T23,38.1MM,11MM",NTPC Limited,
+39,y,other,,"HOSE, METALIC, FLEXIBLE FOR STEAM AT 25 KG/CMSQ. NPT/BSP UNION(M/F) CONNECT- TION AT EITHER END, SIZE : 25 MM OD X 4 M",Oil India Limited,flexible metallic hose
+40,y,pipe,,"SEAMLESS,SS,A312-TP304L,80S,25MM , PIPE SMLS,SS,A312",NTPC Limited,25 mm; near-miss of 69 (15 mm) and 146 (40 mm)
+41,y,electrical,,"MOTOR,IND,415VAC,180L,4P,B3,22KW",NTPC Limited,
+42,y,electrical,G9,"MOTOR,IND,415VAC,200L,4P,B5,30KW",NTPC Limited,
+43,y,electrical,G9,"MOTOR,IND,415VAC,200L,4P,B5,30KW , MOTOR,SQL",NTPC Limited,
+44,y,electrical,G31,"MOTOR,IND,415VAC,280M,6P,B35,55KW",NTPC Limited,45 carries a stray fragment
+45,y,electrical,G31,"MOTOR,IND,415VAC,280M,6P,B35,55KW , MOTOR,SQ",NTPC Limited,45 carries a stray fragment
+46,y,electrical,G32,"MOTOR,S4,112M,4,B5,F,3.7KW",NTPC Limited,motor S4 112M 4P B5 F 3.7 kW
+47,y,electrical,G32,"MOTOR,S4,112M,4,B5,F,3.7KW , MTR",NTPC Limited,motor S4 112M 4P B5 F 3.7 kW
+48,y,flange,,"FLANGE, FORGED CARBON STEEL, RTJ, 5000 PSI, THREAD : API LP, DIM",Oil India Limited,no size
+49,m,,,"73.02 MM (2.7/8"" ) API GRADE G-105 LEFT HAND CONNECTION DRILL PIPE , 73.02 MM (2.7/8"" ) API GRADE G-105 DRILL PIPE",Oil India Limited,
+51,m,,,"2.7/8"" API GRADE S-135 DRILL PIPE (Q3) , 5"" API GRADE G105 DRILL PIPE (Q3) , 5"" API GRADE S-135 DRILL PIPE (Q3)",Oil India Limited,
+52,m,,,"73.02 MM (2.7/8"" ) API GRADE G-105 LEFT HAND CONNECTION DRILL PIPE (Q3) , 73.02 MM (2.7/8"" ) API GRADE G-105 DRILL PIPE (Q3)",Oil India Limited,
+53,y,cable,G6,"CABLE, PWR, 150MM2, 1C, STRANDED, AL, 11KV ( 6000 meter )",NTPC Limited,53 adds a quantity
+57,y,other,,"HORIZONTAL, SINGLE ACTING, TRIPLEX PLUNGER PUMP (70 KG/ SQ.CM AND 60 CUM/HR), API674. (QTY. 12 NOS.)",Oil India Limited,whole triplex plunger pump
+60,m,,,"Cable, 3.5C x 240 sqmm, 1100V, PVCA Alu (Q3) , Cable, 3C x 240 mm2, 11kV (UE) , XLPE Alu",Oil India Limited,
+62,y,pipe,G1,"Steel Line Pipe, ERW , Threaded & Coupled, Nominal Bore: 100 MM, O.D. 114.3 MM, Wall Thickness: 6.0 MM, API 5L, GRADE A",Oil India Limited,same line pipe; 1 adds a quantity
+64,y,pipe,G3,"M1613517861_ PIPE, BLK, CS, FE410, 9.5MM, 508MM, 500MM",NTPC Limited,508 OD / 500 NB; near-miss of G2
+65,n,,,"132 KV GIS ALONG WITH 80 MVA, 132/33 KV POWER TRANSFORMER, 33 KV HT AND 415 V LT SWITCHGEARS, AUTOMATIC PF CORRECTION DEVICES",NTPC Limited,substation project scope
+66,y,pipe,G2,"10_ M1613514555_ PIPE, BLK, CS, FE410, 9.5MM, 457MM, 450MM",NTPC Limited,457 OD / 450 NB; near-miss of G3
+69,y,pipe,,"SEAMLESS,SS,A312-TP304L,80S,15MM , PIPE",NTPC Limited,
+72,y,valve,G5,"SUPPLY OF GATE VALVE, HAND WHEEL OPERATED, 50 MM (2"") NB, ANSI 900 CLASS",Oil India Limited,14 adds working pressure
+74,m,,,"POLYPROPYLENE STRAINER, SCREWED, SIZE:12, POLYPROPYLENE STRAINER, PUSH, SIZE: 12MM",Oil India Limited,
+75,y,fitting,,"COUPLING, SEAMLESS, STD. WT. THREAD : NPT, DIM.: IS-1239,PT.II, MATERIAL : ASTM A-106, GR.B",Oil India Limited,pipe coupling
+77,y,valve,,"HYDRAULICALLY OPERATED, 3-1/8 INCHES X 5000 PSI, GATE VALVE",Oil India Limited,API 6A gate valve
+81,n,,,"WATER PURIFIER , Normal And Cold Water Cooler , Led TV 65 inch , 32 inch LED T.V. , WASHING MACHINE , REFRIGERATOR , WATER COOLER etc",Oil India Limited,household appliances list
+82,y,cable,,"FLECIBLE COPPER:CABLE SECTION-3C X 120 + 3C X 120/3 SQMM, 3.3KV Grade",NTPC Limited,
+83,y,flange,,"FLANGE-S:ASA:B16.5 CL-150 A182:SLIP-ON:25MM(1INCH,",NTPC Limited,slip-on class 150 at different sizes - each a different item
+84,y,flange,,"FLANGE-S:ASA:B16.5 CL-150 A182:SLIP-ON:450MM(18INCH),",NTPC Limited,slip-on class 150 at different sizes - each a different item
+85,y,flange,,"FLANGE-S:ASA:B16.5 CL-150 A182:SLIP-ON:50MM(2INCH,",NTPC Limited,slip-on class 150 at different sizes - each a different item
+86,y,pipe,,"M1616254395-PIPE: IS1239-1 MEDIUM,GLV,ERW,PL,125MM",NTPC Limited,"IS 1239 medium, galvanised, plain end"
+87,m,,,Gate Valve; API-6A; 52.39 mm x 352 Kg./Sq cm.(Qty: 200 Nos.) & 65.03 mm x 352 Kg./Sq cm,Oil India Limited,
+90,y,pipe,,"LINE PIPE, 1"" , BLACK STEEL, ERW, SCREWED",Oil India Limited,1 in black ERW screwed - near-miss of 126 (galvanised)
+93,m,,,"127.00 MM (5"" ) API GRADE G-105 DRILL PIPE , 127.00 MM (5"" ) API GRADE S-135 DRILL PIPE",Oil India Limited,
+96,m,,,"M4801164756_ _ TUBE, STRT, AS, A213-T91, 51MM, 7.1MM, 4-7M , M4801164925_ TUBE, STRT, AS, A213-T91, 54MM, 4MM",NTPC Limited,
+98,y,other,,"ORDINARY PORTLAND CEMENT GR43, TYPE-IS 269 : 2015, PACKING SIZE 50KG",NTPC Limited,cement
+100,y,other,,"BATTERY FOR RPM METER, 3.6 VOLTS, 2.4 AH",Oil India Limited,battery
+102,y,pipe,G2,"10_ M1613514555_ PIPE, BLK, CS, FE410, 9.5MM, 457MM,",NTPC Limited,457 OD / 450 NB; near-miss of G3
+103,y,pipe,G3,"M1613517861_ PIPE, BLK, CS, FE410, 9.5MM, 508MM,",NTPC Limited,508 OD / 500 NB; near-miss of G2
+104,y,pipe,,"Pipe Astm A312,12.70mm,323.9mm,300nb",NTPC Limited,"12.70 wall, 323.9 OD, 300NB"
+108,m,,,"Valve, Needle, FS, API LPT, Scr, 1/2"" x5000 Lb, Valve, Globe, Size: 1/2"" (12.7 mm), Valve, Gate, API LPT, 3' x128 Lbs, API Std. 5B",Oil India Limited,
+109,y,pipe,,"273.1 mm Pre-Coated Bevel Ended ERW/LSAW/HSAW Line Pipe, Grade X-46, PLS-2. Qty : 27,000Mtr with Accessories",Oil India Limited,alternative constructions ERW/LSAW/HSAW allowed
+113,m,,,"Casing, 9.5/8"" x 47 PPF x P-110 BTC (01011745) (Q3) , Csg. Nipple, 9.5/8"" , P-110 BTC, 2 Mtrs. (01114078) (Q3)",Oil India Limited,
+114,m,,,"Plug Valve, 2.1/16"" x 10, 000 PSI CWP (OIL: 10251517) (Q3) , Plug Valve 2.1/16"" x 5, 000 PSI CWP (OIL: 10251528) (Q3)",Oil India Limited,
+115,y,fastener,,"M1519910097:SCREW,HEX,ALLOY STL,GR1.7709,MC,GALV,M42",NTPC Limited,
+116,y,valve,,"PROCUREMENT OF PLUG VALVE, 100 MM 4 inch NB X 900 CLASS, REGULAR PATTERN, RTJ FLANGED, API 6D MONOGRAMMED, FIRE SAFE TO API 6FA",Oil India Limited,fire safe to API 6FA - a service qualifier
+117,y,flange,,FLANGE-S:ANSI:B16.5 CL-150:SLIP-ON:500MM(20INCH),NTPC Limited,slip-on class 150 at different sizes - each a different item
+122,?,,,THICKNESS : 6 MM LENGTH : 6000 NOMINAL PIPE SIZE : 500,NTPC Limited,pipe attributes with no noun and no grade - a table fragment
+123,y,gasket,,"GASKET,17.5KV,1000A,AREVA",NTPC Limited,"switchgear gaskets, not flange gaskets; different ratings"
+124,y,gasket,,"GASKET,3.6KV,2000A,AREVA",NTPC Limited,"switchgear gaskets, not flange gaskets; different ratings"
+126,y,pipe,,"LINE PIPE, 1"" , ERW GALVANISED, SCREWED (Q3)",Oil India Limited,galvanised - near-miss of 90 (black)
+131,m,,,"5.1/2"" OD API DRILL PIPE (Quantity – 10 KMs) 5"" OD and 5.1/2"" OD PUP Joints (Quantity - 12 Nos each)",Oil India Limited,
+133,n,,,"KV POWER TRANSFORMER, 33 KV HT AND 415 V LT",NTPC Limited,fragment of a substation scope
+138,y,flange,,"FLANGE-S:ASA:B16.5 CL-150 A182:SLIP-ON:65MM, FLANGE",NTPC Limited,slip-on class 150 at different sizes - each a different item
+139,y,flange,,"S:ASA:B16.5 CL-150 A182:SLIP-ON:100MM, FLANGE",NTPC Limited,slip-on class 150 at different sizes - each a different item
+140,y,flange,,"S:ASA:B16.5 CL-150 A182:SLIP-ON:150MM, FLANGE",NTPC Limited,slip-on class 150 at different sizes - each a different item
+142,y,flange,,"S:ASA:B16.5 CL-150 A182:SLIP-ON:250MM, FLANGE",NTPC Limited,slip-on class 150 at different sizes - each a different item
+143,y,flange,,"S:ASA:B16.5 CL-150 A182:SLIP-ON:300MM, FLANGE",NTPC Limited,slip-on class 150 at different sizes - each a different item
+144,y,flange,,"S:ASA:B16.5 CL-150 A182:SLIP-ON:80MM, FLANGE",NTPC Limited,slip-on class 150 at different sizes - each a different item
+146,y,pipe,G14,"TP304L,80S,40MM , PIPE SEAMLESS,SS,A312",NTPC Limited,TP304L 80S 40 mm
+149,y,pipe,,"Bids for the supply of 100 KM OF 5.1/2"" (139.70 MM), API 5CT, N- 80, TYPE-I / TYPE-Q BTC CASING PIPE",Oil India Limited,casing (API 5CT); 149 N-80 vs 160 P-110 same size - near-miss
+150,y,pipe,,"Bids for the supply of 13.3/8 inch 339.72 MM , API 5CT, N-80, TYPE-I / TYPE-Q BTC CASING PIPE",Oil India Limited,casing (API 5CT); 149 N-80 vs 160 P-110 same size - near-miss
+151,m,,,"Plug Valve 2"" x 150 Class, (Q3) , Plug Valve 2"" x 300 Class, (Q3) , Plug Valve 4"" x 300 Class, (Q3)",Oil India Limited,
+152,n,,,"SPARES FOR NATIONAL TYPE 12-P-160 TRIPLEX POWER SLUSH PUMP, SIZE : 7.1/2"" X 12"" COMPLETE FLUID END SPARES",Oil India Limited,"spares kit for a pump, not one item"
+154,y,electrical,,"M8275900601: LIGHTING PANEL: 415V, 63A, 18WAY, LP-1(50)",NTPC Limited,lighting panel
+155,y,tube,,"BOILER TUBE FOR FIRE TUBE TYPE LOCO BOILER , STEAM LINE (IBR) : 2"" OD X 4.06 MM THICK",Oil India Limited,IBR boiler tube - a service qualifier
+156,y,tube,G10,"M4801164925_ TUBE, STRT, AS, A213-T91, 54MM, 4MM ( 500 meter )",NTPC Limited,
+159,m,,,"STUD for 2"" RF Flange , STUD for 4"" RF Flange , STUD for 6"" RF Flange , STUD for 8"" RF Flange",Oil India Limited,
+160,y,pipe,,"Bids for the supply of 5.1/2 inch 139.7 MM, API 5CT, Grade P 110 CASING PIPE through E-Procurement",Oil India Limited,casing (API 5CT); 149 N-80 vs 160 P-110 same size - near-miss
+162,y,pipe,G15,"Line Pipe 101.60 mm Seamless, B/E, 12.66 PPF. Qty: 248,000 Mtr",Oil India Limited,"101.60 mm is ambiguous: 4 in converted as a measurement, or the real OD of a 3-1/2 in pipe. 12.66 lb/ft fits only a 4-1/2 in OD (4 in nominal) pipe with 0.281 in wall, so: 4 in"
+163,y,pipe,G16,"Line Pipe 101.60 mm Seamless, B/E, 19 PPF. Qty:40,000 Mtr",Oil India Limited,same 4 in pipe at 19 lb/ft (4-1/2 in OD x 0.438 in wall); 163 writes 4 in as 101.60 mm
+164,y,other,,"Pre-Gelatinized Starch, Packing: 25 Kg/Bag, Qty.: 200 MT",Oil India Limited,drilling chemical
+166,y,tube,G10,"M4801164925_ Tube, Strt, As, A213-t91, 54mm, 4mm",NTPC Limited,
+168,y,tube,,"Tube,strt,as,a213- t23,63.5mm,12.7mm",NTPC Limited,
+170,m,,,"M2285325001 TOOL: SURFACE PLATE: 2000X1000MM , M2285453638 TOOL: STRAIGHT EDGE-IS: 5268: 2000 MMX80MM",NTPC Limited,
+171,y,pipe,G2,"10_ M1613514555_ PIPE, BLK, CS, FE410, 9.5MM, 457MM, 450MM ( 4000 meter )",NTPC Limited,457 OD / 450 NB; near-miss of G3
+173,y,pipe,,"M1634752993: BSLT-L PIPE: FE-410: 500NB: 26.35MM: 6 M ,",NTPC Limited,basalt-lined pipe
+174,y,valve,,"Gate Valve, 2.1/16 inch x 5000 PSI, API 6A",Oil India Limited,5000 psi - near-miss of 188 (10000 psi)
+177,y,electrical,,SUPPLY OF 3.3/0.415 KV 800 KVA TRANSFORMER,Oil India Limited,transformer
+178,y,valve,,"Safety Relief Valve, 2"" x 3"", 175 KG/SQ. CM",Oil India Limited,
+180,y,valve,,"Supply of Manual Gate Valve, FNSD 3.1/16 Inch , 10000 PSI",Oil India Limited,
+181,m,,,"TEMPERATURE GAUGE(DIRECT MOUNT DEG C), TEMPERATURE GAUGE (CAPILLARY TYPE,0-150 DEG C), TEMP. GAUGE (CAPILLARY TYPE,0-150 DEG C)",Oil India Limited,
+182,y,pipe,,"100 mm Seamless line pipe, API-5L, Grade X-46. Qty : 1.2 km",Oil India Limited,
+183,m,,,"3/4"" SUCKER ROD COUPLING , 7/8-inch Sucker rod coupling, , 1inch Sucker rod coupling,",Oil India Limited,
+186,y,other,,"Hanger Flange, 7.1/16"" x 3.1/8"" x 5000 PSI (03563118) (Q3)",Oil India Limited,wellhead hanger flange
+188,y,valve,,"Valve, Gate, 2.1/16"" x 10000PSI Flngd. R. J. (10015864)",Oil India Limited,
+189,y,tube,G20,"M4801164756_ _ TUBE, STRT, AS, A213-T91, 51MM, 7.1MM, 4-7M",NTPC Limited,same NTPC code M4801164756
+191,y,other,,"ROLLER CHAIN, STEEL,PER ANSI ASA SPECIFICATION CONFORMING TO API STD 7F SPARES FOR 1000 HP MOBILE DRILLING RIG ROLLER CHAIN, STEEL",Oil India Limited,roller chain
+195,y,other,,"2V, 320 AH- 340 AH battery cell of size 195 mm X 530 mm X 75 mm (Q3)",Oil India Limited,battery cell
+199,m,,,"Supply of 5.1/2 inch Premium Casing, Grade N80 & P110, Coupling, Cross-Over & Short Nipple",Oil India Limited,
+200,y,other,G11,"M2430725562: ELECTRODE-HARD FCNG, TUBULAR, HI TMP, 400MM",NTPC Limited,same NTPC code M2430725562
+201,n,,,"3156, Distribution Transformer, 3 Phase, 33 KV, > 200 KVA",NTPC Limited,"a class of transformers (> 200 KVA), not one item"
+202,n,,,PUMP/ FAN/ COMPRESSOR UPTO 6.6KV 750KW,NTPC Limited,a class of equipment (up to 6.6 kV 750 kW)
+203,y,pipe,,"25 mm, Seamless, API 5L, Steel line pipe .Qty: 4.1 Kms",Oil India Limited,
+204,y,pipe,,"300 mm ERW Line Pipe, API-5L,Grade A; Qty : 0.62 km",Oil India Limited,
+206,y,pipe,,"50 mm Seamless Line Pipe, API-5L, Grade B; Qty : 3 km",Oil India Limited,
+209,y,tube,,"Tube,strt As,a213- t23,54mm,8.13mm",NTPC Limited,A213 T23 at different sizes - near-misses of 168
+210,y,tube,,"Tube,strt As,a213- t23,60.30mm,10.16mm",NTPC Limited,A213 T23 at different sizes - near-misses of 168
+211,y,tube,,"Tube,strt As,a213- t23,44.45mm,7.62mm",NTPC Limited,A213 T23 at different sizes - near-misses of 168
+215,m,,,"M4770106175: OTHERS: H. E. FOR SHAFT INSULATOR(ESP PKG. ) , M4770106098: OTHERS: SUPPORT INSULATOR HEATER 1KW PART",NTPC Limited,
+217,y,other,,"BAR, TMT – STEEL QTY. 80000 KG",Oil India Limited,"TMT bar, no size - under-specified"
+220,y,pipe,,"10_ M1616248370_ PIPE: IS1239-1 MEDIUM, GLV, ERW, PL, 100MM ( 1000 meter )",NTPC Limited,IS 1239 100 mm - near-miss of 86 (125 mm)
+233,y,valve,,"3.1/16"" X 10, 000 PSI API 6A Gate Valve",Oil India Limited,"3-1/16 in 10000 psi - possibly the same as 180, not certain"
+234,y,flange,,"4"" Dia Flange WN RTJ ASME B16.5 900#63AARH SCH XXS ASTM A105 Groove R37",Oil India Limited,
+235,m,,,"Asbestos Cement Sheet; Length: 2500 mm (Q3) , Asbestos Cement Sheet; Length: 3000 mm (Q3)",Oil India Limited,
+237,y,other,G30,"Wire Rope, 29 mm (1.1/8"" ) (Q3)",Oil India Limited,wire rope 29 mm; construction unstated
+243,m,,,"3HP motor , SODIUM HYPOCHLORIDE , LIME , UREA , Alum ,",NTPC Limited,
+244,n,,,"450MM , M2430725562: ELECTRODE-HARD FCNG,",NTPC Limited,fragment of a neighbouring row
+245,y,other,G11,"ELECTRODE-HARD FCNG,TUBULAR,HI TMP,400MM",NTPC Limited,same NTPC code M2430725562
+247,y,electrical,,"M8702181506N TRANSFORMER,2MVA,11 .433KV DYN1 AN ,",NTPC Limited,same rating as G12 under a different NTPC code - a possible real in-company duplicate; the text alone cannot settle it
+248,y,electrical,G12,"M8702182509 TRANSFORMER-2MVA,11 0.433KV,DYN1,TYPE",NTPC Limited,same NTPC code M8702182509
+249,y,electrical,G12,"M8702182509 TRANSFORMER-2MVA,11 0.433KV,DYN1,TYPE 2",NTPC Limited,same NTPC code M8702182509
+251,y,pipe,G13,"TP304L,80S,32MM , PIPE",NTPC Limited,TP304L 80S 32 mm
+252,y,pipe,G14,"TP304L,80S,40MM , PIPE",NTPC Limited,TP304L 80S 40 mm
+254,y,other,,"37.37 KLS CAPACITY, 7500 MM X 2500 MM X 2150 MM RECTANGULAR CRUDE OIL STORAGE TANK",Oil India Limited,storage tank
+255,y,pipe,G15,"Line Pipe, 4"", Seamless, B/E, 12.66 PPF",Oil India Limited,"4 in seamless bevel end, 12.66 lb/ft"
+256,y,other,,73.02 MM 2.7 8 inchs API GRADE G-105 LEFT HAND CONNECTION DRILL PIPE,Oil India Limited,drill pipe
+257,y,pipe,,"Bids for the supply of 9.5 8 inch 244.475 mm , API 5CT, P 110, CASING PIPE",Oil India Limited,9-5/8 casing: P-110 vs N-80 - near-miss on grade
+258,m,,,"Casing Head Housing 20"" x13.3/8"" x 3000 PSI , Plug tester suitable for above housing , Slip Seal Assembly for above housing",Oil India Limited,
+263,y,pipe,G15,"Line Pipe, 4"" , Seamless, B/E, 12.66 PPF (09019712) (Q3)",Oil India Limited,"4 in seamless bevel end, 12.66 lb/ft"
+264,y,fastener,,"SPRING WASHER CONFORMING TO IS 3063 FOR DIMENSIONS AND IS 4072 FOR SPECIFICATIONS, SSI ITEM GROUP IV",Oil India Limited,"spring washer, no size - under-specified"
+267,n,,,(VALVE- BALL UP TO 100 MM & CLASS 800:CAT-II &,NTPC Limited,"a class or range of items, not one item"
+268,n,,,"2HP motor , Dosing Pump , Rewinding of 3 ph 1.5 HP motor ,",NTPC Limited,rewinding services
+279,y,cable,G21,"Cable 4 C x 10 mm2 , 1100 V, PVCA , Alu",Oil India Limited,4C x 10 sqmm 1100 V PVCA Al
+280,y,cable,,"Cable, 2C x 6 sqmm, 250V, Flat PVC Alu",Oil India Limited,
+281,y,cable,,"Cable, 3C x 400 mm2, 1100V, XLPE Copper armoured",Oil India Limited,
+282,y,cable,G21,"Cable, 4C x 10 sqmm, 1100V, PVCA Alu",Oil India Limited,4C x 10 sqmm 1100 V PVCA Al
+283,y,cable,,"Cable, 4C x 16 sqmm, 1100V, PVCA Alu",Oil India Limited,4C x 16 sqmm - near-miss of G21
+286,m,,,"Line Pipe, Seamless, 1"" and 1/2""",Oil India Limited,
+289,y,pipe,,"50 mm Seamless Line Pipe, Screwed and Coupled, API 5L. Qty.: 2.5 Km",Oil India Limited,
+290,y,other,,FULL OPENING SAFETY VALVE FOR 3.1/2 INCHES DRILL PIPE,Oil India Limited,
+293,n,,,"Repairing Ring road of Moran OCS-1 Earthfilling (120.00 Mtr), Construction of 150 MM thick Gravel Surface (120.00 Mtr)",Oil India Limited,"works, project scope or clause text"
+297,m,,,"WIRE ROPES_ DIA 35 MM (Q3) , WIRE LINE_ DIA 19 MM (Q3)",Oil India Limited,
+298,n,,,"MOTOR , Rewinding of 3 ph 2 HP MOTOR , Rewinding of 3 ph",NTPC Limited,rewinding services
+302,m,,,"Casing, 5 1/2 inch x20PPF X N 80BTC (01010376) , Casing Nipple for 5 1/2 inch x 20PPF X P110BTC (01112595)",Oil India Limited,
+303,m,,,"Coupling for 5.1/2"" & 7"" Casing",Oil India Limited,
+306,y,other,,"196.85 MM OD STEERABLE DOWNHOLE MUD MOTOR, SUITABLE FOR DRILLING 311.15 MM HOLE WITH ALL ACCESSORIES.( QTY: 2 NOS.)",Oil India Limited,
+309,m,,,"Casing Head Housing, 20"" x13.3/8"" x3000 PSI (03530332) (Q3) , Slip Seal Assy. ( 03530343) (Q3) , Plug Tester for 03-53-0332 (03530354) (Q3)",Oil India Limited,
+315,y,other,,"41 Petrol Driven Positive Pressure Ventilator ) - 16"" Size - Engine of 5.5 HP, 16"" Fan Size,(Blower",NTPC Limited,ventilator - fragmented text
+317,m,,,"M8752065803LV BUSHING,MP And GASKET,3.6KV,2000A,AREVA",NTPC Limited,
+322,y,pipe,G13,"Pipe Smls,ss,a312-tp304l,80s,32mm",NTPC Limited,TP304L 80S 32 mm
+323,y,pipe,,"Pipe Ss,a312-tp304l,smls,40s,100mm",NTPC Limited,
+324,n,,,UPTO 11 KV 4MW FOR PUMP/FAN/COMPRESSOR,NTPC Limited,"a class or range of items, not one item"
+325,n,,,"capacity (1000 mm dia, 12 mm thick, approx. 4 km route length) MS pipe with wrapping",NTPC Limited,"works, project scope or clause text"
+326,y,other,,"3.1/16 inch X 10, 000 PSI CHOKE MANIFOLD WITH REMOTE CHOKE CONTROL PANEL AND ACCESSORIES",Oil India Limited,choke manifold assembly
+327,y,pipe,,"Line Pipe, 1/2 inch , ERW, GI Screwed",Oil India Limited,
+329,y,pipe,G16,"Line Pipe, 4"", Seamless, BE, 19 PPF",Oil India Limited,"4 in seamless bevel end, 19 lb/ft"
+331,y,pipe,,"250 mm, ERW, API 5L, Steel line pipe. Qty: 1 Kms",Oil India Limited,
+334,m,,,"Expanded Metal Sheet - 40 mm (Q3) , Expanded Metal Sheet - 20 mm (Q3) , Expanded Metal Sheet - 75 mm (Q3)",Oil India Limited,
+337,y,pipe,,"Line Pipe, 12.7mm, Seamless, Qty: 3 KM",Oil India Limited,12.7 mm = 1/2 in written as a measurement
+338,y,pipe,G17,"Line Pipe, 152.4 mm, Steel, ERW Bevelled. Qty: 2 KM",Oil India Limited,6 in ERW bevelled; 338 writes 6 in as 152.4 mm
+339,y,pipe,G18,"Line Pipe, 2"" , Seamless, B/E (09018376) (Q3)",Oil India Limited,2 in seamless bevel end
+340,?,,,"Line Pipe, 2,114.3 mm, Seamless. Qty: 50 KM",Oil India Limited,"size garbled: '2,114.3 mm'"
+341,y,pipe,,"Line Pipe, 50.8 mm, Seamless, XXS. Qty: 7.20KM",Oil India Limited,50.8 mm = 2 in written as a measurement; XXS
+344,n,,,"Distribution Transformer, 3 Phase, 11 kV > 200 KVA up to and Including 2500 KVA",NTPC Limited,"a class or range of items, not one item"
+345,y,other,G19,M4770106098: OTHERS: SUPPORT INSULATOR HEATER 1KW PART,NTPC Limited,same NTPC code M4770106098
+346,y,other,G19,M4770106098: OTHERS: SUPPORT INSULATOR HEATER 1KW PART(150),NTPC Limited,same NTPC code M4770106098
+348,m,,,"Wear Parts (Grinding Rolls and Bull Ring Segment) of Raymond Bowl Type XRP/HP Pulverisers, Grinding Roll size 48/50/62/63 inches",NTPC Limited,
+356,y,cable,,"3.5 x 70 sq. mm, EPR, Copper 660 V Cable (Q3)",Oil India Limited,
+357,y,electrical,,"3MVA, 33kV/3.3kV Power Transformer (Q3)",Oil India Limited,
+359,y,pipe,,"Bids for PROCUREMENT OF LINE PIPE, 2inch(QTY-16,100 MTRS)",Oil India Limited,
+362,y,other,,HAND SLIP FOR 4.1 2 INCHES OD DRILL PIPE,Oil India Limited,
+363,y,valve,,"HCR Valve Assembly, 7.1/16"" x 10M",Oil India Limited,HCR valve 7-1/16 vs 2-1/16 - different
+364,y,valve,,"HCR Valve Assy, 2.1/16"" x 10M",Oil India Limited,HCR valve 7-1/16 vs 2-1/16 - different
+366,y,plate,,PROCUREMENT OF M.S. PLATE 1.6 MM (QTY-25 MT),Oil India Limited,366 gives thickness only - cannot tell if same as 479
+367,y,other,,"SUPPLY OF 127 MM O.D. HEAVY WEIGHT DRILL PIPE (NON-INTEGRAL TYPE, I.E. WELDED TYPE BY FRICTION / INERTIA WELDING). (QTY : 50 NOS)",Oil India Limited,drill pipe
+368,y,valve,,"SWING CHECK VALVE DN350(14"") CLASS 150",Oil India Limited,DN350 (14 in) - designation written both ways
+371,y,other,,"M9216663067_ BATTERY, RECH, LEAD ACID, 220V, 400AH, SAN (lead acid battery)",NTPC Limited,
+375,n,,,450NB ERW Pipe (FE410) for thickness range 6.3 to 10 mm (CAT-2),NTPC Limited,"a class or range of items, not one item"
+377,m,,,"Supply of GEAR OPERATED BUTTERFLY VALVES SIZE: 8"",Specifications of Integrally Moulded Gear Operated Butterfly valve: 06 Inch",Oil India Limited,
+378,y,pipe,,"Bids for the supply of 5000 Metres OF 20 inchs 508 MM, API 5CT, K 55, CASING PIPE through E Procurement",Oil India Limited,20 in = 508 mm casing
+379,y,pipe,,"Bids for the supply of 9.5 8 244.475 MM, API 5CT, N-80, TYPE-I TYPE-Q CASING PIPE through E Procurement",Oil India Limited,9-5/8 casing: P-110 vs N-80 - near-miss on grade
+380,m,,,"Casing Head Housing, 20"" x13.3/8"" x3000 PSI (03530332) (Q3) , Plug Tester for 03530332 (MAT CODE- 03530354) (Q3)",Oil India Limited,
+381,m,,,"Cementing Head, 8 1/4 "" & 12"" flat bottom Junk mills, Double Studded Adaptor Flange",Oil India Limited,
+382,m,,,"Ceramic Packing, Size-50 mm OD for GDU (Q3) , Ceramic Packing, Size-40mm OD for GDU (Q3)",Oil India Limited,
+383,n,,,"Construction/Repairing of bituminous road by, 75 mm thick WBM in two layers, 20 mm thick Premixing with Seal Coat",Oil India Limited,"works, project scope or clause text"
+384,m,,,"HYDRAULIC HAND PUMP 10000 PSI FOR WATER MEDIUM , HYDRAULIC HAND PUMP 10000 PSI FOR OIL MEDIUM",Oil India Limited,
+385,m,,,"POWER TONG TORQUE GAUGE WITH LOAD CELL - 36 INCH (Q3) , POWER TONG TORQUE GAUGE WITH LOAD CELL – 34 INCH (Q3)",Oil India Limited,
+388,n,,,"31.5MVA 332/33kV TIE type TRANSFORMER,ONAN, considered at the 132KV switchyard in SLD.",NTPC Limited,design-document sentence or clause fragment
+389,n,,,"IEC:60296 to Transformer Manufacturer(s) of 220 KV or higher class, prior to date of",NTPC Limited,design-document sentence or clause fragment
+390,n,,,"MVA, 18/ 400 KV Generator Transformer for Stage - I of RSTPS) | Meeting-Join",NTPC Limited,design-document sentence or clause fragment
+392,y,valve,,5. 1/2 INCH BALL VALVE-02 NOS,NTPC Limited,under-specified
+394,y,tube,G20,"M4801164756_ _ TUBE, STRT, AS, A213-T91, 51MM, 7.1MM, 4-7M ( 2000 meter )",NTPC Limited,same NTPC code M4801164756
+397,y,other,,"TRANSFORMER BUSHING 1.1 KV LV BUSHING 4000 A,",NTPC Limited,
+402,n,,,"YOKOHAMA JAPAN A FABRIC BELT UPTO 2400 MM WIDTH ,",NTPC Limited,"a class or range of items, not one item"
+403,n,,,CONVEYOR BELT (NN/ EP) UPTO 1400MM WIDTH,NTPC Limited,"a class or range of items, not one item"
+405,y,other,,"3-1/2"" RHAM API INSERT PUMP UNIT",Oil India Limited,
+406,y,cable,,"4C x 2.5 sqmm, PVCA, Cu, Control Cable",Oil India Limited,
+410,y,pipe,G18,"LINE PIPE 2"" SEAMLESS B/E",Oil India Limited,2 in seamless bevel end
+412,y,pipe,,"Line Pipe, 12"", Steel, ERW Bevelled",Oil India Limited,
+416,y,pipe,,"Line Pipe, 8"", Steel, ERW Bevelled",Oil India Limited,
+417,y,pipe,,"100 mm Seamless Line Pipe, Screwed and Coupled, API 5L. Qty.: 03 Km",Oil India Limited,
+419,y,pipe,,"4"" ERW GALVANISED LINE PIPE – 11,000 METERS",Oil India Limited,
+421,y,valve,,"API 6A Gate Valve, 352 Kg/Sq.cm. W.P. Qty:250 Nos",Oil India Limited,under-specified
+423,y,other,,"API Spec. 7K, Grade B, Rotary Drilling Hose. Qty.: 15 Nos",Oil India Limited,
+428,y,pipe,,"Line Pipe, 114.3 mm, Seamless. Qty: 50 KM",Oil India Limited,
+431,y,pipe,G17,"Line Pipe, 6"" , Steel, ERW Bevelled (09026146) (Q3)",Oil India Limited,6 in ERW bevelled; 338 writes 6 in as 152.4 mm
+434,y,cable,,"Multi Grade, Non-Metallic, Single Mode, Composite Optical Fibre cable",Oil India Limited,
+435,y,other,,"PROCUREMENT OF JINGLE WIRE FENCING (QTY- 90,000 KG)",Oil India Limited,"jingle wire fencing, no spec - never grouped"
+436,n,,,SPARES FOR BHEL TYPE E-1400 DRAWWORKS GROUP : ROTARY COUNTER SHAFT,Oil India Limited,"a class or range of items, not one item"
+437,y,valve,,"SUPPLY OF(API 6A, 5000 PSI) GATE VALVE",Oil India Limited,under-specified
+438,m,,,"Supply of 8"" (inch) OD Drill Collar & Lifting Plug and 9.1/2"" (inch) OD Drill Collar & Lifting Plug",Oil India Limited,
+440,y,other,G24,"M2430715563: Electrode-hard Fcng, Tubulr, 6.3x350- 450mm",NTPC Limited,same NTPC code M2430715563
+441,y,other,,M8523359878: 400KV SWYD EARTH SWITCH CONTACT BLADE,NTPC Limited,
+446,n,,,2.0 MEG DESCRIPTION CONVEYOR BELT (NN/ EP) above 2000 mm width,NTPC Limited,"a class or range of items, not one item"
+447,n,,,2.0 MEG DESCRIPTION CONVEYOR BELT (NN/ EP) up to 1400 mm width,NTPC Limited,"a class or range of items, not one item"
+449,n,,,"Rewinding of 3 ph 2 HP motor , Rewinding of 3 ph 1 HP",NTPC Limited,rewinding services
+450,n,,,"Rewinding of 3 ph 5 HP motor , Rewinding of 3 ph 3 HP",NTPC Limited,rewinding services
+453,m,,,"200 A, 4 Pole On-load Change Over Switch, Combination Fuse switchunit, 315 amps, 500v",Oil India Limited,
+455,m,,,"API Blind Flange 9 inch 3000 psi , Ring Gasket RX 49",Oil India Limited,
+456,y,other,,Cement Plug for 9.5/8 inch casing,Oil India Limited,
+458,y,fitting,,"Coupling for 9.5/8"" x P110 BTC Casing",Oil India Limited,casing coupling
+462,m,,,"4 inch X 15 m FIRE HOSE , 6 inch X 15 m FIRE HOSE",Oil India Limited,
+463,y,flange,,"5"" X 5000 PSI WP, API 6B type RTJ Flange grooved",Oil India Limited,
+464,m,,,"Fire hose 4 inch X 50 feet , Fire hose 6 inch X 50 feet",Oil India Limited,
+468,y,fitting,,"Spares & Accessories for Instruments ""SS NIPPLE (1/2"""" X 2"""")",Oil India Limited,
+470,y,other,,"Wire Rope, 25 mm (1"" ) (Q3)",Oil India Limited,wire rope 29 mm vs 25 mm - different
+472,m,,,"40 MM NOMINAL BORE SCAFFOLDING TUBES , FIXED CLAMP FOR SCAFFOLDING TUBE , MOVABLE CLAMP FOR SCAFFOLDING TUBE",Oil India Limited,
+474,n,,,"33kV cable route,location of cmcs and 132kV switchyard",NTPC Limited,"works, project scope or clause text"
+477,y,electrical,,"Supply of FLP DOL Starter for 5 HP, 415 V, 50 HZ FLP motor integrated with FLP push button switch",Oil India Limited,starter
+479,y,plate,,"Bids for PROCUREMENT OF M.S.PLATE SIZE: 1.6mmX2500mmX1250mm (QTY-25,000 KG)",Oil India Limited,366 gives thickness only - cannot tell if same as 479
+482,m,,,"Bids for the supply of ERW LINE PIPE OF NOM. SIZES 6"" & 8"", API-5L FOR TOTAL QUANTITY OF 4,800 METERS",Oil India Limited,
+487,y,other,,"Oil fired, Electric motor driven, portable combination Steam cleaner and pressure washer on 203.2 mm (8inch) rubber- tyred wheels and swivel",Oil India Limited,
+488,n,,,Installation/Retrofitting of 415V MCC/415 V Air Circuit Breaker” during the preceding seven,NTPC Limited,"works, project scope or clause text"
+489,n,,,"Distribution Transformer, 3 Phase, upto and Including 200 KVA ISI Marked To IS 1180 (Part 1) Isolation Transformer",NTPC Limited,"a class or range of items, or vendor + class"
+490,m,,,Lab Equipments - Grease Kettle – 2Kg and 5 Kg Automatic Penetrometer Drop point apparatus Wheel bearing leakage tester( variable RPM ),Indian Oil Corporation Limited,
+491,n,,,"& hot vulcanizing) for NN / EP conveyor belt, of be lt width 800 mm or",NTPC Limited,"fragment, heading, works or clause text"
+492,n,,,(VALVE-BUTTERFLY UP TO 600MM & CLASS,NTPC Limited,"a class or range of items, or vendor + class"
+496,y,electrical,,400 KV CURRENT TRANSFORMER,NTPC Limited,"current transformer, not a power transformer"
+497,y,other,,420KV BUS POST INSULATOR,NTPC Limited,
+500,n,,,NORTHLAND RUBBER SONEPAT A FABRIC BELT UPTO 2200 MM WIDTH,NTPC Limited,"a class or range of items, or vendor + class"
+504,n,,,SOMI CONVEYOR JODHPUR A FABRIC BELT UPTO 2000 MM WIDTH,NTPC Limited,"a class or range of items, or vendor + class"
+506,y,other,,TRANSFORMER BUSHING 11 KV 2000 A,NTPC Limited,
+507,y,other,,TRANSFORMER BUSHING 11KV HV,NTPC Limited,11 kV bushing with no current rating - cannot tell if same as 506
+508,y,other,,TRANSFORMER BUSHING 17.5 KV 1000 A,NTPC Limited,
+509,y,other,,TRANSFORMER BUSHING 3.3 KV 4000 A,NTPC Limited,
+510,y,other,,TRANSFORMER BUSHING 3.3 KV 630 A,NTPC Limited,
+511,y,other,,TRANSFORMER BUSHING 3.6 KV 1000 A,NTPC Limited,
+514,n,,,VALVE-DUAL PLATE CHECK > 600MM OR CLASS >,NTPC Limited,"a class or range of items, or vendor + class"
+517,n,,,pipes and bends for BA slurry Pipe 20 mm thick cast basalt line d MS fitting ( MS shell of,NTPC Limited,"fragment, heading, works or clause text"
+518,n,,,"up to and including 1 KV, DC WINCH MOTOR, High End",NTPC Limited,"a class or range of items, or vendor + class"
+520,n,,,LT MOTOR (ABOVE 100KW),NTPC Limited,"a class or range of items, or vendor + class"
+522,y,other,,PROCUREMENT OF LIGHTING ARRESTER 400 KV SA WITH POLYMER INSULATOR,NTPC Limited,
+523,y,electrical,,"10 MVA transformer, 11/33 kV Transformer",Oil India Limited,
+524,y,valve,,"10"" NB VERTICAL DUMP VALVE ASSEMBLY",Oil India Limited,
+528,y,other,,HYDRAULIC HAND PUMP (5000 PSI) (OIL INDIA LIMITED),Oil India Limited,
+529,y,instrument,,"Pressure Gauge, Range: 0-150 PSI",Oil India Limited,
+530,n,,,SPARES FOR CHOKE MANIFOLD CONTROL PANEL 10000 PSI,Oil India Limited,"fragment, heading, works or clause text"
+531,y,electrical,,SUPPLY OF 380 HP ELECTRICAL MOTOR,Oil India Limited,
+533,y,other,,SUPPLY OF BATTERY BANK FOR 120KVA UPS,Oil India Limited,
+535,y,other,,"Supply of 6 1/4"" Poly Pack rubber, Steam pump",Oil India Limited,
+538,y,other,,"Supply of Wire Galvd., Size: 8 SWG",Oil India Limited,
+539,y,other,G22,TMT STEEL BAR 8MM DIA,Oil India Limited,TMT bar 8 mm
+540,y,electrical,,100 HP ELECTRIC MOTOR,Oil India Limited,
+542,y,electrical,,11 KV VCB PANEL – 05 NOS,Oil India Limited,
+543,y,electrical,,1150 HP AC VFD DRILLING MOTOR,Oil India Limited,
+545,y,other,,"2 V, 1500AH, tubular lead acid battery cells for solar power system",Oil India Limited,
+546,y,other,,"2V, 500 AH Battery SMF, VRLA Battery (Q3)",Oil India Limited,
+547,y,pipe,,"400 mm Line Pipe & Accessories, Qty.: 16150 Meter",Oil India Limited,
+548,y,pipe,,"50 mm ERW Line pipe, Screwed And Coupled, API 5L",Oil India Limited,
+550,y,valve,,52.38 mm Hydraulic Gate Valve; Qty.: 08 Nos,Oil India Limited,52.38 mm is the 2-1/16 in API 6A bore
+551,y,valve,,API 600 CAST CARBON STEEL GATE VALVE,Oil India Limited,
+552,y,other,,BACKUP BATTERY BANK TO 35 KVA UPS BATTERY (Q3),Oil India Limited,
+554,y,flange,,"Blind Flange, Forged Carbon Steel, Ring Joint Groove",Oil India Limited,no size
+555,y,other,,"Catfloc, T 180-200 Kg/Drum",Oil India Limited,
+557,y,other,,"Cement Friction Reducer. Qty.: 20,000 Kg",Oil India Limited,
+558,y,other,,"Double Pack Off Flange, Size: 346.075 mm. Qty. 05 sets",Oil India Limited,
+561,y,other,G23,GRIPS FOR WIRE LINE (FOR OIL),Oil India Limited,
+562,y,other,G23,GRIPS FOR WIRE LINE (FOR OIL) (Q3),Oil India Limited,
+564,y,electrical,,"Induction Motor-IS 12615, IS:325 (Q3)",Oil India Limited,
+565,y,other,,JINGLE WIRE FENCING - 120MT,Oil India Limited,"jingle wire fencing, no spec - never grouped"
+567,y,pipe,,LINE PIPE –14200 MTRS,Oil India Limited,
+568,y,cable,,"Logging Cable, 7.9 mm O.D. Qty.: 02 Reels",Oil India Limited,logging cable
+570,y,electrical,,PROCUREMENT OF 1150 HP AC DRILLING MOTORS WITH BLOWER UNIT,Oil India Limited,
+571,y,other,,PROCUREMENT OF TMT STEEL BAR (QTY-100 MT),Oil India Limited,"TMT bar, no size - never grouped"
+572,m,,,Pre-coated Line Pipe & Bends; Qty.:61.5 Kms & 52Nos,Oil India Limited,
+577,y,other,,"Safety Valve Full Bore (For 73.025 mm Tubing), Qty. : 6 Nos",Oil India Limited,
+578,y,pipe,,"Supply of Line Pipe 2” Black Steel , ERW (12,600 Mtr)",Oil India Limited,
+581,y,electrical,,TRANSFORMER 100KVA,Oil India Limited,
+582,y,valve,,"Through Conduit Gate Valve, DN 200 (8 inch), 600 Class",Oil India Limited,
+586,y,fitting,,300 NB SLEEVE COUPLING ASSEMBLY,NTPC Limited,sleeve coupling assembly
+587,y,pipe,,ERW PIPE 450 NB,NTPC Limited,
+588,n,,,2.0 CABLE SELECTION & SIZING,NTPC Limited,"fragment, heading, works or clause text"
+589,y,other,G24,"M2430715563: ELECTRODE-HARD FCNG, TUBULR, 6.3X350-450MM ( 300 kilogram )",NTPC Limited,same NTPC code M2430715563
+590,y,other,,M8523453956N: S/W GEAR: 420KV BUS POST INSULATOR WITH C ( 9 the number pi ),NTPC Limited,420 kV bus post insulator; text truncated - maybe the same as 497
+593,y,pipe,,Procurement of 450 NB MS PIPE FOR ADM NTPC FARAKKA,NTPC Limited,
+595,y,electrical,,"Busbar Chamber, 3 Phase 4 Bar Heavy Duty Copper Bar Rating: 63 Amps, TPN Box",Oil India Limited,
+596,m,,,"Drill Pipe 5"" OD Grade G 105 and S 135",Oil India Limited,
+598,y,plate,,MS Plate (3.15 MM,Oil India Limited,
+599,m,,,Wire Ropes- 19 mm dia & 9 mm dia,Oil India Limited,
+601,y,other,,PNEUMATICALLY OPERATED DRILL PIPE SPINNER FOR HANDLING 127MM OD DRILL PIPE. QTY: 8 NOS,Oil India Limited,
+606,m,,,"Weld neck Flanges and 4"" NB x 12"" Long Nipple",Oil India Limited,
+607,y,other,,Transformer Oil Sampling bottle 1000ml SS 304 Grade,NTPC Limited,
+608,n,,,'CONVEYOR BELT (NN / EP) ABOVE 1400MM WIDTH AND UPTO 1600MM WIDTH” with,NTPC Limited,"a class or range of items, or vendor + class"
+609,n,,,Oriental Rubber Pune A Upto 2000 MM B/w79 Steel Cord Pipe Conveyor (FR Grade) I,NTPC Limited,"a class or range of items, or vendor + class"
+610,y,electrical,G25,Procurement of 50MVA 220KV/11.5KV Power Transformer for CO2-ESS system at NTPC,NTPC Limited,"50 MVA 220/11.5 kV transformer, two tenders"
+612,y,electrical,G25,Procurement of 50MVA 220KV/11.5KV Power Transformer for CO2-ESS System at NTPC Kudgi,NTPC Limited,"50 MVA 220/11.5 kV transformer, two tenders"
+615,n,,,Bids for PROCUREMENT OF CABLES FOR 33 KV RING MAIN SYSTEM QTY: 500 Mtrs,Oil India Limited,"a class or range of items, or vendor + class"
+618,n,,,"Construction of Air Compressor Shed (Size 15 mtr x 7.5 mtr), RCC Approach road",Oil India Limited,"fragment, heading, works or clause text"
+621,n,,,1. Power Transformer (66 KV and above): Core shall be,NTPC Limited,"fragment, heading, works or clause text"
+622,n,,,"Copper Tube 104.9mm-OFB, XLPE Cable for Working",NTPC Limited,"fragment, heading, works or clause text"
+623,n,,,"LT Control Cable 1.1 KV, Type - PVC (incl",NTPC Limited,"a class or range of items, or vendor + class"
+624,n,,,Phonix Cnoveyor belt Kolkata A Upto 2400 MM B/w,NTPC Limited,"a class or range of items, or vendor + class"
+625,y,other,G28,"Rotor for 19.5 MW Steam Turbine Generator (BHEL), Diesel",NTPC Limited,rotor for 19.5 MW STG (BHEL)
+628,y,electrical,,Procurement for 100MVA 400/33kV Tie Transformer for NTPC Ramagundam,NTPC Limited,
+630,y,other,,"Hydraulic Power Unit, Driven by Electric Motor (75HP)",Oil India Limited,
+632,y,pipe,,"Line Pipe - 3/4"" ERW Galvanised",Oil India Limited,
+634,y,pipe,,"Line Pipe Conductor 28"" , SW Bevelled",Oil India Limited,
+637,y,pipe,,"Supply of 20"" OD ERW/SAW Steel Casing Pipe",Oil India Limited,
+641,y,other,G22,TMT Bar: 08 MM,Oil India Limited,TMT bar 8 mm
+642,y,other,,"TMT bar, 12 MM",Oil India Limited,
+645,y,pipe,,"114.3 mm ERW Steel Line Pipe, API 5L",Oil India Limited,
+647,y,other,,"17-1/2"" OD Sleeve Type String Stabilizer. Qty = 08 Nos",Oil India Limited,
+648,y,other,,2.34 mm Wire Measuring. Qty: 30 Reel,Oil India Limited,
+654,y,other,,"Bids for PROCUREMENT OF TMT STEEL BAR (QTY-100, 000 KG)",Oil India Limited,"TMT bar, no size - never grouped"
+657,y,valve,,Plug Valve 101.6mm X 900CL.(Qty:80),Oil India Limited,101.6 mm = 4 in converted as a measurement; possibly the same as 116
+658,y,other,,Poor Boy Swivel for 125mm Drill Pipe. Qty: 05 Nos,Oil India Limited,
+659,y,other,,Poor Boy Swivel for 87.5 mm Drill Pipe. Qty: 03 Nos,Oil India Limited,
+662,y,other,,"Procurement of Nickel Cadmium Battery Bank, 110V",Oil India Limited,
+663,y,other,,"Rotary Fuel Injection pump, Cummins B 5.9 ENGINE",Oil India Limited,
+664,y,other,,"Strainer basket type with companion flange, 4"" (600 Class)",Oil India Limited,
+665,y,other,,Supply of 244.475mm Single Plug type Cementing Head (Qty: 02 Nos.),Oil India Limited,
+666,y,pipe,,Supply of 30”(762mm) Conductor Pipe. (Qty: 100 M),Oil India Limited,"30 in = 762 mm: correct, because from 14 in up the OD equals the size"
+669,m,,,"Pneumatic Drill Pipe Spinner , Hydraulic Pressure Recorder 6000psi",Oil India Limited,
+672,n,,,Size of Ceiling Fan (Hint: Tolerance of ±5 mm),NTPC Limited,"fragment, heading, works or clause text"
+675,y,electrical,G26,"Procurement of 250 MVA, 18/ 400 KV Generator Transformer for Stage - I of",NTPC Limited,"250 MVA 18/400 kV generator transformer, three tenders"
+678,y,electrical,G26,"Work Description Procurement of 250 MVA, 18/ 400 KV Generator Transformer for Stage - I of RSTPS",NTPC Limited,"250 MVA 18/400 kV generator transformer, three tenders"
+680,n,,,"belt of width 1600 mm or higher and strength 800 kN/Mtr and above, to actual user(s) or",NTPC Limited,"fragment, heading, works or clause text"
+682,n,,,"belt of width 2000 mm or higher and strength 800 kN/Mtr and above, to actual user(s) or",NTPC Limited,"fragment, heading, works or clause text"
+684,y,electrical,G26,"Procurement of 250 MVA, 18/ 400 KV Generator Transformer for Stage-I of RSTPS",NTPC Limited,"250 MVA 18/400 kV generator transformer, three tenders"
+685,y,electrical,,"Procurement of 40 MVA, 220/33 KV Spare Solar Power Transformer for NTPC Auraiya GPS Against Approved Capital Budget 2024-25",NTPC Limited,
+686,y,other,,"Supply of CGI Sheet, 2500 mm (8 Ft.), Class-8-120 GSM Zinc (Spelter) Coating",Oil India Limited,
+687,m,,,"25 KVA Diesel Generating Sets, Control Panel, Distribution panel and related accessories",Oil India Limited,
+688,y,electrical,,3.3 KV VCB PANEL FOR NEW WATER SUPPLY (4MDG WATER TREATMENT PLANT) (Q3),Oil India Limited,
+690,y,other,,"Bids for the supply of 4,000 BAGs of FLC 2000 or Equivalent, Packing-25 KG Bag through E-Procurement",Oil India Limited,
+691,n,,,"Construction of CC matress inside the Tank dyke at ITF, Tengakhat, Approx. area of CC Matress is 2700.00 Sq. mts",Oil India Limited,"fragment, heading, works or clause text"
+695,n,,,"Providing fencing at Executive Bungalows area of PS3, Jorhat including supply of all materials like cement, MS Bar etc",Oil India Limited,"fragment, heading, works or clause text"
+697,y,other,,Sling Lines / Bull Lines Bright (Uncoated) Steel Wire Rope Basic Grade. Qty: 03 Sets,Oil India Limited,
+698,y,pipe,,"supply of ERW LINE PIPE OF NOM. SIZES 6"", API-5L FOR TOTAL QUANTITY OF 3,400 METERS",Oil India Limited,
+699,n,,,6.0 Any Certificate(s) / Financial Statement(s) / Audited Balance Sheet and P&L Account,NTPC Limited,"fragment, heading, works or clause text"
+700,n,,,& 4 mm for the sides. The top & baffle plates shall be of 3 mm' The tank shall be of welded construction &,NTPC Limited,"fragment, heading, works or clause text"
+701,n,,,7.3 The water tank shall be fabricated out of minimum 5 mm thick SS plates,NTPC Limited,"fragment, heading, works or clause text"
+703,n,,,trap with a cleaning hole of 250 mm dia & a 50 mm drain pipe with a valve & plug incorporated in it for,NTPC Limited,"fragment, heading, works or clause text"
+706,n,,,Raising the height of existing brick boundary wall of Shalmari OCS-1 by 600.00 mm with 230.00 mm thick brick wall,Oil India Limited,"fragment, heading, works or clause text"
+707,m,,,Supply of 203.20 MM & 165.10 MM non-magnetic slick and flex drill collar with lift plug,Oil India Limited,
+710,y,other,,API 610 Centrifugal Pump,Indian Oil Corporation Limited,
+711,n,,,"Small size (<4"") misc. valve (Nos)",Indian Oil Corporation Limited,"a class or range of items, not one item"
+712,y,other,,2 inch pipe mounting clamp,NTPC Limited,
+714,y,other,G27,400KV RIP bushing for ICT-2 Transformer,NTPC Limited,"400 kV RIP bushing for ICT-2, three tenders"
+715,n,,,Cable for Working Voltage up to and Including 1.1 KV,NTPC Limited,"a class or range of items, not one item"
+717,n,,,Cable for Working Voltages up to and Including 1.1 KV as,NTPC Limited,"a class or range of items, not one item"
+719,n,,,H.T. CABLE upto 33KV,NTPC Limited,"a class or range of items, not one item"
+721,n,,,LS CABLE & SYSTEM LTD South Korea Up to 400 KV,NTPC Limited,vendor name + class
+722,n,,,Oil Filled Current Transformer upto 00KV,NTPC Limited,"a class or range of items, not one item"
+729,y,other,G28,Rotor for 19.5 MW Steam Turbine Generator (BHEL),NTPC Limited,rotor for 19.5 MW STG (BHEL)
+731,n,,,Universal Cable Ltd. Satna Upto 132KV only,NTPC Limited,vendor name + class
+732,n,,,Vishal Transformer Meerut UP TO 132 KV,NTPC Limited,vendor name + class
+733,n,,,XLPE Cable for Working Voltage up to and Including 1.1 KV,NTPC Limited,"a class or range of items, not one item"
+735,n,,,for supply of 'steel cord conveyor belt of width 1600 mm or,NTPC Limited,"works, clause, heading, enlistment category or procurement package"
+736,n,,,mm suction female screw coupling and 63 mm male instantaneous (GM),NTPC Limited,"works, clause, heading, enlistment category or procurement package"
+737,n,,,pipe diameter of 450 mm,NTPC Limited,"works, clause, heading, enlistment category or procurement package"
+740,n,,,400 kV Current Transformer (CT) (Enlistment Category-1),NTPC Limited,"works, clause, heading, enlistment category or procurement package"
+741,n,,,BULK PROCUREMENT OF CHP CONVEYOR BELTS FY 2025 to 26 PR2 1600MM BELTS,NTPC Limited,"works, clause, heading, enlistment category or procurement package"
+743,y,other,,PROCUREMENT OF GRP SHEET FOR COOLING TOWER AT BgTPP 100265907,NTPC Limited,
+745,y,other,G27,Procurement of 400KV RIP Bushing for ICT-2 Transformer at SSTPS,NTPC Limited,"400 kV RIP bushing for ICT-2, three tenders"
+747,y,other,,Procurement of Steel Cord Conveyor Belt Width 1600 mm for NTPC Mouda,NTPC Limited,
+753,y,valve,,25 NB Valve for Air Dryer,Oil India Limited,25 NB vs 50 NB - different
+754,y,cable,,3Cx 2.5 Sq. mm Ethylene Propylene Rubber (EPR) insulated Cable,Oil India Limited,
+755,y,other,,5 HP Submersible Pump,Oil India Limited,
+756,y,other,,5 HP Vertical Submersible Pump-Set,Oil India Limited,
+758,y,valve,,50 NB Valve for Air Dryer,Oil India Limited,25 NB vs 50 NB - different
+759,y,valve,,API 600 Gate valve,Oil India Limited,
+765,y,other,G29,SUPPLY of 20 HP submersible pump set,Oil India Limited,20 HP submersible pump set
+766,y,other,,Supply of Neutral Ground Resistor Relay and its components,Oil India Limited,
+770,y,other,,10000 PSI Hydraulic Hand pump,Oil India Limited,
+771,y,valve,,"12"" Butterfly Valve",Oil India Limited,
+775,y,other,,3.7 KW three phase 415 Volts 50 Hz Monoblock end suction pump,Oil India Limited,
+780,m,,,API 600 Gate Valve. (07 Items-Total Qty. 415 Nos.),Oil India Limited,
+781,y,other,,BJ Model FAS-LOK or Equivalent 5 ½ inch (139.70mm) Single Plug type,Oil India Limited,
+782,y,other,,Bids for FENCING JINGLE WIRE (120 MT),Oil India Limited,no spec - never grouped
+786,y,other,G30,Bids for the supply of WIRE ROPE 29MM through E-Procurement,Oil India Limited,wire rope 29 mm; construction unstated
+788,n,,,Construction of 400 KL RCC Ground Water Tank at Bhekulajan EPS,Oil India Limited,"works, clause, heading, enlistment category or procurement package"
+789,n,,,Construction of two (2) nos 400 KL ground water tank at Tengakhat OCS,Oil India Limited,"works, clause, heading, enlistment category or procurement package"
+791,y,other,,Fencing Jingle Wire (120MT),Oil India Limited,no spec - never grouped
+792,y,other,,Fire hose 4 inch X 50 feet,Oil India Limited,
+793,y,pipe,,"For the supply of 2"" Line Pipe",Oil India Limited,under-specified
+794,y,pipe,,"For the supply of 4"" Line Pipe",Oil India Limited,under-specified
+795,y,pipe,,"For the supply of 6"" Line Pipe",Oil India Limited,under-specified
+797,y,other,,Galvanised Wire 6 SWG,Oil India Limited,
+805,y,other,,MILD STEEL ROUND BAR (6mm Dia) (Q3),Oil India Limited,
+807,y,plate,,PROCUREMENT OF M.S. PLATE (QTY = 25000 KGs),Oil India Limited,no size
+811,y,other,G29,Supply of 20 HP Submersible Pump sets,Oil India Limited,20 HP submersible pump set
+812,y,pipe,,Supply of 4 INCH SEAMLESS LINE PIPE,Oil India Limited,under-specified
+813,y,other,,Supply of 88.90 mm OD heavy weight drill pipe. Qty. – 45 nos,Oil India Limited,
+814,y,other,,Supply of TMT Steel Bar (80 MT),Oil India Limited,no spec - never grouped
+815,y,other,,3 in 1 Battery Operated Crimping Tool,Oil India Limited,
+816,y,tube,,Copper Tube 104.9mm-OFB,NTPC Limited,
+817,y,other,,Wire rope slings and sling legs (V3) conforming to IS 2762,NTPC Limited,
+818,n,,,ALMM (Wind) Listed Turbine with Minimum Rating of 3.0 MW,NTPC Limited,"a class or range of items, not one item"
+819,y,other,,Electric Ceiling Fan (V4) ISI Marked to IS 374 (Q2),NTPC Limited,
+820,n,,,Under Ground Water Tank,NTPC Limited,"works, clause, heading, enlistment category or procurement package"
+821,n,,,Not more than 1.0 mm throughout the length of cable.,NTPC Limited,"works, clause, heading, enlistment category or procurement package"
+823,n,,,11 or 33 kV Outdoor Live Tank Current Transformer (BHEL),NTPC Limited,"a class or range of items, not one item"
+824,n,,,Steel Cord Conveyor Belts Conforming to IS 15427,NTPC Limited,"a class or range of items, not one item"
+826,n,,,"Reactor Internals (of Proprietary profile wire and baffle with MOC - SS 347 for PX-PTA Expansion project, Panipat)",Indian Oil Corporation Limited,"works, clause, heading, enlistment category or procurement package"
+827,n,,,"Repair and provision of security grills, chain link fencing and colour-coated sheets at Barauni Refinery Township",Indian Oil Corporation Limited,"works, clause, heading, enlistment category or procurement package"
+828,n,,,14) Agency has to supply the Refractory in 50 KG polythene/HDPE bags with extra liner. The thickness of,NTPC Limited,"works, clause, heading, enlistment category or procurement package"
+829,n,,,A 50mm diameter drain line with a ball/ butterfly valve shall also be provided to drain the tank for,NTPC Limited,"works, clause, heading, enlistment category or procurement package"
+830,n,,,"Tank shall be of 500 litres, fabricated from 3 mm SS 3161 plates only & die-pressed on all sides to ensure",NTPC Limited,"works, clause, heading, enlistment category or procurement package"
+831,n,,,The pump casing shall be subjected to a hydraulic test pressure of a minimu m 25 kg/cm2,NTPC Limited,"works, clause, heading, enlistment category or procurement package"
+832,y,electrical,,Title Procurement of 250 MVA 15.75/420 KV Generator Transformer for NTPC Farakka Stage-1,NTPC Limited,250 MVA 15.75/420 kV - near-miss of G26 (18/400 kV)
+835,n,,,"b) One (1) number buried Make up water pipe (900mm dia, 4 km route length Mild",NTPC Limited,"works, clause, heading, enlistment category or procurement package"
+837,n,,,"pipe minimum 2500 meters of minimum 200 mm diameter, in any continuous 365 days period in the",NTPC Limited,"works, clause, heading, enlistment category or procurement package"
+838,n,,,system with strobe should be provided. A light Bar of min 1700mm long operated on 12/24 Volts battery,NTPC Limited,"works, clause, heading, enlistment category or procurement package"
+839,n,,,"the pump, but not less than 140 mm. The inlet shall be of male round-threaded type & provided in such a",NTPC Limited,"works, clause, heading, enlistment category or procurement package"
+841,n,,,R&M of Turbine High-energy Drain Valves of MS/HRH Line of Rihand Stage1,NTPC Limited,"works, clause, heading, enlistment category or procurement package"
+842,y,electrical,,"Procurement of Fully Automatic Star-Delta Starter Panel for 40 HP Induction Motor, Standalone",Oil India Limited,starter panel
+844,y,other,,19 nos. Diesel Engine Driven Trailer Fire Pump of Capacity 1800 LPM at 7.0 kg/cm2 pressure,Oil India Limited,
+848,n,,,"Construction of Brick Boundary wall around Oil sports ground, providing and fixing GI chain link fencing",Oil India Limited,"works, clause, heading, enlistment category or procurement package"
+850,n,,,"Construction of Pipe Rack for shifting of existing MS Pipe to accommodate Up-gradation Project [Phase – II] at PS6, Bongaigaon",Oil India Limited,"works, clause, heading, enlistment category or procurement package"
+851,n,,,"Construction of asphalted road with WBM, Pre-mix and seal coating including providing and laying 600 mm dia",Oil India Limited,"works, clause, heading, enlistment category or procurement package"
+852,n,,,"Construction of brick boundary wall of total length 510.00 mtr, construction of one security morcha and one gate",Oil India Limited,"works, clause, heading, enlistment category or procurement package"
+853,n,,,"Construction of over ground 400 KL RCC Water Storage Tank at OCS-8, Sasoni",Oil India Limited,"works, clause, heading, enlistment category or procurement package"
+855,n,,,"Re-routing of 14inch mainline between PS7 (Madarihat) scraper trap and PS7 Downstream Block Valve under PLM Section PS8, Sonapur",Oil India Limited,"works, clause, heading, enlistment category or procurement package"
+858,n,,,"Replacement of existing worn-out security jingle wire fencing [separation] at football ground on the South and East side at PS3, Jorhat",Oil India Limited,"works, clause, heading, enlistment category or procurement package"
+859,m,,,Retainer Packer (Qty. 10 nos.) & Accessories (Qty.: 10 Sets Kits & 10 Nos. Seal Assembly) for 139.70 mm Casing,Oil India Limited,
+860,y,other,,Skid mounted hydraulic power unit driven by 60 HP electric motor with hydraulic pump. Qty: 01 No,Oil India Limited,
+861,y,other,,Specification / Data Sheet for 25 Kg. Capacity Trolley Mounted DCP (Potassium Base) Fire Extinguisher,Oil India Limited,
+863,y,other,,"invites Bids for the supply of 15,000 KG of Cement Friction reducer through E Procurement",Oil India Limited,no spec - never grouped
+866,n,,,"[Rev-00, Dated 01.05.2024] TECHNICAL SPECIFICATION 400 KV CURRENT TRANSFORMER",NTPC Limited,"works, clause, heading, enlistment category or procurement package"
+868,n,,,Similar work means : Supply of pulverised coal pipe of size of 350 mm or more,NTPC Limited,"works, clause, heading, enlistment category or procurement package"
+870,y,other,G27,Procurement Of 400KV RIP Bushing For ICT-2 Transformer At SSTPS ( 2 pieces ),NTPC Limited,"400 kV RIP bushing for ICT-2, three tenders"
+872,n,,,only. Bottom of tank shall be sloped towards the rear. lt shall have a filling orifice of 150 mm & an inspection,NTPC Limited,"works, clause, heading, enlistment category or procurement package"
+874,n,,,provided on the sides of the tank terminating in filling connections of 63mm male instantaneous couplings,NTPC Limited,"works, clause, heading, enlistment category or procurement package"
+875,n,,,strainer. The connection from the water tank to the pump shall be suitably sized (min 150 mm) to allow full,NTPC Limited,"works, clause, heading, enlistment category or procurement package"
+877,n,,,BULK PROCUREMENT OF CHP CONVEYOR BELTS FY 2025 to 26 PR3 UPTO 1400MM BELTS,NTPC Limited,"a class or range of items, not one item"
+880,y,other,,12 V Battery Operated HSD (High Speed Diesel) Oil Filling Electric Pump,Oil India Limited,
+881,y,other,,IP55 complaint outdoor equipment enclosure with inbuilt 1KVA UPS and suitable Lithium battery bank,Oil India Limited,
+882,m,,,Supply of PMCC Panel for Green Field(Type A) and PMCC Panel for Brown Field(Type B),Oil India Limited,
+883,n,,,Upkeepment & grass cutting including jungle cleaning at Tengakhat Pump station for one year from 01.08.2024 to 31.07.2025,Oil India Limited,"works, clause, heading, enlistment category or procurement package"
+886,n,,,Construction of 650 KL capacity RCC static firefighting water storage over ground water tank,Oil India Limited,"works, clause, heading, enlistment category or procurement package"
+887,n,,,Construction of 650KL over ground RCC firewater tank at Langkashi OCS including supply of all materials by contractor except cement,Oil India Limited,"works, clause, heading, enlistment category or procurement package"
+889,n,,,Construction of over ground 400 KL RCC Water Storage Tank at Joypur OCS,Oil India Limited,"works, clause, heading, enlistment category or procurement package"
+894,n,,,Upkeepment & Grass Cutting including Jungle cleaning at Tengakhat Pump Station,Oil India Limited,"works, clause, heading, enlistment category or procurement package"
+895,n,,,Upkeepment & Grass Cutting including Jungle cleaning at Tengakhat Pump Station for one year,Oil India Limited,"works, clause, heading, enlistment category or procurement package"
+901,n,,,There shall be a minimum of 75 mm sand bedding above and below the HDPE pipe carrying AC cables. Kindly Confirm,NTPC Limited,"works, clause, heading, enlistment category or procurement package"
+902,y,valve,,1200 NB butterfly valve complete assembly along with gearbox and actuator,NTPC Limited,

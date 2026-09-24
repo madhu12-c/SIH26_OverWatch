@@ -3,9 +3,22 @@
 **Smart India Hackathon 2026 · Problem Statement SIH26099 · Team Overwatch**
 Ministry of Petroleum & Natural Gas · Chennai Petroleum Corporation Limited (CPCL)
 
-Ingest messy material master data from multiple CPSEs, work out which records
-describe the same physical item, assign one Common National Material Code, and
-keep a mapping back to every company's original code.
+A national material-code registry for CPSEs. It reads each company's material master,
+works out which records describe the same physical item — by comparing **specifications,
+not spelling** — issues one National Material Code per item, and links every original
+code to it. No company's code is changed or deleted.
+
+---
+
+## What the numbers in this repository mean
+
+Every figure here is measured on data we generated, unless it is marked **real**.
+Synthetic numbers measure how well the system undoes errors we introduced ourselves, so
+they are always reported beside the real ones and never alone.
+
+No figure in this repository is a production accuracy claim. The system has not been
+connected to a live SAP instance, and no real multi-company material master was available
+to test on — none is public.
 
 ---
 
@@ -13,36 +26,36 @@ keep a mapping back to every company's original code.
 
 | You are | Read |
 |---|---|
+| **Anyone** | [`finalarchitecture.md`](finalarchitecture.md) — the final design: pipeline, features, rules, data, evaluation, PPT |
+| **Building something** | [`buildplan.md`](buildplan.md) — one design card per feature: where it goes, how it works, when it's done, who owns it |
+| Writing code | [`CLAUDE.md`](CLAUDE.md) — working rules and the decision record |
 | New to the project | [`docs/01-project/`](docs/01-project/) — the problem and the one idea that matters |
-| Picking up your part | [`docs/06-team/`](docs/06-team/) — find your name, everything you need is in that file |
+| Picking up your part | [`docs/06-team/`](docs/06-team/) — find your name |
 | Wondering why something is built this way | [`docs/02-decisions/`](docs/02-decisions/) — every decision with its trade-offs |
 | Preparing for judges | [`docs/04-risks/`](docs/04-risks/) — what we can and cannot defend |
 | Trying to run it | [`docs/05-runbook/`](docs/05-runbook/) |
-
-Full index: [`docs/README.md`](docs/README.md)
 
 ---
 
 ## The one idea
 
-Two records can describe the same item while sharing almost no words, and two
-records can share almost every word while being different items. So text
-similarity is the wrong question.
+Two records can describe the same item while sharing almost no words, and two records can
+share almost every word while being different items. Measured on this system's own
+embeddings:
 
 ```
-"SKF 6205-2RS Deep Groove Ball Bearing"
-"FAG 6205-2RSR bearing, 25x52x15mm, sealed"
-      text similarity LOW    ->  a fuzzy matcher MISSES it
-      reality: same bearing  (6205 is an ISO designation)
+SKF 6205-2RS DEEP GROOVE BALL BEARING
+FAG 6205-2RSR BEARING, 25X52X15MM, SEALED
+      text similarity 0.833     reality: SAME bearing — 6205 is an ISO designation
 
-"GASKET SPIRAL WOUND SS316 4IN 150#"
-"GASKET SPIRAL WOUND SS304 4IN 150#"
-      text similarity 0.97   ->  a fuzzy matcher WRONGLY MERGES
-      reality: different items (grade matters in corrosive service)
+GASKET SPIRAL WOUND SS316 4IN 150#
+GASKET SPIRAL WOUND SS304 4IN 150#
+      text similarity 0.989     reality: DIFFERENT items — grade matters in corrosive service
 ```
 
-We extract structured specifications first, then compare specifications.
-Brand is deliberately ignored. Material grade is a veto field.
+The pair that must never merge scores *higher* than the pair that should. No threshold can
+fix an inverted ordering. So we extract structured specifications first and compare those.
+Brand is deliberately ignored. Material grade is a veto.
 
 ---
 
@@ -50,7 +63,9 @@ Brand is deliberately ignored. Material grade is a veto field.
 
 ```
 ├── README.md              you are here
-├── CLAUDE.md              working rules, read before writing code
+├── finalarchitecture.md   the final design — start here
+├── buildplan.md           how each feature gets built, card by card
+├── CLAUDE.md              working rules and decision record
 │
 ├── docs/                  all documentation
 │   ├── 01-project/        what this is and why it is hard
@@ -60,34 +75,73 @@ Brand is deliberately ignored. Material grade is a veto field.
 │   ├── 05-runbook/        how to run everything
 │   └── 06-team/           one file per person
 │
-├── src/                   pipeline code
+├── src/                   pipeline
 │   ├── paths.py           every file path, defined once
-│   ├── schemas.py         category schemas, hard blockers, regex fallback
+│   ├── schemas.py         category schemas, hard blockers, derive()
+│   ├── normalise.py       real-text cleanup, size tables (DN/NPS/OD), grade-family ladder
+│   ├── rules.py           rule reader for real text — sizes, grades, pressure, evidence spans
 │   ├── generate_dataset.py
-│   ├── extractor.py       spec extraction (Gemini + regex fallback)
-│   └── embed.py           local embeddings, no API
+│   ├── extractor.py       spec extraction — Gemini, with an offline regex fallback
+│   ├── embed.py           local embeddings, no API
+│   ├── blocking.py        candidate pairs: signature keys + meta-blocking, no all-pairs
+│   ├── scorer.py          veto-first hybrid scorer and clustering
+│   ├── evaluate.py        precision / recall against the answer key
+│   ├── canonicalise.py    golden record, description, UNSPSC, national code
+│   ├── savings.py         demand aggregation with k-anonymity
+│   ├── uom.py             unit-of-measure harmonisation
+│   ├── gate.py            the creation gate
+│   ├── mine_real.py       builds the real hold-out candidates
+│   ├── standards.py       ISO 15 bearings, B36.10 pipe walls, IEC motor frames
+│   ├── catalogue.py       item factory - 11,815 valid refinery items for big runs
+│   ├── render.py          writes an item the way NTPC / Oil India / SAP write it
+│   ├── run_all.py         the whole chain, one command, per run
+│   ├── labels.py          dev/test split, one sheet per labeller, agreement
+│   ├── real_eval.py       real-text coverage (dev) and the frozen-code test result
+│   └── results.py         bundles everything the UI reads
 │
+├── tests/                 python -m pytest tests/ — must pass before any scorer or schema change
 ├── data/
-│   ├── input/             what a CPSE hands us    (materials, purchases)
-│   ├── truth/             the answer key          (evaluation ONLY)
+│   ├── input/             what a CPSE hands us       (materials, purchases)
+│   ├── truth/             the answer key             (evaluation ONLY)
+│   ├── real/              real CPSE tender text      (Oil India, NTPC — CC-BY-4.0)
 │   └── output/            what each stage produces
 │
-├── ui/                    React demo frontend
+├── ui/                    React portal — role sign-in, dashboard, analytics, catalogue, audit; offline, one file
 └── deliverables/          architecture doc, PDF, decks
 ```
 
 ---
 
-## Quick run
+## Run it
+
+One command runs everything:
 
 ```bash
-python src/generate_dataset.py          # build the dataset
-python src/extractor.py --no-llm        # extract specs, no API needed
-python src/extractor.py --validate      # hand-check the output
+python src/run_all.py --tests                               # the 100-record demo set
+python src/run_all.py --run 15k --generate 15000 --tests    # 15,000 records (data/runs/15k, ~4 min)
 ```
 
-With a Gemini key set, `python src/extractor.py` runs the real extraction.
-Everything works without one — the regex fallback covers both demo cases.
+Step by step (the demo set):
+
+```bash
+python src/generate_dataset.py
+python src/extractor.py --no-llm --fresh   # --fresh after every regeneration: specs.json is a cache
+python src/embed.py                        # optional — a lexical fallback is used without it
+python src/scorer.py                       # blocking on by default; --all-pairs to compare
+python src/canonicalise.py
+python src/savings.py
+python src/evaluate.py
+python src/uom.py
+python src/gate.py --scenarios
+python src/results.py                      # writes data/output/results.json and ui/src/results.json
+python src/real_eval.py                    # real-text coverage on the dev half
+python -m pytest tests/                    # the safety suite
+
+cd ui && npm install && npm run build      # then open ui/dist/index.html — no server, no internet
+```
+
+With a Gemini key set, drop `--no-llm` for the full extraction. Nothing on the demo path
+makes a live model call.
 
 ---
 
@@ -95,35 +149,43 @@ Everything works without one — the regex fallback covers both demo cases.
 
 | Stage | File | Status |
 |---|---|---|
-| 00 Dataset | `src/generate_dataset.py` | ✅ 100 records, 15 items, 85% duplication |
-| 01 Normalise | `src/schemas.py` | ✅ canonicalisation in place |
-| 02 Spec extract | `src/extractor.py` | ✅ built, needs a key for the real run |
-| 03 Embeddings | `src/embed.py` | ✅ built, not yet run |
-| 04 Blocking | — | ⏭️ skipped at this scale, on purpose |
-| 05 Scorer | `src/scorer.py` | ⏳ next |
-| 06 Clustering | `src/scorer.py` | ⏳ next |
-| 07 Confidence bands | — | ⏳ |
-| 08 Canonicaliser | `src/canonicalise.py` | ⏳ |
-| 09 Outputs | `src/savings.py`, `src/results.py` | ⏳ |
-| UI | `ui/` | ⏳ |
+| Dataset | `generate_dataset.py`, `catalogue.py`, `render.py` | ✅ 100-record demo · 15,000-record run in real notation (`SIH_RUN=15k`) |
+| Normalise + extract | `normalise.py`, `rules.py`, `extractor.py` | ✅ reads real CPSE text — dev 2+ facts 93%, real test 86.9% |
+| Embeddings | `embed.py` | ✅ |
+| Blocking | `blocking.py` | ✅ identity keys + meta-blocking: skips 99.8% of pairs at 15,000 |
+| Veto-first scorer + clustering | `scorer.py` | ✅ |
+| Canonicaliser, UNSPSC, national codes | `canonicalise.py` | ✅ |
+| Savings with k-anonymity | `savings.py` | ✅ |
+| Units harmonisation | `uom.py` | ✅ |
+| Creation gate | `gate.py` | ✅ four verdicts |
+| Evaluation | `evaluate.py`, `real_eval.py` | ✅ 15,000 run: 846 auto-merges, **0 wrong**, 0 traps, recall 82% (dev = test) · real test (frozen): 0 wrong, recall 86.4% |
+| Safety tests | `tests/` | ✅ 256 pass — 82 one-field veto cases across 14 categories |
+| Portal UI | `ui/` | ✅ role sign-in + 11 pages, live audit trail, SAP-shaped export |
+| Standards derivation · self-check · counterfactual · governance · migration pack | — | ⏳ see `finalarchitecture.md` §12 |
 
 ---
 
 ## Rules that do not bend
 
 1. **Precision over recall.** A wrong merge can put the wrong valve in a refinery line.
-2. **Nothing is destroyed.** Original codes retained, every merge reversible.
-3. **Every merge is explainable.** Store which signals and which fields.
-4. **The LLM extracts; it never decides a merge.**
-5. **One LLM call per record, never per pair.**
-6. **No company decides for another.**
+2. **Nothing is destroyed.** Original codes retained; every merge reversible.
+3. **Every merge is explainable.** Which signals, which fields, which source text.
+4. **The AI reads; it never decides a merge.** One model call per record, never per pair.
+5. **Veto before score.** A missing value is unknown — never agreement, never conflict.
+6. **Consent scales with harm.** Linking codes needs no permission; retiring a code is only
+   ever its owner's decision; any company can dispute a link at any time.
 
-The reasoning behind each is in [`docs/02-decisions/`](docs/02-decisions/).
+---
+
+## Data credit
+
+The real hold-out in `data/real/` is derived from
+[`Prasenjeet25/sih26099-cpse-material-codes`](https://huggingface.co/datasets/Prasenjeet25/sih26099-cpse-material-codes)
+on Hugging Face, licensed **CC-BY-4.0**. See [`data/real/README.md`](data/real/README.md).
 
 ---
 
 ## Timeline
 
-- **1 Sept 2026 (Tue)** — college internal round
-- **20 Sept 2026** — SIH idea submission (hard deadline)
+- **27 Sept 2026** — SIH idea submission
 - **Dec 2026** — Grand Finale, if selected

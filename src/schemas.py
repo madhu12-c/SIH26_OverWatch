@@ -21,6 +21,28 @@ Three field properties carry the matching rules that matter more than the weight
 One rule is not expressible as a flag and must be honoured by the scorer:
 MISSING IS NOT MISMATCHED. If one record states a field and the other is silent,
 that is absent information, not evidence of difference. No penalty either way.
+
+Two more flags, added for real text (24 Sept 2026):
+
+    required=False a veto field nobody has to state. It blocks on a mismatch,
+                   but its absence does not hold a pair back. Used for what
+                   real text only sometimes gives - a pipe's measured OD and
+                   wall, black versus galvanised, a transformer rating - so the
+                   synthetic set, which never states them, is not suddenly all
+                   "unverified".
+
+    (24 Sept, from the 15,000-record run) Every field that makes two items
+    different PRODUCTS is a veto field: a sealed bearing is not an open one,
+    a flanged valve not a butt-weld one, a PTFE-filled gasket not a graphite
+    one. As soft fields they let 2,625 wrong pairs auto-merge. They are
+    veto-only (required=False), so a record that never mentions them is
+    not held back for it - unless the OTHER record does mention it; see
+    the one-sided rule in scorer.spec_agreement.
+
+    alt=(...)      other fields that verify this one. A pipe whose schedule is
+                   not written but whose wall is, on both sides, has had its
+                   wall checked. An API 6A valve rated in psi has a pressure
+                   rating even though it has no ANSI class.
 """
 
 from __future__ import annotations
@@ -39,6 +61,8 @@ class Field:
     enum: tuple[str, ...] = ()
     unit: str | None = None
     note: str = ""
+    required: bool = True
+    alt: tuple[str, ...] = ()
 
     def describe(self) -> str:
         bits = [f'"{self.name}"', f"({self.kind}"]
@@ -63,7 +87,7 @@ COMMON = (
 
 CATEGORIES: dict[str, tuple[Field, ...]] = {
     "bearing": (
-        Field("sub_type", "enum", weight=1.5,
+        Field("sub_type", "enum", hard=True, required=False, weight=1.5,
               enum=("deep_groove_ball", "angular_contact", "cylindrical_roller",
                     "tapered_roller", "spherical_roller", "thrust", "needle")),
         Field("iso_designation", "str", hard=True, weight=3.0,
@@ -71,21 +95,21 @@ CATEGORIES: dict[str, tuple[Field, ...]] = {
         Field("bore_mm", "num", hard=True, weight=2.0, unit="mm"),
         Field("od_mm", "num", weight=1.5, unit="mm"),
         Field("width_mm", "num", weight=1.5, unit="mm"),
-        Field("seal_type", "enum", weight=1.2,
+        Field("seal_type", "enum", hard=True, required=False, weight=1.2,
               enum=("2RS", "RS", "2Z", "Z", "OPEN"),
               note="2RS and 2RSR and 2RS1 and LLU all mean rubber sealed both sides"),
         *COMMON,
     ),
     "gasket": (
-        Field("gasket_type", "enum", weight=1.5,
+        Field("gasket_type", "enum", hard=True, required=False, weight=1.5,
               enum=("spiral_wound", "ring_joint", "full_face", "flat", "camprofile")),
         Field("material_grade", "str", hard=True, weight=3.0,
               note="SS316 / SS304 / SS316L / CS - NEVER treat these as equivalent"),
         Field("nominal_size_in", "num", hard=True, weight=2.0, unit="inch"),
         Field("pressure_class", "str", hard=True, weight=2.0,
               note='ANSI class such as 150# or 300# or 600#'),
-        Field("filler", "str", weight=0.8),
-        Field("thickness_mm", "num", weight=0.8, unit="mm"),
+        Field("filler", "str", hard=True, required=False, weight=0.8, note="GRAPHITE / PTFE"),
+        Field("thickness_mm", "num", hard=True, required=False, weight=0.8, unit="mm"),
         *COMMON,
     ),
     "pipe": (
@@ -94,29 +118,46 @@ CATEGORIES: dict[str, tuple[Field, ...]] = {
         Field("material_grade", "str", hard=True, weight=3.0,
               note="carbon_steel / SS316 / SS304 - grade is a safety field"),
         Field("standard", "str", weight=1.5, note="e.g. ASTM A106 GR B, ASTM A312 TP316"),
-        Field("nominal_size_in", "num", hard=True, weight=2.0, unit="inch"),
-        Field("schedule", "str", hard=True, weight=2.0, note="SCH 40, SCH 80, SCH 10"),
+        Field("nominal_size_in", "num", hard=True, weight=2.0, unit="inch", alt=("od_mm",),
+              note="the size NAME as NPS inches: 100 NB, DN 100 and 4 inch are all 4"),
+        Field("od_mm", "num", hard=True, required=False, weight=1.5, unit="mm",
+              note="the measured outside diameter, only if written (O.D. 114.3 MM)"),
+        Field("schedule", "str", hard=True, weight=2.0, alt=("wall_mm",),
+              note="SCH 40, SCH 80, SCH 10"),
+        Field("wall_mm", "num", hard=True, required=False, weight=1.5, unit="mm"),
+        Field("finish", "enum", hard=True, required=False, weight=1.0,
+              enum=("black", "galvanised")),
+        Field("end_type", "enum", hard=True, required=False, weight=0.8,
+              enum=("plain", "bevel", "threaded_coupled", "screwed")),
+        Field("weight_ppf", "num", weight=0.5, unit="lb/ft"),
+        Field("length_mm", "num", ignore=True, unit="mm",
+              note="pipe is bought by the metre - length never decides a match"),
         *COMMON,
     ),
     "valve": (
         Field("valve_type", "enum", hard=True, weight=2.5,
               enum=("gate", "globe", "ball", "check", "butterfly", "plug",
-                    "needle", "safety_relief")),
+                    "needle", "safety_relief", "control", "dual_plate_check")),
         Field("nominal_size_in", "num", hard=True, weight=2.0, unit="inch"),
-        Field("pressure_class", "str", hard=True, weight=2.5,
+        Field("pressure_class", "str", hard=True, weight=2.5, alt=("pressure_rating_psi",),
               note="150# / 300# / 600# / 800# - a rating mismatch can burst a line"),
+        Field("pressure_rating_psi", "num", hard=True, required=False, weight=2.5, unit="psi",
+              note="API 6A working pressure: 2000 / 3000 / 5000 / 10000 / 15000 PSI. "
+                   "A different system from the ANSI class - never compared with it"),
         Field("body_material", "str", hard=True, weight=2.0,
               note="cast_steel / SS316 / carbon_steel"),
-        Field("end_connection", "enum", weight=1.2,
-              enum=("flanged", "screwed", "socket_weld", "butt_weld", "wafer")),
-        Field("bore_type", "enum", weight=0.8, enum=("full", "reduced")),
+        Field("operation", "enum", hard=True, required=False, weight=0.6,
+              enum=("manual", "hydraulic", "pneumatic", "electric", "gear")),
+        Field("end_connection", "enum", hard=True, required=False, weight=1.2,
+              enum=("flanged", "screwed", "socket_weld", "butt_weld", "wafer", "ring_joint")),
+        Field("bore_type", "enum", hard=True, required=False, weight=0.8, enum=("full", "reduced")),
         Field("standard", "str", weight=0.8, note="e.g. API 600, API 6D"),
         *COMMON,
     ),
     "fastener": (
         Field("fastener_type", "enum", hard=True, weight=2.0,
               enum=("bolt", "stud_bolt", "screw", "nut", "washer", "anchor")),
-        Field("head_type", "enum", weight=1.0,
+        Field("head_type", "enum", hard=True, required=False, weight=1.0,
               enum=("hex", "socket", "csk", "pan", "none")),
         Field("thread", "str", hard=True, weight=2.5, note="e.g. M12, M20, 1/2-13 UNC"),
         Field("length_mm", "num", hard=True, weight=2.0, unit="mm"),
@@ -128,44 +169,121 @@ CATEGORIES: dict[str, tuple[Field, ...]] = {
     "flange": (
         Field("flange_type", "enum", hard=True, weight=2.0,
               enum=("weld_neck", "slip_on", "blind", "socket_weld", "threaded", "lap_joint")),
-        Field("face_type", "enum", weight=1.2, enum=("raised_face", "flat_face", "ring_joint")),
+        Field("face_type", "enum", hard=True, required=False, weight=1.2, enum=("raised_face", "flat_face", "ring_joint")),
         Field("nominal_size_in", "num", hard=True, weight=2.0, unit="inch"),
-        Field("pressure_class", "str", hard=True, weight=2.5),
+        Field("pressure_class", "str", hard=True, weight=2.5, alt=("pressure_rating_psi",)),
+        Field("pressure_rating_psi", "num", hard=True, required=False, weight=2.5, unit="psi",
+              note="API 6A / 6B flanges: 2000 / 3000 / 5000 / 10000 PSI"),
         Field("material_grade", "str", hard=True, weight=2.5, note="e.g. ASTM A105, F316"),
-        Field("bore_schedule", "str", weight=0.8),
+        Field("bore_schedule", "str", hard=True, required=False, weight=0.8),
+        Field("standard", "str", weight=0.8, note="e.g. ASME B16.5, API 6A"),
         *COMMON,
     ),
     "rotating": (
         Field("component_type", "enum", hard=True, weight=2.0,
               enum=("mechanical_seal", "impeller", "coupling", "shaft_sleeve", "wear_ring")),
-        Field("arrangement", "enum", weight=1.2,
+        Field("arrangement", "enum", hard=True, required=False, weight=1.2,
               enum=("single", "double", "tandem", "cartridge_single", "cartridge_double")),
         Field("shaft_dia_mm", "num", hard=True, weight=2.5, unit="mm"),
-        Field("face_materials", "str", weight=1.5, note="e.g. SIC vs carbon"),
-        Field("elastomer", "str", weight=1.0, note="e.g. viton, nitrile, EPDM"),
+        Field("face_materials", "str", hard=True, required=False, weight=1.5,
+              note="e.g. SIC vs carbon - the faces decide whether the seal survives the service"),
+        Field("elastomer", "str", hard=True, required=False, weight=1.0, note="e.g. viton, nitrile, EPDM"),
         *COMMON,
     ),
     "instrument": (
         Field("instrument_type", "enum", hard=True, weight=2.5,
               enum=("pressure_gauge", "temperature_gauge", "transmitter",
                     "flow_meter", "level_gauge", "switch")),
-        Field("dial_size_mm", "num", weight=1.2, unit="mm"),
+        Field("dial_size_mm", "num", hard=True, required=False, weight=1.2, unit="mm"),
         Field("range_min", "num", hard=True, weight=2.0),
         Field("range_max", "num", hard=True, weight=2.0),
         Field("range_unit", "str", weight=1.0, note="bar / kg/cm2 / psi / degC"),
         Field("wetted_material", "str", hard=True, weight=2.0, note="e.g. SS316"),
-        Field("connection", "str", weight=1.0, note='e.g. 1/2 IN NPT bottom'),
+        Field("connection", "str", hard=True, required=False, weight=1.0,
+              note='e.g. 1/2 IN NPT bottom - thread size and position decide whether it fits'),
         *COMMON,
     ),
     "electrical": (
         Field("equipment_type", "enum", hard=True, weight=2.5,
-              enum=("motor", "cable", "switchgear", "transformer", "lighting", "starter")),
+              enum=("motor", "switchgear", "transformer", "current_transformer", "panel",
+                    "lighting", "starter")),
         Field("phases", "num", hard=True, weight=1.5),
-        Field("power_hp", "num", hard=True, weight=2.5, unit="hp"),
-        Field("speed_rpm", "num", hard=True, weight=2.0, unit="rpm"),
+        Field("power_hp", "num", hard=True, weight=2.5, unit="hp",
+              note="kW ratings are converted: hp = kW / 0.746"),
+        Field("power_kw", "num", ignore=True, unit="kW", note="as written, for display"),
+        Field("speed_rpm", "num", hard=True, weight=2.0, unit="rpm", alt=("poles",)),
+        Field("poles", "num", hard=True, required=False, weight=1.5,
+              note="4P, or derived from the speed: 2 = 3000 rpm class, 4 = 1500, 6 = 1000"),
         Field("voltage_v", "num", hard=True, weight=2.0, unit="volt"),
-        Field("mounting", "enum", weight=1.0, enum=("foot", "flange", "face", "vertical")),
+        Field("frame", "str", hard=True, required=False, weight=1.5,
+              note="IEC frame: 80L, 112M, 225S, 315SM - decides whether it bolts down"),
+        Field("mounting", "enum", hard=True, required=False, weight=1.0,
+              enum=("foot", "flange", "face", "vertical", "foot_flange")),
+        Field("duty", "str", weight=0.6, note="S1, S4"),
+        Field("insulation_class", "str", weight=0.5, note="F, H"),
         Field("protection_class", "str", weight=1.0, note="e.g. IP55"),
+        Field("rating_kva", "num", hard=True, required=False, weight=2.5, unit="kVA",
+              note="transformers: 2 MVA = 2000 kVA"),
+        Field("voltage_hv_kv", "num", hard=True, required=False, weight=2.0, unit="kV",
+              note="transformers: the higher winding voltage"),
+        *COMMON,
+    ),
+    "cable": (
+        Field("cable_type", "enum", hard=True, weight=2.0,
+              enum=("power", "control", "instrument", "fibre")),
+        Field("cores", "num", hard=True, weight=2.5, note="1, 2, 3, 3.5, 4"),
+        Field("cross_section_mm2", "num", hard=True, weight=2.5, unit="mm2"),
+        Field("conductor", "enum", hard=True, weight=2.0, enum=("AL", "CU")),
+        Field("voltage_kv", "num", hard=True, weight=2.0, unit="kV", note="1100 V is 1.1 kV"),
+        Field("insulation", "enum", hard=True, required=False, weight=1.0, enum=("XLPE", "PVC", "EPR")),
+        Field("armour", "enum", hard=True, required=False, weight=0.8, enum=("armoured", "unarmoured")),
+        Field("standard", "str", weight=0.5),
+        *COMMON,
+    ),
+    "fitting": (
+        Field("fitting_type", "enum", hard=True, weight=2.5,
+              enum=("elbow", "bend", "tee", "reducer", "cap", "coupling", "union",
+                    "nipple", "sleeve")),
+        Field("nominal_size_in", "num", hard=True, weight=2.0, unit="inch"),
+        Field("material_grade", "str", hard=True, weight=2.5),
+        Field("angle", "num", hard=True, required=False, weight=1.5, note="90 or 45 degrees"),
+        Field("schedule", "str", hard=True, required=False, weight=1.5),
+        Field("pressure_class", "str", hard=True, required=False, weight=2.0,
+              note="forged fittings: 3000# / 6000#"),
+        Field("end_connection", "enum", hard=True, required=False, weight=1.0,
+              enum=("butt_weld", "socket_weld", "screwed")),
+        Field("radius", "enum", hard=True, required=False, weight=0.8, enum=("LR", "SR")),
+        Field("standard", "str", weight=0.8, note="ASME B16.9, B16.11"),
+        *COMMON,
+    ),
+    "plate": (
+        Field("material_grade", "str", hard=True, weight=2.5),
+        Field("thickness_mm", "num", hard=True, weight=3.0, unit="mm"),
+        Field("plate_type", "enum", hard=True, required=False, weight=1.5,
+              enum=("plain", "chequered")),
+        Field("width_mm", "num", weight=0.5, unit="mm"),
+        Field("length_mm", "num", weight=0.5, unit="mm"),
+        Field("standard", "str", weight=0.8, note="IS 2062"),
+        *COMMON,
+    ),
+    "tube": (
+        Field("material_grade", "str", hard=True, weight=3.0),
+        Field("od_mm", "num", hard=True, weight=2.5, unit="mm"),
+        Field("wall_mm", "num", hard=True, weight=2.5, unit="mm"),
+        Field("tube_type", "enum", weight=1.0,
+              enum=("boiler", "exchanger", "instrument", "straight")),
+        Field("length_mm", "num", ignore=True, unit="mm"),
+        *COMMON,
+    ),
+    # A real material outside every schema - drilling equipment, batteries,
+    # bushings, wire rope. Read generically: the head noun and every number
+    # with its unit. Two "other" records can reach REVIEW, never auto (the
+    # scorer caps them), and only when the noun and every number agree.
+    "other": (
+        Field("noun", "str", hard=True, weight=2.0, note="the head noun phrase"),
+        Field("quantities", "str", hard=True, weight=3.0,
+              note="every number with its unit, sorted: 220V 400AH"),
+        Field("standard", "str", weight=0.8),
         *COMMON,
     ),
     "unknown": (
@@ -182,6 +300,11 @@ def fields_for(category: str) -> tuple[Field, ...]:
 def hard_fields(category: str) -> list[str]:
     """Veto fields. A mismatch on any of these is an instant zero."""
     return [f.name for f in fields_for(category) if f.hard]
+
+
+def required_hard_fields(category: str) -> list[str]:
+    """Veto fields a record must state before it can be trusted without a human."""
+    return [f.name for f in fields_for(category) if f.hard and f.required]
 
 
 def scoring_fields(category: str) -> list[Field]:
@@ -201,6 +324,53 @@ def schema_block(category: str) -> str:
 
 def all_schemas_block() -> str:
     return "\n\n".join(schema_block(c) for c in CATEGORIES if c != "unknown")
+
+
+def _octg(attrs: dict) -> bool:
+    """Casing, tubing and drill pipe are named by their OD, not by NPS."""
+    return str(attrs.get("standard", "")).upper().startswith(("API 5CT", "API 5DP"))
+
+
+def derive(category: str, attrs: dict, conf: dict) -> None:
+    """Fill fields a record implies but does not state, in place.
+
+    Only exact conversions from a standard - never a guess. A derived value
+    gets a lower confidence than a read one, so it pulls less in the score.
+    """
+    import normalise as nz
+
+    def put(name, value, c):
+        if name not in attrs and value is not None:
+            attrs[name] = value
+            conf[name] = c
+
+    if category == "electrical":
+        if attrs.get("power_kw"):
+            put("power_hp", round(float(attrs["power_kw"]) / 0.746, 2), 0.85)
+        if attrs.get("speed_rpm"):
+            put("poles", float(2 * max(1, round(3000 / float(attrs["speed_rpm"])))), 0.8)
+    if category == "bearing" and attrs.get("iso_designation"):
+        import standards
+        dims = standards.bearing_dims(attrs["iso_designation"])
+        if dims:
+            for name, v in zip(("bore_mm", "od_mm", "width_mm"), dims):
+                put(name, v, 0.85)
+            put("sub_type", "deep_groove_ball", 0.85)          # 60xx / 62xx / 63xx
+    if category == "pipe" and not _octg(attrs):
+        import standards
+        nps = attrs.get("nominal_size_in")
+        if nps:
+            put("od_mm", nz.od_for_nps(float(nps)), 0.8)
+            if attrs.get("schedule"):
+                put("wall_mm", standards.pipe_wall(float(nps), attrs["schedule"]), 0.8)
+    if category == "pipe":
+        od = attrs.get("od_mm")
+        if od and "nominal_size_in" not in attrs and not _octg(attrs):
+            put("nominal_size_in", nz.nps_for_od(float(od)), 0.8)
+        nps = attrs.get("nominal_size_in")
+        od_for_weight = od or (nz.od_for_nps(float(nps)) if nps and not _octg(attrs) else None)
+        if od_for_weight and attrs.get("weight_ppf") and "wall_mm" not in attrs:
+            put("wall_mm", nz.wall_from_weight(float(od_for_weight), float(attrs["weight_ppf"])), 0.8)
 
 
 # --------------------------------------------------------------------------
@@ -239,7 +409,7 @@ def canonical_value(field_name: str, value):
     low = re.sub(r"[\s._-]+", " ", text.lower()).strip()
 
     table = None
-    if field_name in ("material_grade", "body_material", "wetted_material", "face_materials"):
+    if field_name in ("material_grade", "body_material", "wetted_material"):
         table = _GRADE_ALIASES
     elif field_name == "seal_type":
         table = _SEAL_ALIASES
@@ -262,16 +432,33 @@ def canonical_value(field_name: str, value):
                          or re.fullmatch(r"(?:ss|sst|stainless(?:steel)?)(\d{3})(l?)", compact))
             if stainless:
                 return f"SS{stainless.group(1)}{stainless.group(2).upper()}"
+            import normalise
+            return normalise.canonical_grade(text)
 
     if field_name == "pressure_class":
         m = re.search(r"(\d{3,4})", low)
         if m:
             return f"{m.group(1)}#"
 
-    if field_name == "schedule":
-        m = re.search(r"(\d{1,3}\s*s?)$", low.replace("sch", "").replace("schedule", ""))
+    if field_name in ("schedule", "bore_schedule"):
+        m = re.search(r"(\d{1,3}\s*s?|xxs|xs|std)$", low.replace("schedule", "").replace("sch", "").strip())
         if m:
             return "SCH " + m.group(1).replace(" ", "").upper()
+
+    if field_name == "face_materials":
+        faces = re.findall(r"sic|tc|tungsten carbide|carbon|ceramic", low)
+        faces = ["TC" if f.startswith(("tc", "tungsten")) else f.upper() for f in faces]
+        if len(faces) == 2:
+            return " VS ".join(sorted(faces))                 # SIC/CARBON = CARBON VS SIC
+
+    if field_name == "filler":
+        return "GRAPHITE" if low.startswith("gr") else "PTFE" if "ptfe" in low or "teflon" in low else text.upper()
+
+    if field_name == "elastomer":
+        for canon, names in (("VITON", ("viton", "fkm")), ("EPDM", ("epdm",)),
+                             ("NITRILE", ("nitrile", "nbr", "buna")), ("KALREZ", ("kalrez", "ffkm"))):
+            if any(n in low for n in names):
+                return canon
 
     return re.sub(r"\s+", " ", text.upper())
 
@@ -338,56 +525,14 @@ _RANGE = re.compile(r"(\d+(?:\.\d+)?)\s*(?:-|to)\s*(\d+(?:\.\d+)?)\s*"
 
 
 def regex_extract(description: str) -> dict:
-    """Best-effort extraction with no model call. Confidence is deliberately low."""
-    text = description.lower()
+    """Best-effort extraction with no model call. Confidence is deliberately low.
 
-    category = "unknown"
-    for name, pattern in _CATEGORY_HINTS:
-        if re.search(pattern, text):
-            category = name
-            break
-
-    attrs, conf = {}, {}
-    valid = {f.name for f in fields_for(category)}
-
-    for name, pattern in _PATTERNS.items():
-        if name not in valid:
-            continue
-        m = re.search(pattern, text)
-        if not m:
-            continue
-        raw = m.group(1)
-        spec = next(f for f in fields_for(category) if f.name == name)
-        if spec.kind == "num":
-            attrs[name] = float(raw)
-        else:
-            value = canonical_value(name, raw)
-            # Enum values are written with underscores everywhere else
-            # (SPIRAL_WOUND, DEEP_GROOVE_BALL), so "pressure gauge" read out of
-            # free text has to arrive in that shape or it compares unequal to
-            # the identical value the model extracted.
-            if spec.kind == "enum" and isinstance(value, str):
-                value = re.sub(r"\s+", "_", value.strip())
-            attrs[name] = value
-        conf[name] = 0.62
-
-    dims = _DIMS.search(text)
-    if dims and category == "bearing":
-        for name, value in zip(("bore_mm", "od_mm", "width_mm"), dims.groups()):
-            attrs.setdefault(name, float(value))
-            conf.setdefault(name, 0.62)
-
-    span = _RANGE.search(text)
-    if span and "range_min" in valid:
-        lo, hi, unit = span.groups()
-        attrs.setdefault("range_min", float(lo))
-        attrs.setdefault("range_max", float(hi))
-        attrs.setdefault("range_unit", re.sub(r"\s+", "", unit).upper())
-        for name in ("range_min", "range_max", "range_unit"):
-            conf.setdefault(name, 0.62)
-
-    return {"category": category, "attributes": attrs,
-            "confidence": conf, "method": "regex"}
+    The reader itself lives in rules.py (normalise, size roles, grade ladder,
+    evidence spans). This name is kept because the extractor and the creation
+    gate call it.
+    """
+    import rules
+    return rules.extract(description)
 
 
 if __name__ == "__main__":

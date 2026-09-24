@@ -27,6 +27,8 @@ publishing from the new path alone creates a separate artifact with a new link.
 | `architecture.html` | Full stage-by-stage architecture, written in plain English for the whole team |
 | `Architecture.pdf` | The same document, 25 pages — for WhatsApp and offline reading |
 | `team-brief.html` | Per-person task cards, file contracts, and the UI design spec |
+| `progress-explained.html` | The whole project in plain words: before vs now, the 14-step workflow, every feature built or not, the plan (24 Sept 2026) |
+| `Overwatch-Progress-Explained.pdf` | The same document, 25 pages. Printed with system fonts, so the font issue below does not apply |
 
 ---
 

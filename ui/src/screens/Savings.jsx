@@ -18,7 +18,7 @@ export default function Savings() {
   const items = savings || []
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-5xl mx-auto">
       <SectionTitle
         eyebrow="Demand aggregation"
         title="The same item, bought separately, at different prices"

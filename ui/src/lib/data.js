@@ -27,4 +27,8 @@ export const uomConflicts = results.uom?.conflicts ?? []
 export const gate = results.gate ?? {}
 export const gateScenarios = results.gate?.scenarios ?? []
 
+// Counts of the real Oil India / NTPC tender lines - from the unlabelled
+// candidate text only. Empty until results.py has run with data/real present.
+export const real = results.real ?? {}
+
 export const isStub = meta.precision == null && clusters.length <= 1

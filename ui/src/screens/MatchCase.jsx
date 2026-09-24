@@ -37,7 +37,7 @@ export default function MatchCase() {
   const show = (id) => step >= STEPS.findIndex((s) => s.id === id) + 1
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-5xl mx-auto">
       <div className="flex items-start justify-between gap-4 mb-5">
         <SectionTitle
           eyebrow="Case 01 — different words, same item"

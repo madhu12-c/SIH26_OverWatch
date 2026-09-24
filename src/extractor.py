@@ -66,6 +66,26 @@ ABBREVIATIONS COMMON IN THIS DATA
   RF = RAISED FACE                      SPL WOUND / SW = SPIRAL WOUND
   FT MTD / B3 = FOOT MOUNTED            MECH SEAL / M/SEAL = MECHANICAL SEAL
   # after a number = ANSI pressure class (150# = class 150)
+  BLK = BLACK                           GLV / GI = GALVANISED
+  PL / P/E = PLAIN END                  B/E / BE = BEVEL END
+  T&C / BTC = THREADED AND COUPLED      STRT = STRAIGHT (tube)
+  AS = ALLOY STEEL                      AL / ALU = ALUMINIUM, CU = COPPER
+  PWR = POWER (cable)                   PVCA = PVC ARMOURED
+  SCIM = SQUIRREL CAGE INDUCTION MOTOR  IND = INDUCTION
+  FE410 / FE-410 = steel grade FE410    TP304L = stainless 304L (ASTM A312)
+  2.1/16" = 2-1/16 inch                 13.5/8" = 13-5/8 inch (oilfield notation)
+  10M after a size (7.1/16" x 10M) = 10000 PSI working pressure
+
+SIZES - THE MOST COMMON MISTAKE
+  NB, DN and inch sizes are NAMES, not measurements. 100 NB, DN 100 and 4" are
+  the same size: report nominal_size_in = 4. Never convert a name to mm.
+  A stated outside diameter (O.D. 114.3 MM, or an unlabelled 457MM that is a
+  standard pipe OD) goes in od_mm; a wall thickness goes in wall_mm.
+  NTPC writes pipe as "WALL, OD, NB" with no labels: "9.5MM, 457MM, 450MM" is
+  wall 9.5, OD 457, size 18 inch (450 NB).
+  Casing and tubing (API 5CT) are named by their OD: 9-5/8" casing is 9.625.
+  API 6A valves are rated in PSI (pressure_rating_psi), not in ANSI class.
+  A kW motor rating goes in power_kw.
 
 DOMAIN KNOWLEDGE YOU SHOULD APPLY
   ISO bearing numbers encode dimensions. 6205 is 25mm bore, 52mm OD, 15mm wide.
@@ -218,6 +238,7 @@ def clean(raw: dict, description: str) -> dict:
         attrs[name] = value
         conf[name] = round(min(max(c, 0.0), 1.0), 2)
 
+    schemas.derive(category, attrs, conf)
     return {"category": category, "attributes": attrs, "confidence": conf,
             "method": "llm", "dropped_fields": dropped,
             "description": description}
@@ -285,6 +306,7 @@ def run(args: argparse.Namespace) -> None:
         result["record_id"] = row["record_id"]
         result["cpse"] = row["cpse"]
         result["source_code"] = row["source_code"]
+        result["plant"] = row.get("plant", "")
         cache[row["record_id"]] = result
 
         n_fields = len(result["attributes"])
@@ -293,7 +315,10 @@ def run(args: argparse.Namespace) -> None:
               f"{result['category']:<11} {n_fields:>2} fields   "
               f"{row['description'][:52]}")
 
-        if i % 10 == 0 or i == len(todo):
+        # A model call is slow and may die mid-run, so save often; rule reading
+        # is instant, and rewriting a 15,000-record cache every 10 records is
+        # quadratic - that alone took minutes.
+        if i % (10 if client else 2000) == 0 or i == len(todo):
             args.out.write_text(json.dumps(cache, indent=1), encoding="utf-8")
 
         if client and i < len(todo):

@@ -101,6 +101,9 @@ def load_index() -> tuple[list, dict]:
     """The published catalogue: golden records plus their descriptions."""
     national = json.loads(paths.NATIONAL_CODES.read_text(encoding="utf-8"))
     descriptions = {n["national_code"]: n["std_description"] for n in national}
+    # Which variants the registry holds (all fillers, all seal types ...) -
+    # the same knowledge the scorer uses to decide what silence means.
+    scorer.load_variants(json.loads(paths.SPECS.read_text(encoding="utf-8")))
     return national, descriptions
 
 
@@ -137,6 +140,8 @@ def check(description: str, national: list, descriptions: dict,
             "ignored_fields": p.get("ignored_fields", []),
             "blocked_by": p.get("blocked_by"),
             "reason": p.get("reason"),
+            "unverified": p.get("unverified_hard") or [],
+            "attributes": nc.get("attributes") or {},
         }
         # A plain category mismatch is not an interesting refusal - a bearing
         # is not a gasket and nobody needed telling. A HARD FIELD veto is the
@@ -155,7 +160,10 @@ def check(description: str, national: list, descriptions: dict,
 
     category = incoming.get("category", "unknown")
     attrs = incoming.get("attributes", {})
-    missing_hard = [f for f in schemas.hard_fields(category) if f not in attrs]
+    # What to ask for: the fields that NAME the item first; variants after.
+    missing_hard = ([f for f in schemas.required_hard_fields(category) if f not in attrs]
+                    + [f for f in schemas.hard_fields(category)
+                       if f not in attrs and f not in schemas.required_hard_fields(category)])
 
     # An underspecified record is checked FIRST and never falls through to a
     # match or a new code. Deciding anything on two words would be the one
@@ -193,7 +201,15 @@ def check(description: str, national: list, descriptions: dict,
                    f"Do not create a new code.")
     elif top >= REVIEW:
         verdict = "REVIEW"
-        message = (f"Possible match with {best['national_code']} at {top:.2f}. "
+        # Say what could not be checked, in the catalogue's own values - the
+        # requester can usually settle it by adding one word.
+        gaps = []
+        for f in best.get("unverified") or []:
+            v = best["attributes"].get(f)
+            gaps.append(f"{f.replace('_', ' ')} (the catalogue code says {schemas.canonical_value(f, v)})"
+                        if v is not None else f.replace("_", " "))
+        why = f" Not stated in this line: {', '.join(gaps)}." if gaps else ""
+        message = (f"Possible match with {best['national_code']} at {top:.2f}.{why} "
                    f"A cataloguer decides before a code is issued.")
     else:
         verdict = "NEW"

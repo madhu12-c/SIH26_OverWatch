@@ -422,6 +422,100 @@ def build(items: list[SeedItem], target_records: int, rng: random.Random):
     return materials, truth, purchases
 
 
+# --------------------------------------------------------------------------
+# Factory mode - thousands of valid items (catalogue.py), written in the
+# notations real companies use (render.py). Used when --dup is given.
+# --------------------------------------------------------------------------
+
+DEMO_ITEMS = [
+    ("bearing", {"iso_designation": "6205", "seal_type": "2RS"}),
+    ("gasket", {"gasket_type": "spiral_wound", "material_grade": "SS316", "nominal_size_in": 4.0,
+                "pressure_class": "150#", "filler": "GRAPHITE", "thickness_mm": 4.5}),
+    ("gasket", {"gasket_type": "spiral_wound", "material_grade": "SS304", "nominal_size_in": 4.0,
+                "pressure_class": "150#", "filler": "GRAPHITE", "thickness_mm": 4.5}),
+]
+# How many EXTRA records a duplicated item gets. Lumpy, like a real master:
+# most duplicated items appear twice, a few five times.
+EXTRA_COPIES = ((1, 0.60), (2, 0.25), (3, 0.10), (4, 0.05))
+
+
+def build_factory(target: int, dup: float, rng: random.Random):
+    import catalogue
+    import render
+    import schemas
+
+    n_items = min(round(target * (1 - dup)), len(catalogue.universe()))
+    items = catalogue.sample(n_items, rng, must_have=DEMO_ITEMS)
+    by_id = {it["item_id"]: it for it in items}
+    demo_ids = [items[0]["item_id"], items[0]["item_id"], items[1]["item_id"], items[2]["item_id"]]
+
+    copies = {it["item_id"]: 1 for it in items}
+    copies[demo_ids[0]] -= 1                         # the guaranteed records count as its copies
+    copies[items[1]["item_id"]] -= 1
+    copies[items[2]["item_id"]] -= 1
+    extra = target - sum(copies.values()) - len(GUARANTEED)
+    order = [it["item_id"] for it in items]
+    while extra > 0:
+        iid = order[rng.randrange(len(order))]
+        r, acc = rng.random(), 0.0
+        for k, w in EXTRA_COPIES:
+            acc += w
+            if r < acc:
+                break
+        k = min(k, extra)
+        copies[iid] += k
+        extra -= k
+
+    materials, truth, purchases = [], [], []
+    counters = {c.name: 1000 + rng.randrange(500) for c in CPSES}
+    by_name = {c.name: c for c in CPSES}
+
+    def emit(item, cpse, desc, uom, style, pack=1, plant=None):
+        rid = f"R{len(materials) + 1:05d}"
+        counters[cpse.name] += rng.randrange(1, 9)
+        source_code = cpse.code_fmt.format(n=counters[cpse.name])
+        plant = plant or rng.choice(cpse.plants)
+        materials.append(dict(record_id=rid, cpse=cpse.name, source_code=source_code, description=desc,
+                              uom=uom, material_group=item["category"].upper()[:8], plant=plant))
+        truth.append(dict(record_id=rid, true_item_id=item["item_id"], family_id=item["family_id"],
+                          split=item["split"], style=style, pack=pack))
+        vendors = render.VENDORS.get(item["category"], ["Refinery Stores Supplier"])
+        for _ in range(rng.randrange(1, 5)):
+            price = item["base_price"] * pack * cpse.price_bias * rng.uniform(0.94, 1.07)
+            purchases.append(dict(cpse=cpse.name, source_code=source_code, vendor=rng.choice(vendors),
+                                  unit_price=round(price, 2),
+                                  qty=rng.choice([1, 2, 5, 10, 20, 25, 50, 100]) if pack == 1 else rng.choice([1, 2, 5]),
+                                  po_date=(date(2025, 4, 1) + timedelta(days=rng.randrange(0, 500))).isoformat(),
+                                  plant=plant))
+        return rid
+
+    for g, iid in zip(GUARANTEED, demo_ids):
+        emit(by_id[iid], by_name[g["cpse"]], g["desc"], g["uom"], "guaranteed")
+
+    for it in items:
+        n = copies[it["item_id"]]
+        if n <= 0:
+            continue
+        # Mostly different companies; now and then a second plant of the same
+        # one - the within-company duplicate that needs no data sharing to fix.
+        cps = rng.sample(CPSES, k=min(n, len(CPSES)))
+        while len(cps) < n:
+            cps.append(rng.choice(CPSES))
+        for cpse in cps:
+            style = render.style_for(cpse.name, it["split"], rng)
+            desc, _, _ = render.describe(it, style, rng)
+            uom = rng.choice(UOM_VARIANTS.get(it["uom"], [it["uom"]]))
+            pack = 1
+            # Pack sizes: a box of 100 against each. The price guard sees a
+            # 100x gap on the same item - the case C13 exists to handle.
+            if it["category"] == "fastener" and rng.random() < 0.02:
+                pack, uom = 100, rng.choice(["BOX", "BOX OF 100", "PKT"])
+            emit(it, cpse, desc, uom, style, pack)
+
+    trap_list = catalogue.traps(items, schemas.hard_fields)
+    return materials, truth, purchases, items, trap_list
+
+
 def load_seed_file(path: Path) -> list[SeedItem]:
     """Swap in a researched seed list (Isha's GeM / eprocure spreadsheet).
 
@@ -459,9 +553,40 @@ def main() -> None:
     ap.add_argument("--seed", type=int, default=20260901, help="RNG seed - keep fixed for demos")
     ap.add_argument("--seed-file", type=Path, default=None,
                     help=f"CSV of researched seed items (default: {paths.SEED_ITEMS} if it exists)")
+    ap.add_argument("--dup", type=float, default=None,
+                    help="factory mode: duplication rate, e.g. 0.20 with --target 15000 "
+                         "(run under SIH_RUN=15k so the demo set is untouched)")
     args = ap.parse_args()
 
     rng = random.Random(args.seed)
+    if args.dup is not None:
+        if not paths.RUN:
+            raise SystemExit("factory mode writes a whole new dataset - set SIH_RUN (e.g. SIH_RUN=15k) "
+                             "so the 100-record demo set in data/input is not overwritten")
+        import time
+        started = time.time()
+        materials, truth, purchases, items, trap_list = build_factory(args.target, args.dup, rng)
+        paths.ensure_dirs()
+        write_csv(paths.MATERIALS, materials)
+        write_csv(paths.PURCHASES, purchases)
+        write_csv(paths.GROUND_TRUTH, truth)
+        paths.TRAPS.write_text(json.dumps(trap_list), encoding="utf-8")
+        paths.ITEMS.write_text(json.dumps({it["item_id"]: it for it in items}), encoding="utf-8")
+        per_item = {}
+        for t in truth:
+            per_item[t["true_item_id"]] = per_item.get(t["true_item_id"], 0) + 1
+        test = sum(1 for t in truth if t["split"] == "test")
+        from collections import Counter
+        print(f"run '{paths.RUN}': {paths.INPUT.parent}")
+        print(f"materials.csv     {len(materials):>6,} records on {len(per_item):,} items "
+              f"({1 - len(per_item) / len(materials):.1%} duplication)")
+        print(f"                  test families {test:,} records - locked, never tuned on")
+        print(f"purchases.csv     {len(purchases):>6,} purchase orders")
+        print(f"traps.json        {len(trap_list):>6,} near-miss pairs, one hard field apart")
+        print("styles            " + "  ".join(f"{k} {v}" for k, v in Counter(t["style"] for t in truth).most_common()))
+        print(f"done in {time.time() - started:.1f}s")
+        return
+
     seed_file = args.seed_file or (paths.SEED_ITEMS if paths.SEED_ITEMS.exists() else None)
     items = load_seed_file(seed_file) if seed_file else SEED_ITEMS
     if seed_file:

@@ -37,7 +37,7 @@ from collections import defaultdict
 from itertools import combinations
 
 import paths
-from scorer import AUTO_MERGE
+from scorer import AUTO_MERGE, NOT_SAFETY, review_rank
 
 
 def load_truth() -> dict[str, str]:
@@ -131,6 +131,128 @@ def trap_check(pairs: list[dict], truth: dict, traps: set, threshold: float) -> 
     return hits
 
 
+def load_splits() -> dict[str, str]:
+    """record_id -> dev / test, for factory runs. Empty for the demo set."""
+    with paths.GROUND_TRUTH.open(encoding="utf-8-sig") as fh:
+        rows = list(csv.DictReader(fh))
+    return {r["record_id"]: r["split"] for r in rows if r.get("split")}
+
+
+def split_metrics(pairs: list[dict], truth: dict, splits: dict) -> dict:
+    """Auto precision and proposed recall per split. A pair counts for a
+    split only when both records belong to it; the test families were never
+    looked at while the rules were tuned."""
+    out = {}
+    for name in ("dev", "test"):
+        keep = {r for r, s in splits.items() if s == name}
+        sub_truth = {r: i for r, i in truth.items() if r in keep}
+        sub_pairs = [p for p in pairs if p["a"] in keep and p["b"] in keep]
+        auto, prop = pair_metrics(sub_pairs, sub_truth, AUTO_MERGE), pair_metrics(sub_pairs, sub_truth, 0.70)
+        out[name] = {"records": len(keep), "auto_merged": auto["tp"] + auto["fp"], "auto_wrong": auto["fp"],
+                     "auto_precision": auto["precision"], "recall": prop["recall"],
+                     "true_pairs": prop["total_true_pairs"]}
+    return out
+
+
+def review_metrics(pairs: list[dict], truth: dict) -> dict:
+    """The review queue as a reviewer meets it: one record, its candidates.
+
+    Pairwise precision punishes a terse record for being compatible with
+    several items. The questions that matter to the person clearing the
+    queue are: is the right match at the top, is it in the first three, and
+    how many candidates does a record bring?
+    """
+    cands = defaultdict(list)
+    for p in pairs:
+        if p.get("blocked_by") or not (0.70 <= p["final"] < AUTO_MERGE):
+            continue
+        cands[p["a"]].append((review_rank(p), p["b"]))
+        cands[p["b"]].append((review_rank(p), p["a"]))
+    with_true = hit1 = hit3 = 0
+    sizes = []
+    for rid, lst in cands.items():
+        lst.sort(reverse=True)
+        sizes.append(len(lst))
+        right = [truth.get(o) == truth.get(rid) for _, o in lst]
+        if any(right):
+            with_true += 1
+            hit1 += right[0]
+            hit3 += any(right[:3])
+    n = len(cands)
+    sizes.sort()
+    return {"records_in_queue": n, "with_a_true_match": with_true,
+            "true_match_first": hit1 / with_true if with_true else 0.0,
+            "true_match_in_top3": hit3 / with_true if with_true else 0.0,
+            "median_candidates": sizes[len(sizes) // 2] if sizes else 0}
+
+
+def blocking_metrics(truth: dict) -> dict | None:
+    """Reduction ratio and pair completeness of the candidate set.
+
+    Completeness is the share of truly-same pairs that blocking let through
+    to the scorer. A pair it drops can never be matched, whatever the scorer
+    would have said - so this is a ceiling on recall.
+    """
+    if not paths.BLOCKING.exists():
+        return None
+    stats = json.loads(paths.BLOCKING.read_text(encoding="utf-8"))
+    cand = {frozenset(p) for p in stats.get("candidates", [])}
+    by_item = defaultdict(list)
+    for rid, item in truth.items():
+        by_item[item].append(rid)
+    true_pairs = [frozenset(p) for v in by_item.values() for p in combinations(sorted(v), 2)]
+    found = sum(1 for p in true_pairs if p in cand)
+    return {"mode": stats.get("mode"), "candidate_pairs": stats.get("candidate_pairs"),
+            "all_pairs": stats.get("all_pairs"),
+            "reduction_ratio": stats.get("reduction_ratio", 0.0),
+            "pair_completeness": found / len(true_pairs) if true_pairs else 1.0,
+            "true_pairs_missed": len(true_pairs) - found}
+
+
+# Which field should stop a trap, read from its reason when the trap does not
+# say. Traps written by the item factory carry "field" directly.
+_TRAP_FIELDS = (("grade", ("material_grade", "body_material", "wetted_material")),
+                ("pressure", ("pressure_class", "pressure_rating_psi")),
+                ("rating", ("pressure_class", "pressure_rating_psi")),
+                ("designation", ("iso_designation",)), ("size", ("nominal_size_in",)),
+                ("range", ("range_max", "range_min")), ("type", ("valve_type", "fastener_type")))
+
+
+def veto_accuracy(pairs: list[dict], truth: dict) -> dict:
+    """For each safety field: of the record pairs across a trap, how many were
+    blocked by the right field, reached review, auto-merged (must be 0), or
+    never met at all (fine - never compared is never merged)."""
+    if not paths.TRAPS.exists():
+        return {}
+    traps = json.loads(paths.TRAPS.read_text(encoding="utf-8"))
+    by_item = defaultdict(list)
+    for rid, item in truth.items():
+        by_item[item].append(rid)
+    index = {frozenset((p["a"], p["b"])): p for p in pairs}
+    out = {}
+    for t in traps:
+        fields = (t["field"],) if t.get("field") else next(
+            (f for word, f in _TRAP_FIELDS if word in t.get("reason", "").lower()), ("?",))
+        key = fields[0]
+        row = out.setdefault(key, {"pairs": 0, "blocked_right": 0, "blocked_other": 0,
+                                   "review": 0, "auto": 0, "never_met": 0})
+        for a in by_item.get(t["a"], []):
+            for b in by_item.get(t["b"], []):
+                row["pairs"] += 1
+                p = index.get(frozenset((a, b)))
+                if p is None:
+                    row["never_met"] += 1
+                elif p.get("blocked_by"):
+                    row["blocked_right" if p["blocked_by"] in fields else "blocked_other"] += 1
+                elif p["final"] >= AUTO_MERGE:
+                    row["auto"] += 1
+                elif p["final"] >= 0.70:
+                    row["review"] += 1
+                else:
+                    row["never_met"] += 1
+    return out
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -145,7 +267,7 @@ def main() -> None:
 
     scored = [p for p in pairs if not p.get("blocked_by")]
     blocked = [p for p in pairs if p.get("blocked_by")]
-    safety_blocks = [p for p in blocked if p["blocked_by"] != "category"]
+    safety_blocks = [p for p in blocked if p["blocked_by"] not in NOT_SAFETY]
 
     # Two different questions, and only the first is a safety question.
     #
@@ -241,6 +363,38 @@ def main() -> None:
         else:
             print(f"\n  No threshold reaches 98% precision on this run.")
 
+    rq = review_metrics(pairs, truth)
+    print(f"\nREVIEW QUEUE  (as a reviewer meets it: one record, its candidates)")
+    print(f"  records waiting          {rq['records_in_queue']:>7,}   median {rq['median_candidates']} candidates each")
+    print(f"  true match ranked first  {rq['true_match_first']:>7.1%}   of records that have one")
+    print(f"  true match in top three  {rq['true_match_in_top3']:>7.1%}")
+
+    splits = load_splits()
+    by_split = split_metrics(pairs, truth, splits) if splits else {}
+    if by_split:
+        print("\nBY SPLIT  (test = families locked before tuning; two notations only they use)")
+        for name, s in by_split.items():
+            print(f"  {name:<5} {s['records']:>6,} records   auto-merged {s['auto_merged']:>5,}  wrong {s['auto_wrong']:>3}"
+                  f"  (precision {s['auto_precision']:.1%})   recall {s['recall']:.1%} of {s['true_pairs']:,} true pairs")
+
+    blk = blocking_metrics(truth)
+    if blk:
+        print(f"\nBLOCKING  ({blk['mode']})")
+        print(f"  candidate pairs     {blk['candidate_pairs']:>9,} of {blk['all_pairs']:,}")
+        print(f"  reduction ratio     {blk['reduction_ratio']:>9.2%}   target >= 99.9% at 15,000 records")
+        print(f"  pair completeness   {blk['pair_completeness']:>9.2%}   target >= 98%")
+        if blk["true_pairs_missed"]:
+            print(f"  true pairs never compared: {blk['true_pairs_missed']}")
+
+    vetoes = veto_accuracy(pairs, truth)
+    if vetoes:
+        print("\nVETO ACCURACY  (record pairs across each trap)")
+        print(f"  {'field':<18}{'pairs':>6}{'right':>7}{'other':>7}{'review':>8}{'AUTO':>6}{'apart':>7}")
+        for f, v in sorted(vetoes.items()):
+            flag = "   <- SAFETY FAILURE" if v["auto"] else ""
+            print(f"  {f:<18}{v['pairs']:>6}{v['blocked_right']:>7}{v['blocked_other']:>7}"
+                  f"{v['review']:>8}{v['auto']:>6}{v['never_met']:>7}{flag}")
+
     # Write the measured figures so results.py carries them into the UI.
     # A number nobody measured must never reach a slide - and a number typed
     # in by hand is a number nobody measured.
@@ -259,6 +413,14 @@ def main() -> None:
         "predicted_clusters": c["predicted_clusters"],
         "duplication_rate": round(c["duplication_rate"], 4),
         "safety_blocks": len(safety_blocks),
+        "blocking": {k: (round(v, 4) if isinstance(v, float) else v)
+                     for k, v in (blk or {}).items()},
+        "veto_accuracy": vetoes,
+        "review_queue": {k: (round(v, 4) if isinstance(v, float) else v) for k, v in rq.items()},
+        "by_split": {k: {kk: (round(vv, 4) if isinstance(vv, float) else vv) for kk, vv in v.items()}
+                     for k, v in by_split.items()},
+        "records": len(truth),
+        "run": paths.RUN or "demo",
     }, indent=1), encoding="utf-8")
     print(f"\nwrote {paths.METRICS.name}")
 

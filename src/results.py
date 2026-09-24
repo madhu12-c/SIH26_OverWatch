@@ -24,10 +24,32 @@ from datetime import date
 
 import paths
 import schemas
-from scorer import AUTO_MERGE, REVIEW_LOW
+from scorer import AUTO_MERGE, NOT_SAFETY, REVIEW_LOW
 
 DEMO_MATCH = ("R00001", "R00002")     # different brand, same bearing
 DEMO_BLOCK = ("R00003", "R00004")     # near-identical text, different grade
+
+REAL_SOURCE_NAME = "Prasenjeet25/sih26099-cpse-material-codes"
+REAL_SOURCE_URL = f"https://huggingface.co/datasets/{REAL_SOURCE_NAME}"
+
+
+def real_summary() -> dict:
+    """Counts of the real tender lines, for the UI's data-source notice.
+
+    Reads only the unlabelled candidate text. The labels under data/real/labels
+    are an answer key and are never read here - the UI must not display a
+    number that came from them.
+    """
+    if not paths.REAL_CANDIDATES.exists():
+        return {}
+    with paths.REAL_CANDIDATES.open(encoding="utf-8-sig") as fh:
+        rows = list(csv.DictReader(fh))
+    by_org = defaultdict(int)
+    for r in rows:
+        by_org[r["organization"]] += 1
+    return {"lines": len(rows),
+            "by_org": dict(sorted(by_org.items(), key=lambda x: -x[1])),
+            "source": REAL_SOURCE_NAME, "url": REAL_SOURCE_URL, "licence": "CC-BY-4.0"}
 
 
 def record_view(rid, materials, specs) -> dict:
@@ -72,6 +94,41 @@ def case_view(pair, pairs_index, materials, specs) -> dict | None:
     }
 
 
+# The UI bundles results.json at build time into one offline file. At
+# 15,000 records the full lists would bloat it past any sensible size, so
+# every list is capped - and every total the dashboard shows is computed
+# here, from the FULL lists, before capping. A capped list must never be
+# summed in the browser and passed off as a total.
+CAPS = {"clusters": 200, "review_queue": 200, "blocked": 200, "savings": 50}
+
+
+def aggregates(national: list[dict]) -> dict:
+    """Per-company and per-category totals over every national code."""
+    by_cpse = defaultdict(lambda: {"records": 0, "codes": 0, "inside": 0, "shared": 0})
+    by_cat = defaultdict(lambda: {"records": 0, "codes": 0})
+    for c in national:
+        members = c.get("members") or []
+        cps = [m.get("cpse") for m in members]
+        by_cat[c.get("category", "unknown")]["records"] += len(members)
+        by_cat[c.get("category", "unknown")]["codes"] += 1
+        for cp in set(cps):
+            row = by_cpse[cp]
+            n = cps.count(cp)
+            row["records"] += n
+            row["codes"] += 1
+            row["inside"] += n - 1
+            row["shared"] += 1 if len(set(cps)) > 1 else 0
+    return {"by_cpse": dict(sorted(by_cpse.items())), "by_category": dict(sorted(by_cat.items()))}
+
+
+def cap_clusters(national: list[dict]) -> list[dict]:
+    """The codes worth showing: the demo's, then the most duplicated."""
+    demo = {DEMO_MATCH[0], DEMO_MATCH[1], DEMO_BLOCK[0], DEMO_BLOCK[1]}
+    keep = [c for c in national if demo & {m.get("record_id") for m in c.get("members") or []}]
+    rest = sorted((c for c in national if c not in keep), key=lambda c: -len(c.get("members") or []))
+    return (keep + rest)[:CAPS["clusters"]]
+
+
 def build() -> dict:
     materials = {}
     with paths.MATERIALS.open(encoding="utf-8-sig") as fh:
@@ -98,7 +155,7 @@ def build() -> dict:
     # with a gasket is not an interesting refusal; a grade mismatch is.
     blocked = []
     for p in pairs:
-        if not p.get("blocked_by") or p["blocked_by"] == "category":
+        if not p.get("blocked_by") or p["blocked_by"] in NOT_SAFETY:
             continue
         blocked.append({
             "a": record_view(p["a"], materials, specs),
@@ -134,6 +191,7 @@ def build() -> dict:
 
     auto = sum(1 for n in national if n.get("band") == "auto")
     summary = savings.get("summary", {})
+    items = savings.get("items", [])
 
     return {
         "meta": {
@@ -158,19 +216,30 @@ def build() -> dict:
             "auto_precision": metrics.get("auto_precision"),
             "safety_blocks": metrics.get("safety_blocks"),
             "trap_violations": metrics.get("trap_violations_auto"),
+            "run": paths.RUN or "demo",
+            "totals": {"codes": len(national), "review_pairs": len(review), "blocked": len(blocked),
+                       "savings_items": len(items)},
+            "shown": {"codes": min(len(national), CAPS["clusters"]),
+                      "review_pairs": min(len(review), CAPS["review_queue"]),
+                      "blocked": min(len(blocked), CAPS["blocked"]),
+                      "savings_items": min(len(items), CAPS["savings"])},
+            **aggregates(national),
+            "review_queue_quality": metrics.get("review_queue"),
+            "by_split": metrics.get("by_split"),
         },
         "cases": {
             "match": case_view(DEMO_MATCH, pairs_index, materials, specs),
             "block": case_view(DEMO_BLOCK, pairs_index, materials, specs),
         },
-        "clusters": national,
-        "review_queue": review[:60],
-        "blocked": blocked[:120],
+        "clusters": national if len(national) <= CAPS["clusters"] else cap_clusters(national),
+        "review_queue": review[:CAPS["review_queue"]],
+        "blocked": blocked[:CAPS["blocked"]],
         "blocked_by_rule": dict(sorted(by_rule.items(), key=lambda x: -x[1])),
-        "savings": savings.get("items", [])[:25],
+        "savings": items[:CAPS["savings"]],
         "savings_summary": summary,
         "uom": uom,
         "gate": gate,
+        "real": real_summary(),
     }
 
 
@@ -313,6 +382,8 @@ def main() -> None:
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--stub", action="store_true",
                     help="write fake data with the real shape, for the frontend")
+    ap.add_argument("--ui", action="store_true",
+                    help="also write ui/src/results.json from a non-demo run (e.g. SIH_RUN=15k)")
     args = ap.parse_args()
 
     data = stub() if args.stub else build()
@@ -322,13 +393,16 @@ def main() -> None:
     # Written in the same breath as the canonical copy. The frontend imports
     # its own file at build time, and letting the two drift is how a demo ends
     # up presenting numbers nobody generated.
-    if paths.UI_RESULTS.parent.exists():
+    # A bigger run writes its own results.json and leaves the UI alone unless
+    # asked - the demo must not change because someone ran the 15,000 set.
+    to_ui = paths.UI_RESULTS.parent.exists() and (not paths.RUN or args.ui)
+    if to_ui:
         paths.UI_RESULTS.write_text(blob, encoding="utf-8")
 
     m = data["meta"]
     kind = "STUB" if args.stub else "real"
     print(f"wrote {paths.RESULTS.name}  ({kind}, "
-          f"{paths.RESULTS.stat().st_size/1024:.0f} KB)  + ui/src/results.json")
+          f"{paths.RESULTS.stat().st_size/1024:.0f} KB)" + ("  + ui/src/results.json" if to_ui else "  (UI untouched)"))
     print(f"  records         {m['records']}   extracted {m['extracted']}")
     print(f"  unique items    {m['unique_items']}   "
           f"({m['duplication']:.1%} duplication)")

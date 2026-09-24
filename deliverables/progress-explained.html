@@ -1,0 +1,1115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Overwatch Progress Explained</title>
+<style>
+  :root{
+    --ink:#17212c; --ink-soft:#44546a; --ink-faint:#7b8a9b;
+    --ground:#ffffff; --panel:#f4f6f9; --panel-2:#e9edf2;
+    --rule:#d5dbe3; --rule-soft:#e5e9ef;
+    --accent:#1d5b88; --accent-bg:#e5eef6;
+    --good:#256b45; --good-bg:#e3f1e8;
+    --warn:#8a5a00; --warn-bg:#fcf1d8;
+    --todo:#4d5b6c; --todo-bg:#eceff3;
+    --star:#6a3fa0; --star-bg:#f0e9f8;
+    --stop:#a3342a; --stop-bg:#fbe8e5;
+    --f-sans:"Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    --f-mono:Consolas, "Cascadia Mono", "Courier New", monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#e3e9f0; --ink-soft:#a7b4c3; --ink-faint:#7f8d9d;
+      --ground:#121920; --panel:#1a232d; --panel-2:#222d39;
+      --rule:#2f3c4a; --rule-soft:#27323e;
+      --accent:#72b1dc; --accent-bg:#17303f;
+      --good:#74bd92; --good-bg:#1a2f24;
+      --warn:#e2b659; --warn-bg:#342a14;
+      --todo:#a9b5c2; --todo-bg:#26303b;
+      --star:#bd9ae6; --star-bg:#2c2238;
+      --stop:#ec8a7f; --stop-bg:#3a201d;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#e3e9f0; --ink-soft:#a7b4c3; --ink-faint:#7f8d9d;
+    --ground:#121920; --panel:#1a232d; --panel-2:#222d39;
+    --rule:#2f3c4a; --rule-soft:#27323e;
+    --accent:#72b1dc; --accent-bg:#17303f;
+    --good:#74bd92; --good-bg:#1a2f24;
+    --warn:#e2b659; --warn-bg:#342a14;
+    --todo:#a9b5c2; --todo-bg:#26303b;
+    --star:#bd9ae6; --star-bg:#2c2238;
+    --stop:#ec8a7f; --stop-bg:#3a201d;
+  }
+
+  @page { size: A4; margin: 15mm 14mm 16mm; }
+
+  *{ box-sizing:border-box; }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ margin:0; background:var(--ground); color:var(--ink); font-family:var(--f-sans);
+        font-size:13.5px; line-height:1.55; }
+  .doc{ max-width:780px; margin:0 auto; padding:0 16px 48px; }
+
+  h1{ font-size:34px; line-height:1.1; letter-spacing:-.02em; margin:0 0 12px; font-weight:700; }
+  h2{ font-size:22px; line-height:1.2; letter-spacing:-.01em; margin:0 0 4px; font-weight:700; }
+  h3{ font-size:15px; margin:18px 0 6px; font-weight:700; }
+  p{ margin:0 0 10px; }
+  .lead{ font-size:15px; color:var(--ink-soft); }
+  .small{ font-size:12px; color:var(--ink-soft); }
+  .faint{ color:var(--ink-faint); }
+  code, .mono{ font-family:var(--f-mono); font-size:.92em; }
+  code{ background:var(--panel-2); padding:1px 5px; border-radius:3px; }
+  b, strong{ font-weight:700; }
+  ul, ol{ margin:0 0 10px; padding-left:20px; }
+  li{ margin:0 0 4px; }
+
+  section{ margin:0 0 34px; }
+  .newpage{ break-before:page; }
+  .flow{ border-top:2px solid var(--ink); padding-top:16px; margin-top:8px; }
+  .num, h2, .sub, h3{ break-after:avoid; }
+  .keep{ break-inside:avoid; }
+  .num{ font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+        color:var(--accent); margin:0 0 6px; }
+  .sub{ color:var(--ink-faint); font-size:13px; margin:0 0 16px; padding-bottom:10px;
+        border-bottom:1px solid var(--rule); }
+
+  /* cover */
+  .cover{ min-height:250mm; display:flex; flex-direction:column; padding-top:34mm; }
+  .cover .eyebrow{ font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+                   color:var(--accent); margin-bottom:14px; }
+  .cover .meta{ margin-top:auto; border-top:2px solid var(--ink); padding-top:12px;
+                display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
+                font-size:12.5px; color:var(--ink-soft); }
+  .glance{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:26px 0 18px; }
+  .glance div{ border-radius:8px; padding:12px 14px; }
+  .glance .n{ font-size:30px; font-weight:700; line-height:1; display:block; margin-bottom:4px; }
+  .g-built{ background:var(--good-bg); color:var(--good); }
+  .g-part{ background:var(--warn-bg); color:var(--warn); }
+  .g-todo{ background:var(--todo-bg); color:var(--todo); }
+
+  /* boxes */
+  .box{ border:1px solid var(--rule); border-radius:8px; padding:12px 16px; margin:12px 0;
+        background:var(--panel); break-inside:avoid; }
+  .box > :last-child{ margin-bottom:0; }
+  .box.key{ border-left:4px solid var(--accent); background:var(--accent-bg); border-color:transparent; }
+  .box.warn{ border-left:4px solid var(--warn); background:var(--warn-bg); border-color:transparent; }
+  .box.stop{ border-left:4px solid var(--stop); background:var(--stop-bg); border-color:transparent; }
+  .box.good{ border-left:4px solid var(--good); background:var(--good-bg); border-color:transparent; }
+  .box .t{ font-weight:700; margin:0 0 4px; }
+
+  .quote{ font-size:19px; font-weight:700; text-align:center; margin:18px 0; letter-spacing:-.01em; }
+
+  /* tables */
+  table{ width:100%; border-collapse:collapse; margin:8px 0 14px; font-size:12.5px; }
+  th{ text-align:left; font-size:11px; letter-spacing:.06em; text-transform:uppercase;
+      color:var(--ink-faint); font-weight:700; padding:6px 8px; border-bottom:2px solid var(--rule); }
+  td{ padding:7px 8px; border-bottom:1px solid var(--rule-soft); vertical-align:top; }
+  tr{ break-inside:avoid; }
+  td.lbl{ font-weight:700; white-space:nowrap; }
+  .was{ color:var(--ink-soft); }
+  .now{ font-weight:600; }
+
+  /* badges */
+  .b{ display:inline-block; font-size:10px; font-weight:700; letter-spacing:.08em;
+      text-transform:uppercase; padding:2px 7px; border-radius:10px; white-space:nowrap;
+      vertical-align:1px; }
+  .b-built{ background:var(--good-bg); color:var(--good); }
+  .b-part{ background:var(--warn-bg); color:var(--warn); }
+  .b-todo{ background:var(--todo-bg); color:var(--todo); }
+  .b-star{ background:var(--star-bg); color:var(--star); }
+  .b-stop{ background:var(--stop-bg); color:var(--stop); }
+
+  /* example records */
+  .rec{ font-family:var(--f-mono); font-size:12px; background:var(--panel-2); border-radius:6px;
+        padding:8px 10px; margin:6px 0; overflow-wrap:anywhere; }
+  .rec .who{ font-family:var(--f-sans); font-size:10.5px; font-weight:700; letter-spacing:.06em;
+             text-transform:uppercase; color:var(--ink-faint); display:block; margin-bottom:2px; }
+  .pair{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:10px 0; }
+  .verdict{ border-radius:8px; padding:12px 14px; break-inside:avoid; }
+  .verdict .big{ font-size:24px; font-weight:700; display:block; line-height:1.1; }
+  .v-same{ background:var(--good-bg); }
+  .v-diff{ background:var(--stop-bg); }
+
+  /* architecture diagram */
+  .arch{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin:12px 0 8px; }
+  .lane{ border:1px solid var(--rule); border-radius:8px; padding:10px; background:var(--panel); }
+  .lane h4{ margin:0 0 2px; font-size:13px; }
+  .lane .q{ font-size:11.5px; color:var(--ink-soft); margin:0 0 8px; }
+  .st{ display:flex; align-items:center; gap:7px; border-radius:6px; padding:6px 8px;
+       margin:0 0 5px; font-size:12px; font-weight:600; }
+  .st .id{ font-family:var(--f-mono); font-size:11px; opacity:.75; }
+  .st .star{ margin-left:auto; color:var(--star); }
+  .s-built{ background:var(--good-bg); color:var(--good); }
+  .s-part{ background:var(--warn-bg); color:var(--warn); }
+  .s-todo{ background:var(--ground); color:var(--todo); border:1px dashed var(--rule); }
+  .flowline{ text-align:center; font-size:12px; color:var(--ink-faint); margin:4px 0 10px; }
+  .legend{ display:flex; gap:14px; flex-wrap:wrap; font-size:11.5px; color:var(--ink-soft); margin:6px 0 0; }
+  .legend span{ display:inline-flex; align-items:center; gap:5px; }
+  .sw{ width:12px; height:12px; border-radius:3px; display:inline-block; }
+
+  /* stage cards */
+  .stage{ border:1px solid var(--rule); border-radius:8px; margin:0 0 10px; break-inside:avoid;
+          overflow:hidden; }
+  .stage-h{ display:flex; align-items:center; gap:10px; padding:8px 12px; background:var(--panel); }
+  .stage-h .id{ font-family:var(--f-mono); font-weight:700; color:var(--accent); font-size:13px; }
+  .stage-h .name{ font-weight:700; font-size:14px; }
+  .stage-h .b{ margin-left:auto; }
+  .stage-b{ padding:8px 12px 10px; }
+  .stage-b p{ margin:0 0 6px; }
+  .eg{ font-size:12.5px; background:var(--accent-bg); border-radius:6px; padding:6px 10px; margin:6px 0; }
+  .eg b{ color:var(--accent); }
+  .todo-line{ font-size:12px; color:var(--ink-soft); margin:4px 0 0; }
+  .todo-line b{ color:var(--ink); }
+
+  /* feature grid */
+  .feat{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:8px 0 14px; }
+  .fc{ border:1px solid var(--rule); border-radius:7px; padding:8px 11px; break-inside:avoid; }
+  .fc .ft{ font-weight:700; font-size:13px; margin:0 0 2px; }
+  .fc p{ font-size:12.5px; margin:0; color:var(--ink-soft); }
+  .fc.star{ border-color:var(--star); background:var(--star-bg); }
+  .fc.star .ft{ color:var(--star); }
+
+  /* numbered steps */
+  .steps{ counter-reset:s; list-style:none; padding:0; }
+  .steps li{ counter-increment:s; position:relative; padding:0 0 8px 34px; break-inside:avoid; }
+  .steps li::before{ content:counter(s); position:absolute; left:0; top:0; width:22px; height:22px;
+                     border-radius:50%; background:var(--accent); color:#fff; font-weight:700;
+                     font-size:12px; display:flex; align-items:center; justify-content:center; }
+
+  .stats{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin:10px 0 14px; }
+  .stats div{ background:var(--panel); border-radius:7px; padding:10px 11px; break-inside:avoid; }
+  .stats .n{ font-size:21px; font-weight:700; display:block; line-height:1.1; }
+  .stats .l{ font-size:11.5px; color:var(--ink-soft); }
+
+  .toc{ columns:2; column-gap:28px; font-size:13.5px; padding-left:20px; }
+  .toc li{ margin-bottom:5px; break-inside:avoid; }
+
+  @media (max-width:640px){
+    .glance, .arch, .pair, .feat{ grid-template-columns:1fr; }
+    .stats{ grid-template-columns:1fr 1fr; }
+    .toc{ columns:1; }
+    table{ display:block; overflow-x:auto; }
+    .cover{ min-height:auto; padding-top:24px; }
+  }
+</style>
+</head>
+<body>
+<main class="doc">
+
+<!-- ================= COVER ================= -->
+<section class="cover">
+  <div class="eyebrow">SIH 2026 · SIH26099 · Team Overwatch</div>
+  <h1>One Nation, One Material Code — the whole project in plain words</h1>
+  <p class="lead">Where we started, what we changed, how the system works from start to end, and
+  which parts are built and which are not yet built.</p>
+
+  <div class="glance">
+    <div class="g-built"><span class="n">4</span>of 14 steps are <b>built</b> and working</div>
+    <div class="g-part"><span class="n">5</span>of 14 steps are <b>partly built</b></div>
+    <div class="g-todo"><span class="n">5</span>of 14 steps are <b>not built yet</b></div>
+  </div>
+
+  <div class="box stop">
+    <p class="t">The one thing to fix first</p>
+    <p>Our system reads our own test data very well, but it barely reads real government text.
+    Out of <b>902 real material lines</b> from Oil India and NTPC, it gets useful facts from only
+    <b>21</b>. Every number on our slides depends on fixing this first.</p>
+  </div>
+
+  <div class="box key">
+    <p class="t">The idea in one sentence</p>
+    <p>We compare what an item <b>is</b> (its size, grade, rating), not how it is <b>spelled</b>.
+    Then we give each real item one national code and link every company's old code to it.</p>
+  </div>
+
+  <div class="meta">
+    <span>Status as of <b>24 September 2026</b></span>
+    <span>PPT due <b>27 September 2026</b> (PDF, six slides)</span>
+    <span>Source of truth: <b>finalarchitecture.md</b></span>
+  </div>
+</section>
+
+<!-- ================= CONTENTS ================= -->
+<section class="newpage">
+  <p class="num">Contents</p>
+  <h2>What is inside</h2>
+  <p class="sub">Read it in order. Each part builds on the one before it.</p>
+  <ol class="toc">
+    <li>The problem, in plain words</li>
+    <li>The one big idea</li>
+    <li>Our journey so far</li>
+    <li>What we had before, and what we have now</li>
+    <li>Two jobs, one engine</li>
+    <li>The architecture on one page</li>
+    <li>The workflow, step by step</li>
+    <li>How one national code works for every company</li>
+    <li>The rules we never break</li>
+    <li>Every feature: built, not built, not building</li>
+    <li>The real data: what we found</li>
+    <li>Our numbers today</li>
+    <li>The plan: now to December</li>
+    <li>The PPT and the 90-second demo</li>
+    <li>Words you will hear</li>
+  </ol>
+
+  <h3>How to read the status labels</h3>
+  <table>
+    <tr><td><span class="b b-built">Built</span></td><td>The code exists, runs, and is tested on our data.</td></tr>
+    <tr><td><span class="b b-part">Partly</span></td><td>The basic version works. Important pieces are still missing.</td></tr>
+    <tr><td><span class="b b-todo">Not yet</span></td><td>Designed and decided, but no code yet.</td></tr>
+    <tr><td><span class="b b-star">★ Ours alone</span></td><td>None of the other public projects on this problem statement has this.</td></tr>
+    <tr><td><span class="b b-stop">Not building</span></td><td>We decided on purpose not to build this. The reason is given.</td></tr>
+  </table>
+
+  <div class="box warn">
+    <p class="t">An honest note about numbers</p>
+    <p>Most numbers in this document are measured on <b>test data we made ourselves</b>. They show how
+    well the system undoes mistakes we put in. They are not real-world accuracy. Numbers from real
+    data are marked <b>real</b>.</p>
+  </div>
+</section>
+
+<!-- ================= 1 PROBLEM ================= -->
+<section class="newpage">
+  <p class="num">Part 1</p>
+  <h2>The problem, in plain words</h2>
+  <p class="sub">Why this problem statement exists at all.</p>
+
+  <p>India has many government companies (CPSEs): Oil India, NTPC, IOCL, CPCL, ONGC, BPCL, GAIL and
+  others. Each one keeps its own list of every item it buys and stocks: pipes, valves, bearings,
+  bolts, cables. This list is called the <b>material master</b>. Every item in it gets a
+  <b>material code</b>.</p>
+
+  <p>The trouble is that <b>every company writes the same item differently and gives it a different
+  code.</b> Often the same company has the same item two or three times, because different
+  storekeepers typed it differently over the years.</p>
+
+  <h3>One gasket, four companies, four codes (from our test data)</h3>
+  <table>
+    <tr><th>Company</th><th>Their code</th><th>How they wrote it</th><th>Unit</th></tr>
+    <tr><td>BPCL</td><td class="mono">BR-01454</td><td class="mono">GASKET SPIRAL WOUND SS304 4IN 150#</td><td class="mono">EA</td></tr>
+    <tr><td>ONGC</td><td class="mono">5001164</td><td class="mono">GASKET 4 IN SS304 SPIRAL WOUND 150# GRAPHITE FILLER</td><td class="mono">PCS</td></tr>
+    <tr><td>GAIL</td><td class="mono">G/001372</td><td class="mono">GASKET,SS304,SPIRAL WOUND,4 IN,FLX/SW/304/4</td><td class="mono">EACH</td></tr>
+    <tr><td>IOCL</td><td class="mono">MAT-01276</td><td class="mono">GASKET, SPIRAL WOUND, SS304, FLEXITALLIC, SW-034-4-150</td><td class="mono">NO</td></tr>
+  </table>
+  <p>It is the same gasket. Even the unit is spelled four ways: EA, PCS, EACH, NO.</p>
+
+  <h3>What this costs</h3>
+  <ul>
+    <li><b>Extra stock.</b> The same item sits in the store under two codes, so both get bought.</li>
+    <li><b>No buying together.</b> Companies cannot combine orders for a better price, because nobody
+    can see it is the same item.</li>
+    <li><b>No price comparison.</b> One company may pay far more than another for the same thing.</li>
+    <li><b>Painful system changes.</b> Moving to a new SAP system means carrying all the mess across.</li>
+  </ul>
+
+  <div class="box key">
+    <p class="t">Our job</p>
+    <p>Read every company's list. Work out which lines describe the <b>same physical item</b>. Give
+    that item one <b>National Material Code</b>. Keep a link from the national code back to every
+    company's own code. <b>Change or delete nothing</b> inside any company's system.</p>
+  </div>
+
+  <p class="small">Why are descriptions so messy? Several reasons together: the SAP description field is
+  only 40 characters, old systems had even shorter fields, and there was never a firm rule on how
+  to write an item, so every storekeeper made up their own short forms. Always say "several
+  reasons". Never blame only SAP.</p>
+</section>
+
+<!-- ================= 2 BIG IDEA ================= -->
+<section class="flow">
+  <p class="num">Part 2</p>
+  <h2>The one big idea</h2>
+  <p class="sub">This is the heart of the project and the centre of the demo.</p>
+
+  <p>The normal way to find duplicates is to compare the <b>words</b>: if two lines look alike, they
+  are probably the same. We measured this on our own system, and it fails in both directions.</p>
+
+  <div class="pair">
+    <div>
+      <div class="rec"><span class="who">CPCL</span>SKF 6205-2RS DEEP GROOVE BALL BEARING</div>
+      <div class="rec"><span class="who">IOCL</span>FAG 6205-2RSR BEARING, 25X52X15MM, SEALED</div>
+      <div class="verdict v-same"><span class="big">Same bearing</span>
+        Text looks only <b>0.833</b> similar. Different maker, different words. But <code>6205</code> is a
+        world standard size, so both are 25 × 52 × 15 mm.</div>
+    </div>
+    <div>
+      <div class="rec"><span class="who">Company A</span>GASKET SPIRAL WOUND SS316 4IN 150#</div>
+      <div class="rec"><span class="who">Company B</span>GASKET SPIRAL WOUND SS304 4IN 150#</div>
+      <div class="verdict v-diff"><span class="big">Different items</span>
+        Text looks <b>0.989</b> similar, almost identical. But SS316 and SS304 are different steels.
+        Swapping them in acid service can make a line fail.</div>
+    </div>
+  </div>
+
+  <div class="box stop">
+    <p class="t">The problem with words</p>
+    <p>The pair that must <b>never</b> merge (0.989) looks <b>more</b> alike than the pair that
+    <b>should</b> merge (0.833). No cut-off number can fix this. Any setting that accepts the bearings
+    also accepts the dangerous gaskets.</p>
+  </div>
+
+  <p class="quote">So we stopped comparing spelling and started comparing specifications.</p>
+
+  <table>
+    <tr><th>Step</th><th>What we do</th></tr>
+    <tr><td class="lbl">1. Read</td><td>Pull out the facts from each line: type, size, grade, pressure class, standard number.</td></tr>
+    <tr><td class="lbl">2. Veto</td><td>If a critical fact is different (grade, pressure, size), stop. It is a different item, however similar the words.</td></tr>
+    <tr><td class="lbl">3. Score</td><td>If nothing is vetoed, score how well the facts agree. Brand is ignored on purpose, which is how SKF and FAG meet.</td></tr>
+  </table>
+  <p>Result today: the two bearings match at <b>0.971</b>. The two gaskets are <b>blocked on grade</b>.</p>
+
+  <div class="box">
+    <p class="t">A simple way to picture it</p>
+    <p>To check if two forms belong to the same person, you don't compare how they spelled their name
+    ("Madhu", "Madu", "M. Chanda"). You compare their date of birth and Aadhaar number. Specs are
+    the date of birth of an item.</p>
+  </div>
+
+  <div class="box key">
+    <p class="t">"If we train no model, how is this AI?"</p>
+    <p>AI is used where it is strong: an AI model <b>reads</b> messy text and turns it into facts, and
+    embeddings find records that <b>might</b> be the same. Fixed rules make the final decision,
+    because a refinery needs a decision that can be explained and gives the same answer every time.
+    We train no model because no labelled CPSE examples exist anywhere to train on.
+    <b>AI reads. Engineering decides. Governance records.</b></p>
+  </div>
+</section>
+
+<!-- ================= 3 JOURNEY ================= -->
+<section class="flow">
+  <p class="num">Part 3</p>
+  <h2>Our journey so far</h2>
+  <p class="sub">From an empty folder to a final design in under four weeks.</p>
+
+  <table>
+    <tr><th style="width:110px">Date</th><th>What happened</th></tr>
+    <tr><td class="lbl">30 Aug</td><td>The code repository was empty. The first architecture document was written.</td></tr>
+    <tr><td class="lbl">31 Aug</td><td>The whole pipeline was built in one push: test-data generator, spec reader, embeddings, scorer, grouping, national codes, savings report, evaluation, and a six-screen demo.</td></tr>
+    <tr><td class="lbl">1 Sept</td><td>College internal round. <b>Cleared.</b></td></tr>
+    <tr><td class="lbl">3 Sept</td><td>Two more screens: <b>Units</b> (10 spellings of units folded into one) and the <b>Creation Gate</b> (stops a duplicate before it is created). Demo now has eight screens.</td></tr>
+    <tr><td class="lbl">17 Sept</td><td>Architecture frozen.</td></tr>
+    <tr><td class="lbl">23 Sept</td><td>We studied every public project on this problem statement in depth. We changed the approval rule: companies no longer have to approve every link (Part 8).</td></tr>
+    <tr><td class="lbl">24 Sept</td><td>Found and processed <b>real data</b>: 902 material lines from Oil India and NTPC tenders. Measured how badly our reader handles real text. Wrote <b>finalarchitecture.md</b>, the final design. Cleaned up all the project documents to match it.</td></tr>
+    <tr><td class="lbl">27 Sept</td><td><b>PPT submission.</b> Six slides, as a PDF.</td></tr>
+    <tr><td class="lbl">Oct – Nov</td><td>Build everything marked "Not yet". Weekly check-ins, however small. This is where most teams lose.</td></tr>
+    <tr><td class="lbl">Dec</td><td>Grand Finale, if selected. Practice only, no new features.</td></tr>
+  </table>
+
+  <div class="box warn">
+    <p class="t">Why we changed so much this week</p>
+    <p>When we compared ourselves against every other project, three things were clear. Our matching
+    idea was strong, but <b>(1)</b> we had never tested on real text, <b>(2)</b> we did not use
+    engineering standards, which others were starting to, and <b>(3)</b> our approval rule would
+    freeze the whole system in real life. The final design fixes all three and adds five features
+    nobody else has.</p>
+  </div>
+</section>
+
+<!-- ================= 4 BEFORE VS NOW ================= -->
+<section class="flow">
+  <p class="num">Part 4</p>
+  <h2>What we had before, and what we have now</h2>
+  <p class="sub">"Before" is the 17 September design. "Now" is the final design of 24 September.</p>
+
+  <table>
+    <tr><th style="width:22%">Topic</th><th style="width:36%">Before</th><th>Now</th></tr>
+    <tr><td class="lbl">Pipeline</td><td class="was">9 steps</td><td class="now">14 steps (00 to 13). New: derive from standards, self-check, blocking made its own step, relationships, governance.</td></tr>
+    <tr><td class="lbl">Item types</td><td class="was">9 categories</td><td class="now">13. Added cable, fitting, plate, tube, because 39% of real lines had no category.</td></tr>
+    <tr><td class="lbl">Sizes</td><td class="was">Understood inches only</td><td class="now">Understands NB, DN and NPS as <b>names</b> of a size, and gets the real measurement from the standard. <code>500NB</code> now meets <code>508MM</code>.</td></tr>
+    <tr><td class="lbl">Standards</td><td class="was">None</td><td class="now">Bearing, pipe and flange standards fill in missing sizes. Knows which Indian and international standards are the same, which are only close, and which are withdrawn.</td></tr>
+    <tr><td class="lbl">Bad records</td><td class="was">Trusted as typed</td><td class="now">Each record is checked against itself first. A record that contradicts itself is sent to a human.</td></tr>
+    <tr><td class="lbl">Explaining a "no"</td><td class="was">Showed which field blocked it</td><td class="now">Also shows "if the grade matched, this would score 0.94", so the reviewer sees the one field that decided.</td></tr>
+    <tr><td class="lbl">Answer types</td><td class="was">Same / not same</td><td class="now">Five: identical · equivalent · substitute (one-way) · variant (same family, other size) · incompatible.</td></tr>
+    <tr><td class="lbl">Who approves</td><td class="was">Both companies must approve every link</td><td class="now"><b>Consent scales with harm.</b> The national registrar links. Any company can dispute at any time. Only the owner can retire its own code.</td></tr>
+    <tr><td class="lbl">Comparisons</td><td class="was">Every record against every other</td><td class="now">Only records that could possibly match (blocking). Needed at 15,000 records: all pairs would be 112 million.</td></tr>
+    <tr><td class="lbl">Where</td><td class="was">Not tracked</td><td class="now">Every pair labelled same plant / same company / across companies. This decides who reviews it.</td></tr>
+    <tr><td class="lbl">Test data</td><td class="was">100 records, 15 items, 84% duplicates</td><td class="now">15,000 records at 20% duplicates, written the way real Indian companies write.</td></tr>
+    <tr><td class="lbl">Real data</td><td class="was">"Planned" from GeM / CPPP</td><td class="now">902 real lines from Oil India and NTPC, split into a dev half (485, already labelled, used for building) and a test half (417, for two people to label blind).</td></tr>
+    <tr><td class="lbl">Safety traps</td><td class="was">4 hand-made traps</td><td class="now">Several hundred, made automatically: every grade pair, every pressure pair, next-door sizes, bolt grades, valve types.</td></tr>
+    <tr><td class="lbl">Testing</td><td class="was">One precision and recall number</td><td class="now">Three datasets reported separately, three layers of measurement, four competing methods compared on the same pairs.</td></tr>
+    <tr><td class="lbl">Rollout</td><td class="was">All companies at once</td><td class="now">Phase 1 inside one company (no sharing needed). Phase 2 across companies.</td></tr>
+  </table>
+</section>
+
+<!-- ================= 5 TWO JOBS ================= -->
+<section class="flow">
+  <p class="num">Part 5</p>
+  <h2>Two jobs, one engine</h2>
+  <p class="sub">The same matching engine is used in two ways.</p>
+
+  <div class="pair">
+    <div class="box">
+      <p class="t">Job 1 · Harmonise (clean up the past)</p>
+      <p><b>In:</b> a company's whole material master, thousands of lines.</p>
+      <p><b>Out:</b> a national code for every item, and a table linking every old code to it.</p>
+      <p class="small">Runs once per company, then again when new data arrives.</p>
+    </div>
+    <div class="box">
+      <p class="t">Job 2 · Gate (protect the future)</p>
+      <p><b>In:</b> one new-code request from a storekeeper.</p>
+      <p><b>Out:</b> one of four answers <b>before</b> a new code is created.</p>
+      <p class="small">Without this, the mess comes back within a year.</p>
+    </div>
+  </div>
+
+  <h3>The four answers of the Creation Gate <span class="b b-built">Built</span></h3>
+  <table>
+    <tr><th>Answer</th><th>Meaning</th><th>Example from our demo</th></tr>
+    <tr><td class="lbl" style="color:var(--good)">EXISTS</td><td>This item already has a code. Use that one.</td><td class="mono">FAG 6205-2RSR BEARING, 25X52X15MM, SEALED</td></tr>
+    <tr><td class="lbl" style="color:var(--warn)">REVIEW</td><td>Close to an existing item. A human should look.</td><td class="small">—</td></tr>
+    <tr><td class="lbl" style="color:var(--accent)">NEW</td><td>Truly new. Create a code, and show the near items it was told apart from.</td><td class="mono">GASKET SPIRAL WOUND SS321 4IN 150#</td></tr>
+    <tr><td class="lbl" style="color:var(--stop)">INCOMPLETE</td><td>Not enough written to decide. Names the missing facts.</td><td class="mono">BEARING</td></tr>
+  </table>
+  <p>Another demo case: a pressure gauge for <code>0–16 BAR</code> is correctly called <b>NEW</b>, because the
+  stored gauge reads <code>0–10 BAR</code>. Same words, different range.</p>
+
+  <div class="box key">
+    <p class="t">Why the INCOMPLETE answer matters</p>
+    <p>A storekeeper who types only "BEARING" gets told exactly what to add (the bearing number, or
+    bore, outside size and width). The problem statement asks for "faster specification
+    finalisation". This is it.</p>
+  </div>
+</section>
+
+<!-- ================= 6 ARCHITECTURE ================= -->
+<section class="flow">
+  <p class="num">Part 6</p>
+  <h2>The architecture on one page</h2>
+  <p class="sub">14 steps in three groups. Colour shows what is built today.</p>
+
+  <div class="arch">
+    <div class="lane">
+      <h4>A · Understand each record</h4>
+      <p class="q">What is this item?</p>
+      <div class="st s-part"><span class="id">00</span>Ingest</div>
+      <div class="st s-part"><span class="id">01</span>Normalise</div>
+      <div class="st s-part"><span class="id">02</span>Classify</div>
+      <div class="st s-part"><span class="id">03</span>Extract specs</div>
+      <div class="st s-todo"><span class="id">04</span>Derive from standards<span class="star">★</span></div>
+      <div class="st s-todo"><span class="id">05</span>Self-check<span class="star">★</span></div>
+    </div>
+    <div class="lane">
+      <h4>B · Compare records</h4>
+      <p class="q">Are these two the same item?</p>
+      <div class="st s-todo"><span class="id">06</span>Block (pick pairs)</div>
+      <div class="st s-built"><span class="id">07</span>Veto</div>
+      <div class="st s-built"><span class="id">08</span>Score</div>
+      <div class="st s-todo"><span class="id">09</span>Relate</div>
+      <div class="st s-built"><span class="id">10</span>Route</div>
+    </div>
+    <div class="lane">
+      <h4>C · Decide and record</h4>
+      <p class="q">What code, who approved, what next?</p>
+      <div class="st s-built"><span class="id">11</span>Canonicalise</div>
+      <div class="st s-todo"><span class="id">12</span>Govern<span class="star">★</span></div>
+      <div class="st s-part"><span class="id">13</span>Outputs</div>
+    </div>
+  </div>
+  <div class="legend">
+    <span><i class="sw" style="background:var(--good-bg);border:1px solid var(--good)"></i>Built</span>
+    <span><i class="sw" style="background:var(--warn-bg);border:1px solid var(--warn)"></i>Partly built</span>
+    <span><i class="sw" style="border:1px dashed var(--ink-faint)"></i>Not yet built</span>
+    <span><b style="color:var(--star)">★</b> Ours alone</span>
+  </div>
+
+  <h3>The same thing as one line</h3>
+  <p class="mono small" style="background:var(--panel);padding:10px;border-radius:6px">
+  company list → clean the text → decide the type → read the specs → fill gaps from standards →
+  check it agrees with itself → pick likely pairs → veto on critical facts → score the rest →
+  name the relationship → auto / review / blocked → one national code → audit log → reports</p>
+
+  <h3>Where AI is used, and where it is not</h3>
+  <table>
+    <tr><th>Part</th><th>Uses</th><th>Why</th></tr>
+    <tr><td class="lbl">Reading specs (03)</td><td>Rules first. An AI model (Gemini) only when rules are unsure. <b>Once per record, never per pair.</b></td><td>Cheap and fast. The AI reads, it never decides.</td></tr>
+    <tr><td class="lbl">Finding likely pairs (06)</td><td>Embeddings: text turned into numbers so similar lines sit close together.</td><td>Finds candidates quickly among thousands.</td></tr>
+    <tr><td class="lbl">Deciding (07–10)</td><td>Fixed rules and arithmetic.</td><td>Same input, same answer, every time. Every decision can be explained.</td></tr>
+    <tr><td class="lbl">Error limit (evaluation)</td><td>A statistical bound on how often auto-merges can be wrong.</td><td>A promise we can prove, not a guess.</td></tr>
+  </table>
+
+  <h3>What the demo runs on</h3>
+  <p>Python for the pipeline. React for the eight screens. The whole demo opens as <b>one file, with no
+  internet and no server</b>, and all results are computed beforehand. It never calls the AI live,
+  because venue internet fails. The full production design (FastAPI, Postgres with pgvector,
+  Docker) is only built when the record count needs it.</p>
+</section>
+
+<!-- ================= 7 WORKFLOW ================= -->
+<section class="newpage">
+  <p class="num">Part 7</p>
+  <h2>The workflow, step by step</h2>
+  <p class="sub">We follow one real pair through every step: CPCL's SKF bearing and IOCL's FAG bearing.</p>
+
+  <div class="pair">
+    <div class="rec"><span class="who">CPCL · code 100001445</span>SKF 6205-2RS DEEP GROOVE BALL BEARING</div>
+    <div class="rec"><span class="who">IOCL · code MAT-01248</span>FAG 6205-2RSR BEARING, 25X52X15MM, SEALED</div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-h"><span class="id">00</span><span class="name">Ingest: take the data in</span><span class="b b-part">Partly</span></div>
+    <div class="stage-b">
+      <p>Each company uploads its list as a spreadsheet, shaped like a SAP export. Or a storekeeper sends one new-code request. The original line is kept exactly as it was.</p>
+      <div class="eg"><b>Our pair:</b> both lines come in with their company and code attached.</div>
+      <p class="todo-line"><b>Still to build:</b> append-only, versioned storage, so nothing is ever overwritten.</p>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-h"><span class="id">01</span><span class="name">Normalise: clean the text</span><span class="b b-part">Partly</span></div>
+    <div class="stage-b">
+      <p>Expand short forms (<code>M.S.</code> → mild steel, <code>BRG</code> → bearing). Fold unit spellings (EA, NOS, PCS, EACH, NO → one unit). Treat <code>C.S.</code>, <code>CS</code> and <code>C S</code> as the same.</p>
+      <div class="eg"><b>Our pair:</b> "DEEP GRV" and "DEEP GROOVE" become the same words.</div>
+      <p class="todo-line"><b>Still to build:</b> real Indian short forms (<code>BLK</code>, <code>SMLS</code>, <code>GLV</code>, <code>ERW</code>, <code>SCIM</code>); sizes as names (<code>1/2"</code> = <code>DN15</code> = <code>15NB</code>); fractions (<code>3/4"</code> is not <code>4"</code>); standards written different ways (<code>ASTM-F439</code> = <code>ASTM F439</code>); pack sizes kept apart from units.</p>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-h"><span class="id">02</span><span class="name">Classify: what kind of item is it?</span><span class="b b-part">Partly</span></div>
+    <div class="stage-b">
+      <p>Decide the category. Each category has its own list of facts that matter.</p>
+      <div class="eg"><b>Our pair:</b> both are <b>bearing</b>, so the facts that matter are bearing number, bore, outside size, width and seal.</div>
+      <p class="todo-line"><b>Built:</b> 9 categories (bearing, gasket, pipe, valve, fastener, flange, rotating, instrument, electrical). <b>Still to build:</b> cable, fitting, plate, tube; and if the system is unsure (below 70%), it queues the record for a human instead of guessing.</p>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-h"><span class="id">03</span><span class="name">Extract: read the specs</span><span class="b b-part">Partly</span></div>
+    <div class="stage-b">
+      <p>Pull out each fact with a confidence score. Rules go first. The AI model is used only when a critical fact comes out below 70% confidence. Results are saved, so the AI is never called twice for the same record.</p>
+      <div class="eg"><b>Our pair:</b> CPCL → bearing number 6205, seal 2RS, brand SKF. IOCL → 6205, 25 × 52 × 15 mm, sealed, brand FAG.</div>
+      <p class="todo-line"><b>Problem:</b> works on our test data, but on real text only <b>21 of 902</b> lines give two or more facts. <b>Still to build:</b> the fix, plus an "evidence span" for every fact (which exact words it came from).</p>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-h"><span class="id">04</span><span class="name">Derive: fill gaps from standards</span><span class="b b-star">★ Ours alone</span><span class="b b-todo" style="margin-left:6px">Not yet</span></div>
+    <div class="stage-b">
+      <p>Engineering standards tell us facts nobody typed. A bearing numbered 6205 is always 25 × 52 × 15 mm (ISO 15). A pipe size plus schedule gives its wall thickness (ASME B36.10). A flange class gives its rating (ASME B16.5).</p>
+      <p>It also knows when two standards mean the same thing. IS 1367 (Part 3) is identical to ISO 898-1, because BIS adopted it word for word. ASTM F3125 Grade A325 is only <b>close</b> to them. And it knows withdrawn standards: ASTM A325 was withdrawn in 2016 and now lives on as ASTM F3125 Grade A325, so old records still meet new ones.</p>
+      <div class="eg"><b>Our pair:</b> CPCL never typed the size. The standard adds 25 × 52 × 15 mm, marked "derived, confidence 0.85". Now both records have the same sizes.</div>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-h"><span class="id">05</span><span class="name">Self-check: does the record agree with itself?</span><span class="b b-star">★ Ours alone</span><span class="b b-todo" style="margin-left:6px">Not yet</span></div>
+    <div class="stage-b">
+      <p>Before comparing with anything else, check the record against itself. If a line says <code>6205</code> but also <code>30X62X16</code>, one of them is wrong. That record is kept out of automatic merging and sent to a human. <b>Bad data must not become national data.</b></p>
+      <div class="eg"><b>Our pair:</b> IOCL says 6205 and 25 × 52 × 15. The standard agrees. Pass.</div>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-h"><span class="id">06</span><span class="name">Block: pick only the pairs worth comparing</span><span class="b b-todo">Not yet</span></div>
+    <div class="stage-b">
+      <p>Comparing everything with everything is impossible at scale: 15,000 records make 112 million pairs. So we only compare records with the same category and the same key facts (like the same bearing number or the same pipe size), plus close neighbours by embedding.</p>
+      <p>Each pair also gets a <b>scope</b>: same plant, same company across plants, or across companies. Scope decides who reviews it.</p>
+      <div class="eg"><b>Our pair:</b> both are bearing + 6205, so they are put side by side. Scope: <b>across companies</b> (CPCL and IOCL).</div>
+      <p class="todo-line"><b>Today:</b> all pairs are compared, which is fine at 100 records and fails at 15,000. This is task 2 on the build list.</p>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-h"><span class="id">07</span><span class="name">Veto: stop on any critical difference</span><span class="b b-built">Built</span></div>
+    <div class="stage-b">
+      <p>Runs <b>before</b> any score. Each critical fact is MATCH, MISMATCH or UNKNOWN. One MISMATCH on grade, pressure, size or type blocks the pair, whatever the words say. UNKNOWN (one side is silent) is not counted as agreement or as conflict. A price gap of more than 10× also blocks: a ₹42 bolt and a ₹4,200 bolt are not the same item.</p>
+      <div class="eg"><b>Our pair:</b> bearing number MATCH, bore MATCH, seal MATCH. No veto.</div>
+      <p class="todo-line"><b>Still to add:</b> service ratings (sour service NACE MR0175, IBR, cryogenic, fire-safe). If only one side has it, the pair is never "identical". It becomes a one-way substitute that a human decides.</p>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-h"><span class="id">08</span><span class="name">Score: how well do they agree?</span><span class="b b-built">Built</span></div>
+    <div class="stage-b">
+      <p>Three signals. <b>Specs</b> carry the most weight. <b>Text</b> counts a little. <b>Buying history</b> (same vendor, similar price) can only confirm or block, never add points. Brand and maker part number are ignored. If too few critical facts are known, the score is capped below auto-merge.</p>
+      <div class="eg"><b>Our pair:</b> score <b>0.971</b>.</div>
+      <p class="todo-line"><b>Still to add:</b> ★ the <b>counterfactual</b> for every blocked or near pair ("if the grade matched, this would score 0.94"), and an exact match on the standard number first (6205 = 6205, whatever the maker's part number).</p>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-h"><span class="id">09</span><span class="name">Relate: what kind of match is it?</span><span class="b b-todo">Not yet</span></div>
+    <div class="stage-b">
+      <p>Not just "same" or "not same". Five answers: <b>identical</b> · <b>equivalent</b> (different standard, same item) · <b>substitute</b> (one can replace the other, one way only, always a human decision) · <b>variant of</b> (same family, other size: 6204 · 6205 · 6206) · <b>incompatible</b>.</p>
+      <div class="eg"><b>Our pair:</b> IDENTICAL.</div>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-h"><span class="id">10</span><span class="name">Route: auto, review or blocked</span><span class="b b-built">Built</span></div>
+    <div class="stage-b">
+      <p>Score 0.90 or more → <b>auto-merge</b>. Between 0.70 and 0.90 → <b>human review</b>. A veto fired → <b>blocked</b>. The reviewer screen supports keyboard shortcuts (A approve, R reject, S skip), with all the evidence on one screen.</p>
+      <div class="eg"><b>Our pair:</b> 0.971 → auto-merge.</div>
+      <p class="todo-line"><b>Still to add:</b> safety-critical items always go to a human; the review queue sorted by risk × money × safety; and some <b>random audit cards</b> taken from the already auto-merged pairs, so humans keep checking the machine's own "sure" answers.</p>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-h"><span class="id">11</span><span class="name">Canonicalise: one item, one national code</span><span class="b b-built">Built</span></div>
+    <div class="stage-b">
+      <p>First, join the matched pairs into groups, one group per real item. Every pair inside a group must still look alike. If one doesn't, the whole group goes to a human for review, and so does any group larger than 25. Then build one clean <b>golden record</b>, write a standard description, attach the UNSPSC class (a world product catalogue), and issue the code <code>NMC-&lt;class&gt;-&lt;serial&gt;</code>.</p>
+      <div class="eg"><b>Our pair:</b> ends up in one group of 9 bearing records from 5 companies →
+        <code>NMC-31171500-000001</code> ·
+        <code>BEARING, DEEP GROOVE BALL, 6205, 25X52X15 MM, 2RS SEALED</code> · UNSPSC Bearings.</div>
+      <p class="todo-line"><b>Still to add:</b> a fixed order for settling disagreements between records (standard first, then highest confidence, then majority, then latest purchase, then most precise), and if a critical fact is still disputed, no code is issued.</p>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-h"><span class="id">12</span><span class="name">Govern: record who did what</span><span class="b b-star">★ Ours alone</span><span class="b b-todo" style="margin-left:6px">Not yet</span></div>
+    <div class="stage-b">
+      <p>An audit log that can only be added to: who, what, when, why, and how to reverse it. Five actions: ACCEPT · REJECT · MARK_DIFFERENT (and say which field) · UNMAP · DISPUTE. The approval model is explained in Part 8.</p>
+      <p class="todo-line"><b>Important:</b> this is problem-statement capability 7 (audit trail), and it is the one capability with <b>nothing</b> built today.</p>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-h"><span class="id">13</span><span class="name">Outputs: what people get</span><span class="b b-part">Partly</span></div>
+    <div class="stage-b">
+      <p><b>Built:</b> creation gate · savings report (buying together) · safety report (merges we refused, and why) · units report · national code and mapping table · eight-screen demo.</p>
+      <p class="todo-line"><b>Still to build:</b> staged migration pack for a company's SAP team · data-quality scorecard · SAP-shaped export · counters for duplicates prevented and specs completed.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 8 ONE CODE ================= -->
+<section class="flow">
+  <p class="num">Part 8</p>
+  <h2>How one national code works for every company</h2>
+  <p class="sub">The question everybody asks: "each company has its own system, so how does one code reach all of them?"</p>
+
+  <ol class="steps">
+    <li><b>Oil India uploads its material list.</b> The system reads it and first finds duplicates <b>inside Oil India</b> (across its own plants). This alone is useful from day one.</li>
+    <li><b>NTPC uploads its list.</b> The same happens inside NTPC.</li>
+    <li><b>The system compares across both companies.</b> It finds items that are the same in both, for example the same line pipe.</li>
+    <li><b>The national registrar issues one national code</b> for that item. In our test data, one SS304 gasket became <code>NMC-31400000-000001</code>, linked to four companies' codes (the table in Part 1).</li>
+    <li><b>A mapping table links it to each company's own code.</b> Oil India's code and NTPC's code both point to the same national code.</li>
+    <li><b>Nothing changes inside either company's SAP.</b> They keep using their own codes. The national code sits on top.</li>
+    <li><b>If NTPC thinks the link is wrong, it raises a dispute.</b> The pair goes back to a human, and the objection is written in the audit log.</li>
+  </ol>
+
+  <div class="box key">
+    <p class="t">Think of UPI</p>
+    <p>Your UPI ID sits on top of your bank account. The bank does not change your account number.
+    UPI did not ask every bank to approve every link. The national code works the same way: it
+    <b>links</b>, it does not <b>edit</b>.</p>
+  </div>
+
+  <h3>The approval rule: consent scales with harm</h3>
+  <table>
+    <tr><th>Action</th><th>Who decides</th><th>Why</th></tr>
+    <tr><td class="lbl">Link two codes under one national code</td><td>The national registrar. No company can veto.</td><td>A link changes nothing inside a company and can be undone.</td></tr>
+    <tr><td class="lbl">Retire or switch off a code</td><td><b>Only the company that owns it.</b> Nobody else, ever.</td><td>This changes a company's own system, so only it may decide.</td></tr>
+    <tr><td class="lbl">Show prices or vendors across companies</td><td>Never shown raw. Only price bands and hidden vendor IDs, and hidden entirely if fewer than 3 companies buy the item.</td><td>With only two companies, "the best price" gives away the other's price.</td></tr>
+    <tr><td class="lbl">Dispute a link</td><td><b>Any affected company, at any time.</b></td><td>A right to dispute, not a right to veto.</td></tr>
+  </table>
+
+  <div class="box warn">
+    <p class="t">Why we dropped "both companies must approve"</p>
+    <p>If every link needs two busy people in two companies to click "approve", nothing ever gets
+    issued. The reviewer gets only extra work, while procurement gets the savings. One company
+    staying silent would block a code forever. Our new rule lets the registry keep moving and stops
+    it when there is evidence. It also gives companies more power than a plain central registry,
+    where they would have no say at all.</p>
+  </div>
+
+  <h3>Two phases</h3>
+  <table>
+    <tr><td class="lbl">Phase 1 · inside one company</td><td>Duplicates across one company's own plants. No data sharing, no agreement between companies, no policy change. Value on day one.</td></tr>
+    <tr><td class="lbl">Phase 2 · across companies</td><td>Price bands and hidden vendor IDs, never raw prices or names. A company learns a better price exists, never who got it.</td></tr>
+  </table>
+</section>
+
+<!-- ================= 9 RULES ================= -->
+<section class="flow">
+  <p class="num">Part 9</p>
+  <h2>The rules we never break</h2>
+  <p class="sub">Every design choice in this project comes back to one of these.</p>
+
+  <table>
+    <tr><th style="width:34%">Rule</th><th>In plain words</th></tr>
+    <tr><td class="lbl">Precision over recall</td><td>Missing a duplicate costs a little money. A wrong merge can put the wrong valve in a refinery line. When unsure, ask a human.</td></tr>
+    <tr><td class="lbl">Nothing is destroyed</td><td>Data is only ever added. Every original code is kept. Undoing a merge only removes a link.</td></tr>
+    <tr><td class="lbl">Every merge is explainable</td><td>For any merge we can show which facts matched, what the scores were, and which words they came from.</td></tr>
+    <tr><td class="lbl">The AI never decides</td><td>The AI reads text into facts. Fixed rules decide. One AI call per record, never per pair.</td></tr>
+    <tr><td class="lbl">Veto before score</td><td>A critical difference stops everything. "Unknown" never counts as agreement or as conflict.</td></tr>
+    <tr><td class="lbl">Thresholds change only by a recorded commit</td><td>The system never tunes itself. A person changes a setting and it is recorded.</td></tr>
+    <tr><td class="lbl">The answer key is for testing only</td><td>The matching code never sees the correct answers. A matcher that has seen them has a worthless score.</td></tr>
+    <tr><td class="lbl">No number without a run</td><td>No number goes on a slide unless it came from a recorded test run.</td></tr>
+    <tr><td class="lbl">Consent scales with harm</td><td>Linking needs no permission. Only the owner retires a code. Anyone can dispute.</td></tr>
+    <tr><td class="lbl">No live AI in the demo</td><td>Everything is computed before. The demo runs the same every time, with no internet.</td></tr>
+  </table>
+</section>
+
+<!-- ================= 10 FEATURES ================= -->
+<section class="newpage">
+  <p class="num">Part 10</p>
+  <h2>Every feature: built, not built, not building</h2>
+  <p class="sub">The complete list, in five groups.</p>
+
+  <h3><span class="b b-built">Built</span> Working today</h3>
+  <div class="feat">
+    <div class="fc"><p class="ft">Test-data generator</p><p>Makes realistic messy company lists with a hidden answer key. 100 records today.</p></div>
+    <div class="fc"><p class="ft">Spec reader</p><p>Rules plus Gemini, saved so it is never re-run. Works offline on rules alone.</p></div>
+    <div class="fc"><p class="ft">Embeddings</p><p>Text turned into numbers on our own machine. No outside API.</p></div>
+    <div class="fc"><p class="ft">Veto-first scorer</p><p>Grade, pressure and size vetoes. Price gap over 10× vetoes. Brand ignored.</p></div>
+    <div class="fc"><p class="ft">Grouping with a safety check</p><p>Joins matched pairs into items. If any pair inside looks different, or the group has more than 25 records, it goes to review.</p></div>
+    <div class="fc"><p class="ft">Auto / review / blocked</p><p>Three routes at 0.90 and 0.70.</p></div>
+    <div class="fc"><p class="ft">Golden record and description</p><p>One clean record per item, written in industry format.</p></div>
+    <div class="fc"><p class="ft">UNSPSC class and national code</p><p><code>NMC-&lt;class&gt;-&lt;serial&gt;</code>, plus the mapping table.</p></div>
+    <div class="fc"><p class="ft">Savings report</p><p>Money saved by buying together. Hidden if fewer than 3 companies (k-anonymity 3).</p></div>
+    <div class="fc"><p class="ft">Safety report</p><p>Every merge we refused, and the reason.</p></div>
+    <div class="fc"><p class="ft">Units harmonisation</p><p>10 unit spellings folded into 2 units. Flags risky ones like <code>MTS</code> (metres or metric tonnes?).</p></div>
+    <div class="fc"><p class="ft">Creation gate</p><p>Four answers: EXISTS · REVIEW · NEW · INCOMPLETE.</p></div>
+    <div class="fc"><p class="ft">Evaluation harness</p><p>Precision and recall against the answer key, one command.</p></div>
+    <div class="fc"><p class="ft">Eight-screen demo</p><p>Overview · match · block · review · savings · units · codes · gate. Keys 1–8. Opens as one file.</p></div>
+    <div class="fc"><p class="ft">Real-data builder</p><p><code>mine_real.py</code> rebuilds the 902 real lines. <code>labels.py</code> splits them into dev and test, gives each labeller their own sheet, and measures agreement.</p></div>
+  </div>
+
+  <h3><span class="b b-part">Partly</span> Built, but must be fixed or extended</h3>
+  <table>
+    <tr><td class="lbl">Reading real text</td><td>21 of 902 real lines usable. Needs NB / MM sizes, real grades (FE410, TP304L, A312, A106, IS1239, A423) and real short forms (SMLS, ERW, GLV, BLK). <b>Top priority.</b></td></tr>
+    <tr><td class="lbl">Categories</td><td>9 of 13. Cable, fitting, plate and tube still to add.</td></tr>
+    <tr><td class="lbl">Testing</td><td>One layer and 4 traps today. Needs three layers, several hundred traps, four compared methods, and a real-data score.</td></tr>
+    <tr><td class="lbl">Test data size</td><td>100 records today. Needs 15,000 at 20% duplicates, in real notation.</td></tr>
+  </table>
+
+  <h3><span class="b b-star">★ Ours alone</span> The five features no other project has (not built yet)</h3>
+  <div class="feat">
+    <div class="fc star"><p class="ft">1 · Standards derivation</p><p>A line saying only <code>6205</code> matches a line saying only <code>25X52X15MM</code>. The standard supplies the sizes nobody typed.</p></div>
+    <div class="fc star"><p class="ft">2 · Cross-standard equivalence</p><p>Knows IS 1367 (Part 3) = ISO 898-1, that ASTM F3125 Grade A325 is only close, and that withdrawn ASTM A325 now lives inside F3125. Companies buy on IS but receive ASTM and DIN goods.</p></div>
+    <div class="fc star"><p class="ft">3 · Self-check</p><p>A record that contradicts itself is caught before it can match anything.</p></div>
+    <div class="fc star"><p class="ft">4 · Counterfactual</p><p>For every refused or near pair: "if the grade matched, this would score 0.94". The reviewer sees the one field that decided.</p></div>
+    <div class="fc star" style="grid-column:1 / -1"><p class="ft">5 · Dispute, not veto</p><p>The registry moves by default; any company can challenge any link at any time; only the owner retires its code.</p></div>
+  </div>
+
+  <h3><span class="b b-todo">Not yet</span> Designed, to be built</h3>
+  <table>
+    <tr><th style="width:30%">Feature</th><th>What it does, simply</th></tr>
+    <tr><td class="lbl">Size name vs real size</td><td>NB, DN and NPS are names, not measurements. <code>1/2"</code> = <code>DN15</code> = <code>15NB</code>, but the pipe is really 21.3 mm across. So <code>500NB</code> matches <code>508MM</code>, a pair found in real NTPC tenders.</td></tr>
+    <tr><td class="lbl">Pack size</td><td>Same unit but a price about 10, 25, 50 or 100 times higher? Probably a box versus a single piece. Flag it and name the likely factor.</td></tr>
+    <tr><td class="lbl">Valve materials</td><td>Body, trim and seat recorded separately. Trim is critical for control valves, the seat for soft-seated ball valves.</td></tr>
+    <tr><td class="lbl">Blocking</td><td>Compare only likely pairs, after standards have filled in missing sizes. One missing fact never loses a true pair. We measure how many true pairs survive.</td></tr>
+    <tr><td class="lbl">Plant scope</td><td>Same plant / same company / across companies. Same-company pairs go to that company's reviewer, cross-company pairs to the registrar.</td></tr>
+    <tr><td class="lbl">Minimum facts per type</td><td>A bearing needs its number, or all of bore, outside size and width. A valve needs size, class, body and type. Otherwise no auto-merge.</td></tr>
+    <tr><td class="lbl">Service ratings</td><td>A sour-service, IBR, cryogenic or fire-safe item can replace a normal one, never the reverse. Shown as a one-way substitute for a human.</td></tr>
+    <tr><td class="lbl">Standard-number anchor</td><td>Match on <code>6205</code>, not on the maker's part number (<code>6205-2RS</code> vs <code>6205-2RSR</code>).</td></tr>
+    <tr><td class="lbl">Variant ladder</td><td>6204 · 6205 · 6206 shown as a family. "Seven sizes stocked, three carry 90% of the spend."</td></tr>
+    <tr><td class="lbl">Review priority</td><td>Most dangerous and most costly first. A hydrocarbon valve beats a costlier item where a wrong merge harms nobody.</td></tr>
+    <tr><td class="lbl">Random audit cards</td><td>Some already auto-merged pairs are shown to humans, giving a live, honest check of how often "sure" is really right.</td></tr>
+    <tr><td class="lbl">Fusion order</td><td>When records disagree: standard → highest confidence → majority → latest purchase → most precise. Records which rule won.</td></tr>
+    <tr><td class="lbl">MARK_DIFFERENT</td><td>The reviewer says which field differs. If the same reason repeats ("7 pairs differed only on end connection"), the system suggests a rule. A human approves it; the system never changes itself.</td></tr>
+    <tr><td class="lbl">Staged migration</td><td>Plan → dry-run → impact → apply → verify → roll back. Shows the risk and the money for each batch.</td></tr>
+    <tr><td class="lbl">Data-quality scorecard</td><td>Includes contradiction rate and how many records a standard can confirm. Every rate links to the exact bad records.</td></tr>
+    <tr><td class="lbl">Gate counters</td><td>Duplicates stopped, and specs completed at creation.</td></tr>
+    <tr><td class="lbl">Near-miss traps</td><td>Hundreds, made from the standards tables, so they grow as the tables grow. Plus real near-misses from NTPC (457 mm vs 508 mm pipes).</td></tr>
+    <tr><td class="lbl">Hard-negative tests</td><td>Change any one critical fact → the pair must never auto-merge. Same input twice → exactly the same output.</td></tr>
+    <tr><td class="lbl">Full evaluation</td><td>Three datasets separately, results per company and per category, every number stamped with its dataset and date. Four methods compared. A proven limit on auto-merge errors.</td></tr>
+    <tr><td class="lbl">Also</td><td>Audit log (capability 7) · SAP-shaped export · <code>run_all.py</code> (one command runs everything) · standards tables (~20 bearings, ~20 bolt equivalences) · 250 hand-labelled real lines.</td></tr>
+  </table>
+
+  <h3><span class="b b-stop">Not building</span> Decided against, on purpose</h3>
+  <table>
+    <tr><th style="width:38%">What</th><th>Why not</th></tr>
+    <tr><td class="lbl">A trained matching model, fine-tuning</td><td>No labelled CPSE pairs exist to train on honestly.</td></tr>
+    <tr><td class="lbl">Thresholds that tune themselves</td><td>A refinery needs settings a person approves and records.</td></tr>
+    <tr><td class="lbl">Copilot, voice, chatbot, OCR, image recognition</td><td>They do not improve matching, and they break under a judge's questions.</td></tr>
+    <tr><td class="lbl">Blockchain audit</td><td>An append-only log does the job, and it is simpler to explain.</td></tr>
+    <tr><td class="lbl">Privacy cryptography (PPRL)</td><td>We explain the design (bands, hidden IDs, k-anonymity) and never claim "secure".</td></tr>
+    <tr><td class="lbl">Live SAP connection, stock ledgers</td><td>No access and no stock data. We ship a SAP-shaped export instead.</td></tr>
+    <tr><td class="lbl">Blocking same-company matches</td><td>Duplicates inside one company are Phase 1's whole value.</td></tr>
+    <tr><td class="lbl">More than 13 categories before December</td><td>Depth before breadth.</td></tr>
+  </table>
+</section>
+
+<!-- ================= 11 REAL DATA ================= -->
+<section class="flow">
+  <p class="num">Part 11</p>
+  <h2>The real data: what we found</h2>
+  <p class="sub">Our biggest weakness was "only tested on data we made". This is how we are fixing it.</p>
+
+  <h3>First, the hard truth</h3>
+  <p><b>No real CPSE material master is public anywhere.</b> We checked GeM, CPPP, data.gov.in, Kaggle and
+  Hugging Face. Companies publish tenders, not their internal item lists. So every team on this
+  problem, us included, tests on invented data. Having <b>some</b> real data sets us apart.</p>
+
+  <h3>What we have</h3>
+  <p>A public dataset on Hugging Face (<code>Prasenjeet25/sih26099-cpse-material-codes</code>, licence
+  CC-BY-4.0, which means we <b>must credit it</b> on the references slide). It holds real tender text.
+  Our script <code>mine_real.py</code> pulled out the lines that describe actual materials.</p>
+
+  <div class="stats">
+    <div><span class="n">902</span><span class="l">real material lines</span></div>
+    <div><span class="n">546</span><span class="l">Oil India (oil &amp; gas, same ministry as our PS)</span></div>
+    <div><span class="n">351</span><span class="l">NTPC (power)</span></div>
+    <div><span class="n">5</span><span class="l">IOCL</span></div>
+  </div>
+
+  <div class="box warn">
+    <p class="t">A correction</p>
+    <p>Earlier we said there were 333 lines, almost all from NTPC, and that Oil India gave nothing. That
+    was wrong. A file-name mistake meant the big file was never read. Rebuilt properly, it is
+    <b>902 lines from two companies</b>, which is better news. Always call it "real tender text from two
+    CPSEs", <b>never</b> "a material master".</p>
+  </div>
+
+  <h3>Real lines (unchanged)</h3>
+  <div class="rec"><span class="who">Oil India</span>STEEL LINE PIPE, ERW, THREADED &amp; COUPLED, NOMINAL BORE: 100 MM, O.D. 114.3 MM, WALL THICKNESS: 6.0 MM, API 5L, GRADE A</div>
+  <div class="rec"><span class="who">NTPC</span>PIPE, BLK, CS, FE410, 9.5MM, 508MM, 500MM</div>
+  <div class="rec"><span class="who">NTPC</span>BSLT-L PIPE: FE-410: 500NB: 26.35MM: 6 M</div>
+  <div class="rec"><span class="who">NTPC</span>PIPE,TP304L,SMLS,SCH80,5000-7000MM,20MM</div>
+
+  <p>The Oil India line proves our size design in the government's own words: <b>"NOMINAL BORE: 100 MM,
+  O.D. 114.3 MM"</b>. The name of the size and the real size sit side by side, and they are different
+  numbers.</p>
+
+  <h3>How badly our reader handles it today</h3>
+  <div class="stats">
+    <div><span class="n">21</span><span class="l">of 902 give 2+ facts (usable)</span></div>
+    <div><span class="n">682</span><span class="l">of 902 give nothing at all</span></div>
+    <div><span class="n">39%</span><span class="l">get no category</span></div>
+    <div><span class="n">2.3%</span><span class="l">usable today</span></div>
+  </div>
+  <p><b>Why:</b> our reader was written for our own test notation. Real Indian text writes sizes as
+  <code>NB</code> and <code>MM</code> (ours only knew inches), and uses grades and short forms we never listed:
+  <code>FE410</code>, <code>TP304L</code>, <code>A312</code>, <code>IS1239</code>, <code>SMLS</code>, <code>ERW</code>, <code>GLV</code>, <code>BLK</code>.</p>
+
+  <div class="box stop">
+    <p class="t">The test before we submit</p>
+    <p>Run five real lines through the system. If it still reads nothing, the PPT is describing a system
+    that does not work on the data it claims to serve. Fix that before anything else.</p>
+  </div>
+
+  <h3>How the labelling works</h3>
+  <p>The 902 lines are split in two by a fixed rule:</p>
+  <table>
+    <tr><th style="width:14%">Half</th><th style="width:10%">Rows</th><th>Who labels it</th><th>What it's for</th></tr>
+    <tr><td class="lbl">Dev</td><td>485</td><td>Claude, already done (24 Sept)</td><td>Building and fixing the extractor. <b>Never reported as a result.</b></td></tr>
+    <tr><td class="lbl">Test</td><td>417</td><td>Isha and Meghna, each alone</td><td>The real number on the slide. <b>Nobody tunes the system on these rows.</b></td></tr>
+  </table>
+  <div class="box warn">
+    <p class="t">Why the AI can't label the proof set</p>
+    <p>If whoever builds the extractor also writes its answer key, the test only measures the
+    builder agreeing with themselves. A judge would ask "who checked your AI's work?" Two people
+    labelling blind is the answer to that question.</p>
+  </div>
+  <ol class="steps">
+    <li>Each person opens <b>only their own sheet</b> (<code>data/real/labels/isha.csv</code> or <code>meghna.csv</code>).</li>
+    <li><code>keep</code>: <b>y</b> one real item (even if under-specified) · <b>n</b> not an item (works, clause, vendor, a range like "up to 1.1 kV") · <b>m</b> several different items in one line · <b>?</b> unsure.</li>
+    <li><code>category</code>: one of the 13, or <b>other</b>. <code>group</code>: the same tag (G1, G2, …) on lines that are the same item.</li>
+    <li>Run <code>python src/labels.py compare</code>. It prints the agreement and lists every disagreement. Decide each one together and write down why.</li>
+    <li>Run <code>python src/labels.py finalise</code>. That writes the real answer key.</li>
+  </ol>
+  <h3>What the dev half already shows</h3>
+  <ul>
+    <li>64% of lines are real items, 14% join several items, 22% aren't items at all.</li>
+    <li><b>36% of real items fall outside our 13 categories</b> (drilling equipment, batteries, wire rope, pumps). The "other" path must still find their duplicates, sending them only to review.</li>
+    <li>32 same-item groups. Example: <code>Line Pipe, 4", Seamless, B/E, 12.66 PPF</code> = <code>Line Pipe 101.60 mm Seamless, B/E, 12.66 PPF</code>. 101.6 mm could be "4 inch" converted naively or the real width of a 3½-inch pipe. Only the weight (12.66 lb/ft) proves it's 4-inch.</li>
+    <li>Today's extractor names the category for 87% of items but reads two or more facts from only 3%. <b>Pipes: 0 of 77.</b></li>
+  </ul>
+</section>
+
+<!-- ================= 12 NUMBERS ================= -->
+<section class="flow">
+  <p class="num">Part 12</p>
+  <h2>Our numbers today</h2>
+  <p class="sub">Measured on our 100-record test data. These will change when we move to 15,000 records.</p>
+
+  <div class="stats">
+    <div><span class="n">1.00</span><span class="l">precision (no wrong merges)</span></div>
+    <div><span class="n">0.942</span><span class="l">recall (duplicates found)</span></div>
+    <div><span class="n">177</span><span class="l">pairs auto-merged</span></div>
+    <div><span class="n">0</span><span class="l">wrong merges · 0 traps broken</span></div>
+    <div><span class="n">282</span><span class="l">merges refused for safety</span></div>
+    <div><span class="n">100 → 16</span><span class="l">records → items (84% duplicates)</span></div>
+    <div><span class="n">0.971</span><span class="l">SKF vs FAG match score</span></div>
+    <div><span class="n">0.989</span><span class="l">SS316 vs SS304 text similarity, blocked</span></div>
+  </div>
+
+  <h3>Money</h3>
+  <div class="stats">
+    <div><span class="n">₹22.6 cr</span><span class="l">total spend in the test data</span></div>
+    <div><span class="n">₹1.79 cr</span><span class="l">saving if all buy at the best price</span></div>
+    <div><span class="n">₹0.72 cr</span><span class="l">realistic saving (40% captured)</span></div>
+    <div><span class="n">4 of 15</span><span class="l">price benchmarks hidden (fewer than 3 companies)</span></div>
+  </div>
+
+  <h3>Units</h3>
+  <p>10 spellings folded into 2 units. 15 of 16 items had unit conflicts, 12 of them <b>inside the
+  same company</b>. <code>MTS</code> flagged as risky: it can mean metres or metric tonnes.</p>
+
+  <div class="box warn">
+    <p class="t">How to talk about these numbers</p>
+    <p>Precision 1.00 on data we made ourselves means "we undid 100% of the mistakes we put in". A sharp
+    judge will say so. That is why the real-data numbers go <b>beside</b> the test numbers, even when
+    they are lower. A smaller real number is more believable, and showing it builds trust.</p>
+  </div>
+
+  <h3>What we can and cannot say</h3>
+  <div class="pair">
+    <div class="box good">
+      <p class="t">We can say</p>
+      <ul class="small" style="margin:0">
+        <li>Decisions are repeatable and explainable</li>
+        <li>Standards-aware across makers and writing styles</li>
+        <li>Duplicates stopped at creation, not only cleaned</li>
+        <li>Works inside one company on day one</li>
+        <li>Much less data exposure across companies</li>
+        <li>Tested on real Oil India and NTPC text too, both reported</li>
+        <li>Nothing trained, so nothing to retrain</li>
+      </ul>
+    </div>
+    <div class="box stop">
+      <p class="t">We must never say</p>
+      <ul class="small" style="margin:0">
+        <li>100% precision, or one blended number</li>
+        <li>Production or live accuracy</li>
+        <li>Live SAP integration</li>
+        <li>"Secure", "private", "encrypted"</li>
+        <li>That the real data is a material master</li>
+        <li>That we invented entity resolution</li>
+        <li>Any stock or inventory reduction figure</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 13 PLAN ================= -->
+<section class="newpage">
+  <p class="num">Part 13</p>
+  <h2>The plan: now to December</h2>
+  <p class="sub">Three days to the PPT, then three months to the finale.</p>
+
+  <h3>Before submission: 24 to 27 September</h3>
+  <table>
+    <tr><th style="width:14%">Day</th><th style="width:18%">Who</th><th>Task</th></tr>
+    <tr><td class="lbl" rowspan="4">Wed 24</td><td>Madhu</td><td>Fix real-text reading: NB / MM sizes, real grades, SMLS / ERW / GLV / BLK, add cable, fitting, plate, tube (6 hrs)</td></tr>
+    <tr><td>Yash</td><td>Blocking by category and key facts (2 hrs)</td></tr>
+    <tr><td>Rashmit</td><td>Several hundred near-miss traps; <code>tests/test_hard_negatives.py</code> (3 hrs)</td></tr>
+    <tr><td>Isha, Meghna</td><td>Label the 417 test lines separately, ~200 each today</td></tr>
+    <tr><td class="lbl" rowspan="5">Thu 25</td><td>Rashmit</td><td>Regenerate 15,000 records at 20% in real notation; run the full pipeline; <b>numbers frozen tonight</b></td></tr>
+    <tr><td>Madhu</td><td>Standards tables (~20 bearings, ~20 bolt equivalences); derive step</td></tr>
+    <tr><td>Isha, Meghna</td><td>Finish all 417; <code>compare</code>; decide disagreements together; <code>finalise</code></td></tr>
+    <tr><td>Aditya</td><td>UI shows the new numbers</td></tr>
+    <tr><td>Meghna</td><td>Honesty statement into the README</td></tr>
+    <tr><td class="lbl">Fri 26</td><td>Meghna, Madhu</td><td>Write the deck. Evening: whole team reads it aloud.</td></tr>
+    <tr><td class="lbl">Sat 27</td><td>Everyone</td><td>Export PDF. Submit. Touch nothing after.</td></tr>
+  </table>
+
+  <div class="pair">
+    <div class="box warn"><p class="t">If time runs out, drop in this order</p><p>1. Standards tables · 2. UNSPSC mapping updates · 3. UI updates</p></div>
+    <div class="box stop"><p class="t">Never drop</p><p>The real-text fix · blocking · labelling · the 15,000 records</p></div>
+  </div>
+
+  <h3>October to December</h3>
+  <ol class="steps">
+    <li>Self-check · counterfactual panel · evidence for every fact</li>
+    <li>Five relationship types including variants · the one-way substitute table</li>
+    <li>Governance: audit log, five actions, consent model, dispute flow</li>
+    <li>Staged migration pack · data-quality scorecard · plant scope</li>
+    <li>Full evaluation: three layers, locked test run once, four compared methods, proven error limit</li>
+    <li>Fusion order · review priority · random audit cards · prevented-duplicate counter</li>
+    <li>Collect more NTPC tenders → 3,000+ real lines; re-run the real test</li>
+    <li>Chained standards equivalence · pack-size maths</li>
+    <li>December: practice only. The demo must run identically three times in a row.</li>
+  </ol>
+
+  <div class="box warn">
+    <p class="t">The real danger is October</p>
+    <p>After submission there is a dead zone: the deck is done, the finale feels far away, exams
+    start. Most SIH teams lose here, not in December. Keep a weekly check-in, however small.
+    <b>Every change to the scorer, schemas or standards must pass the hard-negative tests before it is
+    merged.</b></p>
+  </div>
+</section>
+
+<!-- ================= 14 PPT + DEMO ================= -->
+<section class="flow">
+  <p class="num">Part 14</p>
+  <h2>The PPT and the 90-second demo</h2>
+  <p class="sub">Six slides maximum, submitted as a PDF on 27 September.</p>
+
+  <p>SIH judges score problem understanding, new ideas, feasibility, impact and completeness.
+  Problem understanding carries the most weight (about 30% by most guides). So we open on a real
+  government tender, not on our own data.</p>
+
+  <table>
+    <tr><th style="width:8%">#</th><th style="width:24%">Slide</th><th>What goes on it</th></tr>
+    <tr><td class="lbl">1</td><td class="lbl">Title</td><td>Team, problem statement, one line.</td></tr>
+    <tr><td class="lbl">2</td><td class="lbl">Proposed solution</td><td>The real NTPC tender: one pipe written three ways; SEAMLESS vs SMLS. Then the flip: one bearing, no shared words; different steels, almost all words shared. "We match on specifications, not spelling." Then the five features only we have.</td></tr>
+    <tr><td class="lbl">3</td><td class="lbl">Technical approach</td><td>The pipeline picture (covers capabilities 1, 2, 3, 4 and 7). "The AI reads; the rules decide." One screenshot.</td></tr>
+    <tr><td class="lbl">4</td><td class="lbl">Feasibility</td><td>Test and real numbers side by side. Runs offline on a laptop. Honest line about test data. "No company will share prices" → Phase 1 needs no sharing.</td></tr>
+    <tr><td class="lbl">5</td><td class="lbl">Impact</td><td>Savings from buying together · merges refused for safety · duplicates stopped at creation · a migration a company's SAP team can actually load.</td></tr>
+    <tr><td class="lbl">6</td><td class="lbl">References</td><td>UNSPSC · ISO 15 · ASME B36.10, B16.5 · IS 1367 (Part 3) / ISO 898-1 · ASTM F3125 · the Hugging Face dataset (credit required by its licence).</td></tr>
+  </table>
+
+  <h3>The 90-second demo</h3>
+  <table>
+    <tr><th style="width:12%">Seconds</th><th style="width:40%">Show</th><th>Say</th></tr>
+    <tr><td class="lbl">0–15</td><td>The real NTPC tender: one pipe, three spellings</td><td>"This is a real government document."</td></tr>
+    <tr><td class="lbl">15–30</td><td><code>6205</code> vs <code>25X52X15MM</code></td><td>"No shared words. The standard says they're the same bearing."</td></tr>
+    <tr><td class="lbl">30–45</td><td>SS316 vs SS304, text 0.989 → blocked</td><td>"Near-identical text. Grade is a veto."</td></tr>
+    <tr><td class="lbl">45–60</td><td>The counterfactual panel</td><td>"If the grade matched, this would score 0.94. One field decides."</td></tr>
+    <tr><td class="lbl">60–75</td><td>A record that contradicts itself</td><td>"It contradicts itself. Caught before it can match anything."</td></tr>
+    <tr><td class="lbl">75–90</td><td>Creation gate → NEW, and not these two</td><td>"It stops the mess coming back."</td></tr>
+  </table>
+  <p class="small">Scenes 2, 4 and 5 need features that are not built yet (derive, counterfactual, self-check).
+  Today's demo can already show scene 3 and the gate.</p>
+
+  <h3>Who owns what</h3>
+  <table>
+    <tr><td class="lbl">Madhu (lead)</td><td>Architecture, normaliser, spec reader, standards, canonicaliser</td></tr>
+    <tr><td class="lbl">Yash</td><td>Blocking, scorer, grouping</td></tr>
+    <tr><td class="lbl">Rashmit</td><td>Embeddings, evaluation, traps and tests, the 15,000-record run (owns the GPU machine)</td></tr>
+    <tr><td class="lbl">Aditya</td><td>Review screen, then dashboard</td></tr>
+    <tr><td class="lbl">Meghna</td><td>Deck, story, domain research, presenting; real-data labelling</td></tr>
+    <tr><td class="lbl">Isha</td><td>Data, demo operation; real-data labelling</td></tr>
+  </table>
+</section>
+
+<!-- ================= 15 GLOSSARY ================= -->
+<section class="flow">
+  <p class="num">Part 15</p>
+  <h2>Words you will hear</h2>
+  <p class="sub">Short meanings for every technical word in this project.</p>
+
+  <table>
+    <tr><td class="lbl">CPSE</td><td>Central Public Sector Enterprise: a government company (Oil India, NTPC, IOCL, CPCL…).</td></tr>
+    <tr><td class="lbl">Material master</td><td>A company's list of every item it buys and stocks.</td></tr>
+    <tr><td class="lbl">National Material Code (NMC)</td><td>The one code we give each real item, e.g. <code>NMC-31171500-000001</code>.</td></tr>
+    <tr><td class="lbl">Mapping table</td><td>The table that links each national code to each company's own code.</td></tr>
+    <tr><td class="lbl">Specification / attribute</td><td>A fact about an item: size, grade, pressure class, standard number.</td></tr>
+    <tr><td class="lbl">Extraction</td><td>Reading a messy line and pulling out its facts.</td></tr>
+    <tr><td class="lbl">Embedding</td><td>Text turned into a list of numbers, so similar lines sit close together. Used only to find candidates.</td></tr>
+    <tr><td class="lbl">Blocking</td><td>Comparing only records that could possibly match, instead of every pair.</td></tr>
+    <tr><td class="lbl">Veto / hard blocker</td><td>A critical fact that, if different, stops a match immediately.</td></tr>
+    <tr><td class="lbl">Grouping (union-find)</td><td>Joining matched pairs into groups: if A = B and B = C, then A, B and C are one item, but only if A and C also still look alike.</td></tr>
+    <tr><td class="lbl">Golden record</td><td>The one clean, best record made from all the duplicates of an item.</td></tr>
+    <tr><td class="lbl">UNSPSC</td><td>A world product catalogue with standard class numbers. We use it instead of inventing our own.</td></tr>
+    <tr><td class="lbl">NB / DN / NPS</td><td>Names for pipe sizes. "Name, not measurement": 15NB is a pipe about 21.3 mm across.</td></tr>
+    <tr><td class="lbl">Standard (ISO, ASME, IS, ASTM)</td><td>A published rule book. ISO 15 fixes bearing sizes; ASME B36.10 fixes pipe sizes.</td></tr>
+    <tr><td class="lbl">Supersession</td><td>When a standard is withdrawn and replaced (ASTM A325 → ASTM F3125 Grade A325).</td></tr>
+    <tr><td class="lbl">Counterfactual</td><td>"What would the score be if this one field matched?"</td></tr>
+    <tr><td class="lbl">Precision</td><td>Of the merges we made, how many were right. Our most important number.</td></tr>
+    <tr><td class="lbl">Recall</td><td>Of all real duplicates, how many we found.</td></tr>
+    <tr><td class="lbl">k-anonymity 3</td><td>Hide a price comparison if fewer than 3 companies buy the item, so nobody can work out another's price.</td></tr>
+    <tr><td class="lbl">Synthetic data</td><td>Test data we made ourselves, with a hidden answer key.</td></tr>
+    <tr><td class="lbl">Hold-out</td><td>Data kept aside only for testing. Ours is the real Oil India and NTPC lines.</td></tr>
+    <tr><td class="lbl">Near-miss trap</td><td>Two records that look alike but must never merge (SS304 vs SS316). Used to test safety.</td></tr>
+    <tr><td class="lbl">Registrar</td><td>The national body that issues national codes.</td></tr>
+  </table>
+
+  <div class="box key" style="margin-top:22px">
+    <p class="t">If you remember only three things</p>
+    <ol style="margin:0">
+      <li><b>We match on specifications, not spelling.</b> Words fool you; specs don't.</li>
+      <li><b>A national code links, it never edits.</b> Nobody's system changes; anyone can dispute.</li>
+      <li><b>Fix real-text reading first.</b> 21 of 902 is the number that decides everything else.</li>
+    </ol>
+  </div>
+</section>
+
+</main>
+</body>
+</html>

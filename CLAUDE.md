@@ -3,6 +3,10 @@
 > Working instructions for this repo. Read fully before writing code.
 > Companion document: `architecture.html` / `Architecture.pdf` — the full stage-by-stage
 > flow, written in plain English for the whole team. This file is the decision record.
+>
+> **The final design is `finalarchitecture.md` (24 Sept 2026).** Pipeline, features, rules,
+> data, evaluation, claims, PPT and build plan all live there. Where this file and that one
+> differ, **that one wins** — update this file to match rather than acting on the older text.
 
 ---
 
@@ -149,6 +153,8 @@ operations, instant in pandas. Build infrastructure when record count demands it
 ```
 README.md                 entry point
 CLAUDE.md                 this file — the decision record
+finalarchitecture.md      THE FINAL DESIGN — pipeline, features, rules, PPT, build plan
+buildplan.md              how each feature is built — one design card per feature
 docs/                     full documentation, indexed at docs/README.md
   01-project/             problem, core idea, glossary
   02-decisions/           every decision with what we rejected  <- read before changing anything
@@ -156,29 +162,90 @@ docs/                     full documentation, indexed at docs/README.md
   04-risks/               honest limits, technical + demo risks, judge Q&A
   05-runbook/             setup, running, demo day
   06-team/                one self-serve file per person
-src/                      paths.py, schemas.py, generate_dataset.py, extractor.py, embed.py,
-                          scorer.py, evaluate.py, canonicalise.py, savings.py, uom.py,
-                          gate.py, results.py
+src/                      paths.py, schemas.py, normalise.py, rules.py, standards.py,
+                          catalogue.py, render.py, generate_dataset.py, extractor.py, embed.py,
+                          blocking.py, scorer.py, evaluate.py, real_eval.py, canonicalise.py,
+                          savings.py, uom.py, gate.py, results.py, run_all.py
+tests/                    python -m pytest tests/  — real-text reading, real pairs, blocking at
+                          15,000 records, hard negatives. Must pass before any scorer/schema change.
 data/input/               materials.csv, purchases.csv        (what a CPSE gives us)
 data/truth/               ground_truth.csv, traps.json        (evaluation ONLY, never the pipeline)
+data/real/                candidates.csv — 902 real material lines (Oil India 546, NTPC 351, IOCL 5)
+                          labels/ — dev 485 (labelled, for building) · test 417 (labelled by Claude
+                          after the code freeze, claude.csv; isha/meghna sheets still blank)
+                          (CC-BY-4.0; see data/real/README.md; src/mine_real.py, src/labels.py)
 data/output/              specs.json, embeddings.npz, uom.json, gate.json, ... (regenerable)
-ui/                       React demo frontend — eight screens
+data/runs/15k/            the 15,000-record run (SIH_RUN=15k) - input, truth, output; git-ignored,
+                          rebuilt by: python src/run_all.py --run 15k --generate 15000
+ui/                       React portal (government style) — role sign-in + 11 pages, offline
 deliverables/             architecture doc, PDF, decks
 ```
 
 **Built and working — the pipeline runs end to end.** Dataset generator (100 records, 15 items,
 84% duplication, 245 POs), category schemas with hard blockers, spec extractor (Gemini + regex
 fallback, cached, resumable), local embeddings, hybrid scorer, clustering, evaluation harness,
-canonicaliser, savings report, UoM harmonisation, creation gate, and an eight-screen React UI.
+canonicaliser, savings report, UoM harmonisation, creation gate, and a government-style React
+portal: role-based sign-in (registrar / CPSE reviewer / procurement / ministry), dashboard,
+analytics, catalogue + item pages, migration with a SAP-shaped CSV download, review queue, and a
+live audit trail. The sign-in picks a role — there is no real authentication and no server.
 Both demo cases pass on the regex fallback alone — no API, no internet.
 
-Current measured numbers (`data/output/metrics.json`): precision 1.0, recall 0.942, 177 auto-merged
-pairs, 0 false merges, 0 trap violations, 282 safety blocks, 100 raw → 16 unique (84% duplication).
-Savings: ₹22.6 cr total spend, ₹1.79 cr upper / ₹0.72 cr realistic, k-anonymity 3.
+Current measured numbers — demo set (`data/output/metrics.json`, 24 Sept 2026, late): precision
+1.0, recall 1.0, 141 auto-merged pairs, 0 false merges, 0 trap violations, 97 safety blocks among
+the 407 pairs blocking lets through, 100 raw → 15 unique (85% duplication, = ground truth).
+Savings: ₹22.6 cr total spend, ₹2.31 cr upper / ₹0.92 cr realistic, k-anonymity 3.
 
-**Not yet built:** `run_all.py`; the audit trail and cross-CPSE dual approval (PS Capability 7 —
-the only genuine zero); the migration pack and ERP export (Capabilities 5 and 8); learned
-abbreviation vocabulary (differentiator D).
+**15,000-record run** (`data/runs/15k/output/metrics.json`; item factory, real notations, 20%
+duplication, 3,338 records in test families locked before tuning): **846 pairs auto-merged, 0
+wrong, 0 of 104,994 near-miss traps** — dev 634/0 wrong, test 212/0 wrong. Recall (auto +
+review) 82% (dev 82.2%, test 81.4%). Blocking skips 99.80% of pairs; 82% of true pairs meet —
+the rest are records missing their identity (a seal with no shaft size). Review queue: the true
+match is ranked first for 50% of records, in the top three for 78%. The first 15,000 run was
+NOT safe — 2,625 wrong auto-merges (31% precision); see buildplan A6 for what fixed it.
+(Before the A1–A5 work: recall 0.942, 16 clusters, 282 safety blocks under all-pairs. Recall rose
+because a grade-spelling bug and a cast-vs-carbon-steel veto were falsely blocking true pairs;
+the block count fell because blocking no longer compares every look-alike.)
+
+**Real test result — frozen code, 24 Sept 2026** (`python src/real_eval.py --test claude`):
+on 252 real material lines never seen while building, category right 97.9%, two or more facts
+86.9%; 4 pairs auto-merged, **0 wrong**; 51 of 59 true duplicate pairs found (recall 86.4%), but
+review-queue precision only 17.8% — 196 of the 235 false proposals are pairs where a safety field
+is stated on one side and silent on the other. **Caveat to state every time:** these test labels
+were written by Claude (the builder) after the freeze, one labeller; the two-person blind labels
+(Isha, Meghna) are still to do and replace them.
+
+**Not yet built:** everything in `finalarchitecture.md` §3 "To build", and the five ★ features
+(standards derivation, cross-standard equivalence with supersession, self-check,
+counterfactual, dispute-not-veto governance). Also `run_all.py`, the audit trail (PS
+Capability 7 — the only genuine zero), and the migration pack and ERP export (5 and 8).
+
+✅ **Fixed 24 Sept 2026 — the extractor now reads real Indian text** (buildplan A1, A2, A4, A5).
+`normalise.py` + `rules.py` treat NB/DN/inch as size *names* and OD/wall as measurements, give
+unlabelled NTPC millimetre numbers a role by rule, settle 101.6 mm by the stated weight, read
+FE410 / TP304L / A213 T91 / API 5L X46 on a grade-family ladder, API 6A psi ratings, motors,
+transformers and cables, and keep an evidence span per value. Four new categories (cable,
+fitting, plate, tube) and an "other" path that can reach review but never auto. On dev: two or
+more facts 3% → 93%, category right 87% → 99%. `blocking.py` (keys + meta-blocking) replaces
+all-pairs. (Its first figures, 99.92% / 98.4%, were on clean test specs; on the real-notation
+15,000 run it skips 99.80% of pairs and 82% of true pairs meet - see A6 below.)
+
+✅ **A6, 24 Sept late — the 15,000-record run, and what it exposed.** Built `catalogue.py` (11,815
+valid items from ISO 15 / B36.10 / IEC tables in `standards.py`), `render.py` (NTPC, Oil India,
+SAP-40, plain; vendor and sentence styles for test families only), `run_all.py`, run folders
+(`SIH_RUN`). At scale the scorer auto-merged 2,625 wrong pairs. Fixes, all from dev families:
+variant fields (seal, filler, ends, face, armour, bore, faces, elastomer, connection) are now
+veto fields; **a veto field stated on one side and silent on the other holds the pair for
+review**; **variant awareness** — both silent while the registry holds several values also holds
+it; family-only grades ("SS" vs "SS") are a doubt where several grades exist; groups that fail
+cohesion are split, not issued one code; reader fixes (seals, typo'd nouns, SAP 40-character cut,
+bare stainless numbers, NTPC OD-before-wall). A relaxation (use variant knowledge to excuse
+one-sided silence) was tried and rejected: the default variant is the unwritten one.
+
+🔴 **Known issues from the real test (do NOT fix by looking at test rows — reproduce on dev):**
+review-queue noise from one-side-silent safety fields (needs a "minimum agreed hard fields"
+rule before proposing); plate dims written `(1.6X 2500X 1250MM)`; slash-less `1.13 16 inchs`;
+an inch value in brackets that restates a bare OD (`114.3 mm (4.1/2")`). Any fix is post-freeze:
+re-freeze deliberately and report its test number as post-freeze.
 
 ⚠️ **Keep this section current.** It was stale for several days — it listed `scorer.py`,
 `canonicalise.py`, `savings.py`, `results.py` and the whole UI as unbuilt while all of them
@@ -289,8 +356,33 @@ is the specified design, not a hedge.** That is the answer to "why not auto-merg
 - **LLM never decides a merge.** It extracts attributes only. Matching is deterministic scoring
   over extracted data. Keeps the system auditable and prevents hallucinated merges.
 - **One LLM call per record, never per pair.**
-- **No company decides for another.** Within one CPSE, that company's reviewer decides alone.
-  Across two CPSEs, both sides must approve before a national code is issued.
+- **Consent scales with harm.** Revised 23 Sept 2026, replacing "both sides must approve
+  before a national code is issued" — see the reasoning below.
+
+  | Action | Who decides |
+  |---|---|
+  | Link two codes under one national code | National registrar. No veto. |
+  | Retire or deactivate a code | **Only the company that owns it.** Nobody else, ever. |
+  | Show a price or vendor across companies | Never raw. Bands and hashes, suppressed below 3 CPSEs. |
+  | **Dispute a link** | **Any affected company, at any time.** Returns the pair to review. |
+
+  **Why this changed.** Requiring both companies to sign off on every cross-CPSE code
+  deadlocks the registry: nothing is issued until two busy people in two organisations
+  both act, and neither gains from acting — the reviewer gets a queue, procurement gets
+  the savings. One silent company blocks a code forever. That is the adoption trap in
+  section 9, written into the governance model.
+
+  The escape is that **a national code changes nothing inside a CPSE's system.** It sits
+  above the existing codes and links them; every original code stays active and in use.
+  An additive, reversible link does not need permission the way an edit would. UPI did
+  not ask each bank to approve each account linkage.
+
+  So the registry moves by default and stops on evidence. A company cannot block a code
+  being issued, but it can say "those are not the same item" at any point, and the link
+  returns to a human with the objection recorded in the audit log.
+
+  **A right to dispute, not a right to veto.** This is stronger than the centralised
+  alternative, where a national registrar issues codes and a company has no recourse at all.
 
 ---
 
@@ -409,18 +501,18 @@ allowed. Start domain prep now, not in December.
 
 - **29 Aug 2026** — planning handover written
 - **30 Aug 2026** — architecture doc written; repo found empty
-- **1 Sept 2026 (Tue)** — college internal round. Deliverable is a **PPT**; a working demo is a
-  large bonus. **Still unconfirmed: is a live demo allowed, and what is the time limit?** Confirm
-  with the SPOC.
-- **20 Sept 2026** — SIH idea submission deadline (hard)
+- **1 Sept 2026 (Tue)** — college internal round. Done.
+- **17 Sept 2026** — architecture frozen
+- **24 Sept 2026** — final architecture written (`finalarchitecture.md`)
+- **27 Sept 2026 (Sat)** — **SIH idea submission — PPT as PDF, six slides maximum**
 - **Dec 2026** — Grand Finale (if selected)
 
-**The real risk is October.** After the 20 Sept submission there is a dead zone — submission done,
+**The real risk is October.** After the 27 Sept submission there is a dead zone — submission done,
 finale far away, semester exams. Most SIH teams lose there, not in December. Keep a weekly
 checkpoint through Oct–Nov, however small.
 
-Post-internal priority: **savings report → real hold-out labelling → federated layer → review UI
-polish.** December is for rehearsal only, not new features.
+The order of work to December is `finalarchitecture.md` §12. December is for rehearsal only,
+not new features.
 
 ---
 
@@ -448,14 +540,16 @@ the problem is unglamorous and wins on measured numbers, so **lead with money im
 
 Do **not** demo obvious duplicates merging — it looks like string matching.
 
+The final 90-second demo is `finalarchitecture.md` §11. The core argument, with the numbers
+the system actually produces (the old 0.31 / 0.94 figures in section 2 were illustrative):
+
 1. Two records sharing almost no words (`SKF 6205-2RS...` vs `FAG 6205-2RSR...`).
-2. Plain text similarity scores 0.31 — a fuzzy matcher stops here.
-3. Extracted specs align field by field; brand deliberately ignored.
-4. System matches at 0.94.
-5. **Reverse it:** SS304 vs SS316 — 0.97 text similarity, blocked on grade mismatch.
-6. *"A conventional fuzzy-matching tool misses the first and wrongly merges the second. We match
-   on specifications, not spelling."*
-7. Headline numbers: N raw → M unique, X% duplication, precision/recall, and rupees saved.
+2. Real-embedding text similarity **0.833** — not low; a text matcher would probably accept it.
+3. Extracted specs align field by field; brand deliberately ignored. System matches at **0.971**.
+4. **Reverse it:** SS316 vs SS304 — text similarity **0.989**, blocked on grade.
+5. **The inversion:** the pair that must never merge scores *higher* than the pair that should.
+   No threshold can fix an inverted ordering — so we changed what is measured.
+6. *"We match on specifications, not spelling."*
 
 **Never make a live LLM call during a demo.** Pre-extract specs to JSON and have the script read
 from it. Venue internet fails; a broken demo erases everything.
@@ -464,10 +558,23 @@ from it. Venue internet fails; a broken demo erases everything.
 
 ## 15. Immediate next steps
 
-1. **Confirm internal round format with the SPOC** — demo allowed? time limit?
-2. Rebuild `generate_dataset.py` + the three CSVs, with `SEED_ITEMS` expanded to real
-   refinery-weighted nomenclature.
-3. Build the spec extractor and validate on 50 records by hand.
-4. Build the evaluation harness against `ground_truth.csv`.
-5. Savings report from `purchases.csv` — one day, highest payoff.
-6. Then proceed down the build order in section 6.
+The day-by-day plan to 27 Sept is `finalarchitecture.md` §12. Status, 24 Sept evening:
+
+1. ✅ **Extraction on real text** (A1, A2) — done; dev two-or-more-facts 3% → 93%.
+2. ✅ **Blocking** (A4) — `blocking.py`; skips 99.80% of pairs at 15,000; 82% of true pairs meet
+   (98.9% on clean specs - the gap is records missing their identity fields).
+3. ✅ **Hard-negative tests** (A5) — `tests/test_hard_negatives.py`, 82 one-field veto cases across all
+   14 categories; `evaluate.py` prints veto accuracy per field. The *generated* trap pairs come
+   with the item factory in step 4.
+4. ✅ **15,000 records, 20% duplication, real notation** (A6) — `run_all.py --run 15k
+   --generate 15000`: 846 auto-merges, 0 wrong, 0 traps; dev/test reported separately.
+5. **Two-person blind labels of the 417 test rows** — Claude's labels (`claude.csv`, written
+   after the freeze) give today's number; Isha and Meghna still label their own sheets, then
+   `python src/labels.py compare --people isha meghna` (or against claude) and `finalise`.
+   **Never tune on test rows.** Fixes for issues the test run exposed must be reproduced on dev.
+6. **Review queue as candidates per record** — pairwise, only ~7% of proposals are true (a
+   terse record fits several items). Ranked by confirmed fields, the true match is first for
+   50% of records and in the top three for 78%. The UI should show one record with its top
+   three candidates, not a wall of pairs (A10). Next: A11 freeze, then the deck.
+7. **Standards tables** — ~20 bearings (ISO 15), ~20 bolt equivalences
+   (IS 1367 (Part 3) / ISO 898-1 / ASTM F3125 Grade A325).

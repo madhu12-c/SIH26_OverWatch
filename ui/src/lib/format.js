@@ -14,6 +14,17 @@ export function rupeesExact(amount) {
   return '₹' + Number(amount).toLocaleString('en-IN', { maximumFractionDigits: 0 })
 }
 
+// "2026-09-24" -> "24 September 2026", the way Indian government pages write
+// a "Last updated" date. Parsed by hand: new Date('2026-09-24') is UTC
+// midnight and can print as the 23rd in a western time zone.
+export function longDate(iso) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso || '')
+  if (!m) return iso || '—'
+  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
+                  'August', 'September', 'October', 'November', 'December']
+  return `${Number(m[3])} ${months[Number(m[2]) - 1]} ${m[1]}`
+}
+
 export function pct(value, digits = 1) {
   if (value == null) return '—'
   return `${(Number(value) * 100).toFixed(digits)}%`
@@ -35,6 +46,21 @@ export function spec(value) {
 
 export function fieldLabel(name) {
   return String(name).replace(/_/g, ' ')
+}
+
+// Field names as a refinery person says them, not as the code stores them.
+const PRETTY = {
+  iso_designation: 'ISO designation', bore_mm: 'Bore (mm)', od_mm: 'Outside diameter (mm)',
+  width_mm: 'Width (mm)', nominal_size_in: 'Nominal size (in)', pressure_class: 'Pressure class',
+  material_grade: 'Material grade', body_material: 'Body material', end_connection: 'End connection',
+  sub_type: 'Type', seal_type: 'Seal', gasket_type: 'Gasket type', valve_type: 'Valve type',
+  part_number: 'Maker part number', length_mm: 'Length (mm)', shaft_dia_mm: 'Shaft diameter (mm)',
+  dial_size_mm: 'Dial size (mm)', range_min: 'Range from', range_max: 'Range to', power_hp: 'Power (hp)',
+  speed_rpm: 'Speed (rpm)', voltage_v: 'Voltage (V)', wetted_material: 'Wetted material',
+}
+export function prettyField(name) {
+  const s = PRETTY[name] ?? fieldLabel(name)
+  return s.charAt(0).toUpperCase() + s.slice(1)
 }
 
 // Score bands mirror scorer.py exactly. If those thresholds move, move these.

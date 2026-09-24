@@ -23,7 +23,7 @@
    "brand": 0.6,
    "part_number": 0.65
   },
-  "confidence": 0.913,
+  "confidence": 0.907,
   "band": "auto",
   "member_count": 10,
   "cpse_count": 4,
@@ -235,7 +235,7 @@
    "brand": 0.61,
    "part_number": 0.61
   },
-  "confidence": 0.624,
+  "confidence": 0.889,
   "band": "review",
   "member_count": 9,
   "cpse_count": 5,
@@ -338,7 +338,7 @@
    "brand": 0.4,
    "part_number": 0.39
   },
-  "confidence": 0.915,
+  "confidence": 0.956,
   "band": "auto",
   "member_count": 8,
   "cpse_count": 2,
@@ -616,8 +616,8 @@
    "standard": 1.0,
    "part_number": 1.0
   },
-  "confidence": 0.745,
-  "band": "review",
+  "confidence": 0.931,
+  "band": "auto",
   "member_count": 7,
   "cpse_count": 3,
   "cpses": [
@@ -701,7 +701,7 @@
    "elastomer": 1.0,
    "part_number": 0.68
   },
-  "confidence": 0.923,
+  "confidence": 0.901,
   "band": "auto",
   "member_count": 7,
   "cpse_count": 2,
@@ -787,7 +787,7 @@
    "brand": 0.75,
    "part_number": 0.51
   },
-  "confidence": 0.975,
+  "confidence": 0.949,
   "band": "auto",
   "member_count": 6,
   "cpse_count": 3,
@@ -865,7 +865,7 @@
    "brand": 0.63,
    "part_number": 0.53
   },
-  "confidence": 0.883,
+  "confidence": 0.893,
   "band": "review",
   "member_count": 6,
   "cpse_count": 5,
@@ -949,7 +949,7 @@
    "brand": 0.68,
    "part_number": 1.0
   },
-  "confidence": 0.932,
+  "confidence": 0.924,
   "band": "auto",
   "member_count": 6,
   "cpse_count": 4,
@@ -1028,7 +1028,7 @@
    "part_number": 0.68,
    "filler": 1.0
   },
-  "confidence": 0.918,
+  "confidence": 0.903,
   "band": "auto",
   "member_count": 5,
   "cpse_count": 3,
@@ -1101,8 +1101,8 @@
    "bore_type": 1.0,
    "part_number": 0.66
   },
-  "confidence": 0.905,
-  "band": "auto",
+  "confidence": 0.893,
+  "band": "review",
   "member_count": 5,
   "cpse_count": 5,
   "cpses": [
@@ -1174,7 +1174,7 @@
    "part_number": 1.0,
    "brand": 1.0
   },
-  "confidence": 0.955,
+  "confidence": 0.97,
   "band": "auto",
   "member_count": 4,
   "cpse_count": 2,
@@ -1225,22 +1225,23 @@
    "pressure_class": "300#",
    "body_material": "CARBON_STEEL",
    "brand": "AUDCO",
-   "part_number": "V-6-300-CS"
+   "part_number": "GV-6-300-CS"
   },
   "field_agreement": {
    "valve_type": 1.0,
    "nominal_size_in": 1.0,
    "pressure_class": 1.0,
-   "body_material": 1.0,
-   "brand": 0.51,
-   "part_number": 0.5
+   "body_material": 0.64,
+   "brand": 0.68,
+   "part_number": 0.67
   },
-  "confidence": 0.952,
-  "band": "auto",
-  "member_count": 2,
-  "cpse_count": 2,
+  "confidence": 0.89,
+  "band": "review",
+  "member_count": 3,
+  "cpse_count": 3,
   "cpses": [
    "BPCL",
+   "GAIL",
    "ONGC"
   ],
   "members": [
@@ -1252,50 +1253,18 @@
     "uom": "NO"
    },
    {
-    "record_id": "R00052",
-    "cpse": "ONGC",
-    "source_code": "5001337",
-    "description": "VALVE GATE CS BODY 300# 6IN BDK GV-6-300-CS",
-    "uom": "PC"
-   }
-  ]
- },
- {
-  "national_code": "NMC-40141600-000004",
-  "category": "valve",
-  "unspsc": "40141600",
-  "unspsc_name": "Valves",
-  "std_description": "VALVE, GATE, 6 IN, 300#, CAST STEEL",
-  "attributes": {
-   "valve_type": "GATE",
-   "nominal_size_in": 6.0,
-   "pressure_class": "300#",
-   "body_material": "CAST_STEEL",
-   "brand": "AUDCO",
-   "part_number": "GV-6-300-CS"
-  },
-  "field_agreement": {
-   "valve_type": 1.0,
-   "nominal_size_in": 1.0,
-   "pressure_class": 1.0,
-   "body_material": 1.0,
-   "brand": 1.0,
-   "part_number": 1.0
-  },
-  "confidence": 1.0,
-  "band": "single",
-  "member_count": 1,
-  "cpse_count": 1,
-  "cpses": [
-   "GAIL"
-  ],
-  "members": [
-   {
     "record_id": "R00051",
     "cpse": "GAIL",
     "source_code": "G/001526",
     "description": "VALVE GATE 6IN 300# CAST STEEL BODY AUDCO GV-6-300-CS",
     "uom": "EACH"
+   },
+   {
+    "record_id": "R00052",
+    "cpse": "ONGC",
+    "source_code": "5001337",
+    "description": "VALVE GATE CS BODY 300# 6IN BDK GV-6-300-CS",
+    "uom": "PC"
    }
   ]
  }

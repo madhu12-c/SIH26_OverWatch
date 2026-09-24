@@ -25,8 +25,8 @@
    "R00021"
   ],
   "band": "auto",
-  "confidence": 0.918,
-  "cohesion": 0.918,
+  "confidence": 0.903,
+  "cohesion": 0.903,
   "weakest_pair": 0.89
  },
  {
@@ -43,8 +43,8 @@
    "R00030"
   ],
   "band": "auto",
-  "confidence": 0.913,
-  "cohesion": 0.913,
+  "confidence": 0.907,
+  "cohesion": 0.907,
   "weakest_pair": 0.835
  },
  {
@@ -57,9 +57,9 @@
    "R00017"
   ],
   "band": "auto",
-  "confidence": 0.975,
-  "cohesion": 0.975,
-  "weakest_pair": 0.963
+  "confidence": 0.949,
+  "cohesion": 0.949,
+  "weakest_pair": 0.89
  },
  {
   "members": [
@@ -71,9 +71,9 @@
    "R00036"
   ],
   "band": "review",
-  "confidence": 0.883,
-  "cohesion": 0.883,
-  "weakest_pair": 0.811
+  "confidence": 0.893,
+  "cohesion": 0.893,
+  "weakest_pair": 0.843
  },
  {
   "members": [
@@ -83,9 +83,9 @@
    "R00040"
   ],
   "band": "auto",
-  "confidence": 0.955,
-  "cohesion": 0.955,
-  "weakest_pair": 0.94
+  "confidence": 0.97,
+  "cohesion": 0.97,
+  "weakest_pair": 0.96
  },
  {
   "members": [
@@ -100,27 +100,20 @@
    "R00049"
   ],
   "band": "review",
-  "confidence": 0.624,
-  "cohesion": 0.624,
-  "weakest_pair": 0.0
+  "confidence": 0.889,
+  "cohesion": 0.889,
+  "weakest_pair": 0.875
  },
  {
   "members": [
    "R00050",
+   "R00051",
    "R00052"
   ],
-  "band": "auto",
-  "confidence": 0.952,
-  "cohesion": 0.952,
-  "weakest_pair": 0.952
- },
- {
-  "members": [
-   "R00051"
-  ],
-  "band": "single",
-  "confidence": 1.0,
-  "cohesion": 1.0
+  "band": "review",
+  "confidence": 0.89,
+  "cohesion": 0.89,
+  "weakest_pair": 0.89
  },
  {
   "members": [
@@ -130,9 +123,9 @@
    "R00056",
    "R00057"
   ],
-  "band": "auto",
-  "confidence": 0.905,
-  "cohesion": 0.905,
+  "band": "review",
+  "confidence": 0.893,
+  "cohesion": 0.893,
   "weakest_pair": 0.865
  },
  {
@@ -160,10 +153,10 @@
    "R00070",
    "R00071"
   ],
-  "band": "review",
-  "confidence": 0.745,
-  "cohesion": 0.745,
-  "weakest_pair": 0.0
+  "band": "auto",
+  "confidence": 0.931,
+  "cohesion": 0.931,
+  "weakest_pair": 0.89
  },
  {
   "members": [
@@ -177,8 +170,8 @@
    "R00079"
   ],
   "band": "auto",
-  "confidence": 0.915,
-  "cohesion": 0.915,
+  "confidence": 0.956,
+  "cohesion": 0.956,
   "weakest_pair": 0.89
  },
  {
@@ -192,8 +185,8 @@
    "R00086"
   ],
   "band": "auto",
-  "confidence": 0.923,
-  "cohesion": 0.923,
+  "confidence": 0.901,
+  "cohesion": 0.901,
   "weakest_pair": 0.853
  },
  {
@@ -206,8 +199,8 @@
    "R00092"
   ],
   "band": "auto",
-  "confidence": 0.932,
-  "cohesion": 0.932,
+  "confidence": 0.924,
+  "cohesion": 0.924,
   "weakest_pair": 0.89
  },
  {

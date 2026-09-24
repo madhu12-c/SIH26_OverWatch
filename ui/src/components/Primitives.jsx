@@ -1,5 +1,7 @@
 import { motion, useMotionValue, animate, useReducedMotion } from 'framer-motion'
 import { useEffect, useState } from 'react'
+import { usePage, SECTION } from '../lib/page'
+import { Icon } from './Icons'
 
 /* Animated number. Digits are tabular so they do not jitter while counting.
  *
@@ -122,12 +124,39 @@ export function RecordCard({ rec, accent = 'accent', children }) {
   )
 }
 
-export function SectionTitle({ eyebrow, title, sub }) {
+/* Page heading: a banner in the colour of the page's section (see
+   lib/page.js), with the section's icon. Navy for Overview, teal for
+   Registry, maroon for Matching, saffron for Procurement, green for
+   Governance - so each part of the portal is recognisable at a glance,
+   the way a ministry site colours its departments. */
+export function SectionTitle({ eyebrow, title, sub, children }) {
+  const page = usePage()
+  const tone = page?.tone ? { bg: page.tone } : SECTION[page?.group] ?? SECTION.Overview
   return (
-    <div className="mb-5">
-      {eyebrow && <p className="label text-accent mb-2">{eyebrow}</p>}
-      <h2 className="text-[23px] font-semibold tracking-tight leading-tight text-ink">{title}</h2>
-      {sub && <p className="mt-1.5 text-[14px] text-ink-dim max-w-2xl leading-relaxed">{sub}</p>}
+    <div className={`relative overflow-hidden rounded-xl ${tone.bg} text-white mb-6 shadow-card`}>
+      <div className="jaali absolute inset-0" aria-hidden="true" />
+      {page?.icon && (
+        <Icon name={page.icon} size={150} strokeWidth={1}
+              className="absolute -right-4 -bottom-8 text-white/[0.09] hidden sm:block" aria-hidden="true" />
+      )}
+      <span className="absolute inset-y-0 left-0 w-1.5 bg-saffron" aria-hidden="true" />
+      <div className="relative px-6 py-5 flex flex-wrap items-end gap-4">
+        <div className="min-w-0 flex-1">
+          <p className="flex items-center gap-2 text-[11.5px] font-bold uppercase tracking-[0.08em] text-white/80 mb-1.5">
+            {page?.icon && (
+              <span className="w-6 h-6 rounded bg-white/15 flex items-center justify-center">
+                <Icon name={page.icon} size={14} />
+              </span>
+            )}
+            {page?.group && <span>{page.group}</span>}
+            {page?.group && eyebrow && <span className="text-white/45">·</span>}
+            {eyebrow && <span>{eyebrow}</span>}
+          </p>
+          <h1 className="text-[23px] sm:text-[25px] font-bold tracking-tight leading-tight">{title}</h1>
+          {sub && <p className="mt-2 text-[14px] text-white/85 max-w-2xl leading-relaxed">{sub}</p>}
+        </div>
+        {children && <div className="shrink-0">{children}</div>}
+      </div>
     </div>
   )
 }

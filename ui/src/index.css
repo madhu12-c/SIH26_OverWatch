@@ -1,11 +1,79 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+Devanagari:wght@500;600;700&family=Noto+Sans:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Colour tokens, as bare RGB channels so Tailwind's opacity modifiers work.
+ * With no internet the Google Fonts request fails and the stack falls back to
+ * Segoe UI / Nirmala UI, which Windows ships - the demo still reads correctly.
+ */
 @layer base {
-  :root { color-scheme: light; }
+  :root {
+    color-scheme: light;
+    --ink: 22 32 46;            /* #16202E */
+    --ink-dim: 71 84 103;       /* #475467 */
+    --ink-faint: 102 112 133;   /* #667085 */
+    --base: 243 245 249;        /* #F3F5F9  page ground */
+    --base-card: 255 255 255;
+    --base-raised: 235 239 245; /* #EBEFF5 */
+    --line: 211 219 230;        /* #D3DBE6 */
+    --line-soft: 229 234 241;   /* #E5EAF1 */
+    --accent: 15 76 156;        /* #0F4C9C  links, active states */
+    --accent-dim: 230 238 248;  /* #E6EEF8 */
+    --good: 11 110 58;          /* #0B6E3A */
+    --good-bg: 229 243 234;
+    --danger: 180 35 24;        /* #B42318 */
+    --danger-bg: 253 236 234;
+    --warn: 138 83 0;           /* #8A5300 */
+    --warn-bg: 253 241 220;
+    --gov: 10 42 94;            /* #0A2A5E  menu bar, hero */
+    --gov-deep: 6 28 64;        /* #061C40  utility bar, footer */
+    --gov-soft: 22 64 128;      /* #164080  active menu item */
+    --saffron: 255 153 51;      /* #FF9933  decoration only */
+    --saffron-ink: 160 78 0;    /* #A04E00  saffron that can carry text */
+    --saffron-bg: 255 244 230;  /* #FFF4E6 */
+    --flag-green: 19 136 8;     /* #138808  decoration only */
+    --teal: 14 94 111;          /* #0E5E6F  Registry section banner */
+    --maroon: 122 31 61;        /* #7A1F3D  Matching section, ministry role */
+    --heading: 10 42 94;        /* navy page titles */
+    --on-accent: 255 255 255;
+    --zoom: 1;
+  }
+
+  /* High contrast - black ground, white text, yellow for anything active.
+     The GIGW control in the top bar toggles this class on <html>. */
+  html.hc {
+    color-scheme: dark;
+    --ink: 255 255 255;
+    --ink-dim: 235 235 235;
+    --ink-faint: 205 205 205;
+    --base: 0 0 0;
+    --base-card: 10 10 10;
+    --base-raised: 30 30 30;
+    --line: 150 150 150;
+    --line-soft: 85 85 85;
+    --accent: 255 214 0;
+    --accent-dim: 45 40 0;
+    --good: 120 255 160;
+    --good-bg: 0 40 14;
+    --danger: 255 128 118;
+    --danger-bg: 55 0 0;
+    --warn: 255 205 90;
+    --warn-bg: 45 32 0;
+    --gov: 0 0 0;
+    --gov-deep: 0 0 0;
+    --gov-soft: 40 40 40;
+    --saffron: 255 176 70;
+    --saffron-ink: 255 205 130;
+    --saffron-bg: 25 16 0;
+    --flag-green: 120 220 110;
+    --teal: 0 0 0;
+    --maroon: 0 0 0;
+    --heading: 255 255 255;
+    --on-accent: 0 0 0;
+  }
 
   html, body, #root { height: 100%; }
 
@@ -14,28 +82,39 @@
     margin: 0;
   }
 
-  /* Digits that sit in columns must not jitter as they animate. */
+  /* A- / A / A+ in the top bar. Sizes across the screens are set in pixels,
+     so scaling the root font-size would change nothing - zoom scales the
+     whole page, text and spacing together, the way the browser's own zoom
+     does. */
+  .page { zoom: var(--zoom); }
+
   .tnum { font-variant-numeric: tabular-nums; }
 
-  ::selection { background: #D6E4F5; }
+  ::selection { background: rgb(var(--accent) / 0.18); }
 
   *:focus-visible {
-    outline: 2px solid theme('colors.accent.DEFAULT');
+    outline: 3px solid rgb(var(--saffron));
     outline-offset: 2px;
-    border-radius: 4px;
+    border-radius: 2px;
   }
+
+  /* The first thing a keyboard or screen-reader user reaches. Hidden until
+     focused, then it sits on top of everything. */
+  .skip-link {
+    position: absolute; left: 8px; top: -60px; z-index: 50;
+    background: rgb(var(--saffron)); color: #061C40;
+    padding: 8px 14px; font-weight: 700; font-size: 13px;
+    border-radius: 3px; transition: top .15s;
+  }
+  .skip-link:focus { top: 8px; }
+
 }
 
 @layer components {
-  /* The card is the whole visual language of this build. On a light ground a
-     border alone reads as flat, so every card carries a small shadow - that
-     is what separates a surface from a box drawn on the page. */
   .card {
     @apply bg-base-card border border-line rounded-xl shadow-card;
   }
 
-  /* Cards a person can act on lift on hover. Cards that only display do not -
-     movement that leads nowhere is noise. */
   .card-lift {
     @apply transition-shadow duration-200;
   }
@@ -43,38 +122,63 @@
     @apply shadow-lift;
   }
 
-  /* Small caps label. Used for every section eyebrow and table head so the
-     hierarchy is carried by weight and tracking rather than by size alone. */
   .label {
     @apply font-sans text-[10.5px] font-semibold tracking-[0.09em] uppercase text-ink-faint;
   }
 
   .chip {
-    @apply inline-flex items-center gap-1.5 px-2.5 py-[3px] rounded-full
+    @apply inline-flex items-center gap-1.5 px-2 py-[3px] rounded
            text-[10.5px] font-semibold tracking-[0.05em] uppercase
            border;
   }
 
-  /* A quiet inset surface - meter tracks, code samples, table zebra. */
   .well {
     @apply bg-base-raised border border-line-soft rounded-lg;
   }
+
+  /* The three bands of the flag, as a hairline. Colour only - never the flag
+     itself, and never with a chakra: that would be a national symbol. */
+  .tricolour {
+    background: linear-gradient(90deg,
+      rgb(var(--saffron)) 0 33.33%, #FFFFFF 33.33% 66.66%, rgb(var(--flag-green)) 66.66% 100%);
+  }
+
+  /* A faint lattice on navy panels - the jaali screen of Indian public
+     buildings, drawn as a CSS pattern so it costs no image. */
+  .jaali {
+    background-image:
+      radial-gradient(circle at 1px 1px, rgb(255 255 255 / 0.07) 1px, transparent 0);
+    background-size: 14px 14px;
+  }
 }
 
-/* Wide content scrolls inside its own container - the page body never
-   scrolls sideways. */
+/* "What's new" ticker. Moving content must be pausable (GIGW); it pauses on
+   hover, on focus, and from its own button. Reduced motion never starts it. */
+.ticker-track {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: ticker 55s linear infinite;
+}
+.ticker:hover .ticker-track,
+.ticker:focus-within .ticker-track,
+.ticker-track.paused { animation-play-state: paused; }
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
 .scroll-x { overflow-x: auto; scrollbar-width: thin; }
 .scroll-x::-webkit-scrollbar { height: 9px; }
 .scroll-x::-webkit-scrollbar-track { background: transparent; }
 .scroll-x::-webkit-scrollbar-thumb {
-  background: #CFD8DF; border-radius: 5px; border: 2px solid transparent;
+  background: rgb(var(--line)); border-radius: 5px; border: 2px solid transparent;
   background-clip: padding-box;
 }
-.scroll-x::-webkit-scrollbar-thumb:hover { background: #B8C4CD; background-clip: padding-box; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
 }
