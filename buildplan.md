@@ -32,7 +32,11 @@ done, who owns it and what it waits on.
 | Tests | **256 pass** — real reading, real pairs, blocking at 15,000, 82 one-field veto cases | `python -m pytest tests/` |
 
 **Done 24 Sept evening:** A1, A2, A4, A5 (tests; generated traps come with A6), and a first
-A9 (`real_eval.py --test`). **Done 24 Sept late: A6** — see the A6 card's status. The one weak real number is review precision: 196 of 235 false
+A9 (`real_eval.py --test`). **Done 24 Sept late: A6** — see the A6 card's status.
+**Done 24 Sept night, pulled forward from Phase B/C:** C2 error bound (auto-merge error < 0.35%
+with 95% confidence at 15,000) and B2 counterfactual (stored on every blocked pair and on review
+pairs held only by an unconfirmed field; shown on the Block screen). All work committed on
+branch `feat/real-text-15k-run`. The one weak real number is review precision: 196 of 235 false
 proposals are pairs where a safety field is stated on one side and silent on the other — see §7.
 
 Dev numbers are **never** reported as results. They're what we build against. The
@@ -57,6 +61,25 @@ A10 UI                  (reads whatever A11 froze)
 ---
 
 ## 2. Day by day to submission
+
+**Revised 24 Sept night.** A1–A6 finished a day early, so the spare time goes on what the demo
+and slides need, instead of leaving it for October:
+
+| When | What | Who |
+|---|---|---|
+| Wed night | ✅ branch saved · ✅ C2 error bound · ✅ B2 what-if line | Claude |
+| Thu 25 | C1 baselines (fuzzy, TF-IDF, embedding vs ours, same pairs) · B1 self-check · A10 "Real text" page + review queue as one record with its top 3 · B3 bolt equivalences | Claude |
+| Thu 25 | Label the 417 test rows, separately | Isha, Meghna |
+| Thu 25 | Slides 1, 2, 3, 6 | Madhu, Meghna |
+| Fri 26 morning | B5 audit upgrade: hash-chained log, export, replay | Claude |
+| **Fri 26 noon** | **A11 lock: re-freeze the code, final run, tag.** Nothing new after | Claude |
+| Fri 26 afternoon | Slides 4, 5 from the tag · screenshots · backup video | Madhu, Aditya |
+| Fri 26 evening | Whole team reads the deck aloud | All |
+| Sat 27 morning | Export PDF, submit, touch nothing | Madhu |
+
+Drop first if late: B3 bolts → B5 upgrade → B1 self-check. Never drop: the lock, the labels.
+
+The original plan, for reference:
 
 | Day | Madhu | Yash | Rashmit | Isha, Meghna | Aditya |
 |---|---|---|---|---|---|

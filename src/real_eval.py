@@ -57,8 +57,10 @@ def frozen_ok() -> tuple[bool, list[str]]:
     if not FROZEN.exists():
         return False, ["no frozen.json - freeze the code before opening test rows"]
     manifest = json.loads(FROZEN.read_text(encoding="utf-8"))
+    # Line endings don't count: git on Windows checks the same file out with
+    # CRLF, and a fresh clone must still pass the freeze.
     changed = [f for f, h in manifest["files"].items()
-               if hashlib.sha256((paths.ROOT / f).read_bytes()).hexdigest() != h]
+               if hashlib.sha256((paths.ROOT / f).read_bytes().replace(b"\r\n", b"\n")).hexdigest() != h]
     return not changed, changed
 
 

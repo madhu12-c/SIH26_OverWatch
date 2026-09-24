@@ -3,6 +3,7 @@ import { motion, useReducedMotion } from 'framer-motion'
 import { cases } from '../lib/data'
 import { Meter, RecordCard, SectionTitle } from '../components/Primitives'
 import SpecCompare from '../components/SpecCompare'
+import { AUTO_MERGE, prettyField } from '../lib/format'
 
 /*
  * Screen 03 - the reverse case, and the punchline.
@@ -17,7 +18,8 @@ const STEPS = [
   { at: 200, id: 'cards' },
   { at: 1200, id: 'text' },
   { at: 2800, id: 'specs' },
-  { at: 4200, id: 'trap' },
+  { at: 4000, id: 'whatif' },
+  { at: 5200, id: 'trap' },
 ]
 
 export default function BlockCase() {
@@ -96,6 +98,33 @@ export default function BlockCase() {
           play={show('specs')}
         />
       </motion.div>
+
+      {/* the counterfactual - proof that one field, not a threshold, decided */}
+      {c.counterfactual && (
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={show('whatif') ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.4 }}
+          className="card p-4 mb-5 flex items-center justify-between gap-4"
+        >
+          <div className="min-w-0">
+            <p className="label mb-1">What if</p>
+            <p className="text-[14px] text-ink leading-relaxed">
+              If the {c.counterfactual.fields.map((f) => prettyField(f).toLowerCase()).join(' and ')}{' '}
+              matched, this pair would score{' '}
+              <span className="font-mono font-semibold tnum">{c.counterfactual.score}</span>
+              {c.counterfactual.score >= AUTO_MERGE ? ' — an automatic merge.' : '.'}
+            </p>
+            <p className="text-[12.5px] text-ink-faint mt-1">
+              Everything else agrees. One field decided — the rules refused it, not a threshold.
+            </p>
+          </div>
+          <div className="shrink-0 text-right">
+            <div className="font-mono text-2xl font-semibold tnum text-ink-faint">{c.counterfactual.score}</div>
+            <div className="text-[11px] text-ink-faint">if equal · actual 0</div>
+          </div>
+        </motion.div>
+      )}
 
       {/* the punchline - the inversion, and why no threshold survives it */}
       <motion.div

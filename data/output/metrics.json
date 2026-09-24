@@ -6,6 +6,8 @@
  "f1": 1.0,
  "auto_precision": 1.0,
  "auto_merged_pairs": 141,
+ "auto_wrong": 0,
+ "auto_error_bound_95": 0.02102,
  "false_merges": 0,
  "trap_violations_auto": 0,
  "trap_violations_review": 0,

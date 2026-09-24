@@ -202,6 +202,12 @@ review) 82% (dev 82.2%, test 81.4%). Blocking skips 99.80% of pairs; 82% of true
 the rest are records missing their identity (a seal with no shaft size). Review queue: the true
 match is ranked first for 50% of records, in the top three for 78%. The first 15,000 run was
 NOT safe — 2,625 wrong auto-merges (31% precision); see buildplan A6 for what fixed it.
+**Error bound** (`evaluate.error_bound`, Clopper–Pearson, one-sided): with 95% confidence the
+auto-merge error rate is below **0.35%** (test families alone: below 1.40%; demo set: 2.1%).
+**What-if** (`scorer.counterfactual`): every blocked pair stores the score it would get if the
+blocking field agreed. At 15,000, **12,960 refusals were one field from an automatic merge —
+12,959 truly different items**; the other is a pack-size price gap (C13). Demo: "if the
+material grade matched, this pair would score 0.956"
 (Before the A1–A5 work: recall 0.942, 16 clusters, 282 safety blocks under all-pairs. Recall rose
 because a grade-spelling bug and a cast-vs-carbon-steel veto were falsely blocking true pairs;
 the block count fell because blocking no longer compares every look-alike.)

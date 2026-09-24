@@ -91,6 +91,7 @@ def case_view(pair, pairs_index, materials, specs) -> dict | None:
         "blocked_by": p.get("blocked_by"),
         "reason": p.get("reason"),
         "unverified_hard": p.get("unverified_hard", []),
+        "counterfactual": p.get("counterfactual"),
     }
 
 
@@ -163,11 +164,16 @@ def build() -> dict:
             "rule": p["blocked_by"],
             "reason": p["reason"],
             "text_sim": p.get("text_sim"),
+            "counterfactual": p.get("counterfactual"),
         })
 
     by_rule = defaultdict(int)
     for b in blocked:
         by_rule[b["rule"]] += 1
+    # Refusals that were one field from an automatic merge: everything else
+    # agreed, and that one field alone stopped it. The interlock earning its keep.
+    one_field = sum(1 for b in blocked if (cf := b["counterfactual"])
+                    and len(cf["fields"]) == 1 and cf["score"] >= AUTO_MERGE)
 
     # Review queue, worst-first so a reviewer sees the genuinely uncertain ones
     # rather than a wall of near-certain matches.
@@ -186,6 +192,7 @@ def build() -> dict:
                 "matched_fields": p.get("matched_fields", []),
                 "ignored_fields": p.get("ignored_fields", []),
                 "review_reason": p.get("review_reason"),
+                "counterfactual": p.get("counterfactual"),
             })
     review.sort(key=lambda r: r["final"])
 
@@ -204,6 +211,7 @@ def build() -> dict:
             "auto_merged": auto,
             "review_pending": len(review),
             "blocked": len(blocked),
+            "blocked_one_field": one_field,
             "savings_upper": summary.get("saving_upper", 0),
             "savings_realistic": summary.get("saving_realistic", 0),
             "uom_variants": uom.get("summary", {}).get("variants_seen"),
@@ -214,6 +222,8 @@ def build() -> dict:
             "precision": metrics.get("precision"),
             "recall": metrics.get("recall"),
             "auto_precision": metrics.get("auto_precision"),
+            "auto_merged": metrics.get("auto_merged_pairs"),
+            "auto_error_bound": metrics.get("auto_error_bound_95"),
             "safety_blocks": metrics.get("safety_blocks"),
             "trap_violations": metrics.get("trap_violations_auto"),
             "run": paths.RUN or "demo",

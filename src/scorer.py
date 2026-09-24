@@ -465,11 +465,21 @@ def score_pair(a, b, descriptions, vecs, profiles) -> dict:
             out["blocked_by"] = signal["blocked_by"]
             out["reason"] = signal["reason"]
             out["final"] = 0.0
+            what_if = counterfactual(a, b, text, spec, proc)
+            if what_if:
+                out["counterfactual"] = what_if
             return out
 
+    out.update(_fuse(a, text, spec, proc))
+    return out
+
+
+def _fuse(a, text, spec, proc) -> dict:
+    """The three signals into one score, with the caps that keep doubt out of
+    the auto band. Shared by the real score and the counterfactual."""
     w_text, w_spec, w_proc = signal_weights(spec.get("compared", 0))
-    out["weights"] = {"text": round(w_text, 3), "spec": round(w_spec, 3),
-                      "proc": round(w_proc, 3)}
+    out = {"weights": {"text": round(w_text, 3), "spec": round(w_spec, 3),
+                       "proc": round(w_proc, 3)}}
 
     # Procurement is absent for items never purchased. Redistribute its weight
     # rather than scoring the pair as if procurement disagreed.
@@ -479,6 +489,7 @@ def score_pair(a, b, descriptions, vecs, profiles) -> dict:
     else:
         out["final"] = round(w_text * text + w_spec * spec["score"]
                              + w_proc * proc["score"], 3)
+    evidence_score = out["final"]
 
     # A safety field we could not verify caps the pair below the auto-merge
     # band. It can still be approved - by a human who can look the item up -
@@ -500,7 +511,46 @@ def score_pair(a, b, descriptions, vecs, profiles) -> dict:
     if a.get("category") in NO_AUTO_CATEGORIES and out["final"] >= AUTO_MERGE:
         out["final"] = round(AUTO_MERGE - 0.01, 3)
         out["review_reason"] = "outside every schema - matched on noun and numbers only"
+    elif evidence_score > out["final"]:
+        # Held back only by what it could not check: tell the reviewer what
+        # confirming it is worth. "Everything else agrees at 0.96."
+        out["counterfactual"] = {"kind": "unverified", "fields": unverified,
+                                 "score": evidence_score}
     return out
+
+
+def counterfactual(a, b, text, spec, proc, max_fields: int = 3) -> dict | None:
+    """What the veto cost. For a blocked pair, the score it would get if the
+    blocking field agreed: "if the grade matched, this would score 0.94".
+
+    It is the evidence that one field decided, and that the rules - not a
+    threshold - refused the merge. The blocking field is set equal on both
+    sides and the pair scored again; if a second field blocks, that is set
+    too (up to max_fields), so the answer names every field that differs. A
+    price gap is set aside the same way. Different categories have no
+    counterfactual: a bearing is not one field away from a gasket.
+
+    One extra spec comparison, only for blocked pairs. Never the LLM.
+    """
+    fields = []
+    a2, b2 = a, b
+    while spec.get("blocked_by"):
+        name = spec["blocked_by"]
+        if name == "category" or len(fields) == max_fields:
+            return None
+        value = a2["attributes"].get(name, b2["attributes"].get(name))
+        if value is None:                   # both values were derived - nothing to set
+            return None
+        fields.append(name)
+        a2 = {**a2, "attributes": {**a2["attributes"], name: value}}
+        b2 = {**b2, "attributes": {**b2["attributes"], name: value}}
+        spec = spec_agreement(a2, b2)
+    if proc.get("blocked_by"):
+        fields.append(proc["blocked_by"])
+        proc = {"score": None}
+    fused = _fuse(a, text, spec, proc)
+    return {"kind": "blocked", "fields": fields, "score": fused["final"],
+            "capped_by": fused["unverified_hard"] or None}
 
 
 def review_rank(p: dict) -> tuple:
@@ -662,6 +712,7 @@ def explain(a_id, b_id):
     """One pair, in full. This is what the review screen has to show a human."""
     specs, descriptions = load_inputs()
     vecs, profiles = load_vectors(), build_purchase_profiles()
+    load_variants(specs)                     # the same knowledge the full run has
     a, b = specs[a_id], specs[b_id]
     p = score_pair(a, b, descriptions, vecs, profiles)
 
@@ -690,7 +741,12 @@ def explain(a_id, b_id):
     print(f"  procurement {p['proc_sim']}")
     if p["blocked_by"]:
         print(f"\n  BLOCKED on {p['blocked_by']}: {p['reason']}")
-    print(f"  FINAL       {p['final']}\n")
+    print(f"  FINAL       {p['final']}")
+    cf = p.get("counterfactual")
+    if cf:
+        verb = "matched" if cf["kind"] == "blocked" else "were confirmed"
+        print(f"  WHAT IF     if {', '.join(cf['fields'])} {verb}, this pair would score {cf['score']}")
+    print()
 
 
 def main() -> None:

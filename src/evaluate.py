@@ -33,11 +33,40 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import math
 from collections import defaultdict
 from itertools import combinations
 
 import paths
 from scorer import AUTO_MERGE, NOT_SAFETY, review_rank
+
+
+def error_bound(wrong: int, n: int, confidence: float = 0.95) -> float | None:
+    """Upper bound on the true error rate, given `wrong` of `n` observed.
+
+    Clopper-Pearson, one-sided: the largest rate p for which seeing `wrong` or
+    fewer errors in `n` tries still has at least a 5% chance. "0 wrong of 846"
+    does not mean the error rate is 0 - it means that, with 95% confidence, it
+    is below this number. It treats pairs as independent tries; pairs from one
+    cluster are not quite, so read it as an estimate, not a guarantee.
+    """
+    if n == 0:
+        return None
+    alpha = 1 - confidence
+    if wrong >= n:
+        return 1.0
+    if wrong == 0:
+        return 1 - alpha ** (1 / n)
+
+    def cdf(p: float) -> float:                        # P(X <= wrong | n, p)
+        return sum(math.exp(math.lgamma(n + 1) - math.lgamma(i + 1) - math.lgamma(n - i + 1)
+                            + i * math.log(p) + (n - i) * math.log1p(-p)) for i in range(wrong + 1))
+
+    lo, hi = wrong / n, 1.0
+    for _ in range(60):                                # cdf falls as p rises
+        mid = (lo + hi) / 2
+        lo, hi = (mid, hi) if cdf(mid) > alpha else (lo, mid)
+    return hi
 
 
 def load_truth() -> dict[str, str]:
@@ -286,6 +315,10 @@ def main() -> None:
     print(f"  of those, wrong        {auto['fp']:>7,}")
     print(f"  AUTO PRECISION         {auto['precision']:>7.1%}   "
           f"<- THE SAFETY NUMBER")
+    bound = error_bound(auto["fp"], auto["tp"] + auto["fp"])
+    if bound is not None:
+        print(f"  error rate, 95% sure   {'< ' + format(bound, '.2%'):>7}   "
+              f"(Clopper-Pearson upper bound on {auto['tp'] + auto['fp']:,} merges)")
     if auto_traps:
         print(f"  !! {len(auto_traps)} trap pair(s) AUTO-MERGED - safety failure")
     else:
@@ -374,8 +407,11 @@ def main() -> None:
     if by_split:
         print("\nBY SPLIT  (test = families locked before tuning; two notations only they use)")
         for name, s in by_split.items():
+            s["auto_error_bound"] = error_bound(s["auto_wrong"], s["auto_merged"])
             print(f"  {name:<5} {s['records']:>6,} records   auto-merged {s['auto_merged']:>5,}  wrong {s['auto_wrong']:>3}"
                   f"  (precision {s['auto_precision']:.1%})   recall {s['recall']:.1%} of {s['true_pairs']:,} true pairs")
+            if s["auto_error_bound"] is not None:
+                print(f"  {'':<5} {'':>6}           error rate, 95% sure < {s['auto_error_bound']:.2%}")
 
     blk = blocking_metrics(truth)
     if blk:
@@ -406,6 +442,8 @@ def main() -> None:
         "f1": round(m["f1"], 4),
         "auto_precision": round(auto["precision"], 4),
         "auto_merged_pairs": auto["tp"] + auto["fp"],
+        "auto_wrong": auto["fp"],
+        "auto_error_bound_95": round(bound, 5) if bound is not None else None,
         "false_merges": m["fp"],
         "trap_violations_auto": len(auto_traps),
         "trap_violations_review": len(review_traps),
