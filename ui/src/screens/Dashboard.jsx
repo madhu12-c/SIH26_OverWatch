@@ -6,6 +6,7 @@ import { SectionTitle, Stat } from '../components/Primitives'
 import { ChartCard, BarList, Columns, Donut } from '../components/Charts'
 import { ActivityItem } from '../components/Activity'
 import { Icon } from '../components/Icons'
+import Evidence from '../components/Evidence'
 
 /*
  * The dashboard, and it changes with the signed-in role.
@@ -113,6 +114,8 @@ export default function Dashboard({ session, go }) {
           )}
         </ChartCard>
       </div>
+
+      <Evidence />
 
       {/* charts */}
       <div className="grid xl:grid-cols-[1.4fr_1fr] gap-4 mb-4">

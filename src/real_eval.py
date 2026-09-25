@@ -136,6 +136,21 @@ def test_eval(labeller: str, post_freeze: bool = False) -> None:
         print(f"    WRONG AUTO {p['a']}/{p['b']} {p['final']}  {desc[p['a']][:50]} | {desc[p['b']][:50]}")
     for p in blocked_true[:10]:
         print(f"    vetoed true pair {p['a']}/{p['b']} on {p['blocked_by']}: {p['reason']}")
+    import datetime
+    paths.REAL_METRICS.write_text(json.dumps({
+        "labels": sheet.name, "labeller": labeller, "labelled_by": who,
+        "code": ("frozen " + frozen_at + ", unchanged") if ok else ("CHANGED since the freeze of " + frozen_at + " - post-freeze"),
+        "frozen": ok, "frozen_at": frozen_at, "run_at": datetime.datetime.now().isoformat(timespec="seconds"),
+        "lines": len(rows), "inside_categories": inside,
+        "category_right": round(right / inside, 4), "two_or_more_facts": round(two / inside, 4),
+        "true_pairs": len(true_pairs), "groups": len(members), "candidates": len(candidates),
+        "pair_completeness": round(len(true_pairs & found) / len(true_pairs), 4),
+        "auto_merged": len(auto), "auto_wrong": len(wrong_auto),
+        "proposed": len(prop), "proposed_right": prop_tp,
+        "review_precision": round(prop_tp / len(prop), 4) if prop else None,
+        "recall": round(prop_tp / len(true_pairs), 4), "true_pairs_vetoed": len(blocked_true),
+    }, indent=1), encoding="utf-8")
+    print(f"\nwrote {paths.REAL_METRICS.name}")
     missed = [tuple(sorted(p)) for p in true_pairs
               if not any(frozenset((q["a"], q["b"])) == p and not q["blocked_by"]
                          and q["final"] >= scorer.REVIEW_LOW for q in scored)]

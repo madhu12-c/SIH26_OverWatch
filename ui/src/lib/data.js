@@ -36,4 +36,7 @@ export const real = results.real ?? {}
 // The Real text page: dev-half lines with what the reader took from each.
 export const realText = results.real_text ?? {}
 
+// Headline numbers from every dataset, stamped with where they came from (src/evidence.py).
+export const evidence = results.evidence ?? {}
+
 export const isStub = meta.precision == null && clusters.length <= 1

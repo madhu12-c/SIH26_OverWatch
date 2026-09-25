@@ -1,0 +1,171 @@
+{
+ "built_at": "2026-09-25T22:29",
+ "commit": "c6ceeda+uncommitted",
+ "caveat": "The synthetic sets measure how well the system undoes noise we generated. The real test is the more believable number, and it is reported beside them, never blended.",
+ "demo": {
+  "source": "data/output/metrics.json",
+  "measured_at": "2026-09-25T22:21",
+  "records": 100,
+  "auto_merged": 141,
+  "auto_wrong": 0,
+  "auto_error_bound_95": 0.02102,
+  "recall_with_review": 1.0,
+  "traps_auto_merged": 0,
+  "traps_total": 4,
+  "safety_blocks": 97,
+  "blocked_one_field": 11,
+  "true_items": 15,
+  "clusters": 15,
+  "blocking": {
+   "reduction_ratio": 0.9178,
+   "pair_completeness": 1.0
+  },
+  "review_queue": {
+   "true_match_first": 1.0,
+   "true_match_in_top3": 1.0
+  },
+  "by_split": null,
+  "baselines": {
+   "on": "all",
+   "tuned_on": "all",
+   "methods": {
+    "fuzzy": {
+     "merged": 407,
+     "wrong": 97,
+     "traps_merged": 91,
+     "precision": 0.7617,
+     "recall": 1.0,
+     "threshold": 0.2075
+    },
+    "tf-idf": {
+     "merged": 400,
+     "wrong": 91,
+     "traps_merged": 86,
+     "precision": 0.7725,
+     "recall": 0.9968,
+     "threshold": 0.1356
+    },
+    "embedding": {
+     "merged": 406,
+     "wrong": 96,
+     "traps_merged": 90,
+     "precision": 0.7635,
+     "recall": 1.0,
+     "threshold": 0.6808
+    }
+   },
+   "ours_auto": {
+    "merged": 141,
+    "wrong": 0,
+    "traps_merged": 0,
+    "precision": 1.0,
+    "recall": 0.4548
+   }
+  }
+ },
+ "run15k": {
+  "source": "data/runs/15k/output/metrics.json",
+  "measured_at": "2026-09-25T22:05",
+  "records": 15000,
+  "auto_merged": 846,
+  "auto_wrong": 0,
+  "auto_error_bound_95": 0.00353,
+  "recall_with_review": 0.8203,
+  "traps_auto_merged": 0,
+  "traps_total": 104994,
+  "safety_blocks": 164335,
+  "blocked_one_field": 12960,
+  "true_items": 11815,
+  "clusters": 14327,
+  "blocking": {
+   "reduction_ratio": 0.998,
+   "pair_completeness": 0.8218
+  },
+  "review_queue": {
+   "true_match_first": 0.4974,
+   "true_match_in_top3": 0.7789
+  },
+  "by_split": {
+   "dev": {
+    "records": 11662,
+    "auto_merged": 634,
+    "auto_wrong": 0,
+    "auto_precision": 1.0,
+    "recall": 0.8222,
+    "true_pairs": 4133,
+    "auto_error_bound": 0.0047
+   },
+   "test": {
+    "records": 3338,
+    "auto_merged": 212,
+    "auto_wrong": 0,
+    "auto_precision": 1.0,
+    "recall": 0.8138,
+    "true_pairs": 1192,
+    "auto_error_bound": 0.014
+   }
+  },
+  "baselines": {
+   "on": "test",
+   "tuned_on": "dev",
+   "methods": {
+    "fuzzy": {
+     "merged": 3342,
+     "wrong": 3128,
+     "traps_merged": 1463,
+     "precision": 0.064,
+     "recall": 0.1795,
+     "threshold": 0.7484
+    },
+    "tf-idf": {
+     "merged": 2089,
+     "wrong": 1931,
+     "traps_merged": 1096,
+     "precision": 0.0756,
+     "recall": 0.1326,
+     "threshold": 0.6465
+    },
+    "embedding": {
+     "merged": 4070,
+     "wrong": 3788,
+     "traps_merged": 1692,
+     "precision": 0.0693,
+     "recall": 0.2366,
+     "threshold": 0.9118
+    }
+   },
+   "ours_auto": {
+    "merged": 212,
+    "wrong": 0,
+    "traps_merged": 0,
+    "precision": 1.0,
+    "recall": 0.1779
+   }
+  }
+ },
+ "real": {
+  "source": "data/output/real_metrics.json",
+  "labels": "claude.csv",
+  "labeller": "claude",
+  "labelled_by": "Claude - the builder - labelled AFTER the code freeze; one labeller, not yet checked by a human",
+  "code": "CHANGED since the freeze of 2026-09-24T19:47:13 - post-freeze",
+  "frozen": false,
+  "frozen_at": "2026-09-24T19:47:13",
+  "run_at": "2026-09-25T22:28:37",
+  "lines": 252,
+  "inside_categories": 145,
+  "category_right": 0.9793,
+  "two_or_more_facts": 0.9034,
+  "true_pairs": 59,
+  "groups": 38,
+  "candidates": 775,
+  "pair_completeness": 0.9153,
+  "auto_merged": 4,
+  "auto_wrong": 0,
+  "proposed": 273,
+  "proposed_right": 49,
+  "review_precision": 0.1795,
+  "recall": 0.8305,
+  "true_pairs_vetoed": 5
+ }
+}

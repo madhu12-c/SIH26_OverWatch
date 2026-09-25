@@ -81,6 +81,19 @@ RESULTS = OUTPUT / "results.json"              # 09 everything the UI reads
 METRICS = OUTPUT / "metrics.json"           # -- evaluate.py, read by results.py
 BASELINES = OUTPUT / "baselines.json"       # -- baselines.py: text matchers vs ours, same pairs
 
+# --- evidence: every headline number, from every dataset, in one place -----
+# Fixed locations (not per run): the demo folder is committed, so these travel
+# with the repository even though data/runs/ does not.
+DEMO_OUTPUT = DATA / "output"
+REAL_METRICS = DEMO_OUTPUT / "real_metrics.json"   # real_eval.py --test: the real result
+EVIDENCE = DEMO_OUTPUT / "evidence.json"           # evidence.py: demo + 15k + real, stamped
+
+
+def run_output(run: str) -> Path:
+    """The output folder of a named run ('' is the demo set)."""
+    return (DATA / "runs" / run if run else DATA) / "output"
+
+
 # Optional researched seed list. When present, generate_dataset.py can use it
 # instead of the built-in SEED_ITEMS.
 SEED_ITEMS = INPUT / "seed_items.csv"

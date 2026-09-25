@@ -304,6 +304,8 @@ def build() -> dict:
         "gate": gate,
         "real": real_summary(),
         "real_text": real_text(),
+        # Every headline number from every dataset, stamped (evidence.py).
+        "evidence": json.loads(paths.EVIDENCE.read_text(encoding="utf-8")) if paths.EVIDENCE.exists() else {},
     }
 
 
