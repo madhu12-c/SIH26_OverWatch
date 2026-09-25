@@ -36,6 +36,36 @@ sys.stdout.reconfigure(encoding="utf-8")
 
 FROZEN = paths.REAL_LABELS / "frozen.json"
 
+# The code whose behaviour the real result depends on: reading, deriving,
+# checking and scoring. A change to any of these changes the number.
+FREEZE_FILES = ("src/normalise.py", "src/rules.py", "src/schemas.py", "src/standards.py",
+                "src/selfcheck.py", "src/scorer.py", "src/blocking.py", "src/extractor.py")
+
+
+def _digest(rel: str) -> str:
+    return hashlib.sha256((paths.ROOT / rel).read_bytes().replace(b"\r\n", b"\n")).hexdigest()
+
+
+def freeze(why: str, opened_before: bool) -> None:
+    """Fingerprint the code now. The previous freeze moves to history with
+    its result, so no earlier number disappears."""
+    import datetime
+    old = json.loads(FROZEN.read_text(encoding="utf-8")) if FROZEN.exists() else None
+    history = (old or {}).get("history", [])
+    if old:
+        history.append({k: old[k] for k in ("frozen_at", "why", "test_rows_opened_before_this", "files", "result")
+                        if k in old})
+    manifest = {
+        "frozen_at": datetime.datetime.now().isoformat(timespec="seconds"),
+        "freeze": len(history) + 1,
+        "why": why,
+        "test_rows_opened_before_this": opened_before,
+        "files": {f: _digest(f) for f in FREEZE_FILES},
+        "history": history,
+    }
+    FROZEN.write_text(json.dumps(manifest, indent=1), encoding="utf-8")
+    print(f"freeze {manifest['freeze']} written: {len(FREEZE_FILES)} files fingerprinted")
+
 
 def dev_rows() -> list[dict]:
     split = {r["id"]: r["split"] for r in csv.DictReader(paths.REAL_SPLIT.open(encoding="utf-8-sig"))}
@@ -59,8 +89,7 @@ def frozen_ok() -> tuple[bool, list[str]]:
     manifest = json.loads(FROZEN.read_text(encoding="utf-8"))
     # Line endings don't count: git on Windows checks the same file out with
     # CRLF, and a fresh clone must still pass the freeze.
-    changed = [f for f, h in manifest["files"].items()
-               if hashlib.sha256((paths.ROOT / f).read_bytes().replace(b"\r\n", b"\n")).hexdigest() != h]
+    changed = [f for f, h in manifest["files"].items() if _digest(f) != h]
     return not changed, changed
 
 
@@ -112,14 +141,24 @@ def test_eval(labeller: str, post_freeze: bool = False) -> None:
     blocked_true = [p for p in scored if p["blocked_by"] and frozenset((p["a"], p["b"])) in true_pairs]
     found = {frozenset(p) for p in candidates}
 
-    who = {"claude": "Claude - the builder - labelled AFTER the code freeze; one labeller, "
-                     "not yet checked by a human",
+    who = {"claude": "Claude - the builder - one labeller, not yet checked by a human; labelled after "
+                     "freeze 1 (24 Sept), so the builder had seen these rows before freeze 2",
            "final": "agreed labels of two people labelling separately"}.get(labeller, labeller)
     print(f"\nREAL TEST SET - {len(rows)} material lines ({sheet.name})")
     print(f"  labels: {who}")
-    frozen_at = json.loads(FROZEN.read_text())["frozen_at"]
-    print(f"  code:   frozen {frozen_at}, unchanged\n" if ok else
-          f"  code:   CHANGED since the freeze of {frozen_at} - a post-freeze number\n")
+    manifest = json.loads(FROZEN.read_text(encoding="utf-8"))
+    frozen_at = manifest["frozen_at"]
+    print(f"  code:   freeze {manifest.get('freeze', 1)} of {frozen_at}, unchanged" if ok else
+          f"  code:   CHANGED since the freeze of {frozen_at} - a post-freeze number")
+    if ok and manifest.get("test_rows_opened_before_this"):
+        print("          the builder had seen the test rows before this freeze (labelling claude.csv);")
+        print("          no change since the first freeze was made from a test row - see its history")
+    for h in manifest.get("history", []):
+        r = h.get("result")
+        if r:
+            print(f"          earlier freeze {h['frozen_at']}: auto {r['auto_merged']} wrong {r['auto_wrong']}, "
+                  f"recall {r['recall']:.1%}, category {r['category_right']:.1%}")
+    print()
     print(f"READING   inside the categories ({inside} lines)")
     print(f"  category right          {right / inside:>7.1%}")
     print(f"  two or more facts       {two / inside:>7.1%}")
@@ -140,7 +179,9 @@ def test_eval(labeller: str, post_freeze: bool = False) -> None:
     paths.REAL_METRICS.write_text(json.dumps({
         "labels": sheet.name, "labeller": labeller, "labelled_by": who,
         "code": ("frozen " + frozen_at + ", unchanged") if ok else ("CHANGED since the freeze of " + frozen_at + " - post-freeze"),
-        "frozen": ok, "frozen_at": frozen_at, "run_at": datetime.datetime.now().isoformat(timespec="seconds"),
+        "frozen": ok, "frozen_at": frozen_at, "freeze": manifest.get("freeze", 1),
+        "builder_saw_test_rows_before_freeze": bool(manifest.get("test_rows_opened_before_this")),
+        "earlier_freezes": [dict(frozen_at=h["frozen_at"], **h["result"]) for h in manifest.get("history", []) if h.get("result")], "run_at": datetime.datetime.now().isoformat(timespec="seconds"),
         "lines": len(rows), "inside_categories": inside,
         "category_right": round(right / inside, 4), "two_or_more_facts": round(two / inside, 4),
         "true_pairs": len(true_pairs), "groups": len(members), "candidates": len(candidates),
@@ -163,12 +204,16 @@ def main() -> None:
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--show", help="print every dev line of this labelled category")
     ap.add_argument("--misses", action="store_true", help="print wrong categories")
+    ap.add_argument("--freeze", metavar="WHY", help="fingerprint the reading and scoring code now")
     ap.add_argument("--post-freeze", action="store_true",
                     help="with --test: run the current code anyway, labelled post-freeze (not the result)")
     ap.add_argument("--test", metavar="LABELLER",
                     help="the real result: frozen code on the TEST half, labels from "
                          "LABELLER.csv (or 'final' for the agreed two-person labels)")
     args = ap.parse_args()
+    if args.freeze:
+        freeze(args.freeze, opened_before=True)
+        return
     if args.test:
         test_eval(args.test, args.post_freeze)
         return

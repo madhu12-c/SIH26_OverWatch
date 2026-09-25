@@ -93,8 +93,11 @@ export default function Evidence() {
             <p className="mt-3 text-[11.5px] leading-snug text-warn">
               {real.labeller === 'final'
                 ? 'Labels: two people, working separately, disagreements settled.'
-                : 'Labels so far: one labeller, the builder, written after the code freeze. Two-person labels replace them.'}
+                : real.builder_saw_test_rows_before_freeze
+                  ? 'Labels so far: one labeller — the builder, who had read these rows before this code was frozen. No fix was made from them. Two-person labels replace them.'
+                  : 'Labels so far: one labeller, the builder, written after the code freeze. Two-person labels replace them.'}
               {!real.frozen && ' Code changed since the freeze: a post-freeze number.'}
+              {real.earlier_freezes?.length > 0 && ` First freeze (${longDate(real.earlier_freezes[0].frozen_at)}): ${real.earlier_freezes[0].auto_wrong} wrong of ${real.earlier_freezes[0].auto_merged}, ${pct(real.earlier_freezes[0].recall, 0)} found.`}
             </p>
             <Stamp source={real.source} at={real.run_at} />
           </div>

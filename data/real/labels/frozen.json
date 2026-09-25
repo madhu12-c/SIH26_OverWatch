@@ -1,13 +1,44 @@
 {
- "frozen_at": "2026-09-24T19:47:13",
- "why": "Code that reads and scores real text, fingerprinted BEFORE any test row was opened for labelling. The real-data result is only valid for code matching these hashes; a later change must be re-checked on dev and its test number reported as post-freeze.",
- "test_rows_opened_before_this": false,
+ "frozen_at": "2026-09-25T22:50:30",
+ "freeze": 2,
+ "why": "Freeze 2, 25 Sept 2026, before the PPT numbers are locked. Since freeze 1: the 15,000-record work (variant vetoes, one-sided rule, cohesion splits - from generated dev families), self-check, standards equivalence, and two reader fixes found on dev rows (gauge minus sign, SAP 40-character cut of units). The builder saw the test rows on 24 Sept while writing claude.csv; no change since was made from a test row. Isha's and Meghna's labels, scored on this freeze, give the clean real result.",
+ "test_rows_opened_before_this": true,
  "files": {
-  "src/normalise.py": "eb9d7486b5b75c18456d27205ba9d955b2863a53943c189c122323b0fb5d2510",
-  "src/rules.py": "5cbaa63d08ff8006c8cd5733d30c3f66e981c55cd65f4cea20bb801d916e16d6",
-  "src/schemas.py": "469b72ed4f390123c95cd8add6c8adf51139b48e8632a7460056d8e20e670bfa",
-  "src/scorer.py": "b73e2ee0922a80559af4a286f9067285508ebe3382ac2756c9a8311c2562077e",
-  "src/blocking.py": "863aef985664fb4884fbf05993153ec9e251dbfdcf29d5fe62fa9afb0af7b183",
-  "src/extractor.py": "f8b0b566a75076a4000dc6d8cf98d2ba98594884f550bdff9518a826952bfc44"
- }
+  "src/normalise.py": "6b55a701bdaf7ff72bca726126358a938af5a21bcdc8c19aebd6353cf15e60fd",
+  "src/rules.py": "458541d146a305e88612fab84a82d3a22be38e76594092c66c5b38f1babeed5d",
+  "src/schemas.py": "c832d4b2b3d789b3454720e421019de020c6e321557b225506f5456d1e28a06e",
+  "src/standards.py": "6007056264e629a86f386c8724da4d2cab624a9ccf85555f867ef1ea4213e339",
+  "src/selfcheck.py": "944ba65ca876445a3d588582e4aa714ca6fb6fba3ed8e7e594b6b0ad18f207bc",
+  "src/scorer.py": "67e956b8d6c3ae7349ac193da9732b937c60f56248e936767361c78fba7bff25",
+  "src/blocking.py": "695a98de12c29e8880412678902d19e3d2af6ba30e6b88e01f0eeae712ace69a",
+  "src/extractor.py": "a30c0da261de95f21b36f6db42e7176398ea45ae704a461d6284504e2a184377"
+ },
+ "history": [
+  {
+   "frozen_at": "2026-09-24T19:47:13",
+   "why": "Code that reads and scores real text, fingerprinted BEFORE any test row was opened for labelling. The real-data result is only valid for code matching these hashes; a later change must be re-checked on dev and its test number reported as post-freeze.",
+   "test_rows_opened_before_this": false,
+   "files": {
+    "src/normalise.py": "eb9d7486b5b75c18456d27205ba9d955b2863a53943c189c122323b0fb5d2510",
+    "src/rules.py": "5cbaa63d08ff8006c8cd5733d30c3f66e981c55cd65f4cea20bb801d916e16d6",
+    "src/schemas.py": "469b72ed4f390123c95cd8add6c8adf51139b48e8632a7460056d8e20e670bfa",
+    "src/scorer.py": "b73e2ee0922a80559af4a286f9067285508ebe3382ac2756c9a8311c2562077e",
+    "src/blocking.py": "863aef985664fb4884fbf05993153ec9e251dbfdcf29d5fe62fa9afb0af7b183",
+    "src/extractor.py": "f8b0b566a75076a4000dc6d8cf98d2ba98594884f550bdff9518a826952bfc44"
+   },
+   "result": {
+    "labels": "claude.csv",
+    "lines": 252,
+    "category_right": 0.979,
+    "two_or_more_facts": 0.869,
+    "auto_merged": 4,
+    "auto_wrong": 0,
+    "true_pairs": 59,
+    "proposed_right": 51,
+    "recall": 0.864,
+    "review_precision": 0.178,
+    "note": "measured 24 Sept 2026 with this code; the code itself was not committed to git before it changed"
+   }
+  }
+ ]
 }
