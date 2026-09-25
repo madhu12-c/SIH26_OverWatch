@@ -4,6 +4,7 @@ import { useAudit, can, clearAudit, log, VERBS } from '../lib/store'
 import { SectionTitle, Stat } from '../components/Primitives'
 import { ActivityItem } from '../components/Activity'
 import { Icon } from '../components/Icons'
+import { verify } from '../lib/chain'
 
 /*
  * The audit trail - problem-statement capability 7.
@@ -13,9 +14,11 @@ import { Icon } from '../components/Icons'
  * purpose - a governance log that only records what was allowed hides the
  * most interesting events.
  *
- * In this prototype the log lives in the browser. In the real system it is an
- * append-only file where each entry carries the hash of the one before, so a
- * change anywhere shows.
+ * Each entry carries the SHA-256 of itself and of the entry before it
+ * (lib/chain.js), so a change anywhere breaks every seal after it. The log is
+ * exported one JSON line per event; src/govern.py verifies it, and replays it
+ * into the registry's mapping state, refusing any decision the consent rules
+ * would not have allowed. In this prototype the log lives in the browser.
  */
 
 const FILTERS = [
@@ -39,15 +42,30 @@ export default function Audit({ session }) {
   const shown = audit.filter((e) => matches(e, f))
   const n = (v) => audit.filter((e) => (Array.isArray(v) ? v.includes(e.verb) : e.verb === v)).length
   const mayClear = can(session, 'clear_log').ok
+  const oldestFirst = audit.slice().reverse()
+  const check = verify(oldestFirst)
+  const [probe, setProbe] = useState(null)
 
+  // One JSON object per line, oldest first, seals included - what govern.py reads.
   const exportLog = () => {
-    const blob = new Blob([JSON.stringify(audit.slice().reverse(), null, 2)], { type: 'application/json' })
+    const blob = new Blob([oldestFirst.map((e) => JSON.stringify(e)).join('\n') + '\n'], { type: 'application/x-ndjson' })
     const a = document.createElement('a')
     a.href = URL.createObjectURL(blob)
-    a.download = `nmcr_audit_${new Date().toISOString().slice(0, 10)}.json`
+    a.download = `nmcr_audit_${new Date().toISOString().slice(0, 10)}.jsonl`
     a.click()
     URL.revokeObjectURL(a.href)
     log('AUDIT_EXPORT', { object: `${audit.length} events` })
+  }
+
+  // Tamper with a COPY: change one word in an old event and check again.
+  const testSeal = () => {
+    if (oldestFirst.length < 2) { setProbe({ text: 'Record a few actions first - there is nothing to tamper with yet.' }); return }
+    const k = Math.floor(oldestFirst.length / 2)
+    const copy = oldestFirst.map((e, i) => (i === k ? { ...e, note: `${e.note ?? ''} (edited)`.trim() } : e))
+    const r = verify(copy)
+    setProbe({ bad: !r.ok, text: r.ok
+      ? 'The edited copy still verified - the seal is not working.'
+      : `Changed one word in event ${k + 1} of ${copy.length} ("${copy[k].verb}"). The check fails at event ${r.brokenAt + 1}: ${r.reason}. Your real log is untouched.` })
   }
 
   return (
@@ -64,6 +82,31 @@ export default function Audit({ session }) {
         <Stat value={n('DISPUTE')} label="Disputes" tone="warn" />
         <Stat value={n('RETIRE_PROPOSED')} label="Retirements proposed" tone="warn" />
         <Stat value={n('DENIED')} label="Actions refused" tone="danger" />
+      </div>
+
+      <div className={`card px-4 py-3 mb-4 flex flex-wrap items-center gap-3 ${check.ok ? 'border-good/40' : 'border-danger/50'}`}>
+        <span className={`w-9 h-9 rounded flex items-center justify-center shrink-0 ${check.ok ? 'bg-good-bg text-good' : 'bg-danger-bg text-danger'}`}>
+          <Icon name={check.ok ? 'lock' : 'close'} size={18} />
+        </span>
+        <span className="flex-1 min-w-[220px]">
+          <span className={`block text-[14px] font-semibold ${check.ok ? 'text-good' : 'text-danger'}`}>
+            {check.ok ? `Seal intact — all ${check.checked} events verified` : `Seal broken at event ${check.brokenAt + 1}`}
+          </span>
+          <span className="block text-[12px] text-ink-faint">
+            {check.ok
+              ? `Each event carries the SHA-256 of itself and of the event before it, so editing any past event breaks every seal after it.${check.trimmed ? ' The oldest events were trimmed from this browser copy.' : ''}`
+              : check.reason}
+          </span>
+        </span>
+        <button onClick={testSeal}
+                className="px-3 py-1.5 rounded border border-line text-[12.5px] font-semibold text-ink-dim hover:border-accent hover:text-ink">
+          Test the seal
+        </button>
+        {probe && (
+          <p className={`w-full text-[12.5px] ${probe.bad ? 'text-good' : 'text-danger'}`}>
+            {probe.bad ? '✓ ' : ''}{probe.text}
+          </p>
+        )}
       </div>
 
       <div className="card overflow-hidden">
@@ -106,9 +149,10 @@ export default function Audit({ session }) {
       </div>
 
       <p className="mt-4 text-[12.5px] text-ink-faint leading-relaxed max-w-3xl">
-        Verbs recorded: {Object.values(VERBS).map((v) => v.text).join(' · ')}. In this prototype the log is
-        kept in your browser. In the full system it is an append-only file where each entry carries the hash
-        of the one before it, so any change shows.
+        Verbs recorded: {Object.values(VERBS).map((v) => v.text).join(' · ')}. The export is one sealed event
+        per line; <span className="font-mono">python src/govern.py verify</span> checks every seal and{' '}
+        <span className="font-mono">replay</span> rebuilds the registry's decisions from it, refusing any the
+        consent rules would not have allowed. In this prototype the log is kept in your browser.
       </p>
     </div>
   )

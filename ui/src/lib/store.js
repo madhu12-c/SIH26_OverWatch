@@ -1,4 +1,5 @@
 import { useSyncExternalStore } from 'react'
+import { GENESIS, seal } from './chain'
 
 /*
  * Session and audit log - the two pieces of state that make the demo a
@@ -10,14 +11,15 @@ import { useSyncExternalStore } from 'react'
  * linking needs the registrar, retiring a code needs the company that owns
  * it, anyone affected may dispute.
  *
- * Every action a person takes is appended to the audit log. Nothing is ever
- * edited or removed from it except by "clear demo log", which is itself the
- * first entry of the fresh log.
+ * Every action a person takes is appended to the audit log, sealed to the
+ * event before it (lib/chain.js): edit any past event and every seal after it
+ * fails. Nothing is ever edited or removed except by "reset demo log", which
+ * is itself sealed to the last event before the reset.
  */
 
 const KEY_SESSION = 'nmcr.session'
 const KEY_AUDIT = 'nmcr.audit'
-const MAX_EVENTS = 400
+const MAX_EVENTS = 2000
 
 function read(key, fallback) {
   try {
@@ -31,7 +33,15 @@ function write(key, value) {
   try { window.localStorage.setItem(key, JSON.stringify(value)) } catch { /* not persisted */ }
 }
 
-let state = { session: read(KEY_SESSION, null), audit: read(KEY_AUDIT, []) }
+// A log saved before events were sealed is sealed once, oldest first, on load.
+function sealed(audit) {
+  if (audit.every((e) => e.hash)) return audit
+  let prev = GENESIS
+  const out = audit.slice().reverse().map((e) => { const s = seal(e, prev); prev = s.hash; return s })
+  return out.reverse()
+}
+
+let state = { session: read(KEY_SESSION, null), audit: sealed(read(KEY_AUDIT, [])) }
 const listeners = new Set()
 const emit = () => listeners.forEach((l) => l())
 const subscribe = (l) => { listeners.add(l); return () => listeners.delete(l) }
@@ -142,7 +152,7 @@ export function can(session, action, target = {}) {
 let counter = 0
 export function log(verb, detail = {}) {
   const s = state.session
-  const event = {
+  const event = seal({
     id: `${Date.now().toString(36)}-${(counter++).toString(36)}`,
     ts: new Date().toISOString(),
     actor: s ? sessionLabel(s) : 'System',
@@ -150,7 +160,7 @@ export function log(verb, detail = {}) {
     org: s?.org ?? '',
     verb,
     ...detail,
-  }
+  }, state.audit[0]?.hash ?? GENESIS)
   state = { ...state, audit: [event, ...state.audit].slice(0, MAX_EVENTS) }
   write(KEY_AUDIT, state.audit)
   emit()
@@ -172,9 +182,18 @@ export function signOut() {
 }
 
 export function clearAudit() {
+  // The reset is sealed to the last event before it, so the new log still
+  // proves where it came from.
+  const head = state.audit[0]?.hash ?? GENESIS
   state = { ...state, audit: [] }
-  write(KEY_AUDIT, [])
-  log('LOG_RESET', { object: 'demo audit log', note: 'All earlier demo events removed by the registrar.' })
+  const e = seal({
+    id: `${Date.now().toString(36)}-${(counter++).toString(36)}`, ts: new Date().toISOString(),
+    actor: sessionLabel(state.session), role: state.session?.role ?? 'system', org: state.session?.org ?? '',
+    verb: 'LOG_RESET', object: 'demo audit log', note: `All earlier demo events removed by the registrar. Last seal before the reset: ${head.slice(0, 16)}...`,
+  }, head)
+  state = { ...state, audit: [e] }
+  write(KEY_AUDIT, state.audit)
+  emit()
 }
 
 /* How each audit verb reads to a person, and its tone. */
