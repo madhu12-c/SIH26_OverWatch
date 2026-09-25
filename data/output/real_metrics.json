@@ -1,7 +1,7 @@
 {
  "labels": "claude.csv",
  "labeller": "claude",
- "labelled_by": "Claude - the builder - labelled AFTER the code freeze; one labeller, not yet checked by a human",
+ "labelled_by": "Claude - the builder - one labeller, not yet checked by a human; labelled after freeze 1 (24 Sept), so the builder had seen these rows before freeze 2",
  "code": "frozen 2026-09-25T22:50:30, unchanged",
  "frozen": true,
  "frozen_at": "2026-09-25T22:50:30",
@@ -23,7 +23,7 @@
    "note": "measured 24 Sept 2026 with this code; the code itself was not committed to git before it changed"
   }
  ],
- "run_at": "2026-09-25T22:50:31",
+ "run_at": "2026-09-25T23:00:35",
  "lines": 252,
  "inside_categories": 145,
  "category_right": 0.9793,

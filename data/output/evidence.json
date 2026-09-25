@@ -1,10 +1,10 @@
 {
- "built_at": "2026-09-25T22:58",
- "commit": "26ed94b+uncommitted",
+ "built_at": "2026-09-25T23:00",
+ "commit": "2ed0138",
  "caveat": "The synthetic sets measure how well the system undoes noise we generated. The real test is the more believable number, and it is reported beside them, never blended.",
  "demo": {
   "source": "data/output/metrics.json",
-  "measured_at": "2026-09-25T22:37",
+  "measured_at": "2026-09-25T23:00",
   "records": 100,
   "auto_merged": 141,
   "auto_wrong": 0,
@@ -147,7 +147,7 @@
   "source": "data/output/real_metrics.json",
   "labels": "claude.csv",
   "labeller": "claude",
-  "labelled_by": "Claude - the builder - labelled AFTER the code freeze; one labeller, not yet checked by a human",
+  "labelled_by": "Claude - the builder - one labeller, not yet checked by a human; labelled after freeze 1 (24 Sept), so the builder had seen these rows before freeze 2",
   "code": "frozen 2026-09-25T22:50:30, unchanged",
   "frozen": true,
   "frozen_at": "2026-09-25T22:50:30",
@@ -169,7 +169,7 @@
     "note": "measured 24 Sept 2026 with this code; the code itself was not committed to git before it changed"
    }
   ],
-  "run_at": "2026-09-25T22:50:31",
+  "run_at": "2026-09-25T23:00:35",
   "lines": 252,
   "inside_categories": 145,
   "category_right": 0.9793,
