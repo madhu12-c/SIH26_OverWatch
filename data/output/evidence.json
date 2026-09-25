@@ -1,6 +1,6 @@
 {
- "built_at": "2026-09-25T22:42",
- "commit": "94c716d+uncommitted",
+ "built_at": "2026-09-25T22:58",
+ "commit": "26ed94b+uncommitted",
  "caveat": "The synthetic sets measure how well the system undoes noise we generated. The real test is the more believable number, and it is reported beside them, never blended.",
  "demo": {
   "source": "data/output/metrics.json",
@@ -65,44 +65,44 @@
  },
  "run15k": {
   "source": "data/runs/15k/output/metrics.json",
-  "measured_at": "2026-09-25T22:40",
+  "measured_at": "2026-09-25T22:57",
   "records": 15000,
-  "auto_merged": 846,
+  "auto_merged": 860,
   "auto_wrong": 0,
-  "auto_error_bound_95": 0.00353,
-  "recall_with_review": 0.8203,
+  "auto_error_bound_95": 0.00348,
+  "recall_with_review": 0.8242,
   "traps_auto_merged": 0,
   "traps_total": 104994,
-  "safety_blocks": 164335,
-  "blocked_one_field": 12960,
+  "safety_blocks": 165184,
+  "blocked_one_field": 13128,
   "true_items": 11815,
-  "clusters": 14327,
+  "clusters": 14322,
   "blocking": {
    "reduction_ratio": 0.998,
-   "pair_completeness": 0.8218
+   "pair_completeness": 0.8257
   },
   "review_queue": {
-   "true_match_first": 0.4974,
-   "true_match_in_top3": 0.7789
+   "true_match_first": 0.4968,
+   "true_match_in_top3": 0.7823
   },
   "by_split": {
    "dev": {
     "records": 11662,
-    "auto_merged": 634,
+    "auto_merged": 643,
     "auto_wrong": 0,
     "auto_precision": 1.0,
-    "recall": 0.8222,
+    "recall": 0.8258,
     "true_pairs": 4133,
-    "auto_error_bound": 0.0047
+    "auto_error_bound": 0.0046
    },
    "test": {
     "records": 3338,
-    "auto_merged": 212,
+    "auto_merged": 217,
     "auto_wrong": 0,
     "auto_precision": 1.0,
-    "recall": 0.8138,
+    "recall": 0.8188,
     "true_pairs": 1192,
-    "auto_error_bound": 0.014
+    "auto_error_bound": 0.0137
    }
   },
   "baselines": {
@@ -110,36 +110,36 @@
    "tuned_on": "dev",
    "methods": {
     "fuzzy": {
-     "merged": 3342,
-     "wrong": 3128,
-     "traps_merged": 1463,
-     "precision": 0.064,
+     "merged": 3334,
+     "wrong": 3120,
+     "traps_merged": 1468,
+     "precision": 0.0642,
      "recall": 0.1795,
      "threshold": 0.7484
     },
     "tf-idf": {
-     "merged": 2089,
-     "wrong": 1931,
-     "traps_merged": 1096,
-     "precision": 0.0756,
-     "recall": 0.1326,
+     "merged": 2112,
+     "wrong": 1953,
+     "traps_merged": 1121,
+     "precision": 0.0753,
+     "recall": 0.1334,
      "threshold": 0.6465
     },
     "embedding": {
-     "merged": 4070,
-     "wrong": 3788,
-     "traps_merged": 1692,
-     "precision": 0.0693,
-     "recall": 0.2366,
+     "merged": 4068,
+     "wrong": 3783,
+     "traps_merged": 1697,
+     "precision": 0.0701,
+     "recall": 0.2391,
      "threshold": 0.9118
     }
    },
    "ours_auto": {
-    "merged": 212,
+    "merged": 217,
     "wrong": 0,
     "traps_merged": 0,
     "precision": 1.0,
-    "recall": 0.1779
+    "recall": 0.182
    }
   }
  },
@@ -148,10 +148,28 @@
   "labels": "claude.csv",
   "labeller": "claude",
   "labelled_by": "Claude - the builder - labelled AFTER the code freeze; one labeller, not yet checked by a human",
-  "code": "CHANGED since the freeze of 2026-09-24T19:47:13 - post-freeze",
-  "frozen": false,
-  "frozen_at": "2026-09-24T19:47:13",
-  "run_at": "2026-09-25T22:28:37",
+  "code": "frozen 2026-09-25T22:50:30, unchanged",
+  "frozen": true,
+  "frozen_at": "2026-09-25T22:50:30",
+  "freeze": 2,
+  "builder_saw_test_rows_before_freeze": true,
+  "earlier_freezes": [
+   {
+    "frozen_at": "2026-09-24T19:47:13",
+    "labels": "claude.csv",
+    "lines": 252,
+    "category_right": 0.979,
+    "two_or_more_facts": 0.869,
+    "auto_merged": 4,
+    "auto_wrong": 0,
+    "true_pairs": 59,
+    "proposed_right": 51,
+    "recall": 0.864,
+    "review_precision": 0.178,
+    "note": "measured 24 Sept 2026 with this code; the code itself was not committed to git before it changed"
+   }
+  ],
+  "run_at": "2026-09-25T22:50:31",
   "lines": 252,
   "inside_categories": 145,
   "category_right": 0.9793,

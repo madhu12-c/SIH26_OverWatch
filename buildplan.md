@@ -27,16 +27,22 @@ done, who owns it and what it waits on.
 | Dev: same-item groups | 32 groups, 74 rows | `labels.py report` |
 | Extractor on dev material lines — before | category right 87% · two or more facts 3% · pipes 0 of 77 · valves 0 of 25 | measured against dev labels |
 | **Extractor on dev — after A1/A2** | category right **99%** · two or more facts **93%** · pipes **92%** · valves **88%** | `python src/real_eval.py` |
-| **Blocking at 15,000 records** | skips **99.80%** of pairs · **82%** of true pairs meet on real-notation records (98.9% on clean specs) | `run_all.py --run 15k`, `tests/test_blocking.py` |
-| **Real TEST result (frozen code)** | category **97.9%** · 2+ facts **86.9%** · 4 auto-merged, **0 wrong** · recall **86.4%** · review precision **17.8%** | `python src/real_eval.py --test claude` |
-| Tests | **256 pass** — real reading, real pairs, blocking at 15,000, 82 one-field veto cases | `python -m pytest tests/` |
+| **Blocking at 15,000 records** | skips **99.80%** of pairs · **83%** of true pairs meet on real-notation records (98.9% on clean specs) | `run_all.py --run 15k`, `tests/test_blocking.py` |
+| **Real TEST result** | freeze 1: category **97.9%** · 2+ facts **86.9%** · 4 auto, **0 wrong** · recall **86.4%** — freeze 2 (locked): 97.9% · 90.3% · 4 auto, **0 wrong** · recall **83.1%** · review precision 17.9% | `python src/real_eval.py --test claude`, `frozen.json` history |
+| **15,000 run (locked)** | 860 auto-merged, **0 wrong** (< 0.35% at 95%) · 0 of 104,994 traps · recall 82% · 13,128 refusals one field from a merge | `data/output/evidence.json` |
+| **Baselines, test families** | text matchers at best F1: 6–8% right (TF-IDF 1,953 wrong of 2,112) · ours 217 auto, 0 wrong | `baselines.py` |
+| Tests | **292 pass** — real reading, real pairs, blocking, veto cases, self-check, equivalence, sealed audit log | `python -m pytest tests/` |
 
 **Done 24 Sept evening:** A1, A2, A4, A5 (tests; generated traps come with A6), and a first
 A9 (`real_eval.py --test`). **Done 24 Sept late: A6** — see the A6 card's status.
 **Done 24 Sept night, pulled forward from Phase B/C:** C2 error bound (auto-merge error < 0.35%
 with 95% confidence at 15,000) and B2 counterfactual (stored on every blocked pair and on review
 pairs held only by an unconfirmed field; shown on the Block screen). All work committed on
-branch `feat/real-text-15k-run`. The one weak real number is review precision: 196 of 235 false
+branch `feat/real-text-15k-run`.
+**Done 25 Sept:** C1 baselines · B1 self-check (+ gate verdict CONTRADICTS) · A10 Real tender
+text page, review queue by record, dashboard evidence panel · B3 equivalence with supersession ·
+B5 sealed audit log + `govern.py` replay · **A11 freeze 2 and tag `ppt-numbers-2026-09-25`**.
+Every slide number is in `deliverables/slide-numbers.md` with its source file. The one weak real number is review precision: 196 of 235 false
 proposals are pairs where a safety field is stated on one side and silent on the other — see §7.
 
 Dev numbers are **never** reported as results. They're what we build against. The
@@ -68,11 +74,10 @@ and slides need, instead of leaving it for October:
 | When | What | Who |
 |---|---|---|
 | Wed night | ✅ branch saved · ✅ C2 error bound · ✅ B2 what-if line | Claude |
-| Thu 25 | C1 baselines (fuzzy, TF-IDF, embedding vs ours, same pairs) · B1 self-check · A10 "Real text" page + review queue as one record with its top 3 · B3 bolt equivalences | Claude |
+| Thu 25 | ✅ C1 baselines · ✅ B1 self-check · ✅ A10 Real text page + review queue by record + evidence panel · ✅ B3 equivalences · ✅ B5 sealed audit log · ✅ A11 lock (pulled in from Fri) | Claude |
 | Thu 25 | Label the 417 test rows, separately | Isha, Meghna |
 | Thu 25 | Slides 1, 2, 3, 6 | Madhu, Meghna |
-| Fri 26 morning | B5 audit upgrade: hash-chained log, export, replay | Claude |
-| **Fri 26 noon** | **A11 lock: re-freeze the code, final run, tag.** Nothing new after | Claude |
+| Fri 26 | Nothing new in the code. Fixes only if the deck finds a wrong number | — |
 | Fri 26 afternoon | Slides 4, 5 from the tag · screenshots · backup video | Madhu, Aditya |
 | Fri 26 evening | Whole team reads the deck aloud | All |
 | Sat 27 morning | Export PDF, submit, touch nothing | Madhu |
@@ -326,9 +331,9 @@ view. 15,000 records on 11,815 items (21.2%), 104,994 generated traps.
 
 | 15,000-record run | first run | now |
 |---|---|---|
-| auto-merged / wrong | 3,811 / **2,625** (31%) | 846 / **0** (100%) |
+| auto-merged / wrong | 3,811 / **2,625** (31%) | 846 / **0** (100%); 860 / 0 at the lock |
 | traps auto-merged | 55 | **0** |
-| recall (auto + review) | 70.6% | 82.0% (dev 82.2%, test 81.4%) |
+| recall (auto + review) | 70.6% | 82.0% (dev 82.2%, test 81.4%); 82.4% at the lock |
 | blocking | 99.87% skipped, 68% of true pairs meet | 99.80% skipped, 82% meet |
 
 What fixed it (all from dev families; test families untouched): variant fields became veto
@@ -519,6 +524,10 @@ number in the deck must match a file at that tag. If it doesn't, it doesn't go o
 
 ### B1 · Self-check ★
 
+**Status, 25 Sept — done.** `src/selfcheck.py`; pairs with a contradicted record capped below
+auto; gate verdict CONTRADICTS. 7 planted contradictions caught; 0 flags on 308 real dev lines
+and 15,000 generated records (target ≤ 2%). It found a reader bug on the way (gauge minus sign).
+
 **Where:** `derive.py`, after derivation. **Design:** check each record against itself. Stated
 against derived (a bearing says 6205 but also 30×62×16) · OD against designation (500NB with
 457 mm) · wall against schedule · category against fields (a valve with a cross-section in
@@ -530,6 +539,10 @@ per company appears on the scorecard (C9).
 
 ### B2 · Counterfactual ★
 
+**Status, 24 Sept night — done.** `scorer.counterfactual`; on every blocked pair, and on review
+pairs held only by an unconfirmed field. At the lock, 13,128 of 165,184 refusals at 15,000 were one
+field from auto-merge; 13,127 truly different items.
+
 **Where:** `scorer.score_pair`. **Design:** for a blocked pair, re-score with the blocking
 field set equal on both sides: "if `material_grade` matched, this would score 0.94". For a
 near-miss (0.70–0.90), find the single non-hard field whose agreement would lift it over 0.90.
@@ -539,6 +552,9 @@ card. **Done when:** every blocked pair in `pair_scores.json` has a counterfactu
 SS316/SS304 demo shows it.
 
 ### B3 · Cross-standard equivalence and supersession ★
+
+**Status, 25 Sept — done** as `standards.EQUIVALENCE` (a table in code, each row with its
+source) rather than a CSV; all three done-when cases pass (`tests/test_equivalence.py`).
 
 **Where:** `data/standards/equivalence.csv`, `src/standards.py`, and
 `scorer.values_agree`. **Design:** `resolve(standard, grade)` returns a canonical key through
@@ -560,6 +576,11 @@ ladder (C14). **Done when:** every scored pair carries a `relation`, and 6204/62
 up as variants, not duplicates.
 
 ### B5 · Governance: audit log, five verbs, consent, dispute ★
+
+**Status, 25 Sept — done, minus the 30-day provisional window.** Sealed log in the portal
+(`ui/src/lib/chain.js`), "Test the seal", JSONL export; `src/govern.py` verify / replay / demo.
+A browser-exported log verifies and replays in Python (portal check); replay refuses a forged
+cross-company link and a non-owner retirement.
 
 **Where:** new `src/govern.py`, `data/output/audit.jsonl`. **Design:**
 - The log can only be added to. Each event: `event_id, ts, actor, org, verb, national_code,

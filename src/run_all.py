@@ -56,8 +56,11 @@ def main() -> None:
     steps += [("score", ["scorer.py"]), ("evaluate", ["evaluate.py"]), ("baselines", ["baselines.py"]),
               ("canonicalise", ["canonicalise.py"]),
               ("savings", ["savings.py"]), ("units", ["uom.py"]), ("gate", ["gate.py", "--scenarios"]),
-              ("evidence", ["evidence.py"]),
-              ("results", ["results.py"] + (["--ui"] if args.ui else []))]
+              ("results", ["results.py"] + (["--ui"] if args.ui else [])),
+              # evidence reads every run's results; the demo bundle then embeds it
+              ("evidence", ["evidence.py"])]
+    if not args.run:
+        steps.append(("bundle", ["results.py"] + (["--ui"] if args.ui else [])))
 
     print(f"run: {args.run or 'demo'}   ({paths.OUTPUT})\n")
     total = time.time()

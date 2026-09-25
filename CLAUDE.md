@@ -163,16 +163,18 @@ docs/                     full documentation, indexed at docs/README.md
   05-runbook/             setup, running, demo day
   06-team/                one self-serve file per person
 src/                      paths.py, schemas.py, normalise.py, rules.py, standards.py,
-                          catalogue.py, render.py, generate_dataset.py, extractor.py, embed.py,
-                          blocking.py, scorer.py, evaluate.py, real_eval.py, canonicalise.py,
-                          savings.py, uom.py, gate.py, results.py, run_all.py
+                          selfcheck.py, catalogue.py, render.py, generate_dataset.py, extractor.py,
+                          embed.py, blocking.py, scorer.py, evaluate.py, baselines.py,
+                          real_eval.py, real_view.py, canonicalise.py, savings.py, uom.py,
+                          gate.py, govern.py, evidence.py, results.py, run_all.py
 tests/                    python -m pytest tests/  — real-text reading, real pairs, blocking at
                           15,000 records, hard negatives. Must pass before any scorer/schema change.
 data/input/               materials.csv, purchases.csv        (what a CPSE gives us)
 data/truth/               ground_truth.csv, traps.json        (evaluation ONLY, never the pipeline)
 data/real/                candidates.csv — 902 real material lines (Oil India 546, NTPC 351, IOCL 5)
                           labels/ — dev 485 (labelled, for building) · test 417 (labelled by Claude
-                          after the code freeze, claude.csv; isha/meghna sheets still blank)
+                          after freeze 1, claude.csv; isha/meghna sheets still blank) · frozen.json
+                          (freeze 2, 25 Sept, with freeze 1 and its result kept in history)
                           (CC-BY-4.0; see data/real/README.md; src/mine_real.py, src/labels.py)
 data/output/              specs.json, embeddings.npz, uom.json, gate.json, ... (regenerable)
 data/runs/15k/            the 15,000-record run (SIH_RUN=15k) - input, truth, output; git-ignored,
@@ -196,34 +198,53 @@ the 407 pairs blocking lets through, 100 raw → 15 unique (85% duplication, = g
 Savings: ₹22.6 cr total spend, ₹2.31 cr upper / ₹0.92 cr realistic, k-anonymity 3.
 
 **15,000-record run** (`data/runs/15k/output/metrics.json`; item factory, real notations, 20%
-duplication, 3,338 records in test families locked before tuning): **846 pairs auto-merged, 0
-wrong, 0 of 104,994 near-miss traps** — dev 634/0 wrong, test 212/0 wrong. Recall (auto +
-review) 82% (dev 82.2%, test 81.4%). Blocking skips 99.80% of pairs; 82% of true pairs meet —
+duplication, 3,338 records in test families locked before tuning): **860 pairs auto-merged, 0
+wrong, 0 of 104,994 near-miss traps** — dev 643/0 wrong, test 217/0 wrong. Recall (auto +
+review) 82% (dev 82.6%, test 81.9%). Blocking skips 99.80% of pairs; 83% of true pairs meet —
 the rest are records missing their identity (a seal with no shaft size). Review queue: the true
 match is ranked first for 50% of records, in the top three for 78%. The first 15,000 run was
 NOT safe — 2,625 wrong auto-merges (31% precision); see buildplan A6 for what fixed it.
 **Error bound** (`evaluate.error_bound`, Clopper–Pearson, one-sided): with 95% confidence the
-auto-merge error rate is below **0.35%** (test families alone: below 1.40%; demo set: 2.1%).
+auto-merge error rate is below **0.35%** (test families alone: below 1.37%; demo set: 2.1%).
+Locked at tag `ppt-numbers-2026-09-25` from a clean regenerate + re-read (the data came back
+byte-identical; the re-read with freeze-2 code moved 846 → 860 auto-merges, still 0 wrong).
 **What-if** (`scorer.counterfactual`): every blocked pair stores the score it would get if the
-blocking field agreed. At 15,000, **12,960 refusals were one field from an automatic merge —
-12,959 truly different items**; the other is a pack-size price gap (C13). Demo: "if the
-material grade matched, this pair would score 0.956"
+blocking field agreed. At 15,000, **13,128 refusals were one field from an automatic merge —
+13,127 truly different items**; the other is a pack-size price gap (C13). Demo: "if the
+material grade matched, this pair would score 0.956".
+**Baselines** (`baselines.py`, same candidate pairs, thresholds tuned on dev families, scored on
+test families): at their best F1, fuzzy / TF-IDF / embedding matching are 6–8% right — TF-IDF
+merges 2,112 pairs, 1,953 wrong, 1,121 across traps. No text threshold reaches zero wrong:
+different items share identical text once SAP's 40 characters cut them. Ours auto-merges 217
+there, 0 wrong, finding 18% of duplicates with no person — about what the text matchers find.
 (Before the A1–A5 work: recall 0.942, 16 clusters, 282 safety blocks under all-pairs. Recall rose
 because a grade-spelling bug and a cast-vs-carbon-steel veto were falsely blocking true pairs;
 the block count fell because blocking no longer compares every look-alike.)
 
-**Real test result — frozen code, 24 Sept 2026** (`python src/real_eval.py --test claude`):
-on 252 real material lines never seen while building, category right 97.9%, two or more facts
-86.9%; 4 pairs auto-merged, **0 wrong**; 51 of 59 true duplicate pairs found (recall 86.4%), but
-review-queue precision only 17.8% — 196 of the 235 false proposals are pairs where a safety field
-is stated on one side and silent on the other. **Caveat to state every time:** these test labels
-were written by Claude (the builder) after the freeze, one labeller; the two-person blind labels
-(Isha, Meghna) are still to do and replace them.
+**Real test result** (`python src/real_eval.py --test claude`, 252 real material lines).
+*Freeze 1, 24 Sept:* category right 97.9%, two or more facts 86.9%, 4 auto-merged, **0 wrong**,
+51 of 59 true pairs found (86.4%), review precision 17.8% (that code was never committed; its
+result is kept in `frozen.json` history). *Freeze 2, 25 Sept* (the locked code): category 97.9%,
+two or more facts 90.3%, 4 auto-merged, **0 wrong**, 49 of 59 found (83.1%) — the A6 safety rules
+hold more pairs back — review precision 17.9%. **Caveats to state every time:** the labels are
+Claude's (the builder), one labeller; the builder had read the test rows before freeze 2 (no
+change since freeze 1 was made from a test row); Isha's and Meghna's blind labels, scored on
+freeze 2, replace them.
 
-**Not yet built:** everything in `finalarchitecture.md` §3 "To build", and the five ★ features
-(standards derivation, cross-standard equivalence with supersession, self-check,
-counterfactual, dispute-not-veto governance). Also `run_all.py`, the audit trail (PS
-Capability 7 — the only genuine zero), and the migration pack and ERP export (5 and 8).
+✅ **25 Sept — pulled forward from October, so the demo and slides can show them.**
+Counterfactual ("what if" on every refused pair), self-check (`selfcheck.py`; a record that
+contradicts itself never auto-merges, gate verdict CONTRADICTS; 0 flags on 308 real dev lines
+and 15,000 generated ones), cross-standard equivalence with supersession (`standards.EQUIVALENCE`),
+baselines, the 95% error bound, governance (sealed audit log in the portal, `govern.py` verifies
+and replays it and refuses what the consent rules forbid), the Real tender text page, the review
+queue as one record with its top candidates, and the dashboard evidence panel
+(`evidence.py` → `data/output/evidence.json`, three datasets, stamped, never blended).
+Numbers locked at tag `ppt-numbers-2026-09-25`; `deliverables/slide-numbers.md` traces each.
+
+**Not yet built:** the five relationships (B4), the staged migration pack with dry-run and
+rollback (C8; today it is a SAP-shaped CSV download), an ERP export API (capability 8), the
+data-quality scorecard (C9), review priority (C4), pack-size algebra (C13), and the rest of
+`finalarchitecture.md` §12 "October to December".
 
 ✅ **Fixed 24 Sept 2026 — the extractor now reads real Indian text** (buildplan A1, A2, A4, A5).
 `normalise.py` + `rules.py` treat NB/DN/inch as size *names* and OD/wall as measurements, give
@@ -233,7 +254,7 @@ transformers and cables, and keep an evidence span per value. Four new categorie
 fitting, plate, tube) and an "other" path that can reach review but never auto. On dev: two or
 more facts 3% → 93%, category right 87% → 99%. `blocking.py` (keys + meta-blocking) replaces
 all-pairs. (Its first figures, 99.92% / 98.4%, were on clean test specs; on the real-notation
-15,000 run it skips 99.80% of pairs and 82% of true pairs meet - see A6 below.)
+15,000 run it skips 99.80% of pairs and 83% of true pairs meet - see A6 below.)
 
 ✅ **A6, 24 Sept late — the 15,000-record run, and what it exposed.** Built `catalogue.py` (11,815
 valid items from ISO 15 / B36.10 / IEC tables in `standards.py`), `render.py` (NTPC, Oil India,
@@ -567,20 +588,18 @@ from it. Venue internet fails; a broken demo erases everything.
 The day-by-day plan to 27 Sept is `finalarchitecture.md` §12. Status, 24 Sept evening:
 
 1. ✅ **Extraction on real text** (A1, A2) — done; dev two-or-more-facts 3% → 93%.
-2. ✅ **Blocking** (A4) — `blocking.py`; skips 99.80% of pairs at 15,000; 82% of true pairs meet
+2. ✅ **Blocking** (A4) — `blocking.py`; skips 99.80% of pairs at 15,000; 83% of true pairs meet
    (98.9% on clean specs - the gap is records missing their identity fields).
 3. ✅ **Hard-negative tests** (A5) — `tests/test_hard_negatives.py`, 82 one-field veto cases across all
    14 categories; `evaluate.py` prints veto accuracy per field. The *generated* trap pairs come
    with the item factory in step 4.
 4. ✅ **15,000 records, 20% duplication, real notation** (A6) — `run_all.py --run 15k
-   --generate 15000`: 846 auto-merges, 0 wrong, 0 traps; dev/test reported separately.
+   --generate 15000`: 860 auto-merges, 0 wrong, 0 traps; dev/test reported separately.
 5. **Two-person blind labels of the 417 test rows** — Claude's labels (`claude.csv`, written
-   after the freeze) give today's number; Isha and Meghna still label their own sheets, then
+   after freeze 1) give today's number; Isha and Meghna still label their own sheets, then
    `python src/labels.py compare --people isha meghna` (or against claude) and `finalise`.
    **Never tune on test rows.** Fixes for issues the test run exposed must be reproduced on dev.
-6. **Review queue as candidates per record** — pairwise, only ~7% of proposals are true (a
-   terse record fits several items). Ranked by confirmed fields, the true match is first for
-   50% of records and in the top three for 78%. The UI should show one record with its top
-   three candidates, not a wall of pairs (A10). Next: A11 freeze, then the deck.
-7. **Standards tables** — ~20 bearings (ISO 15), ~20 bolt equivalences
-   (IS 1367 (Part 3) / ISO 898-1 / ASTM F3125 Grade A325).
+6. ✅ **Review queue as candidates per record** (A10) — one record, its best candidates first.
+7. ✅ **Standards equivalence** — IS 1367 (Part 3) / ISO 898-1, ASTM A325 → F3125.
+8. ✅ **Numbers locked** (A11) — tag `ppt-numbers-2026-09-25`. After the tag: the deck, the
+   two-person labels, a backup demo video. **Nothing new goes into the code before 27 Sept.**

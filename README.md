@@ -85,7 +85,9 @@ Brand is deliberately ignored. Material grade is a veto.
 │   ├── embed.py           local embeddings, no API
 │   ├── blocking.py        candidate pairs: signature keys + meta-blocking, no all-pairs
 │   ├── scorer.py          veto-first hybrid scorer and clustering
-│   ├── evaluate.py        precision / recall against the answer key
+│   ├── evaluate.py        precision / recall against the answer key, 95% error bound
+│   ├── baselines.py       fuzzy, TF-IDF and embedding matchers vs ours, same pairs
+│   ├── selfcheck.py       a record checked against itself (6205 with a 6206's size)
 │   ├── canonicalise.py    golden record, description, UNSPSC, national code
 │   ├── savings.py         demand aggregation with k-anonymity
 │   ├── uom.py             unit-of-measure harmonisation
@@ -96,7 +98,10 @@ Brand is deliberately ignored. Material grade is a veto.
 │   ├── render.py          writes an item the way NTPC / Oil India / SAP write it
 │   ├── run_all.py         the whole chain, one command, per run
 │   ├── labels.py          dev/test split, one sheet per labeller, agreement
-│   ├── real_eval.py       real-text coverage (dev) and the frozen-code test result
+│   ├── real_eval.py       real-text coverage (dev), the frozen-code test result, --freeze
+│   ├── real_view.py       the "Real tender text" page, from dev rows only
+│   ├── govern.py          verify the sealed audit log and replay it under the consent rules
+│   ├── evidence.py        every headline number from every dataset, stamped
 │   └── results.py         bundles everything the UI reads
 │
 ├── tests/                 python -m pytest tests/ — must pass before any scorer or schema change
@@ -150,18 +155,21 @@ makes a live model call.
 | Stage | File | Status |
 |---|---|---|
 | Dataset | `generate_dataset.py`, `catalogue.py`, `render.py` | ✅ 100-record demo · 15,000-record run in real notation (`SIH_RUN=15k`) |
-| Normalise + extract | `normalise.py`, `rules.py`, `extractor.py` | ✅ reads real CPSE text — dev 2+ facts 93%, real test 86.9% |
+| Normalise + extract | `normalise.py`, `rules.py`, `extractor.py` | ✅ reads real CPSE text — dev 2+ facts 96%, real test 90% |
 | Embeddings | `embed.py` | ✅ |
 | Blocking | `blocking.py` | ✅ identity keys + meta-blocking: skips 99.8% of pairs at 15,000 |
-| Veto-first scorer + clustering | `scorer.py` | ✅ |
+| Veto-first scorer + clustering | `scorer.py` | ✅ with a "what if" score on every refused pair |
+| Self-check | `selfcheck.py` | ✅ a line that contradicts itself never auto-merges; 0 false alarms on 308 real dev lines |
+| Cross-standard equivalence | `standards.py` | ✅ IS 1367 = ISO 898-1; A325 → F3125 (superseded); 8.8 ≈ A325 goes to a person |
 | Canonicaliser, UNSPSC, national codes | `canonicalise.py` | ✅ |
 | Savings with k-anonymity | `savings.py` | ✅ |
 | Units harmonisation | `uom.py` | ✅ |
-| Creation gate | `gate.py` | ✅ four verdicts |
-| Evaluation | `evaluate.py`, `real_eval.py` | ✅ 15,000 run: 846 auto-merges, **0 wrong**, 0 traps, recall 82% (dev = test) · real test (frozen): 0 wrong, recall 86.4% |
-| Safety tests | `tests/` | ✅ 256 pass — 82 one-field veto cases across 14 categories |
-| Portal UI | `ui/` | ✅ role sign-in + 11 pages, live audit trail, SAP-shaped export |
-| Standards derivation · self-check · counterfactual · governance · migration pack | — | ⏳ see `finalarchitecture.md` §12 |
+| Creation gate | `gate.py` | ✅ five verdicts, including CONTRADICTS |
+| Evaluation | `evaluate.py`, `baselines.py`, `real_eval.py` | ✅ 15,000 run: 860 auto-merges, **0 wrong** (< 0.35% at 95%), 0 of 104,994 traps · text matchers 6–8% right at their best · real test (freeze 2): 0 wrong, 83% found |
+| Safety tests | `tests/` | ✅ 292 pass — veto cases, self-check, equivalence, sealed audit log |
+| Portal UI | `ui/` | ✅ role sign-in + 12 pages: evidence panel, review queue by record, real tender text, sealed audit trail, SAP-shaped export |
+| Governance | `govern.py` | ✅ hash-chained log, tamper test, replay refuses what the consent rules forbid |
+| Five relationships · staged migration pack · data-quality scorecard | — | ⏳ see `finalarchitecture.md` §12 |
 
 ---
 
