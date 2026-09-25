@@ -66,6 +66,7 @@ import json
 import paths
 import schemas
 import scorer
+import selfcheck
 
 EXISTS = scorer.AUTO_MERGE      # 0.90
 REVIEW = scorer.REVIEW_LOW      # 0.70
@@ -193,7 +194,16 @@ def check(description: str, national: list, descriptions: dict,
             "thresholds": {"exists": EXISTS, "review": REVIEW},
         }
 
-    if top >= EXISTS:
+    # A line that contradicts itself (a 6205 with a 6206's dimensions) is not
+    # matched and not issued: one of its facts is wrong, nothing says which,
+    # and either answer would be a guess. The storekeeper corrects the line.
+    flags = selfcheck.check(incoming)
+    if flags:
+        verdict = "CONTRADICTS"
+        message = ("This line contradicts itself: " + "; ".join(selfcheck.describe(f) for f in flags)
+                   + ". One of those facts is wrong and nothing in the line says which, so no code "
+                   "is matched or issued until it is corrected.")
+    elif top >= EXISTS:
         verdict = "EXISTS"
         message = (f"Already catalogued as {best['national_code']}. "
                    f"{best['cpse_count']} CPSE"
@@ -229,6 +239,7 @@ def check(description: str, national: list, descriptions: dict,
         },
         "verdict": verdict,
         "message": message,
+        "contradictions": flags,
         "best": best,
         "candidates": scored[:4],
         # The refusals are the interesting half of the answer, not a footnote.
@@ -299,7 +310,14 @@ def scenarios(national, descriptions, vecs, profiles) -> list:
                  "PRESSURE GAUGE 100MM DIAL 0-16 BAR SS316 1/2IN NPT BOTTOM",
                  None))
 
-    # 5. Too little to decide on. A naive gate calls this NEW and mints a code,
+    # 5. A line that contradicts itself. A text search would hand back the
+    #    6205 code; the self-check sees that the dimensions are a 6206's.
+    plan.append(("contradicts", "A line that contradicts itself",
+                 "The designation says 6205; the dimensions are a 6206's. A text "
+                 "search returns the 6205 code. The gate stops and asks which is right.",
+                 "BEARING 6205 2RS 30X62X16MM", None))
+
+    # 6. Too little to decide on. A naive gate calls this NEW and mints a code,
     #    which is how a master fills with junk in the first place.
     plan.append(("incomplete", "Not enough typed to decide",
                  "A storekeeper in a hurry types one word. The gate refuses to "

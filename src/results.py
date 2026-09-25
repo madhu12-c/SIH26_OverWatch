@@ -24,6 +24,7 @@ from datetime import date
 
 import paths
 import schemas
+import selfcheck
 from scorer import AUTO_MERGE, NOT_SAFETY, REVIEW_LOW
 
 DEMO_MATCH = ("R00001", "R00002")     # different brand, same bearing
@@ -193,8 +194,20 @@ def build() -> dict:
                 "ignored_fields": p.get("ignored_fields", []),
                 "review_reason": p.get("review_reason"),
                 "counterfactual": p.get("counterfactual"),
+                "contradictions": p.get("contradictions"),
             })
     review.sort(key=lambda r: r["final"])
+
+    # Records that contradict themselves (selfcheck.py) - per company, for
+    # the data-quality view. Each is held out of the auto band.
+    contradicted = []
+    for rid, spec in specs.items():
+        found = selfcheck.check(spec)
+        if found:
+            contradicted.append({"record": record_view(rid, materials, specs), "contradictions": found})
+    contra_by_cpse = defaultdict(int)
+    for c in contradicted:
+        contra_by_cpse[c["record"].get("cpse")] += 1
 
     auto = sum(1 for n in national if n.get("band") == "auto")
     summary = savings.get("summary", {})
@@ -212,6 +225,8 @@ def build() -> dict:
             "review_pending": len(review),
             "blocked": len(blocked),
             "blocked_one_field": one_field,
+            "contradicted_records": len(contradicted),
+            "contradicted_by_cpse": dict(contra_by_cpse),
             "savings_upper": summary.get("saving_upper", 0),
             "savings_realistic": summary.get("saving_realistic", 0),
             "uom_variants": uom.get("summary", {}).get("variants_seen"),
@@ -244,6 +259,7 @@ def build() -> dict:
         "clusters": national if len(national) <= CAPS["clusters"] else cap_clusters(national),
         "review_queue": review[:CAPS["review_queue"]],
         "blocked": blocked[:CAPS["blocked"]],
+        "contradicted": contradicted[:CAPS["blocked"]],
         "blocked_by_rule": dict(sorted(by_rule.items(), key=lambda x: -x[1])),
         "savings": items[:CAPS["savings"]],
         "savings_summary": summary,

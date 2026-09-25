@@ -16,6 +16,8 @@
   "review_pending": 169,
   "blocked": 97,
   "blocked_one_field": 11,
+  "contradicted_records": 0,
+  "contradicted_by_cpse": {},
   "savings_upper": 23103142.05,
   "savings_realistic": 9241256.82,
   "uom_variants": 10,
@@ -1605,7 +1607,8 @@
    ],
    "ignored_fields": [],
    "review_reason": "could not verify nominal_size_in, pressure_class, filler - not extracted from both records",
-   "counterfactual": null
+   "counterfactual": null,
+   "contradictions": null
   },
   {
    "a": {
@@ -1662,7 +1665,8 @@
    ],
    "ignored_fields": [],
    "review_reason": "could not verify nominal_size_in, od_mm, schedule, wall_mm - not extracted from both records",
-   "counterfactual": null
+   "counterfactual": null,
+   "contradictions": null
   },
   {
    "a": {
@@ -1727,7 +1731,8 @@
     "brand"
    ],
    "review_reason": "could not verify schedule, wall_mm - not extracted from both records",
-   "counterfactual": null
+   "counterfactual": null,
+   "contradictions": null
   },
   {
    "a": {
@@ -1780,7 +1785,8 @@
    ],
    "ignored_fields": [],
    "review_reason": "could not verify nominal_size_in, od_mm, schedule - not extracted from both records",
-   "counterfactual": null
+   "counterfactual": null,
+   "contradictions": null
   },
   {
    "a": {
@@ -1851,7 +1857,8 @@
     "brand"
    ],
    "review_reason": null,
-   "counterfactual": null
+   "counterfactual": null,
+   "contradictions": null
   },
   {
    "a": {
@@ -1908,7 +1915,8 @@
    ],
    "ignored_fields": [],
    "review_reason": "could not verify shaft_dia_mm, face_materials, elastomer - not extracted from both records",
-   "counterfactual": null
+   "counterfactual": null,
+   "contradictions": null
   },
   {
    "a": {
@@ -1971,7 +1979,8 @@
     "brand"
    ],
    "review_reason": "could not verify pressure_class, body_material, end_connection, bore_type - not extracted from both records",
-   "counterfactual": null
+   "counterfactual": null,
+   "contradictions": null
   },
   {
    "a": {
@@ -2028,7 +2037,8 @@
    ],
    "ignored_fields": [],
    "review_reason": "could not verify shaft_dia_mm, face_materials, elastomer - not extracted from both records",
-   "counterfactual": null
+   "counterfactual": null,
+   "contradictions": null
   },
   {
    "a": {
@@ -2091,7 +2101,8 @@
     "brand"
    ],
    "review_reason": "could not verify pressure_class, body_material, end_connection, bore_type - not extracted from both records",
-   "counterfactual": null
+   "counterfactual": null,
+   "contradictions": null
   },
   {
    "a": {
@@ -2153,7 +2164,8 @@
    ],
    "ignored_fields": [],
    "review_reason": "could not tell body_material - the family only on one side, or neither record says which variant and the registry holds several",
-   "counterfactual": null
+   "counterfactual": null,
+   "contradictions": null
   },
   {
    "a": {
@@ -2224,7 +2236,8 @@
     "brand"
    ],
    "review_reason": null,
-   "counterfactual": null
+   "counterfactual": null,
+   "contradictions": null
   },
   {
    "a": {
@@ -2277,7 +2290,8 @@
    ],
    "ignored_fields": [],
    "review_reason": "could not verify pressure_class, body_material - not extracted from both records",
-   "counterfactual": null
+   "counterfactual": null,
+   "contradictions": null
   },
   {
    "a": {
@@ -2345,7 +2359,8 @@
     "brand"
    ],
    "review_reason": "could not tell body_material - the family only on one side, or neither record says which variant and the registry holds several",
-   "counterfactual": null
+   "counterfactual": null,
+   "contradictions": null
   },
   {
    "a": {
@@ -2407,7 +2422,8 @@
    ],
    "ignored_fields": [],
    "review_reason": "could not verify body_material, end_connection - not extracted from both records",
-   "counterfactual": null
+   "counterfactual": null,
+   "contradictions": null
   },
   {
    "a": {
@@ -2469,7 +2485,8 @@
     "brand"
    ],
    "review_reason": "could not verify body_material - not extracted from both records",
-   "counterfactual": null
+   "counterfactual": null,
+   "contradictions": null
   },
   {
    "a": {
@@ -2526,7 +2543,8 @@
    ],
    "ignored_fields": [],
    "review_reason": "could not verify nominal_size_in, od_mm, schedule, wall_mm - not extracted from both records",
-   "counterfactual": null
+   "counterfactual": null,
+   "contradictions": null
   },
   {
    "a": {
@@ -2595,7 +2613,8 @@
     "part_number"
    ],
    "review_reason": "could not tell body_material - the family only on one side, or neither record says which variant and the registry holds several",
-   "counterfactual": null
+   "counterfactual": null,
+   "contradictions": null
   },
   {
    "a": {
@@ -2654,7 +2673,8 @@
     "brand"
    ],
    "review_reason": "could not verify nominal_size_in, pressure_class, filler - not extracted from both records",
-   "counterfactual": null
+   "counterfactual": null,
+   "contradictions": null
   },
   {
    "a": {
@@ -2712,7 +2732,8 @@
      "pressure_class"
     ],
     "score": 0.907
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -2781,7 +2802,8 @@
      "filler"
     ],
     "score": 0.95
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -2848,7 +2870,8 @@
      "filler"
     ],
     "score": 0.945
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -2910,7 +2933,8 @@
      "pressure_class"
     ],
     "score": 0.984
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -2970,7 +2994,8 @@
      "pressure_class"
     ],
     "score": 0.907
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -3037,7 +3062,8 @@
      "filler"
     ],
     "score": 0.942
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -3104,7 +3130,8 @@
      "filler"
     ],
     "score": 0.969
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -3173,7 +3200,8 @@
      "filler"
     ],
     "score": 0.942
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -3238,7 +3266,8 @@
      "filler"
     ],
     "score": 0.96
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -3310,7 +3339,8 @@
      "seal_type"
     ],
     "score": 0.966
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -3382,7 +3412,8 @@
      "seal_type"
     ],
     "score": 0.981
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -3454,7 +3485,8 @@
      "seal_type"
     ],
     "score": 0.966
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -3528,7 +3560,8 @@
      "seal_type"
     ],
     "score": 0.963
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -3600,7 +3633,8 @@
      "seal_type"
     ],
     "score": 0.969
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -3662,7 +3696,8 @@
      "pressure_class"
     ],
     "score": 0.911
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -3738,7 +3773,8 @@
      "filler"
     ],
     "score": 0.954
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -3800,7 +3836,8 @@
      "pressure_class"
     ],
     "score": 0.907
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -3876,7 +3913,8 @@
      "filler"
     ],
     "score": 0.913
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -3941,7 +3979,8 @@
      "filler"
     ],
     "score": 0.911
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -4008,7 +4047,8 @@
      "filler"
     ],
     "score": 0.926
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -4081,7 +4121,8 @@
      "filler"
     ],
     "score": 0.95
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -4148,7 +4189,8 @@
      "filler"
     ],
     "score": 0.942
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -4216,7 +4258,8 @@
      "pressure_class"
     ],
     "score": 0.953
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -4276,7 +4319,8 @@
      "pressure_class"
     ],
     "score": 0.904
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -4343,7 +4387,8 @@
      "filler"
     ],
     "score": 0.909
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -4410,7 +4455,8 @@
      "filler"
     ],
     "score": 0.967
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -4470,7 +4516,8 @@
      "pressure_class"
     ],
     "score": 0.907
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -4541,7 +4588,8 @@
      "filler"
     ],
     "score": 0.911
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -4606,7 +4654,8 @@
      "filler"
     ],
     "score": 0.943
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -4672,7 +4721,8 @@
      "pressure_class"
     ],
     "score": 0.917
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -4745,7 +4795,8 @@
      "filler"
     ],
     "score": 0.956
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -4818,7 +4869,8 @@
      "filler"
     ],
     "score": 0.937
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -4884,7 +4936,8 @@
      "pressure_class"
     ],
     "score": 0.914
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -4960,7 +5013,8 @@
      "filler"
     ],
     "score": 0.95
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -5029,7 +5083,8 @@
      "filler"
     ],
     "score": 0.973
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -5096,7 +5151,8 @@
      "filler"
     ],
     "score": 0.934
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -5165,7 +5221,8 @@
      "filler"
     ],
     "score": 0.968
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -5228,7 +5285,8 @@
      "filler"
     ],
     "score": 0.911
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -5297,7 +5355,8 @@
      "filler"
     ],
     "score": 0.913
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -5361,7 +5420,8 @@
      "wall_mm"
     ],
     "score": 0.967
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -5434,7 +5494,8 @@
      "wall_mm"
     ],
     "score": 0.973
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -5509,7 +5570,8 @@
      "wall_mm"
     ],
     "score": 0.959
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -5573,7 +5635,8 @@
      "wall_mm"
     ],
     "score": 0.916
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -5648,7 +5711,8 @@
      "wall_mm"
     ],
     "score": 0.947
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -5722,7 +5786,8 @@
      "body_material"
     ],
     "score": 0.939
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -5795,7 +5860,8 @@
      "body_material"
     ],
     "score": 0.98
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -5869,7 +5935,8 @@
      "body_material"
     ],
     "score": 0.977
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -5938,7 +6005,8 @@
      "end_connection"
     ],
     "score": 0.981
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -6005,7 +6073,8 @@
      "end_connection"
     ],
     "score": 0.936
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -6076,7 +6145,8 @@
      "end_connection"
     ],
     "score": 0.944
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -6149,7 +6219,8 @@
      "body_material"
     ],
     "score": 0.925
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -6226,7 +6297,8 @@
      "body_material"
     ],
     "score": 0.949
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -6302,7 +6374,8 @@
      "body_material"
     ],
     "score": 0.943
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -6373,7 +6446,8 @@
      "end_connection"
     ],
     "score": 0.906
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -6444,7 +6518,8 @@
      "end_connection"
     ],
     "score": 0.925
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -6513,7 +6588,8 @@
      "end_connection"
     ],
     "score": 0.939
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -6590,7 +6666,8 @@
      "body_material"
     ],
     "score": 0.946
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -6667,7 +6744,8 @@
      "body_material"
     ],
     "score": 0.923
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -6738,7 +6816,8 @@
      "end_connection"
     ],
     "score": 0.936
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -6811,7 +6890,8 @@
      "end_connection"
     ],
     "score": 0.97
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -6880,7 +6960,8 @@
      "end_connection"
     ],
     "score": 0.94
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -6956,7 +7037,8 @@
      "end_connection"
     ],
     "score": 0.921
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -7034,7 +7116,8 @@
      "body_material"
     ],
     "score": 0.976
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -7107,7 +7190,8 @@
      "end_connection"
     ],
     "score": 0.947
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -7182,7 +7266,8 @@
      "end_connection"
     ],
     "score": 0.926
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -7259,7 +7344,8 @@
      "body_material"
     ],
     "score": 0.91
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -7323,7 +7409,8 @@
      "body_material"
     ],
     "score": 0.953
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -7385,7 +7472,8 @@
      "body_material"
     ],
     "score": 0.905
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -7456,7 +7544,8 @@
      "end_connection"
     ],
     "score": 0.928
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -7520,7 +7609,8 @@
      "body_material"
     ],
     "score": 0.937
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -7590,7 +7680,8 @@
      "body_material"
     ],
     "score": 0.955
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -7663,7 +7754,8 @@
      "end_connection"
     ],
     "score": 0.959
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -7729,7 +7821,8 @@
      "body_material"
     ],
     "score": 0.926
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -7798,7 +7891,8 @@
      "end_connection"
     ],
     "score": 0.941
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -7871,7 +7965,8 @@
      "body_material"
     ],
     "score": 0.947
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -7944,7 +8039,8 @@
      "body_material"
     ],
     "score": 0.937
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -8017,7 +8113,8 @@
      "body_material"
     ],
     "score": 0.968
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -8095,7 +8192,8 @@
      "bore_type"
     ],
     "score": 0.965
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -8173,7 +8271,8 @@
      "bore_type"
     ],
     "score": 0.937
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -8240,7 +8339,8 @@
      "end_connection"
     ],
     "score": 0.946
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -8307,7 +8407,8 @@
      "end_connection"
     ],
     "score": 0.914
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -8381,7 +8482,8 @@
      "bore_type"
     ],
     "score": 0.903
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -8455,7 +8557,8 @@
      "bore_type"
     ],
     "score": 0.907
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -8526,7 +8629,8 @@
      "material_grade"
     ],
     "score": 0.941
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -8599,7 +8703,8 @@
      "material_grade"
     ],
     "score": 0.957
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -8672,7 +8777,8 @@
      "material_grade"
     ],
     "score": 0.949
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -8745,7 +8851,8 @@
      "material_grade"
     ],
     "score": 0.937
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -8818,7 +8925,8 @@
      "material_grade"
     ],
     "score": 0.956
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -8889,7 +8997,8 @@
      "material_grade"
     ],
     "score": 0.926
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -8958,7 +9067,8 @@
      "material_grade"
     ],
     "score": 0.939
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -9031,7 +9141,8 @@
      "material_grade"
     ],
     "score": 0.972
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -9100,7 +9211,8 @@
      "material_grade"
     ],
     "score": 0.948
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -9173,7 +9285,8 @@
      "material_grade"
     ],
     "score": 0.962
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -9242,7 +9355,8 @@
      "material_grade"
     ],
     "score": 0.967
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -9313,7 +9427,8 @@
      "material_grade"
     ],
     "score": 0.932
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -9382,7 +9497,8 @@
      "material_grade"
     ],
     "score": 0.905
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -9455,7 +9571,8 @@
      "material_grade"
     ],
     "score": 0.955
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -9528,7 +9645,8 @@
      "material_grade"
     ],
     "score": 0.927
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -9597,7 +9715,8 @@
      "material_grade"
     ],
     "score": 0.947
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -9668,7 +9787,8 @@
      "material_grade"
     ],
     "score": 0.942
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -9740,7 +9860,8 @@
      "bore_schedule"
     ],
     "score": 0.956
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -9812,7 +9933,8 @@
      "bore_schedule"
     ],
     "score": 0.95
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -9882,7 +10004,8 @@
      "bore_schedule"
     ],
     "score": 0.938
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -9954,7 +10077,8 @@
      "bore_schedule"
     ],
     "score": 0.936
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -10022,7 +10146,8 @@
      "bore_schedule"
     ],
     "score": 0.935
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -10092,7 +10217,8 @@
      "bore_schedule"
     ],
     "score": 0.955
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -10164,7 +10290,8 @@
      "bore_schedule"
     ],
     "score": 0.925
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -10225,7 +10352,8 @@
      "shaft_dia_mm"
     ],
     "score": 0.921
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -10288,7 +10416,8 @@
      "elastomer"
     ],
     "score": 0.925
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -10348,7 +10477,8 @@
      "face_materials"
     ],
     "score": 0.929
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -10414,7 +10544,8 @@
      "face_materials"
     ],
     "score": 0.904
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -10481,7 +10612,8 @@
      "elastomer"
     ],
     "score": 0.92
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -10546,7 +10678,8 @@
      "elastomer"
     ],
     "score": 0.927
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -10613,7 +10746,8 @@
      "elastomer"
     ],
     "score": 0.911
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -10681,7 +10815,8 @@
      "face_materials"
     ],
     "score": 0.926
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -10748,7 +10883,8 @@
      "elastomer"
     ],
     "score": 0.942
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -10821,7 +10957,8 @@
      "elastomer"
     ],
     "score": 0.964
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -10886,7 +11023,8 @@
      "elastomer"
     ],
     "score": 0.954
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -10955,7 +11093,8 @@
      "elastomer"
     ],
     "score": 0.95
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -11022,7 +11161,8 @@
      "elastomer"
     ],
     "score": 0.951
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -11095,7 +11235,8 @@
      "elastomer"
     ],
     "score": 0.912
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -11176,7 +11317,8 @@
      "connection"
     ],
     "score": 0.95
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -11255,7 +11397,8 @@
      "connection"
     ],
     "score": 0.974
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -11328,7 +11471,8 @@
      "connection"
     ],
     "score": 0.982
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -11405,7 +11549,8 @@
      "connection"
     ],
     "score": 0.941
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -11482,7 +11627,8 @@
      "connection"
     ],
     "score": 0.945
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -11563,7 +11709,8 @@
      "connection"
     ],
     "score": 0.977
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -11640,7 +11787,8 @@
      "connection"
     ],
     "score": 0.969
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -11717,7 +11865,8 @@
      "connection"
     ],
     "score": 0.973
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -11796,7 +11945,8 @@
      "connection"
     ],
     "score": 0.988
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -11867,7 +12017,8 @@
      "mounting"
     ],
     "score": 0.942
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -11943,7 +12094,8 @@
      "voltage_v"
     ],
     "score": 0.971
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -12018,7 +12170,8 @@
      "mounting"
     ],
     "score": 0.954
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -12096,7 +12249,8 @@
      "voltage_v"
     ],
     "score": 0.984
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -12173,7 +12327,8 @@
      "mounting"
     ],
     "score": 0.928
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -12253,7 +12408,8 @@
      "voltage_v"
     ],
     "score": 0.972
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -12328,7 +12484,8 @@
      "mounting"
     ],
     "score": 0.923
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -12397,7 +12554,8 @@
      "mounting"
     ],
     "score": 0.963
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -12468,7 +12626,8 @@
      "mounting"
     ],
     "score": 0.927
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -12539,7 +12698,8 @@
      "mounting"
     ],
     "score": 0.927
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -12617,7 +12777,8 @@
      "voltage_v"
     ],
     "score": 0.985
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -12693,7 +12854,8 @@
      "voltage_v"
     ],
     "score": 0.972
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -12769,7 +12931,8 @@
      "voltage_v"
     ],
     "score": 0.973
-   }
+   },
+   "contradictions": null
   },
   {
    "a": {
@@ -12822,7 +12985,8 @@
    ],
    "ignored_fields": [],
    "review_reason": "could not verify nominal_size_in, pressure_class - not extracted from both records",
-   "counterfactual": null
+   "counterfactual": null,
+   "contradictions": null
   },
   {
    "a": {
@@ -12891,7 +13055,8 @@
     "brand"
    ],
    "review_reason": null,
-   "counterfactual": null
+   "counterfactual": null,
+   "contradictions": null
   },
   {
    "a": {
@@ -12950,7 +13115,8 @@
     "brand"
    ],
    "review_reason": "could not verify nominal_size_in, pressure_class, filler - not extracted from both records",
-   "counterfactual": null
+   "counterfactual": null,
+   "contradictions": null
   },
   {
    "a": {
@@ -13010,7 +13176,8 @@
    ],
    "ignored_fields": [],
    "review_reason": "could not verify body_material, end_connection - not extracted from both records",
-   "counterfactual": null
+   "counterfactual": null,
+   "contradictions": null
   },
   {
    "a": {
@@ -13069,7 +13236,8 @@
     "brand"
    ],
    "review_reason": "could not verify nominal_size_in, pressure_class, filler - not extracted from both records",
-   "counterfactual": null
+   "counterfactual": null,
+   "contradictions": null
   },
   {
    "a": {
@@ -13122,7 +13290,8 @@
     "brand"
    ],
    "review_reason": "could not verify nominal_size_in, pressure_class - not extracted from both records",
-   "counterfactual": null
+   "counterfactual": null,
+   "contradictions": null
   },
   {
    "a": {
@@ -13181,7 +13350,8 @@
     "brand"
    ],
    "review_reason": "could not verify nominal_size_in, pressure_class, filler - not extracted from both records",
-   "counterfactual": null
+   "counterfactual": null,
+   "contradictions": null
   },
   {
    "a": {
@@ -13237,7 +13407,8 @@
    ],
    "ignored_fields": [],
    "review_reason": "could not verify face_materials - not extracted from both records",
-   "counterfactual": null
+   "counterfactual": null,
+   "contradictions": null
   }
  ],
  "blocked": [
@@ -19342,6 +19513,7 @@
    }
   }
  ],
+ "contradicted": [],
  "blocked_by_rule": {
   "material_grade": 64,
   "pressure_class": 27,
@@ -20883,6 +21055,7 @@
     },
     "verdict": "EXISTS",
     "message": "Already catalogued as NMC-31171500-000001. 5 CPSEs already hold it. Do not create a new code.",
+    "contradictions": [],
     "best": {
      "national_code": "NMC-31171500-000001",
      "std_description": "BEARING, DEEP GROOVE BALL, 6205, 25X52X15 MM, 2RS SEALED",
@@ -21036,6 +21209,7 @@
     },
     "verdict": "REVIEW",
     "message": "Possible match with NMC-31400000-000001 at 0.89. Not stated in this line: filler (the catalogue code says GRAPHITE). A cataloguer decides before a code is issued.",
+    "contradictions": [],
     "best": {
      "national_code": "NMC-31400000-000001",
      "std_description": "GASKET, SPIRAL WOUND, SS304, 4 IN, 150#, GRAPHITE",
@@ -21181,6 +21355,7 @@
     },
     "verdict": "NEW",
     "message": "No existing national code matches. This is a new item. It is NOT NMC-31400000-000001, NMC-31400000-000002 - material grade differs.",
+    "contradictions": [],
     "best": null,
     "candidates": [],
     "distinguished_from": [
@@ -21289,6 +21464,7 @@
     },
     "verdict": "NEW",
     "message": "No existing national code matches. This is a new item. It is NOT NMC-41111900-000001 - range max differs.",
+    "contradictions": [],
     "best": null,
     "candidates": [],
     "distinguished_from": [
@@ -21339,6 +21515,121 @@
     "id": "new-range",
     "label": "Same gauge, wrong range",
     "note": "Identical type, dial, wetted material and connection. Only the range differs - and a 0-16 bar gauge fitted where a 0-10 bar one belongs reads wrong for the rest of its life."
+   },
+   {
+    "input": "BEARING 6205 2RS 30X62X16MM",
+    "extracted": {
+     "category": "bearing",
+     "attributes": {
+      "iso_designation": "6205",
+      "seal_type": "2RS",
+      "bore_mm": 30.0,
+      "od_mm": 62.0,
+      "width_mm": 16.0,
+      "sub_type": "deep_groove_ball"
+     },
+     "confidence": {
+      "iso_designation": 0.62,
+      "seal_type": 0.62,
+      "bore_mm": 0.62,
+      "od_mm": 0.62,
+      "width_mm": 0.62,
+      "sub_type": 0.85
+     },
+     "method": "regex"
+    },
+    "verdict": "CONTRADICTS",
+    "message": "This line contradicts itself: dimensions 30 x 62 x 16 mm - ISO 15: a 6205 is 25 x 52 x 15 mm - these dimensions are a 6206. One of those facts is wrong and nothing in the line says which, so no code is matched or issued until it is corrected.",
+    "contradictions": [
+     {
+      "field": "dimensions",
+      "stated": "30 x 62 x 16 mm",
+      "expected": "25 x 52 x 15 mm",
+      "rule": "ISO 15: a 6205 is 25 x 52 x 15 mm - these dimensions are a 6206"
+     }
+    ],
+    "best": null,
+    "candidates": [],
+    "distinguished_from": [
+     {
+      "national_code": "NMC-31171500-000001",
+      "std_description": "BEARING, DEEP GROOVE BALL, 6205, 25X52X15 MM, 2RS SEALED",
+      "category": "bearing",
+      "unspsc": "31171500",
+      "cpse_count": 5,
+      "cpses": [
+       "BPCL",
+       "CPCL",
+       "GAIL",
+       "IOCL",
+       "ONGC"
+      ],
+      "member_count": 9,
+      "final": 0.0,
+      "text_sim": 0.3,
+      "spec_sim": 0.0,
+      "matched_fields": [
+       "sub_type",
+       "iso_designation"
+      ],
+      "ignored_fields": [],
+      "blocked_by": "bore_mm",
+      "reason": "30.0 vs 25.0",
+      "unverified": [],
+      "attributes": {
+       "sub_type": "DEEP_GROOVE_BALL",
+       "iso_designation": "6205",
+       "bore_mm": 25.0,
+       "od_mm": 52.0,
+       "width_mm": 15.0,
+       "seal_type": "2RS",
+       "brand": "FAG",
+       "part_number": "6205-2RSR"
+      }
+     },
+     {
+      "national_code": "NMC-31171500-000002",
+      "std_description": "BEARING, DEEP GROOVE BALL, 6206, 30X62X16 MM, 2RS SEALED",
+      "category": "bearing",
+      "unspsc": "31171500",
+      "cpse_count": 3,
+      "cpses": [
+       "BPCL",
+       "GAIL",
+       "ONGC"
+      ],
+      "member_count": 6,
+      "final": 0.0,
+      "text_sim": 0.182,
+      "spec_sim": 0.0,
+      "matched_fields": [
+       "sub_type"
+      ],
+      "ignored_fields": [],
+      "blocked_by": "iso_designation",
+      "reason": "6205 vs 6206",
+      "unverified": [],
+      "attributes": {
+       "sub_type": "DEEP_GROOVE_BALL",
+       "iso_designation": "6206",
+       "bore_mm": 30.0,
+       "od_mm": 62.0,
+       "width_mm": 16.0,
+       "seal_type": "2RS",
+       "brand": "SKF",
+       "part_number": "6206-2RS"
+      }
+     }
+    ],
+    "missing_hard": [],
+    "compared_against": 15,
+    "thresholds": {
+     "exists": 0.9,
+     "review": 0.7
+    },
+    "id": "contradicts",
+    "label": "A line that contradicts itself",
+    "note": "The designation says 6205; the dimensions are a 6206's. A text search returns the 6205 code. The gate stops and asks which is right."
    },
    {
     "input": "BEARING",

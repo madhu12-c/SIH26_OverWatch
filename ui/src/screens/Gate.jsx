@@ -34,6 +34,10 @@ const TONE = {
   // gets its own verdict so it can never fall through into a minted code.
   INCOMPLETE: { chip: 'warn', ink: 'text-warn', bar: 'bg-warn', bg: 'bg-warn-bg',
                 edge: 'border-warn/30', title: 'Not enough specification' },
+  // A line whose own facts disagree (a 6205 with a 6206's dimensions). Not
+  // matched, not issued: either reading would be a guess.
+  CONTRADICTS: { chip: 'danger', ink: 'text-danger', bar: 'bg-danger', bg: 'bg-danger-bg',
+                 edge: 'border-danger/30', title: 'Contradicts itself' },
 }
 
 function Attr({ name, value, matched }) {
@@ -134,8 +138,25 @@ export default function Gate() {
                   {s.compared_against} codes checked
                 </span>
               </div>
-              <p className="text-[13px] text-ink leading-relaxed">{s.message}</p>
-              {s.missing_hard?.length > 0 && (
+              {s.contradictions?.length > 0 ? (
+                <>
+                  <p className="text-[13px] text-ink leading-relaxed">
+                    One of the facts in this line is wrong, and nothing in it says which.
+                    No code is matched or issued until the line is corrected.
+                  </p>
+                  <ul className="mt-2 space-y-1">
+                    {s.contradictions.map((c, i) => (
+                      <li key={i} className="text-[12.5px] font-mono text-ink bg-base-card border border-danger/25 rounded px-2.5 py-1.5">
+                        <span className="text-danger font-semibold">{c.field.replace(/_/g, ' ')} {String(c.stated)}</span>
+                        <span className="text-ink-dim"> — {c.rule}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              ) : (
+                <p className="text-[13px] text-ink leading-relaxed">{s.message}</p>
+              )}
+              {s.verdict !== 'CONTRADICTS' && s.missing_hard?.length > 0 && (
                 <div className="flex flex-wrap items-center gap-1.5 mt-2.5">
                   <span className="label">not verified</span>
                   {s.missing_hard.map((f) => (
@@ -185,7 +206,7 @@ export default function Gate() {
             {/* The best candidate, if any survived. */}
             <div className="card p-4">
               <span className="label">best candidate</span>
-              {s.best && s.best.final > 0 ? (
+              {s.best && s.best.final > 0 && s.verdict !== 'CONTRADICTS' ? (
                 <div className="mt-2.5">
                   <div className="flex items-baseline gap-2 mb-1">
                     <span className="font-mono text-[11.5px] text-accent">
@@ -215,7 +236,9 @@ export default function Gate() {
                 </div>
               ) : (
                 <p className="mt-2.5 text-[12.5px] text-ink-dim leading-relaxed">
-                  {s.verdict === 'INCOMPLETE'
+                  {s.verdict === 'CONTRADICTS'
+                    ? 'Neither reading is safe to match. The designation points to one code and the dimensions to another — both are listed below, refused.'
+                    : s.verdict === 'INCOMPLETE'
                     ? 'No candidate was even considered. Nothing is scored, and no code is issued, until the description carries enough to compare — matching an underspecified record against the catalogue would be guessing.'
                     : 'Nothing in the catalogue survived the safety rules. A new national code is issued, and the near misses are recorded beside it.'}
                 </p>
@@ -237,7 +260,9 @@ export default function Gate() {
                 <div className="flex flex-wrap items-center gap-2">
                   <Chip tone="danger">not the same item</Chip>
                   <span className="text-[12.5px] text-ink">
-                    Close enough that a fuzzy matcher would have merged these
+                    {s.verdict === 'CONTRADICTS'
+                      ? 'The designation points to one code, the dimensions to the other — both refused'
+                      : 'Close enough that a fuzzy matcher would have merged these'}
                   </span>
                 </div>
               </div>

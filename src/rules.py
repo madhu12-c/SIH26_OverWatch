@@ -946,7 +946,8 @@ _LEGACY = {
 }
 
 _DIMS = re.compile(r"(\d{1,4})\s*[X*×]\s*(\d{1,4})\s*[X*×]\s*(\d{1,4})")
-_RANGE = re.compile(r"(\d+(?:\.\d+)?)\s*(?:-|TO)\s*(\d+(?:\.\d+)?)\s*"
+# A leading minus is kept: "-1 TO 0 BAR" is a vacuum gauge, not a 1-to-0 one.
+_RANGE = re.compile(r"((?<![\d.])-?\d+(?:\.\d+)?)\s*(?:-|TO)\s*(\d+(?:\.\d+)?)\s*"
                     r"(BAR|PSI|KPA|MPA|KG/CM2|DEG\s*C|DEGC)\b")
 
 

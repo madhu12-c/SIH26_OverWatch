@@ -43,6 +43,7 @@ import blocking
 import normalise as nz
 import paths
 import schemas
+import selfcheck
 
 # --- signal weights ---------------------------------------------------------
 # Adaptive, not fixed. The share given to specifications grows with how much
@@ -460,21 +461,38 @@ def score_pair(a, b, descriptions, vecs, profiles) -> dict:
         "blocked_by": None, "reason": None,
     }
 
+    flags = contradictions(a) + contradictions(b)
     for signal in (spec, proc):
         if signal.get("blocked_by"):
             out["blocked_by"] = signal["blocked_by"]
             out["reason"] = signal["reason"]
             out["final"] = 0.0
-            what_if = counterfactual(a, b, text, spec, proc)
+            what_if = counterfactual(a, b, text, spec, proc, flags)
             if what_if:
                 out["counterfactual"] = what_if
+            if flags:
+                out["contradictions"] = flags
             return out
 
-    out.update(_fuse(a, text, spec, proc))
+    out.update(_fuse(a, text, spec, proc, flags))
     return out
 
 
-def _fuse(a, text, spec, proc) -> dict:
+_CHECKED: dict = {}
+
+
+def contradictions(record: dict) -> list[dict]:
+    """The self-check (selfcheck.py) for one record, remembered per record."""
+    rid = record.get("record_id")
+    hit = _CHECKED.get(rid) if rid else None
+    if hit is None or hit[0] is not record:
+        hit = (record, [dict(c, record=rid) for c in selfcheck.check(record)])
+        if rid:
+            _CHECKED[rid] = hit
+    return hit[1]
+
+
+def _fuse(a, text, spec, proc, flags=()) -> dict:
     """The three signals into one score, with the caps that keep doubt out of
     the auto band. Shared by the real score and the counterfactual."""
     w_text, w_spec, w_proc = signal_weights(spec.get("compared", 0))
@@ -506,12 +524,21 @@ def _fuse(a, text, spec, proc) -> dict:
         out["review_reason"] = ("could not tell " + ", ".join(unsure) + " - the family only on one side, "
                                 "or neither record says which variant and the registry holds several")
 
+    # A record that contradicts itself (a 6205 with 6206 dimensions) cannot
+    # be matched with confidence to anything: one of its facts is wrong and
+    # nothing says which. A person sees the contradiction first.
+    if flags:
+        out["contradictions"] = list(flags)
+        out["review_reason"] = "a record contradicts itself: " + selfcheck.describe(flags[0])
+        if out["final"] >= AUTO_MERGE:
+            out["final"] = round(AUTO_MERGE - 0.01, 3)
+
     # Outside every schema: the noun and the numbers can say "possibly the
     # same", never "certainly". A person always confirms.
     if a.get("category") in NO_AUTO_CATEGORIES and out["final"] >= AUTO_MERGE:
         out["final"] = round(AUTO_MERGE - 0.01, 3)
         out["review_reason"] = "outside every schema - matched on noun and numbers only"
-    elif evidence_score > out["final"]:
+    elif evidence_score > out["final"] and unverified and not flags:
         # Held back only by what it could not check: tell the reviewer what
         # confirming it is worth. "Everything else agrees at 0.96."
         out["counterfactual"] = {"kind": "unverified", "fields": unverified,
@@ -519,7 +546,7 @@ def _fuse(a, text, spec, proc) -> dict:
     return out
 
 
-def counterfactual(a, b, text, spec, proc, max_fields: int = 3) -> dict | None:
+def counterfactual(a, b, text, spec, proc, flags=(), max_fields: int = 3) -> dict | None:
     """What the veto cost. For a blocked pair, the score it would get if the
     blocking field agreed: "if the grade matched, this would score 0.94".
 
@@ -548,7 +575,7 @@ def counterfactual(a, b, text, spec, proc, max_fields: int = 3) -> dict | None:
     if proc.get("blocked_by"):
         fields.append(proc["blocked_by"])
         proc = {"score": None}
-    fused = _fuse(a, text, spec, proc)
+    fused = _fuse(a, text, spec, proc, flags)
     return {"kind": "blocked", "fields": fields, "score": fused["final"],
             "capped_by": fused["unverified_hard"] or None}
 
