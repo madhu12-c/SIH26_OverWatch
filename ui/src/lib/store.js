@@ -50,7 +50,7 @@ export const ROLES = {
   registrar: {
     workspace: 'Registrar Desk',
     tone: 'bg-gov',
-    pages: ['dashboard', 'review', 'catalogue', 'gate', 'match', 'block', 'analytics', 'migration', 'audit'],
+    pages: ['dashboard', 'review', 'catalogue', 'gate', 'match', 'block', 'real', 'analytics', 'migration', 'audit'],
     label: 'National Registrar',
     short: 'Registrar',
     org: 'Registry',
@@ -60,7 +60,7 @@ export const ROLES = {
   reviewer: {
     workspace: 'Reviewer Workspace',
     tone: 'bg-good',
-    pages: ['dashboard', 'review', 'catalogue', 'migration', 'units', 'gate', 'match', 'block', 'audit'],
+    pages: ['dashboard', 'review', 'catalogue', 'migration', 'units', 'gate', 'match', 'block', 'real', 'audit'],
     label: 'CPSE Reviewer',
     short: 'Reviewer',
     needsOrg: true,
@@ -80,7 +80,7 @@ export const ROLES = {
   ministry: {
     workspace: 'National Overview',
     tone: 'bg-maroon',
-    pages: ['dashboard', 'analytics', 'savings', 'catalogue', 'audit'],
+    pages: ['dashboard', 'analytics', 'savings', 'catalogue', 'real', 'audit'],
     label: 'Ministry Viewer',
     short: 'Ministry',
     org: 'Ministry (read-only)',

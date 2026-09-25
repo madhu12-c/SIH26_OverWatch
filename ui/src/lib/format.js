@@ -57,6 +57,13 @@ const PRETTY = {
   part_number: 'Maker part number', length_mm: 'Length (mm)', shaft_dia_mm: 'Shaft diameter (mm)',
   dial_size_mm: 'Dial size (mm)', range_min: 'Range from', range_max: 'Range to', power_hp: 'Power (hp)',
   speed_rpm: 'Speed (rpm)', voltage_v: 'Voltage (V)', wetted_material: 'Wetted material',
+  wall_mm: 'Wall (mm)', weight_ppf: 'Weight (lb/ft)', schedule: 'Schedule', construction: 'Construction',
+  end_type: 'Ends', finish: 'Finish', standard: 'Standard', voltage_kv: 'Voltage (kV)',
+  cross_section_mm2: 'Cross-section (mm²)', cores: 'Cores', conductor: 'Conductor', insulation: 'Insulation',
+  armour: 'Armour', cable_type: 'Cable type', power_kw: 'Power (kW)', poles: 'Poles',
+  pressure_rating_psi: 'Pressure rating (psi)', thickness_mm: 'Thickness (mm)', noun: 'Item',
+  quantities: 'Quantities', equipment_type: 'Equipment', instrument_type: 'Instrument', filler: 'Filler',
+  operation: 'Operation', face_type: 'Face', thread: 'Thread', head_type: 'Head',
 }
 export function prettyField(name) {
   const s = PRETTY[name] ?? fieldLabel(name)

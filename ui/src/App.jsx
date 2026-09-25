@@ -18,6 +18,7 @@ import BlockCase from './screens/BlockCase'
 import Savings from './screens/Savings'
 import Units from './screens/Units'
 import Audit from './screens/Audit'
+import RealText from './screens/RealText'
 
 /*
  * The application: sign in, then a portal with a grouped menu.
@@ -40,6 +41,7 @@ const PAGES = [
   { id: 'review', label: 'Review Queue', icon: 'review', group: 'Matching', el: ReviewQueue },
   { id: 'match', label: 'Case: The Match', icon: 'match', group: 'Matching', el: MatchCase },
   { id: 'block', label: 'Case: The Block', icon: 'block', group: 'Matching', el: BlockCase },
+  { id: 'real', label: 'Real Tender Text', icon: 'file', group: 'Matching', el: RealText },
   { id: 'savings', label: 'Savings', icon: 'rupee', group: 'Procurement', el: Savings },
   { id: 'units', label: 'Units', icon: 'units', group: 'Procurement', el: Units },
   { id: 'audit', label: 'Audit Trail', icon: 'audit', group: 'Governance', el: Audit },

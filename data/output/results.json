@@ -21671,5 +21671,5792 @@
   "source": "Prasenjeet25/sih26099-cpse-material-codes",
   "url": "https://huggingface.co/datasets/Prasenjeet25/sih26099-cpse-material-codes",
   "licence": "CC-BY-4.0"
+ },
+ "real_text": {
+  "half": "dev",
+  "note": "Development half of the real set - examples of the reader at work, not a result.",
+  "lines_total": 308,
+  "by_org": {
+   "Indian Oil Corporation Limited": 1,
+   "NTPC Limited": 117,
+   "Oil India Limited": 190
+  },
+  "groups_total": 32,
+  "groups_found": 32,
+  "groups": [
+   {
+    "group": "G16",
+    "lines": [
+     {
+      "id": "163",
+      "org": "Oil India Limited",
+      "text": "Line Pipe 101.60 mm Seamless, B/E, 19 PPF. Qty:40,000 Mtr",
+      "category": "pipe",
+      "category_span": [
+       5,
+       9
+      ],
+      "read": [
+       {
+        "name": "weight_ppf",
+        "value": 19.0,
+        "ignored": false,
+        "span": [
+         35,
+         37
+        ]
+       },
+       {
+        "name": "nominal_size_in",
+        "value": 4.0,
+        "ignored": false,
+        "span": [
+         10,
+         16
+        ]
+       },
+       {
+        "name": "wall_mm",
+        "value": 11.13,
+        "ignored": false,
+        "span": [
+         10,
+         16
+        ]
+       },
+       {
+        "name": "construction",
+        "value": "SEAMLESS",
+        "ignored": false,
+        "span": [
+         20,
+         28
+        ]
+       },
+       {
+        "name": "end_type",
+        "value": "BEVEL",
+        "ignored": false,
+        "span": [
+         30,
+         34
+        ]
+       }
+      ],
+      "filled": [
+       {
+        "name": "od_mm",
+        "value": 114.3,
+        "ignored": false
+       }
+      ],
+      "notes": []
+     },
+     {
+      "id": "329",
+      "org": "Oil India Limited",
+      "text": "Line Pipe, 4\", Seamless, BE, 19 PPF",
+      "category": "pipe",
+      "category_span": [
+       5,
+       9
+      ],
+      "read": [
+       {
+        "name": "weight_ppf",
+        "value": 19.0,
+        "ignored": false,
+        "span": [
+         29,
+         31
+        ]
+       },
+       {
+        "name": "nominal_size_in",
+        "value": 4.0,
+        "ignored": false,
+        "span": [
+         11,
+         12
+        ]
+       },
+       {
+        "name": "construction",
+        "value": "SEAMLESS",
+        "ignored": false,
+        "span": [
+         15,
+         23
+        ]
+       },
+       {
+        "name": "end_type",
+        "value": "BEVEL",
+        "ignored": false,
+        "span": [
+         25,
+         28
+        ]
+       }
+      ],
+      "filled": [
+       {
+        "name": "od_mm",
+        "value": 114.3,
+        "ignored": false
+       },
+       {
+        "name": "wall_mm",
+        "value": 11.13,
+        "ignored": false
+       }
+      ],
+      "notes": []
+     }
+    ],
+    "pair": {
+     "a": "163",
+     "b": "329",
+     "final": 0.89,
+     "band": "review",
+     "text_sim": 0.312,
+     "matched": [
+      "construction",
+      "nominal_size_in",
+      "od_mm",
+      "wall_mm",
+      "end_type",
+      "weight_ppf"
+     ],
+     "blocked_by": null,
+     "reason": null,
+     "review_reason": "could not verify material_grade - not extracted from both records"
+    }
+   },
+   {
+    "group": "G17",
+    "lines": [
+     {
+      "id": "338",
+      "org": "Oil India Limited",
+      "text": "Line Pipe, 152.4 mm, Steel, ERW Bevelled. Qty: 2 KM",
+      "category": "pipe",
+      "category_span": [
+       5,
+       9
+      ],
+      "read": [
+       {
+        "name": "nominal_size_in",
+        "value": 6.0,
+        "ignored": false,
+        "span": [
+         11,
+         16
+        ]
+       },
+       {
+        "name": "construction",
+        "value": "ERW",
+        "ignored": false,
+        "span": [
+         28,
+         31
+        ]
+       },
+       {
+        "name": "end_type",
+        "value": "BEVEL",
+        "ignored": false,
+        "span": [
+         32,
+         40
+        ]
+       }
+      ],
+      "filled": [
+       {
+        "name": "od_mm",
+        "value": 168.3,
+        "ignored": false
+       }
+      ],
+      "notes": []
+     },
+     {
+      "id": "431",
+      "org": "Oil India Limited",
+      "text": "Line Pipe, 6\" , Steel, ERW Bevelled (09026146) (Q3)",
+      "category": "pipe",
+      "category_span": [
+       5,
+       9
+      ],
+      "read": [
+       {
+        "name": "nominal_size_in",
+        "value": 6.0,
+        "ignored": false,
+        "span": [
+         11,
+         12
+        ]
+       },
+       {
+        "name": "construction",
+        "value": "ERW",
+        "ignored": false,
+        "span": [
+         23,
+         26
+        ]
+       },
+       {
+        "name": "end_type",
+        "value": "BEVEL",
+        "ignored": false,
+        "span": [
+         27,
+         35
+        ]
+       }
+      ],
+      "filled": [
+       {
+        "name": "od_mm",
+        "value": 168.3,
+        "ignored": false
+       }
+      ],
+      "notes": []
+     }
+    ],
+    "pair": {
+     "a": "338",
+     "b": "431",
+     "final": 0.89,
+     "band": "review",
+     "text_sim": 0.357,
+     "matched": [
+      "construction",
+      "nominal_size_in",
+      "od_mm",
+      "end_type"
+     ],
+     "blocked_by": null,
+     "reason": null,
+     "review_reason": "could not verify material_grade, schedule - not extracted from both records"
+    }
+   },
+   {
+    "group": "G21",
+    "lines": [
+     {
+      "id": "279",
+      "org": "Oil India Limited",
+      "text": "Cable 4 C x 10 mm2 , 1100 V, PVCA , Alu",
+      "category": "cable",
+      "category_span": [
+       0,
+       5
+      ],
+      "read": [
+       {
+        "name": "cores",
+        "value": 4.0,
+        "ignored": false,
+        "span": [
+         6,
+         7
+        ]
+       },
+       {
+        "name": "cross_section_mm2",
+        "value": 10.0,
+        "ignored": false,
+        "span": [
+         12,
+         14
+        ]
+       },
+       {
+        "name": "conductor",
+        "value": "AL",
+        "ignored": false,
+        "span": [
+         36,
+         39
+        ]
+       },
+       {
+        "name": "voltage_kv",
+        "value": 1.1,
+        "ignored": false,
+        "span": [
+         21,
+         25
+        ]
+       },
+       {
+        "name": "insulation",
+        "value": "PVC",
+        "ignored": false,
+        "span": [
+         29,
+         32
+        ]
+       },
+       {
+        "name": "armour",
+        "value": "ARMOURED",
+        "ignored": false,
+        "span": [
+         33,
+         35
+        ]
+       }
+      ],
+      "filled": [],
+      "notes": []
+     },
+     {
+      "id": "282",
+      "org": "Oil India Limited",
+      "text": "Cable, 4C x 10 sqmm, 1100V, PVCA Alu",
+      "category": "cable",
+      "category_span": [
+       0,
+       5
+      ],
+      "read": [
+       {
+        "name": "cores",
+        "value": 4.0,
+        "ignored": false,
+        "span": [
+         7,
+         8
+        ]
+       },
+       {
+        "name": "cross_section_mm2",
+        "value": 10.0,
+        "ignored": false,
+        "span": [
+         12,
+         14
+        ]
+       },
+       {
+        "name": "conductor",
+        "value": "AL",
+        "ignored": false,
+        "span": [
+         33,
+         36
+        ]
+       },
+       {
+        "name": "voltage_kv",
+        "value": 1.1,
+        "ignored": false,
+        "span": [
+         21,
+         25
+        ]
+       },
+       {
+        "name": "insulation",
+        "value": "PVC",
+        "ignored": false,
+        "span": [
+         28,
+         31
+        ]
+       },
+       {
+        "name": "armour",
+        "value": "ARMOURED",
+        "ignored": false,
+        "span": [
+         28,
+         32
+        ]
+       }
+      ],
+      "filled": [],
+      "notes": []
+     }
+    ],
+    "pair": {
+     "a": "279",
+     "b": "282",
+     "final": 0.89,
+     "band": "review",
+     "text_sim": 0.385,
+     "matched": [
+      "cores",
+      "cross_section_mm2",
+      "conductor",
+      "voltage_kv",
+      "insulation",
+      "armour"
+     ],
+     "blocked_by": null,
+     "reason": null,
+     "review_reason": "could not verify cable_type - not extracted from both records"
+    }
+   },
+   {
+    "group": "G15",
+    "lines": [
+     {
+      "id": "162",
+      "org": "Oil India Limited",
+      "text": "Line Pipe 101.60 mm Seamless, B/E, 12.66 PPF. Qty: 248,000 Mtr",
+      "category": "pipe",
+      "category_span": [
+       5,
+       9
+      ],
+      "read": [
+       {
+        "name": "weight_ppf",
+        "value": 12.66,
+        "ignored": false,
+        "span": [
+         35,
+         40
+        ]
+       },
+       {
+        "name": "nominal_size_in",
+        "value": 4.0,
+        "ignored": false,
+        "span": [
+         10,
+         16
+        ]
+       },
+       {
+        "name": "wall_mm",
+        "value": 7.14,
+        "ignored": false,
+        "span": [
+         10,
+         16
+        ]
+       },
+       {
+        "name": "construction",
+        "value": "SEAMLESS",
+        "ignored": false,
+        "span": [
+         20,
+         28
+        ]
+       },
+       {
+        "name": "end_type",
+        "value": "BEVEL",
+        "ignored": false,
+        "span": [
+         30,
+         34
+        ]
+       }
+      ],
+      "filled": [
+       {
+        "name": "od_mm",
+        "value": 114.3,
+        "ignored": false
+       }
+      ],
+      "notes": []
+     },
+     {
+      "id": "255",
+      "org": "Oil India Limited",
+      "text": "Line Pipe, 4\", Seamless, B/E, 12.66 PPF",
+      "category": "pipe",
+      "category_span": [
+       5,
+       9
+      ],
+      "read": [
+       {
+        "name": "weight_ppf",
+        "value": 12.66,
+        "ignored": false,
+        "span": [
+         30,
+         35
+        ]
+       },
+       {
+        "name": "nominal_size_in",
+        "value": 4.0,
+        "ignored": false,
+        "span": [
+         11,
+         12
+        ]
+       },
+       {
+        "name": "construction",
+        "value": "SEAMLESS",
+        "ignored": false,
+        "span": [
+         15,
+         23
+        ]
+       },
+       {
+        "name": "end_type",
+        "value": "BEVEL",
+        "ignored": false,
+        "span": [
+         25,
+         29
+        ]
+       }
+      ],
+      "filled": [
+       {
+        "name": "od_mm",
+        "value": 114.3,
+        "ignored": false
+       },
+       {
+        "name": "wall_mm",
+        "value": 7.14,
+        "ignored": false
+       }
+      ],
+      "notes": []
+     },
+     {
+      "id": "263",
+      "org": "Oil India Limited",
+      "text": "Line Pipe, 4\" , Seamless, B/E, 12.66 PPF (09019712) (Q3)",
+      "category": "pipe",
+      "category_span": [
+       5,
+       9
+      ],
+      "read": [
+       {
+        "name": "weight_ppf",
+        "value": 12.66,
+        "ignored": false,
+        "span": [
+         31,
+         36
+        ]
+       },
+       {
+        "name": "nominal_size_in",
+        "value": 4.0,
+        "ignored": false,
+        "span": [
+         11,
+         12
+        ]
+       },
+       {
+        "name": "construction",
+        "value": "SEAMLESS",
+        "ignored": false,
+        "span": [
+         16,
+         24
+        ]
+       },
+       {
+        "name": "end_type",
+        "value": "BEVEL",
+        "ignored": false,
+        "span": [
+         26,
+         30
+        ]
+       }
+      ],
+      "filled": [
+       {
+        "name": "od_mm",
+        "value": 114.3,
+        "ignored": false
+       },
+       {
+        "name": "wall_mm",
+        "value": 7.14,
+        "ignored": false
+       }
+      ],
+      "notes": []
+     }
+    ],
+    "pair": {
+     "a": "162",
+     "b": "263",
+     "final": 0.89,
+     "band": "review",
+     "text_sim": 0.444,
+     "matched": [
+      "construction",
+      "nominal_size_in",
+      "od_mm",
+      "wall_mm",
+      "end_type",
+      "weight_ppf"
+     ],
+     "blocked_by": null,
+     "reason": null,
+     "review_reason": "could not verify material_grade - not extracted from both records"
+    }
+   },
+   {
+    "group": "G14",
+    "lines": [
+     {
+      "id": "146",
+      "org": "NTPC Limited",
+      "text": "TP304L,80S,40MM , PIPE SEAMLESS,SS,A312",
+      "category": "pipe",
+      "category_span": [
+       18,
+       22
+      ],
+      "read": [
+       {
+        "name": "nominal_size_in",
+        "value": 1.5,
+        "ignored": false,
+        "span": [
+         11,
+         13
+        ]
+       },
+       {
+        "name": "material_grade",
+        "value": "SS304L",
+        "ignored": false,
+        "span": [
+         0,
+         6
+        ]
+       },
+       {
+        "name": "construction",
+        "value": "SEAMLESS",
+        "ignored": false,
+        "span": [
+         23,
+         31
+        ]
+       },
+       {
+        "name": "schedule",
+        "value": "SCH 80S",
+        "ignored": false,
+        "span": [
+         7,
+         9
+        ]
+       }
+      ],
+      "filled": [
+       {
+        "name": "od_mm",
+        "value": 48.3,
+        "ignored": false
+       },
+       {
+        "name": "wall_mm",
+        "value": 5.08,
+        "ignored": false
+       }
+      ],
+      "notes": []
+     },
+     {
+      "id": "252",
+      "org": "NTPC Limited",
+      "text": "TP304L,80S,40MM , PIPE",
+      "category": "pipe",
+      "category_span": [
+       18,
+       22
+      ],
+      "read": [
+       {
+        "name": "nominal_size_in",
+        "value": 1.5,
+        "ignored": false,
+        "span": [
+         11,
+         13
+        ]
+       },
+       {
+        "name": "material_grade",
+        "value": "SS304L",
+        "ignored": false,
+        "span": [
+         0,
+         6
+        ]
+       },
+       {
+        "name": "schedule",
+        "value": "SCH 80S",
+        "ignored": false,
+        "span": [
+         7,
+         9
+        ]
+       }
+      ],
+      "filled": [
+       {
+        "name": "od_mm",
+        "value": 48.3,
+        "ignored": false
+       },
+       {
+        "name": "wall_mm",
+        "value": 5.08,
+        "ignored": false
+       }
+      ],
+      "notes": []
+     }
+    ],
+    "pair": {
+     "a": "146",
+     "b": "252",
+     "final": 0.89,
+     "band": "review",
+     "text_sim": 0.571,
+     "matched": [
+      "material_grade",
+      "nominal_size_in",
+      "od_mm",
+      "schedule",
+      "wall_mm"
+     ],
+     "blocked_by": null,
+     "reason": null,
+     "review_reason": "could not verify construction - not extracted from both records"
+    }
+   }
+  ],
+  "near_misses": [
+   {
+    "a": "138",
+    "b": "139",
+    "final": 0.0,
+    "band": "blocked",
+    "text_sim": 0.833,
+    "matched": [
+     "flange_type"
+    ],
+    "blocked_by": "nominal_size_in",
+    "reason": "2.5 vs 4.0",
+    "review_reason": null,
+    "lines": [
+     {
+      "id": "138",
+      "org": "NTPC Limited",
+      "text": "FLANGE-S:ASA:B16.5 CL-150 A182:SLIP-ON:65MM, FLANGE",
+      "category": "flange",
+      "category_span": [
+       0,
+       6
+      ],
+      "read": [
+       {
+        "name": "nominal_size_in",
+        "value": 2.5,
+        "ignored": false,
+        "span": [
+         39,
+         41
+        ]
+       },
+       {
+        "name": "pressure_class",
+        "value": "150#",
+        "ignored": false,
+        "span": [
+         21,
+         25
+        ]
+       },
+       {
+        "name": "material_grade",
+        "value": "A182",
+        "ignored": false,
+        "span": [
+         26,
+         30
+        ]
+       },
+       {
+        "name": "standard",
+        "value": "ASME B16.5",
+        "ignored": false,
+        "span": [
+         9,
+         18
+        ]
+       },
+       {
+        "name": "flange_type",
+        "value": "SLIP_ON",
+        "ignored": false,
+        "span": [
+         31,
+         38
+        ]
+       }
+      ],
+      "filled": [],
+      "notes": []
+     },
+     {
+      "id": "139",
+      "org": "NTPC Limited",
+      "text": "S:ASA:B16.5 CL-150 A182:SLIP-ON:100MM, FLANGE",
+      "category": "flange",
+      "category_span": [
+       39,
+       45
+      ],
+      "read": [
+       {
+        "name": "nominal_size_in",
+        "value": 4.0,
+        "ignored": false,
+        "span": [
+         32,
+         35
+        ]
+       },
+       {
+        "name": "pressure_class",
+        "value": "150#",
+        "ignored": false,
+        "span": [
+         14,
+         18
+        ]
+       },
+       {
+        "name": "material_grade",
+        "value": "A182",
+        "ignored": false,
+        "span": [
+         19,
+         23
+        ]
+       },
+       {
+        "name": "standard",
+        "value": "ASME B16.5",
+        "ignored": false,
+        "span": [
+         2,
+         11
+        ]
+       },
+       {
+        "name": "flange_type",
+        "value": "SLIP_ON",
+        "ignored": false,
+        "span": [
+         24,
+         31
+        ]
+       }
+      ],
+      "filled": [],
+      "notes": []
+     }
+    ]
+   },
+   {
+    "a": "282",
+    "b": "283",
+    "final": 0.0,
+    "band": "blocked",
+    "text_sim": 0.778,
+    "matched": [
+     "cores"
+    ],
+    "blocked_by": "cross_section_mm2",
+    "reason": "10.0 vs 16.0",
+    "review_reason": null,
+    "lines": [
+     {
+      "id": "282",
+      "org": "Oil India Limited",
+      "text": "Cable, 4C x 10 sqmm, 1100V, PVCA Alu",
+      "category": "cable",
+      "category_span": [
+       0,
+       5
+      ],
+      "read": [
+       {
+        "name": "cores",
+        "value": 4.0,
+        "ignored": false,
+        "span": [
+         7,
+         8
+        ]
+       },
+       {
+        "name": "cross_section_mm2",
+        "value": 10.0,
+        "ignored": false,
+        "span": [
+         12,
+         14
+        ]
+       },
+       {
+        "name": "conductor",
+        "value": "AL",
+        "ignored": false,
+        "span": [
+         33,
+         36
+        ]
+       },
+       {
+        "name": "voltage_kv",
+        "value": 1.1,
+        "ignored": false,
+        "span": [
+         21,
+         25
+        ]
+       },
+       {
+        "name": "insulation",
+        "value": "PVC",
+        "ignored": false,
+        "span": [
+         28,
+         31
+        ]
+       },
+       {
+        "name": "armour",
+        "value": "ARMOURED",
+        "ignored": false,
+        "span": [
+         28,
+         32
+        ]
+       }
+      ],
+      "filled": [],
+      "notes": []
+     },
+     {
+      "id": "283",
+      "org": "Oil India Limited",
+      "text": "Cable, 4C x 16 sqmm, 1100V, PVCA Alu",
+      "category": "cable",
+      "category_span": [
+       0,
+       5
+      ],
+      "read": [
+       {
+        "name": "cores",
+        "value": 4.0,
+        "ignored": false,
+        "span": [
+         7,
+         8
+        ]
+       },
+       {
+        "name": "cross_section_mm2",
+        "value": 16.0,
+        "ignored": false,
+        "span": [
+         12,
+         14
+        ]
+       },
+       {
+        "name": "conductor",
+        "value": "AL",
+        "ignored": false,
+        "span": [
+         33,
+         36
+        ]
+       },
+       {
+        "name": "voltage_kv",
+        "value": 1.1,
+        "ignored": false,
+        "span": [
+         21,
+         25
+        ]
+       },
+       {
+        "name": "insulation",
+        "value": "PVC",
+        "ignored": false,
+        "span": [
+         28,
+         31
+        ]
+       },
+       {
+        "name": "armour",
+        "value": "ARMOURED",
+        "ignored": false,
+        "span": [
+         28,
+         32
+        ]
+       }
+      ],
+      "filled": [],
+      "notes": []
+     }
+    ]
+   },
+   {
+    "a": "162",
+    "b": "163",
+    "final": 0.0,
+    "band": "blocked",
+    "text_sim": 0.706,
+    "matched": [
+     "construction",
+     "nominal_size_in",
+     "od_mm"
+    ],
+    "blocked_by": "wall_mm",
+    "reason": "7.14 vs 11.13",
+    "review_reason": null,
+    "lines": [
+     {
+      "id": "162",
+      "org": "Oil India Limited",
+      "text": "Line Pipe 101.60 mm Seamless, B/E, 12.66 PPF. Qty: 248,000 Mtr",
+      "category": "pipe",
+      "category_span": [
+       5,
+       9
+      ],
+      "read": [
+       {
+        "name": "weight_ppf",
+        "value": 12.66,
+        "ignored": false,
+        "span": [
+         35,
+         40
+        ]
+       },
+       {
+        "name": "nominal_size_in",
+        "value": 4.0,
+        "ignored": false,
+        "span": [
+         10,
+         16
+        ]
+       },
+       {
+        "name": "wall_mm",
+        "value": 7.14,
+        "ignored": false,
+        "span": [
+         10,
+         16
+        ]
+       },
+       {
+        "name": "construction",
+        "value": "SEAMLESS",
+        "ignored": false,
+        "span": [
+         20,
+         28
+        ]
+       },
+       {
+        "name": "end_type",
+        "value": "BEVEL",
+        "ignored": false,
+        "span": [
+         30,
+         34
+        ]
+       }
+      ],
+      "filled": [
+       {
+        "name": "od_mm",
+        "value": 114.3,
+        "ignored": false
+       }
+      ],
+      "notes": []
+     },
+     {
+      "id": "163",
+      "org": "Oil India Limited",
+      "text": "Line Pipe 101.60 mm Seamless, B/E, 19 PPF. Qty:40,000 Mtr",
+      "category": "pipe",
+      "category_span": [
+       5,
+       9
+      ],
+      "read": [
+       {
+        "name": "weight_ppf",
+        "value": 19.0,
+        "ignored": false,
+        "span": [
+         35,
+         37
+        ]
+       },
+       {
+        "name": "nominal_size_in",
+        "value": 4.0,
+        "ignored": false,
+        "span": [
+         10,
+         16
+        ]
+       },
+       {
+        "name": "wall_mm",
+        "value": 11.13,
+        "ignored": false,
+        "span": [
+         10,
+         16
+        ]
+       },
+       {
+        "name": "construction",
+        "value": "SEAMLESS",
+        "ignored": false,
+        "span": [
+         20,
+         28
+        ]
+       },
+       {
+        "name": "end_type",
+        "value": "BEVEL",
+        "ignored": false,
+        "span": [
+         30,
+         34
+        ]
+       }
+      ],
+      "filled": [
+       {
+        "name": "od_mm",
+        "value": 114.3,
+        "ignored": false
+       }
+      ],
+      "notes": []
+     }
+    ]
+   },
+   {
+    "a": "203",
+    "b": "331",
+    "final": 0.0,
+    "band": "blocked",
+    "text_sim": 0.643,
+    "matched": [],
+    "blocked_by": "construction",
+    "reason": "seamless vs erw",
+    "review_reason": null,
+    "lines": [
+     {
+      "id": "203",
+      "org": "Oil India Limited",
+      "text": "25 mm, Seamless, API 5L, Steel line pipe .Qty: 4.1 Kms",
+      "category": "pipe",
+      "category_span": [
+       36,
+       40
+      ],
+      "read": [
+       {
+        "name": "nominal_size_in",
+        "value": 1.0,
+        "ignored": false,
+        "span": [
+         0,
+         2
+        ]
+       },
+       {
+        "name": "standard",
+        "value": "API 5L",
+        "ignored": false,
+        "span": [
+         17,
+         23
+        ]
+       },
+       {
+        "name": "construction",
+        "value": "SEAMLESS",
+        "ignored": false,
+        "span": [
+         7,
+         15
+        ]
+       }
+      ],
+      "filled": [
+       {
+        "name": "od_mm",
+        "value": 33.4,
+        "ignored": false
+       }
+      ],
+      "notes": []
+     },
+     {
+      "id": "331",
+      "org": "Oil India Limited",
+      "text": "250 mm, ERW, API 5L, Steel line pipe. Qty: 1 Kms",
+      "category": "pipe",
+      "category_span": [
+       32,
+       36
+      ],
+      "read": [
+       {
+        "name": "nominal_size_in",
+        "value": 10.0,
+        "ignored": false,
+        "span": [
+         0,
+         3
+        ]
+       },
+       {
+        "name": "standard",
+        "value": "API 5L",
+        "ignored": false,
+        "span": [
+         13,
+         19
+        ]
+       },
+       {
+        "name": "construction",
+        "value": "ERW",
+        "ignored": false,
+        "span": [
+         8,
+         11
+        ]
+       }
+      ],
+      "filled": [
+       {
+        "name": "od_mm",
+        "value": 273.0,
+        "ignored": false
+       }
+      ],
+      "notes": []
+     }
+    ]
+   }
+  ],
+  "lines": [
+   {
+    "id": "710",
+    "org": "Indian Oil Corporation Limited",
+    "text": "API 610 Centrifugal Pump",
+    "category": "other",
+    "category_span": [
+     20,
+     24
+    ],
+    "read": [
+     {
+      "name": "standard",
+      "value": "API 610",
+      "ignored": false,
+      "span": [
+       0,
+       7
+      ]
+     },
+     {
+      "name": "noun",
+      "value": "PUMP",
+      "ignored": false,
+      "span": [
+       20,
+       24
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "123",
+    "org": "NTPC Limited",
+    "text": "GASKET,17.5KV,1000A,AREVA",
+    "category": "other",
+    "category_span": [
+     0,
+     6
+    ],
+    "read": [
+     {
+      "name": "noun",
+      "value": "GASKET",
+      "ignored": false
+     },
+     {
+      "name": "quantities",
+      "value": "1000A 17.5KV",
+      "ignored": false
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "124",
+    "org": "NTPC Limited",
+    "text": "GASKET,3.6KV,2000A,AREVA",
+    "category": "other",
+    "category_span": [
+     0,
+     6
+    ],
+    "read": [
+     {
+      "name": "noun",
+      "value": "GASKET",
+      "ignored": false
+     },
+     {
+      "name": "quantities",
+      "value": "2000A 3.6KV",
+      "ignored": false
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "200",
+    "org": "NTPC Limited",
+    "text": "M2430725562: ELECTRODE-HARD FCNG, TUBULAR, HI TMP, 400MM",
+    "category": "other",
+    "category_span": [
+     13,
+     22
+    ],
+    "read": [
+     {
+      "name": "noun",
+      "value": "ELECTRODE",
+      "ignored": false,
+      "span": [
+       13,
+       22
+      ]
+     },
+     {
+      "name": "quantities",
+      "value": "400MM",
+      "ignored": false
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "245",
+    "org": "NTPC Limited",
+    "text": "ELECTRODE-HARD FCNG,TUBULAR,HI TMP,400MM",
+    "category": "other",
+    "category_span": [
+     0,
+     9
+    ],
+    "read": [
+     {
+      "name": "noun",
+      "value": "ELECTRODE",
+      "ignored": false,
+      "span": [
+       0,
+       9
+      ]
+     },
+     {
+      "name": "quantities",
+      "value": "400MM",
+      "ignored": false
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "315",
+    "org": "NTPC Limited",
+    "text": "41 Petrol Driven Positive Pressure Ventilator ) - 16\" Size - Engine of 5.5 HP, 16\" Fan Size,(Blower",
+    "category": "other",
+    "category_span": [
+     35,
+     45
+    ],
+    "read": [
+     {
+      "name": "noun",
+      "value": "VENTILATOR",
+      "ignored": false,
+      "span": [
+       35,
+       45
+      ]
+     },
+     {
+      "name": "quantities",
+      "value": "16IN 5.5HP",
+      "ignored": false
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "345",
+    "org": "NTPC Limited",
+    "text": "M4770106098: OTHERS: SUPPORT INSULATOR HEATER 1KW PART",
+    "category": "other",
+    "category_span": [
+     29,
+     38
+    ],
+    "read": [
+     {
+      "name": "noun",
+      "value": "INSULATOR",
+      "ignored": false,
+      "span": [
+       29,
+       38
+      ]
+     },
+     {
+      "name": "quantities",
+      "value": "1KW",
+      "ignored": false
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "346",
+    "org": "NTPC Limited",
+    "text": "M4770106098: OTHERS: SUPPORT INSULATOR HEATER 1KW PART(150)",
+    "category": "other",
+    "category_span": [
+     29,
+     38
+    ],
+    "read": [
+     {
+      "name": "noun",
+      "value": "INSULATOR",
+      "ignored": false,
+      "span": [
+       29,
+       38
+      ]
+     },
+     {
+      "name": "quantities",
+      "value": "1KW",
+      "ignored": false
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "371",
+    "org": "NTPC Limited",
+    "text": "M9216663067_ BATTERY, RECH, LEAD ACID, 220V, 400AH, SAN (lead acid battery)",
+    "category": "other",
+    "category_span": [
+     13,
+     20
+    ],
+    "read": [
+     {
+      "name": "noun",
+      "value": "BATTERY",
+      "ignored": false,
+      "span": [
+       13,
+       20
+      ]
+     },
+     {
+      "name": "quantities",
+      "value": "220V 400AH",
+      "ignored": false
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "397",
+    "org": "NTPC Limited",
+    "text": "TRANSFORMER BUSHING 1.1 KV LV BUSHING 4000 A,",
+    "category": "other",
+    "category_span": [
+     12,
+     19
+    ],
+    "read": [
+     {
+      "name": "noun",
+      "value": "BUSHING",
+      "ignored": false,
+      "span": [
+       12,
+       19
+      ]
+     },
+     {
+      "name": "quantities",
+      "value": "1.1KV 4000A",
+      "ignored": false
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "1",
+    "org": "Oil India Limited",
+    "text": "STEEL LINE PIPE, ERW , THREADED & COUPLED, NOMINAL BORE: 100 MM, O.D. 114.3 MM, WALL THICKNESS: 6.0 MM, API 5L, GRADE A. QTY: 6.3 KMS",
+    "category": "pipe",
+    "category_span": [
+     11,
+     15
+    ],
+    "read": [
+     {
+      "name": "nominal_size_in",
+      "value": 4.0,
+      "ignored": false,
+      "span": [
+       57,
+       60
+      ]
+     },
+     {
+      "name": "od_mm",
+      "value": 114.3,
+      "ignored": false,
+      "span": [
+       70,
+       75
+      ]
+     },
+     {
+      "name": "wall_mm",
+      "value": 6.0,
+      "ignored": false,
+      "span": [
+       96,
+       99
+      ]
+     },
+     {
+      "name": "material_grade",
+      "value": "API 5L GR A",
+      "ignored": false,
+      "span": [
+       104,
+       119
+      ]
+     },
+     {
+      "name": "standard",
+      "value": "API 5L",
+      "ignored": false,
+      "span": [
+       104,
+       110
+      ]
+     },
+     {
+      "name": "construction",
+      "value": "ERW",
+      "ignored": false,
+      "span": [
+       17,
+       20
+      ]
+     },
+     {
+      "name": "end_type",
+      "value": "THREADED_COUPLED",
+      "ignored": false,
+      "span": [
+       23,
+       41
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "62",
+    "org": "Oil India Limited",
+    "text": "Steel Line Pipe, ERW , Threaded & Coupled, Nominal Bore: 100 MM, O.D. 114.3 MM, Wall Thickness: 6.0 MM, API 5L, GRADE A",
+    "category": "pipe",
+    "category_span": [
+     11,
+     15
+    ],
+    "read": [
+     {
+      "name": "nominal_size_in",
+      "value": 4.0,
+      "ignored": false,
+      "span": [
+       57,
+       60
+      ]
+     },
+     {
+      "name": "od_mm",
+      "value": 114.3,
+      "ignored": false,
+      "span": [
+       70,
+       75
+      ]
+     },
+     {
+      "name": "wall_mm",
+      "value": 6.0,
+      "ignored": false,
+      "span": [
+       96,
+       99
+      ]
+     },
+     {
+      "name": "material_grade",
+      "value": "API 5L GR A",
+      "ignored": false,
+      "span": [
+       104,
+       119
+      ]
+     },
+     {
+      "name": "standard",
+      "value": "API 5L",
+      "ignored": false,
+      "span": [
+       104,
+       110
+      ]
+     },
+     {
+      "name": "construction",
+      "value": "ERW",
+      "ignored": false,
+      "span": [
+       17,
+       20
+      ]
+     },
+     {
+      "name": "end_type",
+      "value": "THREADED_COUPLED",
+      "ignored": false,
+      "span": [
+       23,
+       41
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "104",
+    "org": "NTPC Limited",
+    "text": "Pipe Astm A312,12.70mm,323.9mm,300nb",
+    "category": "pipe",
+    "category_span": [
+     0,
+     4
+    ],
+    "read": [
+     {
+      "name": "nominal_size_in",
+      "value": 12.0,
+      "ignored": false,
+      "span": [
+       31,
+       34
+      ]
+     },
+     {
+      "name": "od_mm",
+      "value": 323.9,
+      "ignored": false,
+      "span": [
+       23,
+       28
+      ]
+     },
+     {
+      "name": "wall_mm",
+      "value": 12.7,
+      "ignored": false,
+      "span": [
+       15,
+       20
+      ]
+     },
+     {
+      "name": "material_grade",
+      "value": "A312",
+      "ignored": false,
+      "span": [
+       10,
+       14
+      ]
+     },
+     {
+      "name": "standard",
+      "value": "ASTM A312",
+      "ignored": false,
+      "span": [
+       5,
+       14
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "171",
+    "org": "NTPC Limited",
+    "text": "10_ M1613514555_ PIPE, BLK, CS, FE410, 9.5MM, 457MM, 450MM ( 4000 meter )",
+    "category": "pipe",
+    "category_span": [
+     17,
+     21
+    ],
+    "read": [
+     {
+      "name": "nominal_size_in",
+      "value": 18.0,
+      "ignored": false,
+      "span": [
+       53,
+       56
+      ]
+     },
+     {
+      "name": "od_mm",
+      "value": 457.0,
+      "ignored": false,
+      "span": [
+       46,
+       49
+      ]
+     },
+     {
+      "name": "wall_mm",
+      "value": 9.5,
+      "ignored": false,
+      "span": [
+       39,
+       42
+      ]
+     },
+     {
+      "name": "material_grade",
+      "value": "FE410",
+      "ignored": false,
+      "span": [
+       32,
+       37
+      ]
+     },
+     {
+      "name": "finish",
+      "value": "BLACK",
+      "ignored": false,
+      "span": [
+       23,
+       27
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "2",
+    "org": "NTPC Limited",
+    "text": "PIPE, BLK, CS, FE410, 9.5MM, 457MM, 450MM",
+    "category": "pipe",
+    "category_span": [
+     0,
+     4
+    ],
+    "read": [
+     {
+      "name": "nominal_size_in",
+      "value": 18.0,
+      "ignored": false,
+      "span": [
+       36,
+       39
+      ]
+     },
+     {
+      "name": "od_mm",
+      "value": 457.0,
+      "ignored": false,
+      "span": [
+       29,
+       32
+      ]
+     },
+     {
+      "name": "wall_mm",
+      "value": 9.5,
+      "ignored": false,
+      "span": [
+       22,
+       25
+      ]
+     },
+     {
+      "name": "material_grade",
+      "value": "FE410",
+      "ignored": false,
+      "span": [
+       15,
+       20
+      ]
+     },
+     {
+      "name": "finish",
+      "value": "BLACK",
+      "ignored": false,
+      "span": [
+       6,
+       10
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "22",
+    "org": "NTPC Limited",
+    "text": "PIPE:BLK, CORTEN,A423GR1,ERW,2MM,40MM",
+    "category": "pipe",
+    "category_span": [
+     0,
+     4
+    ],
+    "read": [
+     {
+      "name": "nominal_size_in",
+      "value": 1.5,
+      "ignored": false,
+      "span": [
+       33,
+       35
+      ]
+     },
+     {
+      "name": "wall_mm",
+      "value": 2.0,
+      "ignored": false,
+      "span": [
+       29,
+       30
+      ]
+     },
+     {
+      "name": "material_grade",
+      "value": "A423 GR1",
+      "ignored": false,
+      "span": [
+       17,
+       24
+      ]
+     },
+     {
+      "name": "construction",
+      "value": "ERW",
+      "ignored": false,
+      "span": [
+       25,
+       28
+      ]
+     },
+     {
+      "name": "finish",
+      "value": "BLACK",
+      "ignored": false,
+      "span": [
+       5,
+       9
+      ]
+     }
+    ],
+    "filled": [
+     {
+      "name": "od_mm",
+      "value": 48.3,
+      "ignored": false
+     }
+    ],
+    "notes": []
+   },
+   {
+    "id": "220",
+    "org": "NTPC Limited",
+    "text": "10_ M1616248370_ PIPE: IS1239-1 MEDIUM, GLV, ERW, PL, 100MM ( 1000 meter )",
+    "category": "pipe",
+    "category_span": [
+     17,
+     21
+    ],
+    "read": [
+     {
+      "name": "nominal_size_in",
+      "value": 4.0,
+      "ignored": false,
+      "span": [
+       54,
+       57
+      ]
+     },
+     {
+      "name": "standard",
+      "value": "IS 1239-1",
+      "ignored": false,
+      "span": [
+       23,
+       31
+      ]
+     },
+     {
+      "name": "construction",
+      "value": "ERW",
+      "ignored": false,
+      "span": [
+       45,
+       48
+      ]
+     },
+     {
+      "name": "finish",
+      "value": "GALVANISED",
+      "ignored": false,
+      "span": [
+       40,
+       44
+      ]
+     },
+     {
+      "name": "end_type",
+      "value": "PLAIN",
+      "ignored": false,
+      "span": [
+       50,
+       53
+      ]
+     }
+    ],
+    "filled": [
+     {
+      "name": "od_mm",
+      "value": 114.3,
+      "ignored": false
+     }
+    ],
+    "notes": []
+   },
+   {
+    "id": "28",
+    "org": "NTPC Limited",
+    "text": ", PIPE ASTM A312,9.53MM,141.3MM,125NB ,",
+    "category": "pipe",
+    "category_span": [
+     2,
+     6
+    ],
+    "read": [
+     {
+      "name": "nominal_size_in",
+      "value": 5.0,
+      "ignored": false,
+      "span": [
+       32,
+       35
+      ]
+     },
+     {
+      "name": "od_mm",
+      "value": 141.3,
+      "ignored": false,
+      "span": [
+       24,
+       29
+      ]
+     },
+     {
+      "name": "wall_mm",
+      "value": 9.53,
+      "ignored": false,
+      "span": [
+       17,
+       21
+      ]
+     },
+     {
+      "name": "material_grade",
+      "value": "A312",
+      "ignored": false,
+      "span": [
+       12,
+       16
+      ]
+     },
+     {
+      "name": "standard",
+      "value": "ASTM A312",
+      "ignored": false,
+      "span": [
+       7,
+       16
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "3",
+    "org": "NTPC Limited",
+    "text": "PIPE, BLK, CS, FE410, 9.5MM, 508MM, 500MM",
+    "category": "pipe",
+    "category_span": [
+     0,
+     4
+    ],
+    "read": [
+     {
+      "name": "nominal_size_in",
+      "value": 20.0,
+      "ignored": false,
+      "span": [
+       36,
+       39
+      ]
+     },
+     {
+      "name": "od_mm",
+      "value": 508.0,
+      "ignored": false,
+      "span": [
+       29,
+       32
+      ]
+     },
+     {
+      "name": "wall_mm",
+      "value": 9.5,
+      "ignored": false,
+      "span": [
+       22,
+       25
+      ]
+     },
+     {
+      "name": "material_grade",
+      "value": "FE410",
+      "ignored": false,
+      "span": [
+       15,
+       20
+      ]
+     },
+     {
+      "name": "finish",
+      "value": "BLACK",
+      "ignored": false,
+      "span": [
+       6,
+       10
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "64",
+    "org": "NTPC Limited",
+    "text": "M1613517861_ PIPE, BLK, CS, FE410, 9.5MM, 508MM, 500MM",
+    "category": "pipe",
+    "category_span": [
+     13,
+     17
+    ],
+    "read": [
+     {
+      "name": "nominal_size_in",
+      "value": 20.0,
+      "ignored": false,
+      "span": [
+       49,
+       52
+      ]
+     },
+     {
+      "name": "od_mm",
+      "value": 508.0,
+      "ignored": false,
+      "span": [
+       42,
+       45
+      ]
+     },
+     {
+      "name": "wall_mm",
+      "value": 9.5,
+      "ignored": false,
+      "span": [
+       35,
+       38
+      ]
+     },
+     {
+      "name": "material_grade",
+      "value": "FE410",
+      "ignored": false,
+      "span": [
+       28,
+       33
+      ]
+     },
+     {
+      "name": "finish",
+      "value": "BLACK",
+      "ignored": false,
+      "span": [
+       19,
+       23
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "23",
+    "org": "NTPC Limited",
+    "text": "MOTOR,415V,S4,80L,4,B5,F,0.75KW",
+    "category": "electrical",
+    "category_span": [
+     0,
+     5
+    ],
+    "read": [
+     {
+      "name": "equipment_type",
+      "value": "MOTOR",
+      "ignored": false,
+      "span": [
+       0,
+       5
+      ]
+     },
+     {
+      "name": "power_kw",
+      "value": 0.75,
+      "ignored": false,
+      "span": [
+       25,
+       29
+      ]
+     },
+     {
+      "name": "poles",
+      "value": 4.0,
+      "ignored": false,
+      "span": [
+       18,
+       19
+      ]
+     },
+     {
+      "name": "frame",
+      "value": "80L",
+      "ignored": false,
+      "span": [
+       14,
+       17
+      ]
+     },
+     {
+      "name": "mounting",
+      "value": "FLANGE",
+      "ignored": false,
+      "span": [
+       20,
+       22
+      ]
+     },
+     {
+      "name": "duty",
+      "value": "S4",
+      "ignored": false,
+      "span": [
+       11,
+       13
+      ]
+     },
+     {
+      "name": "insulation_class",
+      "value": "F",
+      "ignored": false,
+      "span": [
+       23,
+       24
+      ]
+     },
+     {
+      "name": "voltage_v",
+      "value": 415.0,
+      "ignored": false,
+      "span": [
+       6,
+       9
+      ]
+     }
+    ],
+    "filled": [
+     {
+      "name": "power_hp",
+      "value": 1.01,
+      "ignored": false
+     }
+    ],
+    "notes": []
+   },
+   {
+    "id": "24",
+    "org": "NTPC Limited",
+    "text": "MOTOR,415V,S4,80L,4,B5,F,0.75KW , MOTOR,SQ",
+    "category": "electrical",
+    "category_span": [
+     0,
+     5
+    ],
+    "read": [
+     {
+      "name": "equipment_type",
+      "value": "MOTOR",
+      "ignored": false,
+      "span": [
+       0,
+       5
+      ]
+     },
+     {
+      "name": "power_kw",
+      "value": 0.75,
+      "ignored": false,
+      "span": [
+       25,
+       29
+      ]
+     },
+     {
+      "name": "poles",
+      "value": 4.0,
+      "ignored": false,
+      "span": [
+       18,
+       19
+      ]
+     },
+     {
+      "name": "frame",
+      "value": "80L",
+      "ignored": false,
+      "span": [
+       14,
+       17
+      ]
+     },
+     {
+      "name": "mounting",
+      "value": "FLANGE",
+      "ignored": false,
+      "span": [
+       20,
+       22
+      ]
+     },
+     {
+      "name": "duty",
+      "value": "S4",
+      "ignored": false,
+      "span": [
+       11,
+       13
+      ]
+     },
+     {
+      "name": "insulation_class",
+      "value": "F",
+      "ignored": false,
+      "span": [
+       23,
+       24
+      ]
+     },
+     {
+      "name": "voltage_v",
+      "value": 415.0,
+      "ignored": false,
+      "span": [
+       6,
+       9
+      ]
+     }
+    ],
+    "filled": [
+     {
+      "name": "power_hp",
+      "value": 1.01,
+      "ignored": false
+     }
+    ],
+    "notes": []
+   },
+   {
+    "id": "27",
+    "org": "NTPC Limited",
+    "text": "SCIM,18.5KW,415V,4P,180M,B3,S1,F , MOTOR,EE",
+    "category": "electrical",
+    "category_span": [
+     0,
+     5
+    ],
+    "read": [
+     {
+      "name": "equipment_type",
+      "value": "MOTOR",
+      "ignored": false,
+      "span": [
+       0,
+       5
+      ]
+     },
+     {
+      "name": "power_kw",
+      "value": 18.5,
+      "ignored": false,
+      "span": [
+       5,
+       9
+      ]
+     },
+     {
+      "name": "poles",
+      "value": 4.0,
+      "ignored": false,
+      "span": [
+       17,
+       18
+      ]
+     },
+     {
+      "name": "frame",
+      "value": "180M",
+      "ignored": false,
+      "span": [
+       20,
+       24
+      ]
+     },
+     {
+      "name": "mounting",
+      "value": "FOOT",
+      "ignored": false,
+      "span": [
+       25,
+       27
+      ]
+     },
+     {
+      "name": "duty",
+      "value": "S1",
+      "ignored": false,
+      "span": [
+       28,
+       30
+      ]
+     },
+     {
+      "name": "insulation_class",
+      "value": "F",
+      "ignored": false,
+      "span": [
+       31,
+       32
+      ]
+     },
+     {
+      "name": "voltage_v",
+      "value": 415.0,
+      "ignored": false,
+      "span": [
+       12,
+       15
+      ]
+     }
+    ],
+    "filled": [
+     {
+      "name": "power_hp",
+      "value": 24.8,
+      "ignored": false
+     }
+    ],
+    "notes": []
+   },
+   {
+    "id": "10",
+    "org": "NTPC Limited",
+    "text": "SCIM,415V,315SM,B35,F,2980RPM,132KW , MOTOR,SQ",
+    "category": "electrical",
+    "category_span": [
+     0,
+     5
+    ],
+    "read": [
+     {
+      "name": "equipment_type",
+      "value": "MOTOR",
+      "ignored": false,
+      "span": [
+       0,
+       5
+      ]
+     },
+     {
+      "name": "power_kw",
+      "value": 132.0,
+      "ignored": false,
+      "span": [
+       30,
+       33
+      ]
+     },
+     {
+      "name": "speed_rpm",
+      "value": 2980.0,
+      "ignored": false,
+      "span": [
+       22,
+       26
+      ]
+     },
+     {
+      "name": "frame",
+      "value": "315SM",
+      "ignored": false,
+      "span": [
+       10,
+       15
+      ]
+     },
+     {
+      "name": "mounting",
+      "value": "FOOT_FLANGE",
+      "ignored": false,
+      "span": [
+       16,
+       19
+      ]
+     },
+     {
+      "name": "insulation_class",
+      "value": "F",
+      "ignored": false,
+      "span": [
+       20,
+       21
+      ]
+     },
+     {
+      "name": "voltage_v",
+      "value": 415.0,
+      "ignored": false,
+      "span": [
+       5,
+       8
+      ]
+     }
+    ],
+    "filled": [
+     {
+      "name": "power_hp",
+      "value": 176.94,
+      "ignored": false
+     },
+     {
+      "name": "poles",
+      "value": 2.0,
+      "ignored": false
+     }
+    ],
+    "notes": []
+   },
+   {
+    "id": "46",
+    "org": "NTPC Limited",
+    "text": "MOTOR,S4,112M,4,B5,F,3.7KW",
+    "category": "electrical",
+    "category_span": [
+     0,
+     5
+    ],
+    "read": [
+     {
+      "name": "equipment_type",
+      "value": "MOTOR",
+      "ignored": false,
+      "span": [
+       0,
+       5
+      ]
+     },
+     {
+      "name": "power_kw",
+      "value": 3.7,
+      "ignored": false,
+      "span": [
+       21,
+       24
+      ]
+     },
+     {
+      "name": "poles",
+      "value": 4.0,
+      "ignored": false,
+      "span": [
+       14,
+       15
+      ]
+     },
+     {
+      "name": "frame",
+      "value": "112M",
+      "ignored": false,
+      "span": [
+       9,
+       13
+      ]
+     },
+     {
+      "name": "mounting",
+      "value": "FLANGE",
+      "ignored": false,
+      "span": [
+       16,
+       18
+      ]
+     },
+     {
+      "name": "duty",
+      "value": "S4",
+      "ignored": false,
+      "span": [
+       6,
+       8
+      ]
+     },
+     {
+      "name": "insulation_class",
+      "value": "F",
+      "ignored": false,
+      "span": [
+       19,
+       20
+      ]
+     }
+    ],
+    "filled": [
+     {
+      "name": "power_hp",
+      "value": 4.96,
+      "ignored": false
+     }
+    ],
+    "notes": []
+   },
+   {
+    "id": "47",
+    "org": "NTPC Limited",
+    "text": "MOTOR,S4,112M,4,B5,F,3.7KW , MTR",
+    "category": "electrical",
+    "category_span": [
+     0,
+     5
+    ],
+    "read": [
+     {
+      "name": "equipment_type",
+      "value": "MOTOR",
+      "ignored": false,
+      "span": [
+       0,
+       5
+      ]
+     },
+     {
+      "name": "power_kw",
+      "value": 3.7,
+      "ignored": false,
+      "span": [
+       21,
+       24
+      ]
+     },
+     {
+      "name": "poles",
+      "value": 4.0,
+      "ignored": false,
+      "span": [
+       14,
+       15
+      ]
+     },
+     {
+      "name": "frame",
+      "value": "112M",
+      "ignored": false,
+      "span": [
+       9,
+       13
+      ]
+     },
+     {
+      "name": "mounting",
+      "value": "FLANGE",
+      "ignored": false,
+      "span": [
+       16,
+       18
+      ]
+     },
+     {
+      "name": "duty",
+      "value": "S4",
+      "ignored": false,
+      "span": [
+       6,
+       8
+      ]
+     },
+     {
+      "name": "insulation_class",
+      "value": "F",
+      "ignored": false,
+      "span": [
+       19,
+       20
+      ]
+     }
+    ],
+    "filled": [
+     {
+      "name": "power_hp",
+      "value": 4.96,
+      "ignored": false
+     }
+    ],
+    "notes": []
+   },
+   {
+    "id": "25",
+    "org": "NTPC Limited",
+    "text": "MOTOR,IND,415VAC,3PH,DW225S,960RPM,30KW",
+    "category": "electrical",
+    "category_span": [
+     0,
+     5
+    ],
+    "read": [
+     {
+      "name": "equipment_type",
+      "value": "MOTOR",
+      "ignored": false,
+      "span": [
+       0,
+       5
+      ]
+     },
+     {
+      "name": "power_kw",
+      "value": 30.0,
+      "ignored": false,
+      "span": [
+       35,
+       37
+      ]
+     },
+     {
+      "name": "speed_rpm",
+      "value": 960.0,
+      "ignored": false,
+      "span": [
+       28,
+       31
+      ]
+     },
+     {
+      "name": "frame",
+      "value": "225S",
+      "ignored": false,
+      "span": [
+       23,
+       27
+      ]
+     },
+     {
+      "name": "phases",
+      "value": 3.0,
+      "ignored": false,
+      "span": [
+       17,
+       20
+      ]
+     },
+     {
+      "name": "voltage_v",
+      "value": 415.0,
+      "ignored": false,
+      "span": [
+       10,
+       13
+      ]
+     }
+    ],
+    "filled": [
+     {
+      "name": "power_hp",
+      "value": 40.21,
+      "ignored": false
+     },
+     {
+      "name": "poles",
+      "value": 6.0,
+      "ignored": false
+     }
+    ],
+    "notes": []
+   },
+   {
+    "id": "26",
+    "org": "NTPC Limited",
+    "text": "MOTOR,IND,415VAC,3PH,DW225S,960RPM,30KW , MTR",
+    "category": "electrical",
+    "category_span": [
+     0,
+     5
+    ],
+    "read": [
+     {
+      "name": "equipment_type",
+      "value": "MOTOR",
+      "ignored": false,
+      "span": [
+       0,
+       5
+      ]
+     },
+     {
+      "name": "power_kw",
+      "value": 30.0,
+      "ignored": false,
+      "span": [
+       35,
+       37
+      ]
+     },
+     {
+      "name": "speed_rpm",
+      "value": 960.0,
+      "ignored": false,
+      "span": [
+       28,
+       31
+      ]
+     },
+     {
+      "name": "frame",
+      "value": "225S",
+      "ignored": false,
+      "span": [
+       23,
+       27
+      ]
+     },
+     {
+      "name": "phases",
+      "value": 3.0,
+      "ignored": false,
+      "span": [
+       17,
+       20
+      ]
+     },
+     {
+      "name": "voltage_v",
+      "value": 415.0,
+      "ignored": false,
+      "span": [
+       10,
+       13
+      ]
+     }
+    ],
+    "filled": [
+     {
+      "name": "power_hp",
+      "value": 40.21,
+      "ignored": false
+     },
+     {
+      "name": "poles",
+      "value": 6.0,
+      "ignored": false
+     }
+    ],
+    "notes": []
+   },
+   {
+    "id": "41",
+    "org": "NTPC Limited",
+    "text": "MOTOR,IND,415VAC,180L,4P,B3,22KW",
+    "category": "electrical",
+    "category_span": [
+     0,
+     5
+    ],
+    "read": [
+     {
+      "name": "equipment_type",
+      "value": "MOTOR",
+      "ignored": false,
+      "span": [
+       0,
+       5
+      ]
+     },
+     {
+      "name": "power_kw",
+      "value": 22.0,
+      "ignored": false,
+      "span": [
+       28,
+       30
+      ]
+     },
+     {
+      "name": "poles",
+      "value": 4.0,
+      "ignored": false,
+      "span": [
+       22,
+       23
+      ]
+     },
+     {
+      "name": "frame",
+      "value": "180L",
+      "ignored": false,
+      "span": [
+       17,
+       21
+      ]
+     },
+     {
+      "name": "mounting",
+      "value": "FOOT",
+      "ignored": false,
+      "span": [
+       25,
+       27
+      ]
+     },
+     {
+      "name": "voltage_v",
+      "value": 415.0,
+      "ignored": false,
+      "span": [
+       10,
+       13
+      ]
+     }
+    ],
+    "filled": [
+     {
+      "name": "power_hp",
+      "value": 29.49,
+      "ignored": false
+     }
+    ],
+    "notes": []
+   },
+   {
+    "id": "42",
+    "org": "NTPC Limited",
+    "text": "MOTOR,IND,415VAC,200L,4P,B5,30KW",
+    "category": "electrical",
+    "category_span": [
+     0,
+     5
+    ],
+    "read": [
+     {
+      "name": "equipment_type",
+      "value": "MOTOR",
+      "ignored": false,
+      "span": [
+       0,
+       5
+      ]
+     },
+     {
+      "name": "power_kw",
+      "value": 30.0,
+      "ignored": false,
+      "span": [
+       28,
+       30
+      ]
+     },
+     {
+      "name": "poles",
+      "value": 4.0,
+      "ignored": false,
+      "span": [
+       22,
+       23
+      ]
+     },
+     {
+      "name": "frame",
+      "value": "200L",
+      "ignored": false,
+      "span": [
+       17,
+       21
+      ]
+     },
+     {
+      "name": "mounting",
+      "value": "FLANGE",
+      "ignored": false,
+      "span": [
+       25,
+       27
+      ]
+     },
+     {
+      "name": "voltage_v",
+      "value": 415.0,
+      "ignored": false,
+      "span": [
+       10,
+       13
+      ]
+     }
+    ],
+    "filled": [
+     {
+      "name": "power_hp",
+      "value": 40.21,
+      "ignored": false
+     }
+    ],
+    "notes": []
+   },
+   {
+    "id": "116",
+    "org": "Oil India Limited",
+    "text": "PROCUREMENT OF PLUG VALVE, 100 MM 4 inch NB X 900 CLASS, REGULAR PATTERN, RTJ FLANGED, API 6D MONOGRAMMED, FIRE SAFE TO API 6FA",
+    "category": "valve",
+    "category_span": [
+     20,
+     25
+    ],
+    "read": [
+     {
+      "name": "nominal_size_in",
+      "value": 4.0,
+      "ignored": false,
+      "span": [
+       27,
+       30
+      ]
+     },
+     {
+      "name": "pressure_class",
+      "value": "900#",
+      "ignored": false,
+      "span": [
+       46,
+       49
+      ]
+     },
+     {
+      "name": "standard",
+      "value": "API 6D",
+      "ignored": false,
+      "span": [
+       87,
+       93
+      ]
+     },
+     {
+      "name": "valve_type",
+      "value": "PLUG",
+      "ignored": false,
+      "span": [
+       15,
+       19
+      ]
+     },
+     {
+      "name": "end_connection",
+      "value": "RING_JOINT",
+      "ignored": false,
+      "span": [
+       74,
+       77
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "14",
+    "org": "Oil India Limited",
+    "text": "SUPPLY OF GATE VALVE, HAND WHEEL OPERATED, 50 MM (2\") NB, W.P 210 KG/SQ.CM, ANSI 900 CLASS",
+    "category": "valve",
+    "category_span": [
+     15,
+     20
+    ],
+    "read": [
+     {
+      "name": "nominal_size_in",
+      "value": 2.0,
+      "ignored": false,
+      "span": [
+       43,
+       45
+      ]
+     },
+     {
+      "name": "pressure_class",
+      "value": "900#",
+      "ignored": false,
+      "span": [
+       81,
+       84
+      ]
+     },
+     {
+      "name": "pressure_rating_psi",
+      "value": 3000.0,
+      "ignored": false,
+      "span": [
+       62,
+       65
+      ]
+     },
+     {
+      "name": "valve_type",
+      "value": "GATE",
+      "ignored": false,
+      "span": [
+       10,
+       14
+      ]
+     },
+     {
+      "name": "operation",
+      "value": "MANUAL",
+      "ignored": false,
+      "span": [
+       22,
+       32
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "174",
+    "org": "Oil India Limited",
+    "text": "Gate Valve, 2.1/16 inch x 5000 PSI, API 6A",
+    "category": "valve",
+    "category_span": [
+     5,
+     10
+    ],
+    "read": [
+     {
+      "name": "nominal_size_in",
+      "value": 2.0625,
+      "ignored": false,
+      "span": [
+       12,
+       18
+      ]
+     },
+     {
+      "name": "pressure_rating_psi",
+      "value": 5000.0,
+      "ignored": false,
+      "span": [
+       26,
+       30
+      ]
+     },
+     {
+      "name": "standard",
+      "value": "API 6A",
+      "ignored": false,
+      "span": [
+       36,
+       42
+      ]
+     },
+     {
+      "name": "valve_type",
+      "value": "GATE",
+      "ignored": false,
+      "span": [
+       0,
+       4
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "180",
+    "org": "Oil India Limited",
+    "text": "Supply of Manual Gate Valve, FNSD 3.1/16 Inch , 10000 PSI",
+    "category": "valve",
+    "category_span": [
+     22,
+     27
+    ],
+    "read": [
+     {
+      "name": "nominal_size_in",
+      "value": 3.0625,
+      "ignored": false,
+      "span": [
+       34,
+       40
+      ]
+     },
+     {
+      "name": "pressure_rating_psi",
+      "value": 10000.0,
+      "ignored": false,
+      "span": [
+       48,
+       53
+      ]
+     },
+     {
+      "name": "valve_type",
+      "value": "GATE",
+      "ignored": false,
+      "span": [
+       17,
+       21
+      ]
+     },
+     {
+      "name": "operation",
+      "value": "MANUAL",
+      "ignored": false,
+      "span": [
+       10,
+       16
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "188",
+    "org": "Oil India Limited",
+    "text": "Valve, Gate, 2.1/16\" x 10000PSI Flngd. R. J. (10015864)",
+    "category": "valve",
+    "category_span": [
+     0,
+     5
+    ],
+    "read": [
+     {
+      "name": "nominal_size_in",
+      "value": 2.0625,
+      "ignored": false,
+      "span": [
+       13,
+       19
+      ]
+     },
+     {
+      "name": "pressure_rating_psi",
+      "value": 10000.0,
+      "ignored": false,
+      "span": [
+       23,
+       28
+      ]
+     },
+     {
+      "name": "valve_type",
+      "value": "GATE",
+      "ignored": false,
+      "span": [
+       7,
+       11
+      ]
+     },
+     {
+      "name": "end_connection",
+      "value": "RING_JOINT",
+      "ignored": false,
+      "span": [
+       39,
+       44
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "233",
+    "org": "Oil India Limited",
+    "text": "3.1/16\" X 10, 000 PSI API 6A Gate Valve",
+    "category": "valve",
+    "category_span": [
+     34,
+     39
+    ],
+    "read": [
+     {
+      "name": "nominal_size_in",
+      "value": 3.0625,
+      "ignored": false,
+      "span": [
+       0,
+       6
+      ]
+     },
+     {
+      "name": "pressure_rating_psi",
+      "value": 10000.0,
+      "ignored": false,
+      "span": [
+       10,
+       15
+      ]
+     },
+     {
+      "name": "standard",
+      "value": "API 6A",
+      "ignored": false,
+      "span": [
+       22,
+       28
+      ]
+     },
+     {
+      "name": "valve_type",
+      "value": "GATE",
+      "ignored": false,
+      "span": [
+       29,
+       33
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "72",
+    "org": "Oil India Limited",
+    "text": "SUPPLY OF GATE VALVE, HAND WHEEL OPERATED, 50 MM (2\") NB, ANSI 900 CLASS",
+    "category": "valve",
+    "category_span": [
+     15,
+     20
+    ],
+    "read": [
+     {
+      "name": "nominal_size_in",
+      "value": 2.0,
+      "ignored": false,
+      "span": [
+       43,
+       45
+      ]
+     },
+     {
+      "name": "pressure_class",
+      "value": "900#",
+      "ignored": false,
+      "span": [
+       63,
+       66
+      ]
+     },
+     {
+      "name": "valve_type",
+      "value": "GATE",
+      "ignored": false,
+      "span": [
+       10,
+       14
+      ]
+     },
+     {
+      "name": "operation",
+      "value": "MANUAL",
+      "ignored": false,
+      "span": [
+       22,
+       32
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "77",
+    "org": "Oil India Limited",
+    "text": "HYDRAULICALLY OPERATED, 3-1/8 INCHES X 5000 PSI, GATE VALVE",
+    "category": "valve",
+    "category_span": [
+     54,
+     59
+    ],
+    "read": [
+     {
+      "name": "nominal_size_in",
+      "value": 3.125,
+      "ignored": false,
+      "span": [
+       24,
+       29
+      ]
+     },
+     {
+      "name": "pressure_rating_psi",
+      "value": 5000.0,
+      "ignored": false,
+      "span": [
+       39,
+       43
+      ]
+     },
+     {
+      "name": "valve_type",
+      "value": "GATE",
+      "ignored": false,
+      "span": [
+       49,
+       53
+      ]
+     },
+     {
+      "name": "operation",
+      "value": "HYDRAULIC",
+      "ignored": false,
+      "span": [
+       0,
+       9
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "902",
+    "org": "NTPC Limited",
+    "text": "1200 NB butterfly valve complete assembly along with gearbox and actuator",
+    "category": "valve",
+    "category_span": [
+     18,
+     23
+    ],
+    "read": [
+     {
+      "name": "nominal_size_in",
+      "value": 48.0,
+      "ignored": false,
+      "span": [
+       0,
+       4
+      ]
+     },
+     {
+      "name": "valve_type",
+      "value": "BUTTERFLY",
+      "ignored": false,
+      "span": [
+       8,
+       17
+      ]
+     },
+     {
+      "name": "operation",
+      "value": "GEAR",
+      "ignored": false,
+      "span": [
+       53,
+       57
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "178",
+    "org": "Oil India Limited",
+    "text": "Safety Relief Valve, 2\" x 3\", 175 KG/SQ. CM",
+    "category": "valve",
+    "category_span": [
+     14,
+     19
+    ],
+    "read": [
+     {
+      "name": "nominal_size_in",
+      "value": 2.0,
+      "ignored": false,
+      "span": [
+       21,
+       22
+      ]
+     },
+     {
+      "name": "pressure_rating_psi",
+      "value": 2490.0,
+      "ignored": false,
+      "span": [
+       30,
+       33
+      ]
+     },
+     {
+      "name": "valve_type",
+      "value": "SAFETY_RELIEF",
+      "ignored": false,
+      "span": [
+       0,
+       13
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "279",
+    "org": "Oil India Limited",
+    "text": "Cable 4 C x 10 mm2 , 1100 V, PVCA , Alu",
+    "category": "cable",
+    "category_span": [
+     0,
+     5
+    ],
+    "read": [
+     {
+      "name": "cores",
+      "value": 4.0,
+      "ignored": false,
+      "span": [
+       6,
+       7
+      ]
+     },
+     {
+      "name": "cross_section_mm2",
+      "value": 10.0,
+      "ignored": false,
+      "span": [
+       12,
+       14
+      ]
+     },
+     {
+      "name": "conductor",
+      "value": "AL",
+      "ignored": false,
+      "span": [
+       36,
+       39
+      ]
+     },
+     {
+      "name": "voltage_kv",
+      "value": 1.1,
+      "ignored": false,
+      "span": [
+       21,
+       25
+      ]
+     },
+     {
+      "name": "insulation",
+      "value": "PVC",
+      "ignored": false,
+      "span": [
+       29,
+       32
+      ]
+     },
+     {
+      "name": "armour",
+      "value": "ARMOURED",
+      "ignored": false,
+      "span": [
+       33,
+       35
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "281",
+    "org": "Oil India Limited",
+    "text": "Cable, 3C x 400 mm2, 1100V, XLPE Copper armoured",
+    "category": "cable",
+    "category_span": [
+     0,
+     5
+    ],
+    "read": [
+     {
+      "name": "cores",
+      "value": 3.0,
+      "ignored": false,
+      "span": [
+       7,
+       8
+      ]
+     },
+     {
+      "name": "cross_section_mm2",
+      "value": 400.0,
+      "ignored": false,
+      "span": [
+       12,
+       15
+      ]
+     },
+     {
+      "name": "conductor",
+      "value": "CU",
+      "ignored": false,
+      "span": [
+       33,
+       39
+      ]
+     },
+     {
+      "name": "voltage_kv",
+      "value": 1.1,
+      "ignored": false,
+      "span": [
+       21,
+       25
+      ]
+     },
+     {
+      "name": "insulation",
+      "value": "XLPE",
+      "ignored": false,
+      "span": [
+       28,
+       32
+      ]
+     },
+     {
+      "name": "armour",
+      "value": "ARMOURED",
+      "ignored": false,
+      "span": [
+       40,
+       48
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "282",
+    "org": "Oil India Limited",
+    "text": "Cable, 4C x 10 sqmm, 1100V, PVCA Alu",
+    "category": "cable",
+    "category_span": [
+     0,
+     5
+    ],
+    "read": [
+     {
+      "name": "cores",
+      "value": 4.0,
+      "ignored": false,
+      "span": [
+       7,
+       8
+      ]
+     },
+     {
+      "name": "cross_section_mm2",
+      "value": 10.0,
+      "ignored": false,
+      "span": [
+       12,
+       14
+      ]
+     },
+     {
+      "name": "conductor",
+      "value": "AL",
+      "ignored": false,
+      "span": [
+       33,
+       36
+      ]
+     },
+     {
+      "name": "voltage_kv",
+      "value": 1.1,
+      "ignored": false,
+      "span": [
+       21,
+       25
+      ]
+     },
+     {
+      "name": "insulation",
+      "value": "PVC",
+      "ignored": false,
+      "span": [
+       28,
+       31
+      ]
+     },
+     {
+      "name": "armour",
+      "value": "ARMOURED",
+      "ignored": false,
+      "span": [
+       28,
+       32
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "283",
+    "org": "Oil India Limited",
+    "text": "Cable, 4C x 16 sqmm, 1100V, PVCA Alu",
+    "category": "cable",
+    "category_span": [
+     0,
+     5
+    ],
+    "read": [
+     {
+      "name": "cores",
+      "value": 4.0,
+      "ignored": false,
+      "span": [
+       7,
+       8
+      ]
+     },
+     {
+      "name": "cross_section_mm2",
+      "value": 16.0,
+      "ignored": false,
+      "span": [
+       12,
+       14
+      ]
+     },
+     {
+      "name": "conductor",
+      "value": "AL",
+      "ignored": false,
+      "span": [
+       33,
+       36
+      ]
+     },
+     {
+      "name": "voltage_kv",
+      "value": 1.1,
+      "ignored": false,
+      "span": [
+       21,
+       25
+      ]
+     },
+     {
+      "name": "insulation",
+      "value": "PVC",
+      "ignored": false,
+      "span": [
+       28,
+       31
+      ]
+     },
+     {
+      "name": "armour",
+      "value": "ARMOURED",
+      "ignored": false,
+      "span": [
+       28,
+       32
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "406",
+    "org": "Oil India Limited",
+    "text": "4C x 2.5 sqmm, PVCA, Cu, Control Cable",
+    "category": "cable",
+    "category_span": [
+     33,
+     38
+    ],
+    "read": [
+     {
+      "name": "cable_type",
+      "value": "CONTROL",
+      "ignored": false,
+      "span": [
+       25,
+       32
+      ]
+     },
+     {
+      "name": "cores",
+      "value": 4.0,
+      "ignored": false,
+      "span": [
+       0,
+       1
+      ]
+     },
+     {
+      "name": "cross_section_mm2",
+      "value": 2.5,
+      "ignored": false,
+      "span": [
+       5,
+       8
+      ]
+     },
+     {
+      "name": "conductor",
+      "value": "CU",
+      "ignored": false,
+      "span": [
+       21,
+       24
+      ]
+     },
+     {
+      "name": "insulation",
+      "value": "PVC",
+      "ignored": false,
+      "span": [
+       15,
+       18
+      ]
+     },
+     {
+      "name": "armour",
+      "value": "ARMOURED",
+      "ignored": false,
+      "span": [
+       19,
+       20
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "19",
+    "org": "NTPC Limited",
+    "text": "CABLE, PWR, 150MM2, 1C, STRANDED, AL, 11KV",
+    "category": "cable",
+    "category_span": [
+     0,
+     5
+    ],
+    "read": [
+     {
+      "name": "cable_type",
+      "value": "POWER",
+      "ignored": false,
+      "span": [
+       7,
+       11
+      ]
+     },
+     {
+      "name": "cross_section_mm2",
+      "value": 150.0,
+      "ignored": false,
+      "span": [
+       12,
+       15
+      ]
+     },
+     {
+      "name": "cores",
+      "value": 1.0,
+      "ignored": false,
+      "span": [
+       20,
+       21
+      ]
+     },
+     {
+      "name": "conductor",
+      "value": "AL",
+      "ignored": false,
+      "span": [
+       34,
+       37
+      ]
+     },
+     {
+      "name": "voltage_kv",
+      "value": 11.0,
+      "ignored": false,
+      "span": [
+       38,
+       40
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "20",
+    "org": "NTPC Limited",
+    "text": "CABLE, PWR, 150MM2, 1C, STRANDED, AL, 11KV , CABLE,",
+    "category": "cable",
+    "category_span": [
+     0,
+     5
+    ],
+    "read": [
+     {
+      "name": "cable_type",
+      "value": "POWER",
+      "ignored": false,
+      "span": [
+       7,
+       11
+      ]
+     },
+     {
+      "name": "cross_section_mm2",
+      "value": 150.0,
+      "ignored": false,
+      "span": [
+       12,
+       15
+      ]
+     },
+     {
+      "name": "cores",
+      "value": 1.0,
+      "ignored": false,
+      "span": [
+       20,
+       21
+      ]
+     },
+     {
+      "name": "conductor",
+      "value": "AL",
+      "ignored": false,
+      "span": [
+       34,
+       37
+      ]
+     },
+     {
+      "name": "voltage_kv",
+      "value": 11.0,
+      "ignored": false,
+      "span": [
+       38,
+       40
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "21",
+    "org": "NTPC Limited",
+    "text": "CABLE,PWR,240MM2,1C,STRANDED,AL,11KV",
+    "category": "cable",
+    "category_span": [
+     0,
+     5
+    ],
+    "read": [
+     {
+      "name": "cable_type",
+      "value": "POWER",
+      "ignored": false,
+      "span": [
+       6,
+       10
+      ]
+     },
+     {
+      "name": "cross_section_mm2",
+      "value": 240.0,
+      "ignored": false,
+      "span": [
+       10,
+       13
+      ]
+     },
+     {
+      "name": "cores",
+      "value": 1.0,
+      "ignored": false,
+      "span": [
+       17,
+       18
+      ]
+     },
+     {
+      "name": "conductor",
+      "value": "AL",
+      "ignored": false,
+      "span": [
+       29,
+       32
+      ]
+     },
+     {
+      "name": "voltage_kv",
+      "value": 11.0,
+      "ignored": false,
+      "span": [
+       32,
+       34
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "53",
+    "org": "NTPC Limited",
+    "text": "CABLE, PWR, 150MM2, 1C, STRANDED, AL, 11KV ( 6000 meter )",
+    "category": "cable",
+    "category_span": [
+     0,
+     5
+    ],
+    "read": [
+     {
+      "name": "cable_type",
+      "value": "POWER",
+      "ignored": false,
+      "span": [
+       7,
+       11
+      ]
+     },
+     {
+      "name": "cross_section_mm2",
+      "value": 150.0,
+      "ignored": false,
+      "span": [
+       12,
+       15
+      ]
+     },
+     {
+      "name": "cores",
+      "value": 1.0,
+      "ignored": false,
+      "span": [
+       20,
+       21
+      ]
+     },
+     {
+      "name": "conductor",
+      "value": "AL",
+      "ignored": false,
+      "span": [
+       34,
+       37
+      ]
+     },
+     {
+      "name": "voltage_kv",
+      "value": 11.0,
+      "ignored": false,
+      "span": [
+       38,
+       40
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "280",
+    "org": "Oil India Limited",
+    "text": "Cable, 2C x 6 sqmm, 250V, Flat PVC Alu",
+    "category": "cable",
+    "category_span": [
+     0,
+     5
+    ],
+    "read": [
+     {
+      "name": "cores",
+      "value": 2.0,
+      "ignored": false,
+      "span": [
+       7,
+       8
+      ]
+     },
+     {
+      "name": "cross_section_mm2",
+      "value": 6.0,
+      "ignored": false,
+      "span": [
+       12,
+       13
+      ]
+     },
+     {
+      "name": "conductor",
+      "value": "AL",
+      "ignored": false,
+      "span": [
+       35,
+       38
+      ]
+     },
+     {
+      "name": "voltage_kv",
+      "value": 0.25,
+      "ignored": false,
+      "span": [
+       20,
+       23
+      ]
+     },
+     {
+      "name": "insulation",
+      "value": "PVC",
+      "ignored": false,
+      "span": [
+       31,
+       34
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "234",
+    "org": "Oil India Limited",
+    "text": "4\" Dia Flange WN RTJ ASME B16.5 900#63AARH SCH XXS ASTM A105 Groove R37",
+    "category": "flange",
+    "category_span": [
+     7,
+     13
+    ],
+    "read": [
+     {
+      "name": "nominal_size_in",
+      "value": 4.0,
+      "ignored": false,
+      "span": [
+       0,
+       1
+      ]
+     },
+     {
+      "name": "pressure_class",
+      "value": "900#",
+      "ignored": false,
+      "span": [
+       32,
+       35
+      ]
+     },
+     {
+      "name": "material_grade",
+      "value": "ASTM_A105",
+      "ignored": false,
+      "span": [
+       56,
+       60
+      ]
+     },
+     {
+      "name": "standard",
+      "value": "ASME B16.5",
+      "ignored": false,
+      "span": [
+       21,
+       31
+      ]
+     },
+     {
+      "name": "flange_type",
+      "value": "WELD_NECK",
+      "ignored": false,
+      "span": [
+       14,
+       16
+      ]
+     },
+     {
+      "name": "face_type",
+      "value": "RING_JOINT",
+      "ignored": false,
+      "span": [
+       17,
+       20
+      ]
+     },
+     {
+      "name": "bore_schedule",
+      "value": "SCH XXS",
+      "ignored": false,
+      "span": [
+       47,
+       50
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "138",
+    "org": "NTPC Limited",
+    "text": "FLANGE-S:ASA:B16.5 CL-150 A182:SLIP-ON:65MM, FLANGE",
+    "category": "flange",
+    "category_span": [
+     0,
+     6
+    ],
+    "read": [
+     {
+      "name": "nominal_size_in",
+      "value": 2.5,
+      "ignored": false,
+      "span": [
+       39,
+       41
+      ]
+     },
+     {
+      "name": "pressure_class",
+      "value": "150#",
+      "ignored": false,
+      "span": [
+       21,
+       25
+      ]
+     },
+     {
+      "name": "material_grade",
+      "value": "A182",
+      "ignored": false,
+      "span": [
+       26,
+       30
+      ]
+     },
+     {
+      "name": "standard",
+      "value": "ASME B16.5",
+      "ignored": false,
+      "span": [
+       9,
+       18
+      ]
+     },
+     {
+      "name": "flange_type",
+      "value": "SLIP_ON",
+      "ignored": false,
+      "span": [
+       31,
+       38
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "139",
+    "org": "NTPC Limited",
+    "text": "S:ASA:B16.5 CL-150 A182:SLIP-ON:100MM, FLANGE",
+    "category": "flange",
+    "category_span": [
+     39,
+     45
+    ],
+    "read": [
+     {
+      "name": "nominal_size_in",
+      "value": 4.0,
+      "ignored": false,
+      "span": [
+       32,
+       35
+      ]
+     },
+     {
+      "name": "pressure_class",
+      "value": "150#",
+      "ignored": false,
+      "span": [
+       14,
+       18
+      ]
+     },
+     {
+      "name": "material_grade",
+      "value": "A182",
+      "ignored": false,
+      "span": [
+       19,
+       23
+      ]
+     },
+     {
+      "name": "standard",
+      "value": "ASME B16.5",
+      "ignored": false,
+      "span": [
+       2,
+       11
+      ]
+     },
+     {
+      "name": "flange_type",
+      "value": "SLIP_ON",
+      "ignored": false,
+      "span": [
+       24,
+       31
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "140",
+    "org": "NTPC Limited",
+    "text": "S:ASA:B16.5 CL-150 A182:SLIP-ON:150MM, FLANGE",
+    "category": "flange",
+    "category_span": [
+     39,
+     45
+    ],
+    "read": [
+     {
+      "name": "nominal_size_in",
+      "value": 6.0,
+      "ignored": false,
+      "span": [
+       32,
+       35
+      ]
+     },
+     {
+      "name": "pressure_class",
+      "value": "150#",
+      "ignored": false,
+      "span": [
+       14,
+       18
+      ]
+     },
+     {
+      "name": "material_grade",
+      "value": "A182",
+      "ignored": false,
+      "span": [
+       19,
+       23
+      ]
+     },
+     {
+      "name": "standard",
+      "value": "ASME B16.5",
+      "ignored": false,
+      "span": [
+       2,
+       11
+      ]
+     },
+     {
+      "name": "flange_type",
+      "value": "SLIP_ON",
+      "ignored": false,
+      "span": [
+       24,
+       31
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "142",
+    "org": "NTPC Limited",
+    "text": "S:ASA:B16.5 CL-150 A182:SLIP-ON:250MM, FLANGE",
+    "category": "flange",
+    "category_span": [
+     39,
+     45
+    ],
+    "read": [
+     {
+      "name": "nominal_size_in",
+      "value": 10.0,
+      "ignored": false,
+      "span": [
+       32,
+       35
+      ]
+     },
+     {
+      "name": "pressure_class",
+      "value": "150#",
+      "ignored": false,
+      "span": [
+       14,
+       18
+      ]
+     },
+     {
+      "name": "material_grade",
+      "value": "A182",
+      "ignored": false,
+      "span": [
+       19,
+       23
+      ]
+     },
+     {
+      "name": "standard",
+      "value": "ASME B16.5",
+      "ignored": false,
+      "span": [
+       2,
+       11
+      ]
+     },
+     {
+      "name": "flange_type",
+      "value": "SLIP_ON",
+      "ignored": false,
+      "span": [
+       24,
+       31
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "143",
+    "org": "NTPC Limited",
+    "text": "S:ASA:B16.5 CL-150 A182:SLIP-ON:300MM, FLANGE",
+    "category": "flange",
+    "category_span": [
+     39,
+     45
+    ],
+    "read": [
+     {
+      "name": "nominal_size_in",
+      "value": 12.0,
+      "ignored": false,
+      "span": [
+       32,
+       35
+      ]
+     },
+     {
+      "name": "pressure_class",
+      "value": "150#",
+      "ignored": false,
+      "span": [
+       14,
+       18
+      ]
+     },
+     {
+      "name": "material_grade",
+      "value": "A182",
+      "ignored": false,
+      "span": [
+       19,
+       23
+      ]
+     },
+     {
+      "name": "standard",
+      "value": "ASME B16.5",
+      "ignored": false,
+      "span": [
+       2,
+       11
+      ]
+     },
+     {
+      "name": "flange_type",
+      "value": "SLIP_ON",
+      "ignored": false,
+      "span": [
+       24,
+       31
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "144",
+    "org": "NTPC Limited",
+    "text": "S:ASA:B16.5 CL-150 A182:SLIP-ON:80MM, FLANGE",
+    "category": "flange",
+    "category_span": [
+     38,
+     44
+    ],
+    "read": [
+     {
+      "name": "nominal_size_in",
+      "value": 3.0,
+      "ignored": false,
+      "span": [
+       32,
+       34
+      ]
+     },
+     {
+      "name": "pressure_class",
+      "value": "150#",
+      "ignored": false,
+      "span": [
+       14,
+       18
+      ]
+     },
+     {
+      "name": "material_grade",
+      "value": "A182",
+      "ignored": false,
+      "span": [
+       19,
+       23
+      ]
+     },
+     {
+      "name": "standard",
+      "value": "ASME B16.5",
+      "ignored": false,
+      "span": [
+       2,
+       11
+      ]
+     },
+     {
+      "name": "flange_type",
+      "value": "SLIP_ON",
+      "ignored": false,
+      "span": [
+       24,
+       31
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "83",
+    "org": "NTPC Limited",
+    "text": "FLANGE-S:ASA:B16.5 CL-150 A182:SLIP-ON:25MM(1INCH,",
+    "category": "flange",
+    "category_span": [
+     0,
+     6
+    ],
+    "read": [
+     {
+      "name": "nominal_size_in",
+      "value": 1.0,
+      "ignored": false,
+      "span": [
+       39,
+       41
+      ]
+     },
+     {
+      "name": "pressure_class",
+      "value": "150#",
+      "ignored": false,
+      "span": [
+       21,
+       25
+      ]
+     },
+     {
+      "name": "material_grade",
+      "value": "A182",
+      "ignored": false,
+      "span": [
+       26,
+       30
+      ]
+     },
+     {
+      "name": "standard",
+      "value": "ASME B16.5",
+      "ignored": false,
+      "span": [
+       9,
+       18
+      ]
+     },
+     {
+      "name": "flange_type",
+      "value": "SLIP_ON",
+      "ignored": false,
+      "span": [
+       31,
+       38
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "84",
+    "org": "NTPC Limited",
+    "text": "FLANGE-S:ASA:B16.5 CL-150 A182:SLIP-ON:450MM(18INCH),",
+    "category": "flange",
+    "category_span": [
+     0,
+     6
+    ],
+    "read": [
+     {
+      "name": "nominal_size_in",
+      "value": 18.0,
+      "ignored": false,
+      "span": [
+       39,
+       42
+      ]
+     },
+     {
+      "name": "pressure_class",
+      "value": "150#",
+      "ignored": false,
+      "span": [
+       21,
+       25
+      ]
+     },
+     {
+      "name": "material_grade",
+      "value": "A182",
+      "ignored": false,
+      "span": [
+       26,
+       30
+      ]
+     },
+     {
+      "name": "standard",
+      "value": "ASME B16.5",
+      "ignored": false,
+      "span": [
+       9,
+       18
+      ]
+     },
+     {
+      "name": "flange_type",
+      "value": "SLIP_ON",
+      "ignored": false,
+      "span": [
+       31,
+       38
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "85",
+    "org": "NTPC Limited",
+    "text": "FLANGE-S:ASA:B16.5 CL-150 A182:SLIP-ON:50MM(2INCH,",
+    "category": "flange",
+    "category_span": [
+     0,
+     6
+    ],
+    "read": [
+     {
+      "name": "nominal_size_in",
+      "value": 2.0,
+      "ignored": false,
+      "span": [
+       39,
+       41
+      ]
+     },
+     {
+      "name": "pressure_class",
+      "value": "150#",
+      "ignored": false,
+      "span": [
+       21,
+       25
+      ]
+     },
+     {
+      "name": "material_grade",
+      "value": "A182",
+      "ignored": false,
+      "span": [
+       26,
+       30
+      ]
+     },
+     {
+      "name": "standard",
+      "value": "ASME B16.5",
+      "ignored": false,
+      "span": [
+       9,
+       18
+      ]
+     },
+     {
+      "name": "flange_type",
+      "value": "SLIP_ON",
+      "ignored": false,
+      "span": [
+       31,
+       38
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "156",
+    "org": "NTPC Limited",
+    "text": "M4801164925_ TUBE, STRT, AS, A213-T91, 54MM, 4MM ( 500 meter )",
+    "category": "tube",
+    "category_span": [
+     13,
+     17
+    ],
+    "read": [
+     {
+      "name": "material_grade",
+      "value": "A213 T91",
+      "ignored": false,
+      "span": [
+       29,
+       37
+      ]
+     },
+     {
+      "name": "od_mm",
+      "value": 54.0,
+      "ignored": false,
+      "span": [
+       39,
+       41
+      ]
+     },
+     {
+      "name": "wall_mm",
+      "value": 4.0,
+      "ignored": false,
+      "span": [
+       45,
+       46
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "166",
+    "org": "NTPC Limited",
+    "text": "M4801164925_ Tube, Strt, As, A213-t91, 54mm, 4mm",
+    "category": "tube",
+    "category_span": [
+     13,
+     17
+    ],
+    "read": [
+     {
+      "name": "material_grade",
+      "value": "A213 T91",
+      "ignored": false,
+      "span": [
+       29,
+       37
+      ]
+     },
+     {
+      "name": "od_mm",
+      "value": 54.0,
+      "ignored": false,
+      "span": [
+       39,
+       41
+      ]
+     },
+     {
+      "name": "wall_mm",
+      "value": 4.0,
+      "ignored": false,
+      "span": [
+       45,
+       46
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "168",
+    "org": "NTPC Limited",
+    "text": "Tube,strt,as,a213- t23,63.5mm,12.7mm",
+    "category": "tube",
+    "category_span": [
+     0,
+     4
+    ],
+    "read": [
+     {
+      "name": "material_grade",
+      "value": "A213 T23",
+      "ignored": false,
+      "span": [
+       13,
+       22
+      ]
+     },
+     {
+      "name": "od_mm",
+      "value": 63.5,
+      "ignored": false,
+      "span": [
+       23,
+       27
+      ]
+     },
+     {
+      "name": "wall_mm",
+      "value": 12.7,
+      "ignored": false,
+      "span": [
+       30,
+       34
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "189",
+    "org": "NTPC Limited",
+    "text": "M4801164756_ _ TUBE, STRT, AS, A213-T91, 51MM, 7.1MM, 4-7M",
+    "category": "tube",
+    "category_span": [
+     15,
+     19
+    ],
+    "read": [
+     {
+      "name": "material_grade",
+      "value": "A213 T91",
+      "ignored": false,
+      "span": [
+       31,
+       39
+      ]
+     },
+     {
+      "name": "od_mm",
+      "value": 51.0,
+      "ignored": false,
+      "span": [
+       41,
+       43
+      ]
+     },
+     {
+      "name": "wall_mm",
+      "value": 7.1,
+      "ignored": false,
+      "span": [
+       47,
+       50
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "209",
+    "org": "NTPC Limited",
+    "text": "Tube,strt As,a213- t23,54mm,8.13mm",
+    "category": "tube",
+    "category_span": [
+     0,
+     4
+    ],
+    "read": [
+     {
+      "name": "material_grade",
+      "value": "A213 T23",
+      "ignored": false,
+      "span": [
+       13,
+       22
+      ]
+     },
+     {
+      "name": "od_mm",
+      "value": 54.0,
+      "ignored": false,
+      "span": [
+       23,
+       25
+      ]
+     },
+     {
+      "name": "wall_mm",
+      "value": 8.13,
+      "ignored": false,
+      "span": [
+       28,
+       32
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "210",
+    "org": "NTPC Limited",
+    "text": "Tube,strt As,a213- t23,60.30mm,10.16mm",
+    "category": "tube",
+    "category_span": [
+     0,
+     4
+    ],
+    "read": [
+     {
+      "name": "material_grade",
+      "value": "A213 T23",
+      "ignored": false,
+      "span": [
+       13,
+       22
+      ]
+     },
+     {
+      "name": "od_mm",
+      "value": 60.3,
+      "ignored": false,
+      "span": [
+       23,
+       28
+      ]
+     },
+     {
+      "name": "wall_mm",
+      "value": 10.16,
+      "ignored": false,
+      "span": [
+       31,
+       36
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "211",
+    "org": "NTPC Limited",
+    "text": "Tube,strt As,a213- t23,44.45mm,7.62mm",
+    "category": "tube",
+    "category_span": [
+     0,
+     4
+    ],
+    "read": [
+     {
+      "name": "material_grade",
+      "value": "A213 T23",
+      "ignored": false,
+      "span": [
+       13,
+       22
+      ]
+     },
+     {
+      "name": "od_mm",
+      "value": 44.45,
+      "ignored": false,
+      "span": [
+       23,
+       28
+      ]
+     },
+     {
+      "name": "wall_mm",
+      "value": 7.62,
+      "ignored": false,
+      "span": [
+       31,
+       35
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "38",
+    "org": "NTPC Limited",
+    "text": "TUBE,STRT,AS,A213-T23,38.1MM,11MM",
+    "category": "tube",
+    "category_span": [
+     0,
+     4
+    ],
+    "read": [
+     {
+      "name": "material_grade",
+      "value": "A213 T23",
+      "ignored": false,
+      "span": [
+       13,
+       21
+      ]
+     },
+     {
+      "name": "od_mm",
+      "value": 38.1,
+      "ignored": false,
+      "span": [
+       22,
+       26
+      ]
+     },
+     {
+      "name": "wall_mm",
+      "value": 11.0,
+      "ignored": false,
+      "span": [
+       29,
+       31
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "394",
+    "org": "NTPC Limited",
+    "text": "M4801164756_ _ TUBE, STRT, AS, A213-T91, 51MM, 7.1MM, 4-7M ( 2000 meter )",
+    "category": "tube",
+    "category_span": [
+     15,
+     19
+    ],
+    "read": [
+     {
+      "name": "material_grade",
+      "value": "A213 T91",
+      "ignored": false,
+      "span": [
+       31,
+       39
+      ]
+     },
+     {
+      "name": "od_mm",
+      "value": 51.0,
+      "ignored": false,
+      "span": [
+       41,
+       43
+      ]
+     },
+     {
+      "name": "wall_mm",
+      "value": 7.1,
+      "ignored": false,
+      "span": [
+       47,
+       50
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "155",
+    "org": "Oil India Limited",
+    "text": "BOILER TUBE FOR FIRE TUBE TYPE LOCO BOILER , STEAM LINE (IBR) : 2\" OD X 4.06 MM THICK",
+    "category": "tube",
+    "category_span": [
+     7,
+     11
+    ],
+    "read": [
+     {
+      "name": "tube_type",
+      "value": "BOILER",
+      "ignored": false,
+      "span": [
+       0,
+       6
+      ]
+     },
+     {
+      "name": "od_mm",
+      "value": 50.8,
+      "ignored": false,
+      "span": [
+       64,
+       65
+      ]
+     },
+     {
+      "name": "wall_mm",
+      "value": 4.06,
+      "ignored": false,
+      "span": [
+       72,
+       76
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "18",
+    "org": "Oil India Limited",
+    "text": "ELBOW, 90 DEG., FORGED CARBON STEEL, 3000 PSI, THREAD : APILP DIM.: ANSI B16.11, MATERIAL : ASTM A-105",
+    "category": "fitting",
+    "category_span": [
+     0,
+     5
+    ],
+    "read": [
+     {
+      "name": "pressure_class",
+      "value": "3000#",
+      "ignored": false,
+      "span": [
+       37,
+       41
+      ]
+     },
+     {
+      "name": "material_grade",
+      "value": "ASTM_A105",
+      "ignored": false,
+      "span": [
+       97,
+       101
+      ]
+     },
+     {
+      "name": "standard",
+      "value": "ASME B16.11",
+      "ignored": false,
+      "span": [
+       68,
+       79
+      ]
+     },
+     {
+      "name": "fitting_type",
+      "value": "ELBOW",
+      "ignored": false,
+      "span": [
+       0,
+       5
+      ]
+     },
+     {
+      "name": "angle",
+      "value": 90.0,
+      "ignored": false,
+      "span": [
+       7,
+       9
+      ]
+     },
+     {
+      "name": "end_connection",
+      "value": "SCREWED",
+      "ignored": false,
+      "span": [
+       47,
+       53
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "75",
+    "org": "Oil India Limited",
+    "text": "COUPLING, SEAMLESS, STD. WT. THREAD : NPT, DIM.: IS-1239,PT.II, MATERIAL : ASTM A-106, GR.B",
+    "category": "fitting",
+    "category_span": [
+     0,
+     8
+    ],
+    "read": [
+     {
+      "name": "material_grade",
+      "value": "A106 GR B",
+      "ignored": false,
+      "span": [
+       80,
+       91
+      ]
+     },
+     {
+      "name": "standard",
+      "value": "IS 1239",
+      "ignored": false,
+      "span": [
+       49,
+       56
+      ]
+     },
+     {
+      "name": "fitting_type",
+      "value": "COUPLING",
+      "ignored": false,
+      "span": [
+       0,
+       8
+      ]
+     },
+     {
+      "name": "end_connection",
+      "value": "SCREWED",
+      "ignored": false,
+      "span": [
+       29,
+       35
+      ]
+     },
+     {
+      "name": "schedule",
+      "value": "SCH STD",
+      "ignored": false,
+      "span": [
+       20,
+       28
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "458",
+    "org": "Oil India Limited",
+    "text": "Coupling for 9.5/8\" x P110 BTC Casing",
+    "category": "fitting",
+    "category_span": [
+     0,
+     8
+    ],
+    "read": [
+     {
+      "name": "nominal_size_in",
+      "value": 9.625,
+      "ignored": false,
+      "span": [
+       13,
+       18
+      ]
+     },
+     {
+      "name": "material_grade",
+      "value": "P110",
+      "ignored": false,
+      "span": [
+       22,
+       26
+      ]
+     },
+     {
+      "name": "fitting_type",
+      "value": "COUPLING",
+      "ignored": false,
+      "span": [
+       0,
+       8
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "468",
+    "org": "Oil India Limited",
+    "text": "Spares & Accessories for Instruments \"SS NIPPLE (1/2\"\" X 2\"\")",
+    "category": "fitting",
+    "category_span": [
+     41,
+     47
+    ],
+    "read": [
+     {
+      "name": "nominal_size_in",
+      "value": 0.5,
+      "ignored": false,
+      "span": [
+       49,
+       52
+      ]
+     },
+     {
+      "name": "material_grade",
+      "value": "SS",
+      "ignored": false,
+      "span": [
+       38,
+       40
+      ]
+     },
+     {
+      "name": "fitting_type",
+      "value": "NIPPLE",
+      "ignored": false,
+      "span": [
+       41,
+       47
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "586",
+    "org": "NTPC Limited",
+    "text": "300 NB SLEEVE COUPLING ASSEMBLY",
+    "category": "fitting",
+    "category_span": [
+     14,
+     22
+    ],
+    "read": [
+     {
+      "name": "nominal_size_in",
+      "value": 12.0,
+      "ignored": false,
+      "span": [
+       0,
+       3
+      ]
+     },
+     {
+      "name": "fitting_type",
+      "value": "SLEEVE",
+      "ignored": false,
+      "span": [
+       7,
+       13
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "29",
+    "org": "NTPC Limited",
+    "text": "PLATE,CHQ,MS,IS2062-A,6MM",
+    "category": "plate",
+    "category_span": [
+     0,
+     5
+    ],
+    "read": [
+     {
+      "name": "material_grade",
+      "value": "IS2062 E250A",
+      "ignored": false,
+      "span": [
+       13,
+       21
+      ]
+     },
+     {
+      "name": "standard",
+      "value": "IS 2062",
+      "ignored": false,
+      "span": [
+       13,
+       19
+      ]
+     },
+     {
+      "name": "thickness_mm",
+      "value": 6.0,
+      "ignored": false,
+      "span": [
+       22,
+       23
+      ]
+     },
+     {
+      "name": "plate_type",
+      "value": "CHEQUERED",
+      "ignored": false,
+      "span": [
+       6,
+       10
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "479",
+    "org": "Oil India Limited",
+    "text": "Bids for PROCUREMENT OF M.S.PLATE SIZE: 1.6mmX2500mmX1250mm (QTY-25,000 KG)",
+    "category": "plate",
+    "category_span": [
+     28,
+     33
+    ],
+    "read": [
+     {
+      "name": "material_grade",
+      "value": "MILD_STEEL",
+      "ignored": false,
+      "span": [
+       24,
+       28
+      ]
+     },
+     {
+      "name": "thickness_mm",
+      "value": 1.6,
+      "ignored": false,
+      "span": [
+       40,
+       43
+      ]
+     },
+     {
+      "name": "width_mm",
+      "value": 1250.0,
+      "ignored": false,
+      "span": [
+       53,
+       57
+      ]
+     },
+     {
+      "name": "length_mm",
+      "value": 2500.0,
+      "ignored": false,
+      "span": [
+       46,
+       50
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "366",
+    "org": "Oil India Limited",
+    "text": "PROCUREMENT OF M.S. PLATE 1.6 MM (QTY-25 MT)",
+    "category": "plate",
+    "category_span": [
+     20,
+     25
+    ],
+    "read": [
+     {
+      "name": "material_grade",
+      "value": "MILD_STEEL",
+      "ignored": false,
+      "span": [
+       15,
+       19
+      ]
+     },
+     {
+      "name": "thickness_mm",
+      "value": 1.6,
+      "ignored": false,
+      "span": [
+       26,
+       29
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "598",
+    "org": "Oil India Limited",
+    "text": "MS Plate (3.15 MM",
+    "category": "plate",
+    "category_span": [
+     3,
+     8
+    ],
+    "read": [
+     {
+      "name": "material_grade",
+      "value": "MILD_STEEL",
+      "ignored": false,
+      "span": [
+       0,
+       2
+      ]
+     },
+     {
+      "name": "thickness_mm",
+      "value": 3.15,
+      "ignored": false,
+      "span": [
+       10,
+       14
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "807",
+    "org": "Oil India Limited",
+    "text": "PROCUREMENT OF M.S. PLATE (QTY = 25000 KGs)",
+    "category": "plate",
+    "category_span": [
+     20,
+     25
+    ],
+    "read": [
+     {
+      "name": "material_grade",
+      "value": "MILD_STEEL",
+      "ignored": false,
+      "span": [
+       15,
+       19
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "115",
+    "org": "NTPC Limited",
+    "text": "M1519910097:SCREW,HEX,ALLOY STL,GR1.7709,MC,GALV,M42",
+    "category": "fastener",
+    "category_span": [
+     12,
+     17
+    ],
+    "read": [
+     {
+      "name": "material_grade",
+      "value": "1.7709",
+      "ignored": false,
+      "span": [
+       32,
+       40
+      ]
+     },
+     {
+      "name": "fastener_type",
+      "value": "SCREW",
+      "ignored": false,
+      "span": [
+       12,
+       17
+      ]
+     },
+     {
+      "name": "head_type",
+      "value": "HEX",
+      "ignored": false,
+      "span": [
+       18,
+       21
+      ]
+     },
+     {
+      "name": "thread",
+      "value": "M42",
+      "ignored": false,
+      "span": [
+       49,
+       52
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "264",
+    "org": "Oil India Limited",
+    "text": "SPRING WASHER CONFORMING TO IS 3063 FOR DIMENSIONS AND IS 4072 FOR SPECIFICATIONS, SSI ITEM GROUP IV",
+    "category": "fastener",
+    "category_span": [
+     7,
+     13
+    ],
+    "read": [
+     {
+      "name": "standard",
+      "value": "IS 3063",
+      "ignored": false,
+      "span": [
+       28,
+       35
+      ]
+     },
+     {
+      "name": "fastener_type",
+      "value": "WASHER",
+      "ignored": false,
+      "span": [
+       7,
+       13
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   },
+   {
+    "id": "529",
+    "org": "Oil India Limited",
+    "text": "Pressure Gauge, Range: 0-150 PSI",
+    "category": "instrument",
+    "category_span": [
+     9,
+     14
+    ],
+    "read": [
+     {
+      "name": "instrument_type",
+      "value": "PRESSURE_GAUGE",
+      "ignored": false,
+      "span": [
+       0,
+       14
+      ]
+     },
+     {
+      "name": "range_min",
+      "value": 0.0,
+      "ignored": false,
+      "span": [
+       23,
+       24
+      ]
+     },
+     {
+      "name": "range_max",
+      "value": 150.0,
+      "ignored": false,
+      "span": [
+       25,
+       28
+      ]
+     },
+     {
+      "name": "range_unit",
+      "value": "PSI",
+      "ignored": false,
+      "span": [
+       29,
+       32
+      ]
+     }
+    ],
+    "filled": [],
+    "notes": []
+   }
+  ]
  }
 }

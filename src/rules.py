@@ -167,6 +167,12 @@ class Reading:
 
 
 SAP_MAKTX = 40
+# Short words that are complete as written - units and standard abbreviations.
+# A line of exactly 40 characters ending "12.66 PPF" was not cut; "AS" was.
+COMPLETE_SHORT = {"MM", "CM", "M", "IN", "NB", "DN", "PPF", "KG", "KGS", "KV", "V", "A", "HP", "KW",
+                  "RPM", "BAR", "PSI", "NOS", "NO", "SET", "PCS", "EA", "MTR", "MTS", "RF", "FF",
+                  "RTJ", "SW", "BW", "NPT", "BSP", "ERW", "BE", "PE", "SS", "CS", "MS", "GI", "BLK",
+                  "GLV", "OD", "ID", "ALU", "PVC", "LT", "HT"}
 
 
 def extract(description: str) -> dict:
@@ -180,7 +186,7 @@ def extract(description: str) -> dict:
         tail = clean[cut:].strip(" ,-")
         # Cut mid-number ("SCH 8", "SS31") or to a stub ("AS" of ASTM). A value
         # that ends in its unit ("900#", "600NB", "25MM") is whole - kept.
-        if cut > 0 and (re.search(r"\d$", tail) or (len(tail) <= 3 and tail.isalpha())):
+        if cut > 0 and tail not in COMPLETE_SHORT and (re.search(r"\d$", tail) or (len(tail) <= 3 and tail.isalpha())):
             clean = clean[:cut] + " " * (len(clean) - cut)
     category, noun_span = classify(clean)
     r = Reading(description, clean, idx, category)

@@ -34,6 +34,14 @@ REAL_SOURCE_NAME = "Prasenjeet25/sih26099-cpse-material-codes"
 REAL_SOURCE_URL = f"https://huggingface.co/datasets/{REAL_SOURCE_NAME}"
 
 
+def real_text() -> dict:
+    """The Real text page (real_view.py) - dev rows only. Empty without data/real."""
+    if not paths.REAL_DEV.exists():
+        return {}
+    import real_view
+    return real_view.build()
+
+
 def real_summary() -> dict:
     """Counts of the real tender lines, for the UI's data-source notice.
 
@@ -266,6 +274,7 @@ def build() -> dict:
         "uom": uom,
         "gate": gate,
         "real": real_summary(),
+        "real_text": real_text(),
     }
 
 

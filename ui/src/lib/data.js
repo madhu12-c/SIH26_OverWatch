@@ -31,4 +31,7 @@ export const gateScenarios = results.gate?.scenarios ?? []
 // candidate text only. Empty until results.py has run with data/real present.
 export const real = results.real ?? {}
 
+// The Real text page: dev-half lines with what the reader took from each.
+export const realText = results.real_text ?? {}
+
 export const isStub = meta.precision == null && clusters.length <= 1
