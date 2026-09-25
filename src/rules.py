@@ -884,6 +884,30 @@ def read_fastener(r: Reading) -> None:
     m = re.search(r"\b(4\.6|5\.6|8\.8|10\.9|12\.9)\b", t)
     if m:
         r.put("material_grade", m.group(1), m.span(1))
+    # Inch structural bolts. ASTM A325 / A490 were withdrawn in 2016 and live
+    # on as grades of F3125; the grade is read as written and standards.py
+    # knows they are one bolt.
+    m = re.search(r"\bF\s?3125\s*(?:GR(?:ADE)?\.?\s*)?(A325|A490)\b", t)
+    if m:
+        r.put("material_grade", f"F3125 {m.group(1)}", m.span())
+        r.put("standard", "ASTM F3125", m.span())
+    else:
+        m = re.search(r"\b(?:ASTM\s?)?(A\s?325|A\s?490)\b", t)
+        if m:
+            r.put("material_grade", m.group(1).replace(" ", ""), m.span(1))
+            r.put("standard", "ASTM " + m.group(1).replace(" ", ""), m.span())
+    m = re.search(r"\bISO\s?(898-1|4014|4017|4032)\b", t)
+    if m:
+        r.put("standard", "ISO " + m.group(1), m.span())
+    # Inch size: "3/4 X 3", "1-1/8" X 4-1/2" LG" - thread diameter by length.
+    if "thread" not in r.attrs:
+        m = re.search(r"(?<![\d./-])(\d-\d{1,2}/\d{1,2}|\d{1,2}/\d{1,2}|\d)\s*(?:\"|IN(?:CH)?\b)?\s*X\s*"
+                      r"(\d{1,2}-\d{1,2}/\d{1,2}|\d{1,2}/\d{1,2}|\d{1,2}(?:\.\d+)?)\s*(?:\"|IN(?:CH)?\b|LG\b|LONG\b)?", t)
+        if m:
+            dia, length = nz.parse_inches(m.group(1)), nz.parse_inches(m.group(2))
+            if dia and length and dia <= 2 and length <= 40:
+                r.put("thread", f"{_n(str(dia))}IN", m.span(1))
+                r.put("length_mm", round(length * 25.4, 1), m.span(2))
 
 
 def read_other(r: Reading) -> None:

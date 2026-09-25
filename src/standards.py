@@ -93,3 +93,87 @@ def pipe_wall(nps: float, schedule: str):
         return row[s]
     base = s[:-1] if s.endswith("S") and s != "SCH 10S" else s
     return row.get(base)
+
+
+# Cross-standard equivalence - when two names are one requirement.
+#
+#   IDENTICAL      the same requirements under another body's number (an IS
+#                  adopted identically from an ISO). Matches.
+#   SUPERSEDED_BY  withdrawn; the replacement carries the grade forward
+#                  unchanged. Matches, and the evidence says "superseded".
+#   NEAREST        close but not interchangeable - different test regimes,
+#                  different units. Never a match and never a veto: a person
+#                  decides. Only IDENTICAL links chain; NEAREST never does.
+#
+# Each row names its source. Check a row against the standard itself before
+# it goes on a slide.
+EQUIVALENCE = [
+    # ISO 898-1 property classes, adopted identically as IS 1367 (Part 3).
+    ("IS 1367", "IDENTICAL", "ISO 898-1", "IS 1367 (Part 3) is an identical adoption of ISO 898-1"),
+    ("IS 1367-3", "IDENTICAL", "ISO 898-1", "IS 1367 (Part 3) is an identical adoption of ISO 898-1"),
+    ("IS 1364", "IDENTICAL", "ISO 4014", "IS 1364 (Part 1) hexagon head bolts is an identical adoption of ISO 4014"),
+    ("IS 1364-1", "IDENTICAL", "ISO 4014", "IS 1364 (Part 1) hexagon head bolts is an identical adoption of ISO 4014"),
+    # ASTM withdrew A325 and A490 in 2016; F3125 carries both as grades.
+    ("A325", "SUPERSEDED_BY", "F3125 A325", "ASTM A325 withdrawn 2016, now ASTM F3125 Grade A325"),
+    ("A490", "SUPERSEDED_BY", "F3125 A490", "ASTM A490 withdrawn 2016, now ASTM F3125 Grade A490"),
+    ("ASTM A325", "SUPERSEDED_BY", "ASTM F3125", "ASTM A325 withdrawn 2016, now ASTM F3125"),
+    ("ASTM A490", "SUPERSEDED_BY", "ASTM F3125", "ASTM A490 withdrawn 2016, now ASTM F3125"),
+    # Close in strength, not interchangeable: metric class against inch grade.
+    ("8.8", "NEAREST", "F3125 A325", "ISO 898-1 class 8.8 is close to A325 in strength; different standard, sizes and tests"),
+    ("10.9", "NEAREST", "F3125 A490", "ISO 898-1 class 10.9 is close to A490 in strength; different standard, sizes and tests"),
+]
+
+
+def _key(value) -> str:
+    import re
+    v = re.sub(r"[\s_]+", " ", str(value).strip().upper())
+    v = re.sub(r"\bGR(?:ADE)?\.?\s*", "", v)
+    return re.sub(r"\s*\(PART\s*(\d)\)", r"-\1", v).strip()
+
+
+def _current(value: str) -> str:
+    """Follow SUPERSEDED_BY to the name in force today."""
+    seen = set()
+    while value not in seen:
+        seen.add(value)
+        nxt = next((b for a, rel, b, _ in EQUIVALENCE if rel == "SUPERSEDED_BY" and _key(a) == value), None)
+        if nxt is None:
+            return value
+        value = _key(nxt)
+    return value
+
+
+def _identical_class(value: str) -> set:
+    """Everything linked to value by IDENTICAL, transitively (IDENTICAL only)."""
+    group, todo = {value}, [value]
+    while todo:
+        v = todo.pop()
+        for a, rel, b, _ in EQUIVALENCE:
+            if rel != "IDENTICAL":
+                continue
+            for x, y in ((_key(a), _key(b)), (_key(b), _key(a))):
+                if x == v and y not in group:
+                    group.add(y)
+                    todo.append(y)
+    return group
+
+
+def equivalence(x, y):
+    """How two grade or standard names relate: (relation, source) or None.
+
+    relation is IDENTICAL, SUPERSEDED or NEAREST. Two spellings of one name
+    are not an equivalence - that is canonical_grade's job - so equal keys
+    return None.
+    """
+    a, b = _key(x), _key(y)
+    if a == b:
+        return None
+    ca, cb = _current(a), _current(b)
+    if ca == cb or cb in _identical_class(ca):
+        rel = "SUPERSEDED" if (ca, cb) != (a, b) else "IDENTICAL"
+        src = next((s for p, r, q, s in EQUIVALENCE if {_key(p), _key(q)} & {a, b}), "")
+        return rel, src
+    for p, rel, q, src in EQUIVALENCE:
+        if rel == "NEAREST" and {_key(p), _key(q)} == {ca, cb}:
+            return "NEAREST", src
+    return None

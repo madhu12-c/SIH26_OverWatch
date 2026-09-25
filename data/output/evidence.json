@@ -1,10 +1,10 @@
 {
- "built_at": "2026-09-25T22:29",
- "commit": "c6ceeda+uncommitted",
+ "built_at": "2026-09-25T22:42",
+ "commit": "94c716d+uncommitted",
  "caveat": "The synthetic sets measure how well the system undoes noise we generated. The real test is the more believable number, and it is reported beside them, never blended.",
  "demo": {
   "source": "data/output/metrics.json",
-  "measured_at": "2026-09-25T22:21",
+  "measured_at": "2026-09-25T22:37",
   "records": 100,
   "auto_merged": 141,
   "auto_wrong": 0,
@@ -65,7 +65,7 @@
  },
  "run15k": {
   "source": "data/runs/15k/output/metrics.json",
-  "measured_at": "2026-09-25T22:05",
+  "measured_at": "2026-09-25T22:40",
   "records": 15000,
   "auto_merged": 846,
   "auto_wrong": 0,

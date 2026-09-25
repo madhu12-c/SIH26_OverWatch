@@ -182,6 +182,13 @@ def compare_grades(x, y) -> str:
     a, b = canonical_grade(x), canonical_grade(y)
     if a == b:
         return "agree"
+    # Across standards: A325 is now F3125 Grade A325 (superseded - the same
+    # bolt); class 8.8 is only NEAR A325 (a person decides). standards.py
+    # holds the table and its sources.
+    import standards
+    rel = standards.equivalence(a, b)
+    if rel:
+        return "unknown" if rel[0] == "NEAREST" else "agree"
     fa, bare_a = grade_family(a)
     fb, bare_b = grade_family(b)
     if fa is None or fb is None:

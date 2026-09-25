@@ -44,6 +44,7 @@ import normalise as nz
 import paths
 import schemas
 import selfcheck
+import standards
 
 # --- signal weights ---------------------------------------------------------
 # Adaptive, not fixed. The share given to specifications grows with how much
@@ -156,6 +157,10 @@ def compare(field: schemas.Field, x, y) -> str:
         return nz.compare_grades(x, y)
     if field.name == "connection":
         return _compare_connection(x, y)
+    if field.name == "standard":
+        rel = standards.equivalence(x, y)          # IS 1367 (Part 3) is ISO 898-1
+        if rel:
+            return "unknown" if rel[0] == "NEAREST" else "agree"
     if field.kind != "num":
         # Specs cached by an earlier run keep older spellings ("SCH-40",
         # "GR" for graphite). A spelling must never read as a difference.
@@ -271,7 +276,7 @@ def spec_agreement(a: dict, b: dict) -> dict:
     schemas.derive(category, attrs_a, conf_a)
     schemas.derive(category, attrs_b, conf_b)
 
-    matched, mismatched, ignored, unverified_hard, unsure = [], [], [], [], []
+    matched, mismatched, ignored, unverified_hard, unsure, equivalent = [], [], [], [], [], []
     weight_hit = weight_total = 0.0
 
     for field in schemas.fields_for(category):
@@ -329,6 +334,10 @@ def spec_agreement(a: dict, b: dict) -> dict:
             unsure.append(field.name)
             continue
         agree = result == "agree"
+        if agree and field.name in (*GRADE_FIELDS, "standard"):
+            rel = standards.equivalence(x, y)
+            if rel:                                  # agreed through the table - say so
+                equivalent.append({"field": field.name, "a": x, "b": y, "relation": rel[0], "source": rel[1]})
 
         if field.hard and not agree:
             return {"score": 0.0, "blocked_by": field.name,
@@ -371,7 +380,7 @@ def spec_agreement(a: dict, b: dict) -> dict:
 
     return {"score": weight_hit / weight_total, "blocked_by": None, "reason": None,
             "matched": matched, "mismatched": mismatched, "ignored": ignored,
-            "unverified_hard": unverified_hard, "unsure": unsure,
+            "unverified_hard": unverified_hard, "unsure": unsure, "equivalent": equivalent,
             "compared": len(matched) + len(mismatched)}
 
 
@@ -475,6 +484,8 @@ def score_pair(a, b, descriptions, vecs, profiles) -> dict:
             return out
 
     out.update(_fuse(a, text, spec, proc, flags))
+    if spec.get("equivalent"):
+        out["equivalent"] = spec["equivalent"]
     return out
 
 
