@@ -53,7 +53,8 @@ def main() -> None:
         steps.append(("extract", ["extractor.py", "--no-llm", "--fresh"]))
     if args.generate or args.embed or not paths.EMBEDDINGS.exists():
         steps.append(("embed", ["embed.py"]))
-    steps += [("score", ["scorer.py"]), ("evaluate", ["evaluate.py"]), ("canonicalise", ["canonicalise.py"]),
+    steps += [("score", ["scorer.py"]), ("evaluate", ["evaluate.py"]), ("baselines", ["baselines.py"]),
+              ("canonicalise", ["canonicalise.py"]),
               ("savings", ["savings.py"]), ("units", ["uom.py"]), ("gate", ["gate.py", "--scenarios"]),
               ("results", ["results.py"] + (["--ui"] if args.ui else []))]
 

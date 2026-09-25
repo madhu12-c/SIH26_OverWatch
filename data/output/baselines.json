@@ -1,0 +1,99 @@
+{
+ "run": "demo",
+ "records": 100,
+ "candidate_pairs": 407,
+ "tuned_on": "all",
+ "true_pairs": {
+  "all": 310
+ },
+ "methods": {
+  "fuzzy": {
+   "best_f1": {
+    "threshold": 0.2075,
+    "all": {
+     "merged": 407,
+     "wrong": 97,
+     "traps_merged": 91,
+     "precision": 0.7617,
+     "recall": 1.0
+    }
+   },
+   "zero_wrong": {
+    "threshold": 0.9412,
+    "all": {
+     "merged": 1,
+     "wrong": 0,
+     "traps_merged": 0,
+     "precision": 1.0,
+     "recall": 0.0032
+    }
+   }
+  },
+  "tf-idf": {
+   "best_f1": {
+    "threshold": 0.1356,
+    "all": {
+     "merged": 400,
+     "wrong": 91,
+     "traps_merged": 86,
+     "precision": 0.7725,
+     "recall": 0.9968
+    }
+   },
+   "zero_wrong": {
+    "threshold": 0.8875,
+    "all": {
+     "merged": 2,
+     "wrong": 0,
+     "traps_merged": 0,
+     "precision": 1.0,
+     "recall": 0.0065
+    }
+   }
+  },
+  "embedding": {
+   "best_f1": {
+    "threshold": 0.6808,
+    "all": {
+     "merged": 406,
+     "wrong": 96,
+     "traps_merged": 90,
+     "precision": 0.7635,
+     "recall": 1.0
+    }
+   },
+   "zero_wrong": {
+    "threshold": 0.989,
+    "all": {
+     "merged": 2,
+     "wrong": 0,
+     "traps_merged": 0,
+     "precision": 1.0,
+     "recall": 0.0065
+    }
+   }
+  }
+ },
+ "ours": {
+  "auto": {
+   "threshold": 0.9,
+   "all": {
+    "merged": 141,
+    "wrong": 0,
+    "traps_merged": 0,
+    "precision": 1.0,
+    "recall": 0.4548
+   }
+  },
+  "proposed": {
+   "threshold": 0.7,
+   "all": {
+    "merged": 310,
+    "wrong": 0,
+    "traps_merged": 0,
+    "precision": 1.0,
+    "recall": 1.0
+   }
+  }
+ }
+}

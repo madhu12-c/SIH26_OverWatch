@@ -79,6 +79,7 @@ UOM = OUTPUT / "uom.json"                      # 09 unit harmonisation report
 GATE = OUTPUT / "gate.json"                    # 10 creation-gate scenarios
 RESULTS = OUTPUT / "results.json"              # 09 everything the UI reads
 METRICS = OUTPUT / "metrics.json"           # -- evaluate.py, read by results.py
+BASELINES = OUTPUT / "baselines.json"       # -- baselines.py: text matchers vs ours, same pairs
 
 # Optional researched seed list. When present, generate_dataset.py can use it
 # instead of the built-in SEED_ITEMS.
