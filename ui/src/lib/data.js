@@ -13,6 +13,8 @@ export const meta = results.meta ?? {}
 export const cases = results.cases ?? {}
 export const clusters = results.clusters ?? []
 export const reviewQueue = results.review_queue ?? []
+// The same queue grouped the way a reviewer meets it: one record, its candidates.
+export const reviewRecords = results.review_records ?? []
 export const blocked = results.blocked ?? []
 export const blockedByRule = results.blocked_by_rule ?? {}
 export const savings = results.savings ?? []

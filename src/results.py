@@ -25,7 +25,7 @@ from datetime import date
 import paths
 import schemas
 import selfcheck
-from scorer import AUTO_MERGE, NOT_SAFETY, REVIEW_LOW
+from scorer import AUTO_MERGE, NOT_SAFETY, REVIEW_LOW, review_rank
 
 DEMO_MATCH = ("R00001", "R00002")     # different brand, same bearing
 DEMO_BLOCK = ("R00003", "R00004")     # near-identical text, different grade
@@ -186,14 +186,10 @@ def build() -> dict:
 
     # Review queue, worst-first so a reviewer sees the genuinely uncertain ones
     # rather than a wall of near-certain matches.
-    review = []
-    for p in pairs:
-        if p.get("blocked_by"):
-            continue
-        if REVIEW_LOW <= p["final"] < AUTO_MERGE:
-            review.append({
-                "a": record_view(p["a"], materials, specs),
-                "b": record_view(p["b"], materials, specs),
+    def review_entry(p, first, second):
+        return {
+                "a": record_view(first, materials, specs),
+                "b": record_view(second, materials, specs),
                 "final": p["final"],
                 "text_sim": p.get("text_sim"),
                 "spec_sim": p.get("spec_sim"),
@@ -203,8 +199,39 @@ def build() -> dict:
                 "review_reason": p.get("review_reason"),
                 "counterfactual": p.get("counterfactual"),
                 "contradictions": p.get("contradictions"),
-            })
-    review.sort(key=lambda r: r["final"])
+                "confirmed": len(p.get("matched_fields") or []),
+            }
+
+    in_review = [p for p in pairs if not p.get("blocked_by") and REVIEW_LOW <= p["final"] < AUTO_MERGE]
+    review = sorted((review_entry(p, p["a"], p["b"]) for p in in_review), key=lambda r: r["final"])
+
+    # The same queue as a reviewer meets it: one record and its candidates,
+    # best first by how much was confirmed (scorer.review_rank) - not a wall of
+    # pairs. Each pair appears once, under the record with more candidates:
+    # the terse line that fits several items is the one that needs "which of
+    # these is it?". On the 15,000 run the right match is first for about half
+    # of records and in the top three for four in five.
+    count = defaultdict(int)
+    for p in in_review:
+        count[p["a"]] += 1
+        count[p["b"]] += 1
+    grouped = defaultdict(list)
+    for p in in_review:
+        a, b = p["a"], p["b"]
+        anchor = a if (count[a], b) > (count[b], a) else b
+        grouped[anchor].append(p)
+    review_records = []
+    for anchor, ps in grouped.items():
+        ps.sort(key=review_rank, reverse=True)
+        review_records.append({
+            "record": record_view(anchor, materials, specs),
+            "total": len(ps),
+            "candidates": [review_entry(p, anchor, p["b"] if p["a"] == anchor else p["a"]) for p in ps],
+            "rank": review_rank(ps[0]),
+        })
+    review_records.sort(key=lambda r: r["rank"], reverse=True)
+    for r in review_records:
+        del r["rank"]
 
     # Records that contradict themselves (selfcheck.py) - per company, for
     # the data-quality view. Each is held out of the auto band.
@@ -231,6 +258,7 @@ def build() -> dict:
             "cpses": sorted({m["cpse"] for m in materials.values()}),
             "auto_merged": auto,
             "review_pending": len(review),
+            "review_records": len(review_records),
             "blocked": len(blocked),
             "blocked_one_field": one_field,
             "contradicted_records": len(contradicted),
@@ -266,6 +294,7 @@ def build() -> dict:
         },
         "clusters": national if len(national) <= CAPS["clusters"] else cap_clusters(national),
         "review_queue": review[:CAPS["review_queue"]],
+        "review_records": review_records[:CAPS["review_queue"]],
         "blocked": blocked[:CAPS["blocked"]],
         "contradicted": contradicted[:CAPS["blocked"]],
         "blocked_by_rule": dict(sorted(by_rule.items(), key=lambda x: -x[1])),
