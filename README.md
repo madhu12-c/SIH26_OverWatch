@@ -29,11 +29,7 @@ to test on — none is public.
 | **Anyone** | [`finalarchitecture.md`](finalarchitecture.md) — the final design: pipeline, features, rules, data, evaluation, PPT |
 | **Building something** | [`buildplan.md`](buildplan.md) — one design card per feature: where it goes, how it works, when it's done, who owns it |
 | Writing code | [`CLAUDE.md`](CLAUDE.md) — working rules and the decision record |
-| New to the project | [`docs/01-project/`](docs/01-project/) — the problem and the one idea that matters |
-| Picking up your part | [`docs/06-team/`](docs/06-team/) — find your name |
-| Wondering why something is built this way | [`docs/02-decisions/`](docs/02-decisions/) — every decision with its trade-offs |
-| Preparing for judges | [`docs/04-risks/`](docs/04-risks/) — what we can and cannot defend |
-| Trying to run it | [`docs/05-runbook/`](docs/05-runbook/) |
+| Trying to run it | [Run it](#run-it), below |
 
 ---
 
@@ -66,14 +62,6 @@ Brand is deliberately ignored. Material grade is a veto.
 ├── finalarchitecture.md   the final design — start here
 ├── buildplan.md           how each feature gets built, card by card
 ├── CLAUDE.md              working rules and decision record
-│
-├── docs/                  all documentation
-│   ├── 01-project/        what this is and why it is hard
-│   ├── 02-decisions/      every decision, with what we rejected
-│   ├── 03-reference/      data dictionary, schemas, domain facts
-│   ├── 04-risks/          honest limits and judge preparation
-│   ├── 05-runbook/        how to run everything
-│   └── 06-team/           one file per person
 │
 ├── src/                   pipeline
 │   ├── paths.py           every file path, defined once

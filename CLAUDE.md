@@ -155,7 +155,7 @@ README.md                 entry point
 CLAUDE.md                 this file — the decision record
 finalarchitecture.md      THE FINAL DESIGN — pipeline, features, rules, PPT, build plan
 buildplan.md              how each feature is built — one design card per feature
-docs/                     full documentation, indexed at docs/README.md
+docs/                     LOCAL ONLY (git-ignored): full documentation, indexed at docs/README.md
   01-project/             problem, core idea, glossary
   02-decisions/           every decision with what we rejected  <- read before changing anything
   03-reference/           data dictionary, pipeline stages, schemas, domain facts
