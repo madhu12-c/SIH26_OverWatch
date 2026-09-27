@@ -111,8 +111,7 @@ Brand is deliberately ignored. Material grade is a veto.
 │   ├── real/              real CPSE tender text      (Oil India, NTPC — CC-BY-4.0)
 │   └── output/            what each stage produces
 │
-├── ui/                    React portal — role sign-in, dashboard, analytics, catalogue, audit; offline, one file
-└── deliverables/          architecture doc, PDF, decks
+└── ui/                    React portal — role sign-in, dashboard, analytics, catalogue, audit; offline, one file
 ```
 
 ---
