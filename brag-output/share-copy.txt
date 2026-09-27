@@ -1,1 +1,0 @@
-Two CPSE material codes, one character apart, and never the same gasket. Our SIH 2026 prototype (SIH26099, Team Overwatch) matches materials on specifications, not spelling: on 15,000 CPSE-style records it merged 860 pairs on its own with 0 wrong, and every refusal names the field that decided it.
