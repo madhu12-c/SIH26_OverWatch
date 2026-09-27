@@ -180,7 +180,10 @@ data/output/              specs.json, embeddings.npz, uom.json, gate.json, ... (
 data/runs/15k/            the 15,000-record run (SIH_RUN=15k) - input, truth, output; git-ignored,
                           rebuilt by: python src/run_all.py --run 15k --generate 15000
 ui/                       React portal (government style) — role sign-in + 11 pages, offline
-deliverables/             architecture doc, PDF, decks
+deliverables/             architecture doc, PDF, decks; ppt-kit/ — slide content PDF, graphics,
+                          screenshots, CAG charts, licensed photos (CREDITS.json), and src/ that rebuilds them
+brag-output/              SIH video: 24 s clip + 2 min portal walkthrough. Scripts in work/ are tracked;
+                          the MP4s, frames and audio are git-ignored (rebuild with the scripts)
 ```
 
 **Built and working — the pipeline runs end to end.** Dataset generator (100 records, 15 items,
